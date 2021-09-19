@@ -5,6 +5,7 @@
     "pages/restrictions/restrictions",
     "pages/serviceArea/serviceArea",
     "pages/serviceAreaInfo/serviceAreaInfo",
+    "pages/cross_river_bridge/cross_river_bridge",
     "pages/logs/logs"
   ],
   "window":{

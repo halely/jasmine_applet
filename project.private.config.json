@@ -35,6 +35,12 @@
           "pathName": "pages/serviceAreaInfo/serviceAreaInfo",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/cross_river_bridge/cross_river_bridge",
+          "pathName": "pages/cross_river_bridge/cross_river_bridge",
+          "query": "",
+          "scene": null
         }
       ]
     }
