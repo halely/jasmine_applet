@@ -1,0 +1,71 @@
+<!--pages/serviceArea/serviceArea.wxml-->
+<view class="container">
+  <view class="queryBox">
+    <view class="queryItem">
+      <tetx>全部距离</tetx>
+      <image src="/img/drop-down_back.png"></image>
+    </view>
+    <view class="queryItem">
+      <tetx>全部路线</tetx>
+      <image src="/img/drop-down_back.png"></image>
+    </view>
+    <view class="queryItem">
+      <tetx>全部路线</tetx>
+      <image src="/img/drop-down_back.png"></image>
+    </view>
+    <icon size='18' type='search'></icon>
+  </view>
+  <view class="main">
+    <scroll-view scroll-y>
+      <view class="serviceAreaItem" wx:for="{{9}}">
+        <view class="item_head">
+          <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
+          <view class="serviceAreaInfo">
+            <view class="serviceAreaInfo_head">
+              <view class="serviceAreaName">翠屏山服务区
+                <image class="on-state" src="/img/on-state.png"></image>
+              </view>
+              <text>8.70km</text>
+            </view>
+            <view class="direction">禄口机场往南京方向</view>
+            <view class="serviceAreaInfo_main">
+              <view class="serviceAreaInfo_main_item">
+                <image src="/img/parking.png"></image>
+                <view class="parkingInfo">
+                  <view class="parkingInfo_item">
+                    <label>剩余车位</label>
+                    <text>150</text>
+                  </view>
+                  <view class="parkingInfo_item">
+                    <label>空余厕位</label>
+                    <text>30</text>
+                  </view>
+                </view>
+              </view>
+              <view class="serviceAreaInfo_main_item">
+                <image src="/img/cheer.png"></image>
+                <view class="cheerInfo">
+                  <view class="cheerItem">92#</view>
+                  <view class="cheerItem">95#</view>
+                  <view class="cheerItem">98#</view>
+                  <view class="cheerItem diesel">0#</view>
+                  <view class="cheerItem diesel">10#</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="item_foot">
+          <text class="perCapita">￥50</text>
+          <view class="recommendBox">
+            <text>【推荐】老乡鸡·肥西老母鸡汤优惠服务</text>
+            <view class="sales_status">
+              <text>日销 15</text>
+              <text>月售 300</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

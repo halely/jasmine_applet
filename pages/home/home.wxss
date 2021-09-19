@@ -1,0 +1,313 @@
+/* pages/home/home.wxss */
+.container .Home_nav {
+  height: 107px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 20px;
+  align-items: center;
+  position: relative;
+}
+
+.Home_nav_bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.container .Home_nav text {
+  position: relative;
+  z-index: 2;
+}
+
+.container .Home_nav text:first-child {
+  font-size: 18px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 25px;
+  margin: 20px 0 5px 0;
+}
+
+.head {
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.positionImg {
+  width: 16px;
+  height: 16px;
+  margin-right: 8rpx;
+}
+
+.quickEntry {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.quickEntry>view.quickEntryItem {
+  width: calc(50% - 10px);
+  box-sizing: border-box;
+  height: 72px;
+  margin: 12px 0 20px 0;
+  border-radius: 8px;
+}
+
+.quickEntry>view>image,
+.entranceBox>image {
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  overflow-y: auto;
+}
+
+.entranceBox {
+  width: calc(100% - 40px);
+  height: 48px;
+  background-color: #FFFFFF;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  text-indent: 20px;
+}
+
+.swiper_box {
+  width: 100%;
+  padding:20px 0 20px 20px;
+  box-sizing: border-box;
+}
+
+.tollstation_box .tollstationItem,
+.service_area_box .serviceAreaItem {
+  width: calc(100% - 10px);
+  /* width: 100% ; */
+  min-height: 300rpx;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  padding: 20px 14px;
+  box-sizing: border-box;
+}
+
+.tollstation_name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+
+}
+
+.tollstationItem .item_head {
+  display: flex;
+  align-items: center;
+}
+
+.tollstation_name::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  display: block;
+  background-color: #FF2020;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.distance {
+  font-size: 13px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 18px;
+  margin-left: 16px;
+}
+
+.item_main {
+  margin-top: 10px;
+}
+
+.tollstation_state {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+.tollstation_state .state_title{
+  flex: 1;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.stateInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
+}
+
+.stateInfo text {
+  display: block;
+  padding: 4px 8px;
+  background-color: #F4F4F4;
+  font-size: 14px;
+  font-weight: 500;
+  color: #07C160;
+  line-height: 20px;
+}
+
+.stateInfo text.close {
+  color: #FF2020;
+}
+
+.serviceAreaItem .item_head {
+  display: flex;
+}
+
+.serviceAreaItem .item_head .serviceAreaImg {
+  width: 68px;
+  height: 68px;
+  margin-right: 14px;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo {
+  flex: 1;
+  padding-bottom: 10px;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head text {
+  font-size: 13px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 18px;
+  margin-left: 16px;
+}
+
+.serviceAreaInfo_main_item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.serviceAreaInfo_main_item image {
+  width: 14px;
+  height: 14px;
+  margin-right: 10rpx;
+  flex-shrink: 0;
+}
+
+.parkingInfo {
+  flex: 1;
+}
+
+.parkingInfo .parkingInfo_item {
+  padding: 2px 4px;
+  border-radius: 8px;
+  background-color: #F7F7F7;
+  margin: 3px 6px 3px 0;
+  flex-wrap: wrap;
+  font-size: 12px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 17px;
+  align-items: center;
+  display: inline-flex;
+}
+
+.parkingInfo_item>text {
+  font-size: 14px;
+  font-family: DINAlternate-Bold, DINAlternate;
+  font-weight: bold;
+  color: #333333;
+  line-height: 19px;
+  margin-left: 2px;
+}
+
+.cheerItem {
+  border-radius: 4px;
+  border: 1px solid #979797;
+  color: #979797;
+  font-size: 12px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  line-height: 17px;
+  display: inline-block;
+  padding: 0 4px;
+  margin: 3px 4px 3px 0;
+}
+
+.cheerItem.diesel {
+  border-radius: 8px;
+}
+
+.item_foot {
+  display: flex;
+  margin-top: 10px;
+}
+
+.perCapita {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #FFA700;
+  color: #FFA700;
+  font-size: 14px;
+  line-height: 18px;
+  height: 18px;
+  width: 68px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+.service_area_box swiper {
+  height: 190px !important;
+}
+
+.service_area_box swiper-item {
+  height: auto !important;
+  overflow: hidden;
+}
+.recommendBox{
+  flex: 1;
+  overflow: hidden;
+}
+.recommendBox>text{
+  display: block;
+  overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.sales_status {
+  width: 100%;
+  display: flex;
+  font-size: 12px;
+  color: #666666;
+  line-height: 17px;
+  margin-top:8px;
+}
+.sales_status text{
+  margin: 0 30px 0 8px;
+}

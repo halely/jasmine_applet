@@ -1,0 +1,97 @@
+<!--pages/serviceAreaInfo/serviceAreaInfo.wxml-->
+<view class="container">
+  <image class="serviceAreaIbj" src="http://p6.qhimg.com/bdm/960_593_0/t01cca0d7dea65a24e4.jpg"></image>
+  <view class="serviceAreaInfoBox">
+    <view class="serviceArea_title">
+      <text>翠屏山服务区(禄口机场往南京方向)</text>
+      <image class="on-state" src="/img/on-state.png"></image>
+      <view class="distanceInfo">8.71km｜K5+0</view>
+    </view>
+    <!-- 服务区分类信息 -->
+    <view class="serviceArea_store_num">
+      <view class="storeItem">
+        <image class="storeImg" src="/img/Gas_station.png"></image>
+        <text>加油站</text>
+      </view>
+      <view class="storeItem">
+        <image class="storeImg" src="/img/parking_lot.png"></image>
+        <text>停车场</text>
+      </view>
+      <view class="storeItem">
+        <image class="storeImg" src="/img/toilets.png"></image>
+        <text>卫生间</text>
+      </view>
+      <view class="storeItem">
+        <image class="storeImg" src="/img/food.png"></image>
+        <text>美食</text>
+      </view>
+      <view class="storeItem">
+        <image class="storeImg" src="/img/supermarket.png"></image>
+        <text>超市</text>
+      </view>
+      <view class="storeItem">
+        <image class="storeImg" src="/img/card_bag.png"></image>
+        <text>苏通卡充值</text>
+      </view>
+    </view>
+    <!-- 车位厕所油类信息 -->
+    <view class="basic_services_box">
+      <view class="basic_services_head">
+        <view class="basic_servicesItem">
+          <image src="/img/parking.png"></image>
+          <view class="carportInfo">
+            <label>剩余车位</label>
+            <text>120</text>
+          </view>
+        </view>
+        <view class="basic_servicesItem">
+          <image src="/img/toilet.png"></image>
+          <view class="carportInfo warn">
+            <label>空余厕位</label>
+            <text>10</text>
+          </view>
+        </view>
+      </view>
+      <view class="basic_services_foot">
+        <view class="basic_servicesItem">
+          <image src="/img/cheer.png"></image>
+          <view class="cheerInfo">
+            <view class="cheerItem">92#</view>
+            <view class="cheerItem">95#</view>
+            <view class="cheerItem">98#</view>
+            <view class="cheerItem diesel">0#</view>
+            <view class="cheerItem diesel">10#</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 店铺标题 -->
+    <view class="supermarket_title">
+      <image src="/img/hot.png"></image>
+      <text class="check">美食店铺</text>
+      <text>商超百货</text>
+    </view>
+  </view>
+  <view class="main">
+    <scroll-view scroll-y>
+      <view class="serviceStoreItem" wx:for="{{5}}">
+        <view class="ItemBody">
+          <image
+            src="https://img0.baidu.com/it/u=1115144844,2258952259&fm=26&fmt=auto">
+          </image>
+          <view class="storeInfo">
+            <text class="storeName ellipsis">老乡鸡（黄栗墅服务区店）</text>
+            <view class="starBox">
+              <star num="4.9" />
+            </view>
+            <view class="sales_status">
+              <text>月售 3408</text>
+              <text>人均 ¥16</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </scroll-view>
+  </view>
+</view>

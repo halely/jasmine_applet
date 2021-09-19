@@ -1,0 +1,7 @@
+<!--components/star/star.wxml-->
+<view class="starView" >
+  <view class="starBox">
+    <image wx:for="{{5}}" class="starItem" src="/img/star.png"></image>
+  </view>
+  <text>{{num}}</text>
+</view>

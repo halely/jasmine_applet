@@ -1,0 +1,15 @@
+/* components/star/star.wxss */
+
+.starView {
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  color: #FDAD28;
+  line-height: 22px;
+}
+
+.starBox .starItem {
+  width: 16px;
+  height: 16px;
+  margin-right: 20rpx;
+}

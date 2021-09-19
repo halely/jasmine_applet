@@ -1,0 +1,42 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/toll_station/toll_station",
+          "pathName": "pages/toll_station/toll_station",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/home/home",
+          "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/serviceArea/serviceArea",
+          "pathName": "pages/serviceArea/serviceArea",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/serviceAreaInfo/serviceAreaInfo",
+          "pathName": "pages/serviceAreaInfo/serviceAreaInfo",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

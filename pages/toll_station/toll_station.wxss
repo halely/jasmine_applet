@@ -1,0 +1,170 @@
+/* pages/toll_station/toll_station.wxss */
+
+.toll_station_item {
+  width: 100%;
+  padding: 26rpx 32rpx;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.toll_station_item .itemhead {
+  display: flex;
+}
+
+.toll_station_item .itemhead .tollStationImg {
+  width: 140rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+
+.toll_station_item .itemhead .tollStationTitle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 17px;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.toll_station_item .itemhead .tollStationTitle text:first-child {
+  color: #333333;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.tollstation_state {
+  display: flex;
+  margin-top: 10px;
+}
+
+.tollstation_state .state_title {
+  padding: 4px 8px;
+  background-color: #F4F4F4;
+  flex: 1;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.stateInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
+}
+
+.stateInfo text {
+  display: block;
+  padding: 4px 8px;
+  background-color: #F4F4F4;
+  font-size: 14px;
+  font-weight: 500;
+  color: #07C160;
+  line-height: 20px;
+}
+
+.stateInfo text.close {
+  color: #FF2020;
+}
+
+.itemfoot .openBut {
+  color: #1677FE;
+  display: flex;
+  justify-content: center;
+  margin: 20rpx 0;
+  font-size: 12px;
+  line-height: 17px;
+  align-items: center;
+}
+
+.itemfoot .openBut .drop-down {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s;
+}
+
+.close_reason {
+  transition: all 0.2s;
+}
+
+.itemfoot .openBut.open .drop-down {
+  transform: rotate(180deg);
+}
+
+/* 按照地市 */
+
+.citiesBox {
+  height: 100%;
+  background-color: #ffffff;
+  width: 100%;
+  padding: 28rpx 32rpx;
+  box-sizing: border-box;
+}
+
+.cityItem {
+  position: relative;
+  display: inline-flex;
+  height: auto;
+  margin: 16rpx 32rpx 0 0;
+}
+
+.cityItem .cityName {
+  color: #999999;
+  border: 1px solid #999999;
+  font-size: 16px;
+  line-height: 22px;
+  border-radius: 16px;
+  padding: 6rpx 30rpx;
+}
+
+.cityItem .cityNum {
+  position: absolute;
+  top: -12rpx;
+  right: -20rpx;
+  color: #ffffff;
+  padding: 0 16rpx;
+  font-size: 20rpx;
+  background-color: #FF2020;
+  border-radius: 6rpx;
+}
+
+.cityItem.select .cityName {
+  color: #0089FF;
+  border-color: #ebf3fa;
+  background-color: #ebf3fa;
+}
+
+.main .citiesBox scroll-view {
+  width: 100%;
+  white-space: nowrap;
+  height: 60px;
+}
+
+.map {
+  width: 100%;
+  height: 266px;
+ margin-bottom: 20rpx;
+  margin-top: -5px;
+}
+
+.citiesBox .toll_station_item {
+  padding: 26rpx 0;
+}
+
+.citiesBox .itemfoot {
+  display: flex;
+  margin-top: 10px;
+}
+
+.citiesBox .itemfoot .reasonTitle {
+  font-size: 14px;
+  color: #0089FF;
+  line-height: 22px;
+  background-color: #ebf3fa;
+  width: 200px;
+  text-align: center;
+  height: 22px;
+  margin-right: 10px;
+}

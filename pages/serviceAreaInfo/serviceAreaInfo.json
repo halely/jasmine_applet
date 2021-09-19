@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "服务区详情",
+  "usingComponents": {
+    "star":"/components/star/star"
+  }
+}

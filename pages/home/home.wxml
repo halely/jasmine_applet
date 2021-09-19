@@ -1,0 +1,113 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <view class="Home_nav">
+    <text>茉莉管家</text>
+    <text>您的高速公路畅行管家</text>
+    <image class="Home_nav_bg" src="/img/HomeBg.png"></image>
+  </view>
+  <view class="head">
+    <image class="positionImg" src="/img/positioning.png"></image>
+    <text>当前定位：南京</text>
+  </view>
+  <view class="main">
+    <view class="quickEntry">
+      <view class="quickEntryItem" bindtap="restrictionsWay">
+        <image src="/img/restrictions.png"></image>
+      </view>
+      <view class="quickEntryItem">
+        <image src="/img/bridge.png"></image>
+      </view>
+    </view>
+    <!-- 收费站列表入口 -->
+    <view class="entranceBox" bindtap="entranceWay">
+      <image src="/img/tollbooth_switch.png"></image>
+    </view>
+    <!-- 收费站模块 -->
+    <view class="tollstation_box swiper_box">
+      <swiper next-margin="10px">
+        <swiper-item wx:for="{{tollstationList}}" wx:key="key">
+          <view class="tollstationItem">
+            <view class="item_head">
+              <text class="tollstation_name">将军大道收费站</text>
+              <text class="distance">14.50km</text>
+            </view>
+            <view class="item_main">
+              <view class="tollstation_state">
+                <text class="state_title">由常熟往合肥方向</text>
+                <view class="stateInfo">
+                  <text class="close">入口关闭</text>
+                  <text class="close">出口关闭</text>
+                </view>
+              </view>
+              <view class="tollstation_state">
+                <text class="state_title">由合肥往常熟方向</text>
+                <view class="stateInfo">
+                  <text>入口开启</text>
+                  <text>入口开启</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+    <!-- 服务区入口 -->
+    <view class="entranceBox"  bindtap="service_areaWay">
+      <image src="/img/service_area_entrance.png"></image>
+    </view>
+    <!-- 服务区 -->
+    <view class="service_area_box swiper_box">
+      <swiper next-margin="10px">
+        <swiper-item wx:for="{{tollstationList}}" wx:key="key">
+          <view class="serviceAreaItem" bindtap="serviceAreaInfo">
+            <view class="item_head">
+              <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
+              <view class="serviceAreaInfo">
+                <view class="serviceAreaInfo_head">
+                  翠屏山服务区
+                  <text>8.70km</text>
+                </view>
+                <view class="serviceAreaInfo_main">
+                  <view class="serviceAreaInfo_main_item">
+                    <image src="/img/parking.png"></image>
+                    <view class="parkingInfo">
+                      <view class="parkingInfo_item">
+                        <label>剩余车位</label>
+                        <text>150</text>
+                      </view>
+                      <view class="parkingInfo_item">
+                        <label>空余厕位</label>
+                        <text>30</text>
+                      </view>
+                    </view>
+                  </view>
+                  <view class="serviceAreaInfo_main_item">
+                    <image src="/img/cheer.png"></image>
+                    <view class="cheerInfo">
+                      <view class="cheerItem">92#</view>
+                      <view class="cheerItem">95#</view>
+                      <view class="cheerItem">98#</view>
+                      <view class="cheerItem diesel">0#</view>
+                      <view class="cheerItem diesel">10#</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="item_foot">
+              <text class="perCapita">￥50</text>
+              <view class="recommendBox">
+                <text>【推荐】老乡鸡·肥西老母鸡汤优惠服务</text>
+                <view class="sales_status">
+                  <text>日销 15</text>
+                  <text>月售 300</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+
+</view>

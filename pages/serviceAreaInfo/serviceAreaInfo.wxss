@@ -1,0 +1,209 @@
+/* pages/serviceAreaInfo/serviceAreaInfo.wxss */
+
+.serviceAreaIbj {
+  width: 100%;
+  height: 184px;
+  margin-bottom: -20px;
+}
+
+.serviceAreaInfoBox {
+  position: relative;
+  border-radius: 10px 10px 0 0;
+  background-color: #f7f7f7;
+  padding: 20rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.serviceArea_title {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  line-height: 22px;
+}
+
+.serviceArea_title .on-state {
+  position: absolute;
+  width: 58rpx;
+  height: 30rpx;
+  top: -11rpx;
+  right: -56rpx;
+}
+
+.serviceArea_title .distanceInfo {
+  font-size: 20rpx;
+  font-weight: 500;
+  color: #666666;
+  line-height: 14px;
+}
+
+/* 服务区分类信息 */
+.serviceArea_store_num {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15rpx 0 20rpx 0;
+  border-bottom: 2rpx solid #f3f3f3;
+}
+
+.storeItem {
+  margin-right: 10rpx;
+  display: flex;
+  font-size: 11px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 16px;
+  align-items: center;
+}
+
+.storeItem .storeImg {
+  width: 14px;
+  height: 14px;
+  margin-right: 6rpx;
+}
+
+/* 车位厕所油类信息 */
+.basic_services_box {
+  margin-top: 24rpx;
+}
+
+.basic_services_head {
+  margin-bottom: 18rpx;
+}
+
+.basic_servicesItem {
+  display: inline-flex;
+  margin-right: 80rpx;
+  align-items: center;
+}
+
+.basic_servicesItem image {
+  width: 16px;
+  height: 16px;
+  margin-right: 20rpx;
+}
+
+.basic_servicesItem .carportInfo {
+  font-size: 12px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 17px;
+  background-color: #F7F7F7;
+  padding: 6rpx 16rpx;
+  border-radius: 16rpx;
+  display: inline-flex;
+  align-items: center;
+}
+
+.basic_servicesItem .carportInfo text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 19px;
+  margin-left: 6rpx;
+}
+
+.basic_servicesItem .carportInfo.warn text {
+  color: #FF2D2D;
+}
+
+.cheerItem {
+  border-radius: 4px;
+  border: 1px solid #979797;
+  color: #979797;
+  font-size: 12px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  line-height: 17px;
+  display: inline-block;
+  padding: 0 4px;
+  margin: 3px 4px 3px 0;
+}
+
+.cheerItem.diesel {
+  border-radius: 8px;
+}
+
+/* 店铺标题 */
+.supermarket_title {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 28rpx;
+}
+
+.supermarket_title image {
+  width: 24px;
+  height: 24px;
+}
+
+.supermarket_title text {
+  font-size: 26rpx;
+  color: #666666;
+  line-height: 18px;
+  margin-right: 24rpx;
+}
+
+.supermarket_title text.check {
+  height: 22px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 22px;
+  margin-left: 8rpx;
+}
+
+.main {
+  background-color: #f7f7f7;
+  padding: 10px 0;
+}
+
+.main .serviceStoreItem {
+  width: 100%;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.serviceStoreItem .ItemBody {
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  display: flex;
+  padding: 20rpx;
+  box-sizing: border-box;
+  
+}
+
+.serviceStoreItem .ItemBody>image {
+  width: 72px;
+  height: 72px;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.serviceStoreItem .ItemBody .storeInfo {
+  flex: 1;
+  overflow: hidden;
+}
+
+.serviceStoreItem .storeName {
+  font-size: 16px;
+  color: #333333;
+  line-height: 22px;
+}
+
+.serviceStoreItem .starBox {
+  margin: 10rpx 0;
+}
+
+.sales_status {
+  font-size: 12px;
+  font-weight: 400;
+  color: #666666;
+  line-height: 17px;
+}
+.sales_status text{
+  margin-right:80rpx ;
+}

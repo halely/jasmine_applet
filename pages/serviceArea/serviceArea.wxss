@@ -1,0 +1,181 @@
+/* pages/serviceArea/serviceArea.wxss */
+.queryBox{
+  background-color: #ffffff;
+  margin: 20rpx 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 26rpx 40rpx 26rpx 100rpx;
+  box-sizing: border-box;
+}
+.queryItem{
+  display: inline-flex;
+  align-items: center;
+  color: black;
+}
+.queryItem image{
+  width: 6px;
+  height: 6px;
+  margin-left: 4rpx;
+}
+
+ /* item设置 */
+.serviceAreaItem{
+  width: 100%;
+  padding:40rpx 32rpx ;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  margin-bottom:20rpx ;
+}
+
+.serviceAreaItem .item_head {
+  display: flex;
+}
+
+.serviceAreaItem .item_head .serviceAreaImg {
+  width: 68px;
+  height: 68px;
+  margin-right: 14px;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo {
+  flex: 1;
+  padding-bottom: 10px;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.serviceAreaItem .item_head .serviceAreaInfo  .serviceAreaName{
+position: relative;
+}
+.serviceAreaItem .item_head .serviceAreaInfo  .serviceAreaName .on-state{
+  position:absolute;
+  width: 58rpx;
+  height:30rpx;
+  top:-20rpx;
+  right:-64rpx;
+}
+.serviceAreaItem .direction{
+  font-size: 12px;
+}
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head text {
+  font-size: 13px;
+  color: #666666;
+  line-height: 18px;
+}
+
+.serviceAreaItem .serviceAreaInfo_main_item {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 4rpx 0;
+}
+
+.serviceAreaItem .serviceAreaInfo_main_item image {
+  width: 14px;
+  height: 14px;
+  margin-right: 10rpx;
+  flex-shrink: 0;
+}
+
+.serviceAreaItem .parkingInfo {
+  flex: 1;
+}
+
+.serviceAreaItem .parkingInfo .parkingInfo_item {
+  padding: 2px 4px;
+  border-radius: 8px;
+  background-color: #F7F7F7;
+  margin: 3px 6px 3px 0;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #666666;
+  line-height: 17px;
+  align-items: center;
+  display: inline-flex;
+}
+
+.serviceAreaItem .parkingInfo_item>text {
+  font-size: 14px;
+  font-family: DINAlternate-Bold, DINAlternate;
+  font-weight: bold;
+  color: #333333;
+  line-height: 19px;
+  margin-left: 2px;
+}
+
+.serviceAreaItem .cheerItem {
+  border-radius: 4px;
+  border: 1px solid #979797;
+  color: #979797;
+  font-size: 12px;
+  color: #666666;
+  line-height: 17px;
+  display: inline-block;
+  padding: 0 4px;
+  margin: 3px 4px 3px 0;
+}
+
+.serviceAreaItem .cheerItem.diesel {
+  border-radius: 8px;
+}
+
+.serviceAreaItem .item_foot {
+  display: flex;
+  margin-top: 10px;
+}
+
+.serviceAreaItem .perCapita {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #FFA700;
+  color: #FFA700;
+  font-size: 14px;
+  line-height: 18px;
+  height: 18px;
+  width: 68px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+.serviceAreaItem .recommendBox{
+  flex: 1;
+  overflow: hidden;
+}
+.serviceAreaItem .recommendBox>text{
+  display: block;
+  overflow: hidden;
+	text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+/* .serviceAreaItem .recommendBox>text::after{
+  content: '订';
+  color: #ffffff;
+  display: block;
+  position: absolute;
+  background-color: #FF2D2D;
+  right: 0;
+  top: 6rpx;
+  font-size: 20rpx;
+  padding: 0 6rpx;
+} */
+.serviceAreaItem .sales_status {
+  width: 100%;
+  display: flex;
+  font-size: 12px;
+  color: #666666;
+  line-height: 17px;
+  margin-top:8px;
+}
+.serviceAreaItem .sales_status text{
+  margin: 0 30px 0 8px;
+}
