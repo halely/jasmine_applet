@@ -1,2 +1,47 @@
 <!--pages/cross_river_bridge/cross_river_bridge.wxml-->
-
+<view class="container">
+  <view class="carTypeBox">
+    <view class="carTypeItem select">
+      <text class="carTypeName">货车</text>
+      <text class="carTypeNum">2</text>
+    </view>
+    <view class="carTypeItem">
+      <text class="carTypeName">客车</text>
+      <text class="carTypeNum">1</text>
+    </view>
+  </view>
+  <view class="main">
+    <view class="channelInfoBox">
+      <view class="refresBox">
+        <image src="/img/refreshImg.png"></image>
+        <text>刷新定位</text>
+      </view>
+      <view class="bridgeBox">
+        <image class="bridgebg" src="/img/pathBg.png"></image>
+        <view class="bridgebody">
+          <view data-id="index" wx:for="{{bridgeNodeList}}" wx:key="key" class="bridgeItem "
+            style="top: {{item.itemPosition.top}};left:{{item.itemPosition.left}};">
+            <view class="nodeBox" style="transform: {{item.rotate}};">
+              <image wx:if="{{selectItemData.key==index}}" class="nodeImg" src="/img/trafficControl.png"></image>
+              <image wx:else class="nodeImg" src="/img/release.png"></image>
+              <image class="nodeImg" src="/img/release.png"></image>
+            </view>
+            <text class="{{selectItemData.key==index?'error':''}}"
+              style="top:{{item.textPosition.top}};left: {{item.textPosition.left}};">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="limitInfo">
+        <view class="boxTitle">
+          <text>润扬</text>
+          <text>禁止通行原因</text>
+        </view>
+        <text>接交警大队通知，润扬大桥双向关闭，封闭时间2021-9-15 6:00 至2021-9-16 3:00。</text>
+      </view>
+    </view>
+    <view class="onlineTitle">
+      <image src="/img/prompt.png"></image>
+      <text>导航功能即将上线</text>
+    </view>
+  </view>
+</view>

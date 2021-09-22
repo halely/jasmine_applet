@@ -41,6 +41,12 @@
           "pathName": "pages/cross_river_bridge/cross_river_bridge",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/store_info/store_info",
+          "pathName": "pages/store_info/store_info",
+          "query": "",
+          "scene": null
         }
       ]
     }

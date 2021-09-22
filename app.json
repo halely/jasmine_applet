@@ -6,6 +6,7 @@
     "pages/serviceArea/serviceArea",
     "pages/serviceAreaInfo/serviceAreaInfo",
     "pages/cross_river_bridge/cross_river_bridge",
+    "pages/store_info/store_info",
     "pages/logs/logs"
   ],
   "window":{

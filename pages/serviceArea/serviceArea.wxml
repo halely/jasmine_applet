@@ -1,23 +1,26 @@
 <!--pages/serviceArea/serviceArea.wxml-->
 <view class="container">
   <view class="queryBox">
-    <view class="queryItem">
-      <tetx>全部距离</tetx>
-      <image src="/img/drop-down_back.png"></image>
+    <view data-id="0" bindtap="queryClick" class="queryItem {{conditionSelect=='0'?'selected':''}} ">
+      <tetx>距离</tetx>
+      <image wx:if="{{conditionSelect=='0'}}" src="/img/drop-down-selected.png"></image>
+      <image wx:else src="/img/drop-down_back.png"></image>
     </view>
-    <view class="queryItem">
-      <tetx>全部路线</tetx>
-      <image src="/img/drop-down_back.png"></image>
+    <view data-id="1" bindtap="queryClick" class="queryItem  {{conditionSelect==1?'selected':''}}">
+      <tetx>路线</tetx>
+      <image wx:if="{{conditionSelect==1}}" src="/img/drop-down-selected.png"></image>
+      <image wx:else src="/img/drop-down_back.png"></image>
     </view>
-    <view class="queryItem">
-      <tetx>全部路线</tetx>
-      <image src="/img/drop-down_back.png"></image>
+    <view data-id="2" bindtap="queryClick" class="queryItem  {{conditionSelect==2?'selected':''}}">
+      <tetx>城市</tetx>
+      <image wx:if="{{conditionSelect==2}}" src="/img/drop-down-selected.png"></image>
+      <image wx:else src="/img/drop-down_back.png"></image>
     </view>
     <icon size='18' type='search'></icon>
   </view>
   <view class="main">
     <scroll-view scroll-y>
-      <view class="serviceAreaItem" wx:for="{{9}}">
+      <view class="serviceAreaItem" wx:for="{{9}}" wx:key="key">
         <view class="item_head">
           <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
           <view class="serviceAreaInfo">
@@ -67,5 +70,46 @@
         </view>
       </view>
     </scroll-view>
+  </view>
+  <!-- 自定义下拉弹窗 -->
+  <view class="drop-down-dialog hale-dialog_box" wx:if="{{dialogVisible}}">
+    <!-- 阴影层 -->
+    <view class="hale-dialog__wrapper" bindtap="closeDialog"></view>
+    <!-- 内容区 -->
+    <view class="hale-dialog_body">
+      <view class="drop-down_main">
+        <block wx:if="{{conditionSelect=='0'}}">
+          <view class="chooseBox">
+            <text class="chooseItem selected">不限</text>
+            <text class="chooseItem" data-no="30">30km</text>
+            <text class="chooseItem" data-no="60">60km</text>
+            <text class="chooseItem" data-no="100">100km</text>
+          </view>
+        </block>
+        <block wx:if="{{conditionSelect==1}}">
+          <view class="chooseBox">
+            <text class="chooseItem selected">不限</text>
+            <view class="chooseTitle">G 国家高速</view>
+            <view class="route">
+              <text wx:for="{{national_highway_list}}" wx:key="key"  class="chooseItem">{{item}}</text>
+            </view>
+            <view class="chooseTitle">S 苏高速</view>
+            <view class="route">
+              <text wx:for="{{national_highway_list}}" wx:key="key"  class="chooseItem">{{item}}</text>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{conditionSelect==2}}">
+          <view class="chooseBox">
+            <text class="chooseItem selected">不限</text>
+            <text class="chooseItem" wx:for="{{cityList}}" wx:key="key" data-key="{{item.key}}">{{item.name}}</text>
+          </view>
+        </block>
+      </view>
+      <view class="drop-down_foot">
+        <text>重置</text>
+        <text class="selected">确定</text>
+      </view>
+    </view>
   </view>
 </view>

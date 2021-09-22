@@ -1,30 +1,38 @@
 /* pages/serviceArea/serviceArea.wxss */
-.queryBox{
+.queryBox {
   background-color: #ffffff;
-  margin: 20rpx 0;
+  margin-top: 20rpx;
   display: flex;
   justify-content: space-between;
   padding: 26rpx 40rpx 26rpx 100rpx;
   box-sizing: border-box;
 }
-.queryItem{
+
+.queryBox .queryItem {
   display: inline-flex;
   align-items: center;
   color: black;
 }
-.queryItem image{
+.queryBox .queryItem.selected{
+  color: #1677FE;
+}
+.queryBox .queryItem image {
   width: 6px;
-  height: 6px;
+  height: 4px;
   margin-left: 4rpx;
 }
 
- /* item设置 */
-.serviceAreaItem{
+/* item设置 */
+.main {
+  margin-top: 20rpx;
+}
+
+.serviceAreaItem {
   width: 100%;
-  padding:40rpx 32rpx ;
+  padding: 40rpx 32rpx;
   box-sizing: border-box;
   background-color: #ffffff;
-  margin-bottom:20rpx ;
+  margin-bottom: 20rpx;
 }
 
 .serviceAreaItem .item_head {
@@ -52,19 +60,23 @@
   align-items: center;
   justify-content: space-between;
 }
-.serviceAreaItem .item_head .serviceAreaInfo  .serviceAreaName{
-position: relative;
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaName {
+  position: relative;
 }
-.serviceAreaItem .item_head .serviceAreaInfo  .serviceAreaName .on-state{
-  position:absolute;
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaName .on-state {
+  position: absolute;
   width: 58rpx;
-  height:30rpx;
-  top:-20rpx;
-  right:-64rpx;
+  height: 30rpx;
+  top: -20rpx;
+  right: -64rpx;
 }
-.serviceAreaItem .direction{
+
+.serviceAreaItem .direction {
   font-size: 12px;
 }
+
 .serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head text {
   font-size: 13px;
   color: #666666;
@@ -146,17 +158,19 @@ position: relative;
   flex-shrink: 0;
 }
 
-.serviceAreaItem .recommendBox{
+.serviceAreaItem .recommendBox {
   flex: 1;
   overflow: hidden;
 }
-.serviceAreaItem .recommendBox>text{
+
+.serviceAreaItem .recommendBox>text {
   display: block;
   overflow: hidden;
-	text-overflow: ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
   position: relative;
 }
+
 /* .serviceAreaItem .recommendBox>text::after{
   content: '订';
   color: #ffffff;
@@ -174,8 +188,86 @@ position: relative;
   font-size: 12px;
   color: #666666;
   line-height: 17px;
-  margin-top:8px;
+  margin-top: 8px;
 }
-.serviceAreaItem .sales_status text{
+
+.serviceAreaItem .sales_status text {
   margin: 0 30px 0 8px;
+}
+
+.hale-dialog_box {
+  position: absolute;
+  z-index: 100;
+}
+
+.drop-down-dialog {
+  height: calc(100% - 56px);
+  top: 56px;
+}
+
+.hale-dialog_box .hale-dialog__wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #212121;
+  opacity: .5;
+}
+
+.hale-dialog_box .hale-dialog_body {
+  z-index: 1000;
+  position: relative;
+}
+
+.drop-down_main {
+  background-color: #ffffff;
+  font-size: 14px;
+  line-height: 20px;
+  max-height:calc(100vh - 120px);
+  overflow:auto;
+}
+.chooseBox{
+  padding: 50rpx 30rpx;
+}
+.chooseBox .route text.chooseItem {
+  width: 108px;
+}
+.chooseBox .chooseTitle{
+  margin-bottom: 8px;
+}
+.chooseBox text.chooseItem {
+  color: #999999;
+  background-color: #F5F5F5;
+  width: 80px;
+  height: 32px;
+  display: inline-block;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 16rpx 16rpx 0;
+}
+.chooseBox>text.chooseItem:nth-child(4n),.chooseBox .route text.chooseItem:nth-child(3n){
+  margin-right: 0;
+}
+.chooseBox text.selected{
+  color: #0089FC;
+  background-color: rgba(233, 244, 250, 1);
+}
+
+
+.drop-down_foot text {
+  width: 50%;
+  line-height: 44px;
+  font-size: 13px;
+  color: #0089FC;
+  text-align: center;
+  display: inline-block;
+  background-color: rgba(233, 244, 250, 1);
+}
+
+.drop-down_foot text.selected {
+  background-color: #0089FC;
+  color: #ffffff;
 }

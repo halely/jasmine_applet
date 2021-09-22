@@ -5,7 +5,109 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    bridgeNodeList: [{
+      name: '大胜关',
+      itemPosition: {
+        top: '100px',
+        left: 0
+      },
+      rotate: 'rotate(90deg)',
+      textPosition: {
+        top: '6px',
+        left: '25px'
+      },
+    },{
+      name: '八卦洲',
+      itemPosition: {
+        top: '30px',
+        left: 0
+      },
+      rotate: 'rotate(130deg)',
+      textPosition: {
+        top: '20px',
+        left: '25px'
+      },
+    },{
+      name: '栖霞山',
+      itemPosition: {
+        top: '-11px',
+        left: '30px'
+      },
+      rotate: 'rotate(155deg)',
+      textPosition: {
+        top: '-25px',
+        left: '-24px'
+      },
+    },{
+      name: '润扬',
+      itemPosition: {
+        top: '-11px',
+        left: '80px'
+      },
+      rotate: 'rotate(0deg)',
+      textPosition: {
+        top: '40px',
+        left: '-17px'
+      },
+    },{
+      name: '泰州',
+      itemPosition: {
+        top: '-11px',
+        left: '120px'
+      },
+      rotate: 'rotate(0deg)',
+      textPosition: {
+        top: '-25px',
+        left: '-17px'
+      },
+    },{
+      name: '江阴',
+      itemPosition: {
+        top: '-11px',
+        left: '160px'
+      },
+      rotate: 'rotate(0deg)',
+      textPosition: {
+        top: '40px',
+        left: '-17px'
+      },
+    },{
+      name: '沪苏通',
+      itemPosition: {
+        top: '-11px',
+        left: '200px'
+      },
+      rotate: 'rotate(0deg)',
+      textPosition: {
+        top: '-25px',
+        left: '-17px'
+      },
+    },{
+      name: '苏通',
+      itemPosition: {
+        top: '-11px',
+        left: '240px'
+      },
+      rotate: 'rotate(0deg)',
+      textPosition: {
+        top: '40px',
+        left: '-17px'
+      },
+    },{
+      name: '崇启',
+      itemPosition: {
+        top: '-11px',
+        left: '280px'
+      },
+      rotate: 'rotate(0deg)',
+      textPosition: {
+        top: '-25px',
+        left: '-17px'
+      },
+    }],
+    selectItemData:{
+      key:3
+    }
   },
 
   /**
