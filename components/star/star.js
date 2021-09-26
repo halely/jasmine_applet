@@ -6,7 +6,7 @@ Component({
   properties: {
     num:{
       type:String,
-      value:5
+      value:0
     }
   },
 

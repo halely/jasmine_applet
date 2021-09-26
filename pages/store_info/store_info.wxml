@@ -2,30 +2,27 @@
 <view class="container">
   <view class="main">
     <view class="store_menu">
-      <view class="menuItem">
+      <!-- <view class="menuItem">
         <image src="/img/hot.png"></image>
       热销
-      </view>
-      <view class="menuItem">进店必买</view>
-      <view class="menuItem selected">特色菜</view>
-      <view class="menuItem">优惠套餐</view>
-      <view class="menuItem">双人套餐</view>
+      </view> -->
+      <view wx:for="{{shopKey}}" wx:key="key" data-name="{{item}}" class="menuItem {{item==select?'selected':''}}" bindtap="menuItemClick">{{item}}</view>
     </view>
     <view class="menu_details">
       <view class="detail_title">
-        特色菜
+        {{select}}
       </view>
       <view class="detailBody">
         <scroll-view scroll-y>
-        <view wx:for="{{9}}" class="detailItemBox">
+        <view wx:for="{{listData}}" class="detailItemBox" wx:key="key">
           <image src="https://img0.baidu.com/it/u=1115144844,2258952259&fm=26&fmt=auto"></image>
           <view class="detailItemInfo">
-            <view class="foodName ellipsis">鸡块双拼(原味+番茄)鸡块双拼(原味+番茄)鸡块双拼(原味+番茄)(原味+番茄)</view>
+            <view class="foodName ellipsis">{{item.commodityName}}</view>
             <view class="evaluate">
               <text>月销量271份</text>
               <text>好评率98%</text>
             </view>
-            <text class="price">¥ 26</text>
+            <text class="price">¥ {{item.sellPrice}}</text>
           </view>
         </view>
         </scroll-view>

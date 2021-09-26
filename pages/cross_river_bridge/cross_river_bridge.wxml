@@ -1,13 +1,13 @@
 <!--pages/cross_river_bridge/cross_river_bridge.wxml-->
 <view class="container">
   <view class="carTypeBox">
-    <view class="carTypeItem select">
+    <view bindtap="tabChange" class="carTypeItem {{current==0?'select':''}}" data-current="0">
       <text class="carTypeName">货车</text>
-      <text class="carTypeNum">2</text>
+      <text class="carTypeNum">{{hc.length}}</text>
     </view>
-    <view class="carTypeItem">
+    <view bindtap="tabChange" class="carTypeItem {{current==1?'select':''}}" data-current="1">
       <text class="carTypeName">客车</text>
-      <text class="carTypeNum">1</text>
+      <text class="carTypeNum">{{kc.length}}</text>
     </view>
   </view>
   <view class="main">
@@ -21,22 +21,37 @@
         <view class="bridgebody">
           <view data-id="index" wx:for="{{bridgeNodeList}}" wx:key="key" class="bridgeItem "
             style="top: {{item.itemPosition.top}};left:{{item.itemPosition.left}};">
-            <view class="nodeBox" style="transform: {{item.rotate}};">
-              <image wx:if="{{selectItemData.key==index}}" class="nodeImg" src="/img/trafficControl.png"></image>
-              <image wx:else class="nodeImg" src="/img/release.png"></image>
-              <image class="nodeImg" src="/img/release.png"></image>
-            </view>
-            <text class="{{selectItemData.key==index?'error':''}}"
+            <block wx:if="{{seletObj[item.name]}}">
+              <view class="nodeBox" data-itemInfo="{{seletObj[item.name]}}" bindtap="bridgeClick" style="transform: {{item.rotate}};">
+                <image data-id="1"  class="nodeImg" src="{{seletObj[item.name].left?'/img/trafficControl.png':'/img/release.png'}}  "></image>
+                <image data-id="2"  class="nodeImg" src="{{seletObj[item.name].right?'/img/trafficControl.png':'/img/release.png'}}  "></image>
+     
+              </view>
+            </block>
+            <block wx:else>
+              <view class="nodeBox" data-itemInfo="无" bindtap="bridgeClick" style=  "transform: {{item.rotate}};">
+                <image data-id="1" class="nodeImg" src="/img/release.png"></image>
+                <image data-id="2" class="nodeImg" src="/img/release.png"></image>
+              </view>
+            </block>
+            <text class="{{seletObj[item.name]?'error':''}}"
               style="top:{{item.textPosition.top}};left: {{item.textPosition.left}};">{{item.name}}</text>
           </view>
         </view>
       </view>
-      <view class="limitInfo">
+      <view class="limitInfo" wx:if="{{selectItembridge.left}}">
         <view class="boxTitle">
-          <text>润扬</text>
+          <text>{{selectItembridge.name}}</text>
           <text>禁止通行原因</text>
         </view>
-        <text>接交警大队通知，润扬大桥双向关闭，封闭时间2021-9-15 6:00 至2021-9-16 3:00。</text>
+        <text>{{selectItembridge.left_eventDetail}}</text>
+      </view>
+      <view class="limitInfo" wx:if="{{selectItembridge.right}}">
+        <view class="boxTitle">
+          <text>{{selectItembridge.name}}</text>
+          <text>禁止通行原因</text>
+        </view>
+        <text>{{selectItembridge.right_eventDetail}}</text>
       </view>
     </view>
     <view class="onlineTitle">

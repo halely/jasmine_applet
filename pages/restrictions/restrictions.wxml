@@ -7,34 +7,34 @@
     </view>
   </view>
   <view class="main">
-    <scroll-view scroll-y>
-      <view class="restrictionItem" wx:for="{{9}}" wx:key="key">
+    <scroll-view scroll-y bindscrolltolower="scrolltolower">
+      <view class="restrictionItem" wx:for="{{listData}}" wx:key="key">
         <view class="item_head">
           <view class="highwayBox">
-            <image wx:if="{{index%2}}" class="highwayImg" src="/img/nationalHighway.png"></image>
+            <image wx:if="{{item.name_type=='G'}}" class="highwayImg" src="/img/nationalHighway.png"></image>
             <image wx:else class="highwayImg" src="/img/SuzhouHighway.png"></image>
             <view class="HighwayText">
-              <text>G2</text>
-              <text>京沪高速</text>
+              <text>{{item.roadId}}</text>
+              <text>{{item.roadName}}</text>
             </view>
           </view>
           <view class="basicInfo">
-            <view>G20京沪高速</view>
-            <text class="LimitPath">苏鲁省界 至 正谊枢纽段</text>
+            <view>{{item.roadId+item.roadName}}</view>
+            <text class="LimitPath">x {{item.dirDes1}}</text>
           </view>
         </view>
         <view class="item_body">
           <view class="infoItem">
             <label>限行车型：</label>
-            <text>货车</text>
+            <text>{{item.vehicleModel}}</text>
           </view>
           <view class="infoItem">
             <label>限行时间：</label>
-            <text>2021年9月16日 全天</text>
+            <text>{{item.controlEndTime}} {{item.controlStartTime?'至  '+item.controlStartTime:'全天'}}</text>
           </view>
           <view class="infoItem">
             <label>限行原因：</label>
-            <text>——</text>
+            <text>{{item.eventDetail||'——'}}</text>
           </view>
         </view>
       </view>

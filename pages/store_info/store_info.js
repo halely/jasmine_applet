@@ -1,18 +1,53 @@
 // pages/store_info/store_info.js
+
+import {
+  requst_get_shopDetail
+} from '../../api/index.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    shopDetail: {},
+    shopKey: [],
+    select: '',
+    listData: []
   },
-
+  async getShopDetail(shopId) {
+    let param = {
+      shopId: shopId
+    }
+    let {
+      data
+    } = await requst_get_shopDetail(param)
+    if (data.code == '1001') {
+      let shopDetail = data.data;
+      let shopKey = Object.keys(shopDetail);
+      this.setData({
+        shopKey: shopKey,
+        select: shopKey[0],
+        shopDetail: shopDetail,
+        listData: shopDetail[shopKey[0]]
+      })
+    }
+  },
+  menuItemClick(e) {
+    let name = e.currentTarget.dataset.name;
+    if (name != this.data.select) {
+      this.setData({
+        select: name,
+        listData: this.data.shopDetail[name]
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let shopId = options.shopId;
+    this.getShopDetail(shopId)
   },
 
   /**

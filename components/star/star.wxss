@@ -13,3 +13,6 @@
   height: 16px;
   margin-right: 20rpx;
 }
+.starView .grayText{
+  color: #666666;
+}

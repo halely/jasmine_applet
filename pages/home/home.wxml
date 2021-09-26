@@ -1,32 +1,55 @@
 <!--pages/home/home.wxml-->
 <view class="container">
   <view class="Home_nav">
-    <text>茉莉管家</text>
-    <text>您的高速公路畅行管家</text>
+    <view class="placeBox" style='margin-top: {{height}}rpx'>
+      <image class="positionImg" src="/img/positioning.png"></image>
+      <text>{{city||'获取当前位置'}}</text>
+    </view>
+    <view class="evaluate">点击评价</view>
     <image class="Home_nav_bg" src="/img/HomeBg.png"></image>
   </view>
-  <view class="head">
-    <image class="positionImg" src="/img/positioning.png"></image>
-    <text>当前定位：南京</text>
-  </view>
   <view class="main">
-    <view class="quickEntry">
-      <view class="quickEntryItem" bindtap="restrictionsWay">
+    <view class="entranceBox">
+      <view class="entranceItem" data-path="restrictions" bindtap="entranceClick" >
+        <view class="entranceTitle">
+          <text>车辆限行</text>
+          <text>道路限行信息</text>
+        </view>
         <image src="/img/restrictions.png"></image>
       </view>
-      <view class="quickEntryItem">
+      <view class="entranceItem" data-path="cross_river_bridge" bindtap="entranceClick">
+        <view class="entranceTitle">
+          <text>过江大桥</text>
+          <text>道路限行信息</text>
+        </view>
         <image src="/img/bridge.png"></image>
       </view>
+      <view class="entranceItem" data-path="serviceArea" bindtap="entranceClick">
+        <view class="entranceTitle">
+          <text>收费站开关</text>
+          <text>收费站开关信息</text>
+        </view>
+        <image src="/img/tollbooth_switch.png"></image>
+      </view>
+      <view class="entranceItem" data-path="toll_station" bindtap="entranceClick">
+        <view class="entranceTitle">
+          <text>服务区</text>
+          <text>商铺美食推荐</text>
+        </view>
+        <image src="/img/service_area_entrance.png"></image>
+      </view>
     </view>
-    <!-- 收费站列表入口 -->
-    <view class="entranceBox" bindtap="entranceWay">
-      <image src="/img/tollbooth_switch.png"></image>
-    </view>
-    <!-- 收费站模块 -->
-    <view class="tollstation_box swiper_box">
-      <swiper next-margin="10px">
-        <swiper-item wx:for="{{tollstationList}}" wx:key="key">
-          <view class="tollstationItem">
+    <view class="tab_box">
+      <view class="tabHead">
+        <view class="tab_item selected">附近收费站</view>
+        <view class="tab_item">附近服务区</view>
+        <view class="moreBut">
+          <text>更多</text>
+        </view>
+      </view>
+      <view class="tabMain">
+      <!-- <block>
+        <view class="tollstationItem">
             <view class="item_head">
               <text class="tollstation_name">将军大道收费站</text>
               <text class="distance">14.50km</text>
@@ -48,18 +71,9 @@
               </view>
             </view>
           </view>
-        </swiper-item>
-      </swiper>
-    </view>
-    <!-- 服务区入口 -->
-    <view class="entranceBox"  bindtap="service_areaWay">
-      <image src="/img/service_area_entrance.png"></image>
-    </view>
-    <!-- 服务区 -->
-    <view class="service_area_box swiper_box">
-      <swiper next-margin="10px">
-        <swiper-item wx:for="{{tollstationList}}" wx:key="key">
-          <view class="serviceAreaItem" bindtap="serviceAreaInfo">
+      </block> -->
+      <block hidden="true">
+        <view class="serviceAreaItem" bindtap="serviceAreaInfo">
             <view class="item_head">
               <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
               <view class="serviceAreaInfo">
@@ -105,8 +119,8 @@
               </view>
             </view>
           </view>
-        </swiper-item>
-      </swiper>
+      </block>
+      </view>
     </view>
   </view>
 </view>

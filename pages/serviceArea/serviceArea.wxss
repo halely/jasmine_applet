@@ -40,15 +40,13 @@
 }
 
 .serviceAreaItem .item_head .serviceAreaImg {
-  width: 68px;
-  height: 68px;
+  width: 52px;
+  height: 52px;
   margin-right: 14px;
 }
 
 .serviceAreaItem .item_head .serviceAreaInfo {
   flex: 1;
-  padding-bottom: 10px;
-  border-bottom: 1rpx solid #f1f1f1;
 }
 
 .serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head {
@@ -60,8 +58,7 @@
   align-items: center;
   justify-content: space-between;
 }
-
-.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaName {
+/* .serviceAreaItem .item_head .serviceAreaInfo .serviceAreaName {
   position: relative;
 }
 
@@ -71,10 +68,13 @@
   height: 30rpx;
   top: -20rpx;
   right: -64rpx;
-}
+} */
 
 .serviceAreaItem .direction {
-  font-size: 12px;
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 36rpx;
+  margin-top: 20rpx;
 }
 
 .serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head text {
@@ -83,18 +83,13 @@
   line-height: 18px;
 }
 
-.serviceAreaItem .serviceAreaInfo_main_item {
-  display: flex;
-  align-items: center;
-  margin: 5px 0 4rpx 0;
-}
 
-.serviceAreaItem .serviceAreaInfo_main_item image {
+ .serviceAreaInfo_main_item image {
   width: 14px;
   height: 14px;
   margin-right: 10rpx;
   flex-shrink: 0;
-}
+} 
 
 .serviceAreaItem .parkingInfo {
   flex: 1;
@@ -122,40 +117,27 @@
   margin-left: 2px;
 }
 
-.serviceAreaItem .cheerItem {
-  border-radius: 4px;
-  border: 1px solid #979797;
-  color: #979797;
-  font-size: 12px;
-  color: #666666;
-  line-height: 17px;
-  display: inline-block;
-  padding: 0 4px;
-  margin: 3px 4px 3px 0;
-}
-
-.serviceAreaItem .cheerItem.diesel {
-  border-radius: 8px;
-}
-
 .serviceAreaItem .item_foot {
   display: flex;
   margin-top: 10px;
 }
 
 .serviceAreaItem .perCapita {
-  background: #FFFFFF;
-  border-radius: 12px;
-  border: 1px solid #FFA700;
-  color: #FFA700;
-  font-size: 14px;
+  background: rgba(7, 193, 96, 0.08);
+  border-radius: 8rpx;
+  color: #07C160;
+  font-size: 22rpx;
   line-height: 18px;
   height: 18px;
-  width: 68px;
+  width:52px;
   display: inline-block;
   text-align: center;
-  margin-right: 4px;
+  margin-right: 14px;
   flex-shrink: 0;
+}
+.serviceAreaItem .perCapita.error{
+  color: #FF2020;
+  background: #fcf0f0;
 }
 
 .serviceAreaItem .recommendBox {
@@ -171,17 +153,7 @@
   position: relative;
 }
 
-/* .serviceAreaItem .recommendBox>text::after{
-  content: '订';
-  color: #ffffff;
-  display: block;
-  position: absolute;
-  background-color: #FF2D2D;
-  right: 0;
-  top: 6rpx;
-  font-size: 20rpx;
-  padding: 0 6rpx;
-} */
+
 .serviceAreaItem .sales_status {
   width: 100%;
   display: flex;

@@ -3,7 +3,9 @@
   padding: 26rpx;
   box-sizing: border-box;
 }
-
+.main{
+  overflow:auto!important;
+}
 .carTypeBox {
   display: flex;
   border-radius: 8px 8px 0 0;

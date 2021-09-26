@@ -47,7 +47,7 @@
 }
 
 .storeItem {
-  margin-right: 10rpx;
+  margin: 0 10rpx 10rpx 0;
   display: flex;
   font-size: 11px;
   font-weight: 400;
@@ -64,12 +64,9 @@
 
 /* 车位厕所油类信息 */
 .basic_services_box {
-  margin-top: 24rpx;
+  margin-top:10rpx;
 }
 
-.basic_services_head {
-  margin-bottom: 18rpx;
-}
 
 .basic_servicesItem {
   display: inline-flex;
@@ -177,8 +174,8 @@
 }
 
 .serviceStoreItem .ItemBody>image {
-  width: 72px;
-  height: 72px;
+  width: 60px;
+  height: 60px;
   border-radius: 8rpx;
   margin-right: 20rpx;
 }
@@ -201,9 +198,20 @@
 .sales_status {
   font-size: 12px;
   font-weight: 400;
-  color: #666666;
   line-height: 17px;
+  margin: 34rpx 0 0 0;
 }
 .sales_status text{
-  margin-right:80rpx ;
+   color:#FF2020 ;
+   padding: 4rpx 12rpx;
+   background-color:rgba(255, 32, 32, 0.1) ;
 }
+.sales_status text.specialty{
+  color:#F59D00 ;
+  background-color:rgba(245, 157, 0, 0.1);
+}
+.sales_status text.features{
+  color:#F56F00 ;
+  background-color:rgba(245, 111, 0, 0.1);
+}
+/* rgba(245, 111, 0, 0.1) */

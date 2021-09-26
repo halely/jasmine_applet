@@ -69,29 +69,7 @@
   color: #FF2020;
 }
 
-.itemfoot .openBut {
-  color: #1677FE;
-  display: flex;
-  justify-content: center;
-  margin: 20rpx 0;
-  font-size: 12px;
-  line-height: 17px;
-  align-items: center;
-}
 
-.itemfoot .openBut .drop-down {
-  width: 12px;
-  height: 12px;
-  transition: transform 0.2s;
-}
-
-.close_reason {
-  transition: all 0.2s;
-}
-
-.itemfoot .openBut.open .drop-down {
-  transform: rotate(180deg);
-}
 
 /* 按照地市 */
 

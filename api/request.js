@@ -1,9 +1,8 @@
 var tokenKey = "access-token"; //缓存token对应的值
-// var serverUrl =  "http://192.168.1.70:8080"; //庄飞虎url地址
-// var serverUrl = "http://192.168.1.69:8080"; //刘云鹏url地址
+var serverUrl = "http://192.168.50.129:8080/jasmine-web"; //刘云鹏url地址
 
 // var serverUrl = "https://shoufei.jssgx.cn/zyqd-wechat"; //开发合法域名
-var serverUrl = "https://kp.jsszyqd.com:9443/zyqd-wechat"; //生产合法域名
+// var serverUrl = "https://kp.jsszyqd.com:9443/zyqd-wechat"; //生产合法域名
 
 
 // 例外不用token的地址
@@ -25,10 +24,11 @@ function CreateHeader(url, type, customHeader = {}) {
       'content-type': 'application/json'
     }
   }
-  if (exceptionAddrArr.indexOf(url) == -1) { //排除请求的地址不需要token的地址
-    let token = wx.getStorageSync(tokenKey);
-    header['token'] = token;
-  }
+  // 当前不需要token
+  // if (exceptionAddrArr.indexOf(url) == -1) { //排除请求的地址不需要token的地址
+  //   let token = wx.getStorageSync(tokenKey);
+  //   header['token'] = token;
+  // }
   header = Object.assign(header, customHeader)
   return header;
 }

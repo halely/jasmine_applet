@@ -42,8 +42,8 @@
 }
 
 .HighwayText text:first-child {
-  font-size: 16px;
-  margin-top: 26rpx;
+  font-size:13px;
+  margin: 28rpx 0 2rpx 0;
 }
 
 .basicInfo {
@@ -79,4 +79,5 @@
 .item_body .infoItem label {
   color: #666666;
   font-weight: 400;
+  flex-shrink: 0;
 }

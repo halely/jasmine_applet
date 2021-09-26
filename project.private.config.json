@@ -47,6 +47,18 @@
           "pathName": "pages/store_info/store_info",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/restrictions/restrictions",
+          "pathName": "pages/restrictions/restrictions",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/toll_station/toll_station",
+          "pathName": "pages/toll_station/toll_station",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -1,4 +1,5 @@
 <!--pages/toll_station/toll_station.wxml-->
+<wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
   <!-- 头部 -->
   <view class="head">
@@ -17,37 +18,31 @@
     <!-- 内容 -->
     <view class="main">
       <scroll-view scroll-y>
-        <view class="toll_station_item" wx:for="{{toll_station_list}}" wx:key="key">
+        <view class="toll_station_item" wx:for="{{listData}}" wx:key="key">
           <view class="itemhead">
-            <image class="tollStationImg" src="/img/serviceAreaImg.png"></image>
+            <image class="tollStationImg" src="{{item.picId}}"></image>
             <view class="tollStationTitle">
-              <text class="ellipsis">将军大道收费站</text>
-              <text>距您24.50km</text>
+              <text class="ellipsis">{{item.stationName}}</text>
+              <text>距您{{common.math_distance(item.distanceUm)}}km</text>
             </view>
           </view>
           <view class="itembody">
-            <view class="tollstation_state">
-              <text class="state_title ellipsis">由常熟往合肥方向</text>
+            <view class="tollstation_state" wx:for-item="item_son"
+              wx:for="{{common.macth_close(item.allList,item.stationStateInfoList)}}" wx:key="key">
+              <text class="state_title ellipsis">{{item_son.dirDes}}</text>
               <view class="stateInfo ">
-                <text class="close">入口关闭</text>
-                <text class="close">出口关闭</text>
-              </view>
-            </view>
-            <view class="tollstation_state">
-              <text class="state_title ellipsis">由常熟往合肥方向</text>
-              <view class="stateInfo ">
-                <text>入口开启</text>
-                <text>出口开启</text>
+                <text class="{{!item_son.entrance?'close':''}}">{{!item_son.entrance?'入口关闭':'入口开启'}}</text>
+                <text class="{{!item_son.exit?'close':''}}">{{!item_son.entrance?'出口关闭':'出口开启'}}</text>
               </view>
             </view>
           </view>
-          <view class="itemfoot">
+          <!-- <view class="itemfoot">
             <view data-index="{{index}}" bindtap="openButClick" class="openBut {{item.open?'open':''}} ">
               关闭原因
               <image class="drop-down " src="/img/drop-down.png"></image>
             </view>
             <view class="close_reason" hidden="{{!item.open}}">因G42高速路面拥堵，由常熟往合肥方向的路段，发生严重交通事故，现临时关闭将军大道收费站。</view>
-          </view>
+          </view> -->
         </view>
       </scroll-view>
     </view>
@@ -55,44 +50,38 @@
   <block wx:else>
     <view class="main">
       <scroll-view scroll-y>
-      <view class="citiesBox">
-        <scroll-view class="cityBox" scroll-x="true" >
-          <view class="cityItem {{ selectCity==item.name?'select':''}}" wx:for="{{cityList}}" wx:key="key">
-            <text class="cityName">{{item.name}}</text>
-            <text class="cityNum" hidden="{{!item.num}}">{{item.num}}</text>
-          </view>
-        </scroll-view>
-        <image class="map" src="/img/map.jpg"></image>
-        <view class="toll_station_item">
-          <view class="itemhead">
-            <image class="tollStationImg" src="/img/serviceAreaImg.png"></image>
-            <view class="tollStationTitle">
-              <text class="ellipsis">将军大道收费站</text>
-              <text>距您24.50km</text>
+        <view class="citiesBox">
+          <scroll-view class="cityBox" scroll-x="true">
+            <view class="cityItem {{ selectCity==item.name?'select':''}}" wx:for="{{cityList}}" wx:key="key"
+              data-name="{{item.name}}" data-code="{{item.key}}" bindtap="cityItemClick">
+              <text class="cityName">{{item.name}}</text>
+              <text class="cityNum" hidden="{{!item.num}}">{{item.num}}</text>
             </view>
-          </view>
-          <view class="itembody">
-            <view class="tollstation_state">
-              <text class="state_title ellipsis">由常熟往合肥方向</text>
-              <view class="stateInfo ">
-                <text class="close">入口关闭</text>
-                <text class="close">出口关闭</text>
+          </scroll-view>
+          <map class="map" id="map" polygons="{{polygon}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="9" min-scale="5" max-scale="20"
+            markers="{{markers}}" bindmarkertap="bindmarkertap"></map>
+          <block wx:if="{{selectCityData.stationId}}">
+            <view class="toll_station_item">
+              <view class="itemhead">
+                <image class="tollStationImg" src="{{selectCityData.picId|| '/img/serviceAreaImg.png'}}  "></image>
+                <view class="tollStationTitle">
+                  <text class="ellipsis">{{selectCityData.stationName}}</text>
+                  <text>距您{{common.math_distance(selectCityData.distanceUm)}}km</text>
+                </view>
+              </view>
+              <view class="itembody">
+                <view class="tollstation_state" wx:for-item="item_son"
+                  wx:for="{{common.macth_close(selectCityData.allList,selectCityData.stationStateInfoList)}}" wx:key="key">
+                  <text class="state_title ellipsis">{{item_son.dirDes}}</text>
+                  <view class="stateInfo ">
+                    <text class="{{!item_son.entrance?'close':''}}">{{!item_son.entrance?'入口关闭':'入口开启'}}</text>
+                    <text class="{{!item_son.exit?'close':''}}">{{!item_son.entrance?'出口关闭':'出口开启'}}</text>
+                  </view>
+                </view>
               </view>
             </view>
-            <view class="tollstation_state">
-              <text class="state_title ellipsis">由常熟往合肥方向</text>
-              <view class="stateInfo ">
-                <text>入口开启</text>
-                <text>出口开启</text>
-              </view>
-            </view>
-          </view>
-          <view class="itemfoot">
-            <view class="reasonTitle">关闭原因</view>
-            <text class="reasontext">因G42高速路面拥堵，由常熟往合肥方向的路段，发生严重交通事故，现临时关闭将军大道收费站。</text>
-          </view>
+          </block>
         </view>
-      </view>
       </scroll-view>
     </view>
   </block>

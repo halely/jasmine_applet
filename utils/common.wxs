@@ -1,0 +1,39 @@
+//处理距离数据
+function math_distance(val) {
+  if (val) {
+    return Math.round(val / 1000);
+  } else {
+    return 0;
+  }
+}
+//匹配数组
+function arr_includes(value, arr) {
+  if (arr.length) {
+    return arr.indexOf(value) == -1 ? false : true
+  } else {
+    return false
+  }
+}
+//匹配关闭
+function macth_close(arr1, arr2) {
+  var newArr = arr1.map(function (item) {
+    var itemObj = item;
+    itemObj.entrance = true;//入口
+    itemObj.exit = true;//出口
+    arr2.forEach(function (item2) {
+      if (item2.roadDirId == item.roadDirId) {
+        if (item2.inOut == '出口') {
+          itemObj.exit = false;
+        } else {
+          itemObj.entrance = false;
+        }
+      }
+    });
+    return itemObj
+  })
+  return newArr;
+}
+
+module.exports.math_distance = math_distance;
+module.exports.arr_includes = arr_includes;
+module.exports.macth_close = macth_close;

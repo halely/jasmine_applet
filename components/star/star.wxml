@@ -1,7 +1,8 @@
 <!--components/star/star.wxml-->
 <view class="starView" >
   <view class="starBox">
-    <image wx:for="{{5}}" class="starItem" src="/img/star.png"></image>
+    <image wx:for="{{5}}" wx:key="key" class="starItem" src="/img/gray_star.png"></image>
   </view>
-  <text>{{num}}</text>
+  <text wx:if="{{num}}">{{num}}</text>
+  <text wx:else class="grayText">暂无</text>
 </view>

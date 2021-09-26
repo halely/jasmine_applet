@@ -1,4 +1,5 @@
 <!--pages/serviceArea/serviceArea.wxml-->
+<wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
   <view class="queryBox">
     <view data-id="0" bindtap="queryClick" class="queryItem {{conditionSelect=='0'?'selected':''}} ">
@@ -19,52 +20,36 @@
     <icon size='18' type='search'></icon>
   </view>
   <view class="main">
-    <scroll-view scroll-y>
-      <view class="serviceAreaItem" wx:for="{{9}}" wx:key="key">
+    <scroll-view scroll-y bindscrolltolower="scrolltolower">
+      <view class="serviceAreaItem" data-info="{{item}}" bindtap="serviceAreaItemClick" wx:for="{{listData}}" wx:key="key">
         <view class="item_head">
           <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
           <view class="serviceAreaInfo">
             <view class="serviceAreaInfo_head">
-              <view class="serviceAreaName">翠屏山服务区
-                <image class="on-state" src="/img/on-state.png"></image>
+              <view class="serviceAreaName">{{item.serviceAreaName}}
+                <text>{{item.dir}}</text>
               </view>
-              <text>8.70km</text>
+              <!-- <text>距您{{common.math_distance(item.distanceUm)}}km ｜ 南京机场高速 k10+15</text> -->
             </view>
-            <view class="direction">禄口机场往南京方向</view>
-            <view class="serviceAreaInfo_main">
-              <view class="serviceAreaInfo_main_item">
-                <image src="/img/parking.png"></image>
-                <view class="parkingInfo">
-                  <view class="parkingInfo_item">
-                    <label>剩余车位</label>
-                    <text>150</text>
-                  </view>
-                  <view class="parkingInfo_item">
-                    <label>空余厕位</label>
-                    <text>30</text>
-                  </view>
-                </view>
-              </view>
-              <view class="serviceAreaInfo_main_item">
-                <image src="/img/cheer.png"></image>
-                <view class="cheerInfo">
-                  <view class="cheerItem">92#</view>
-                  <view class="cheerItem">95#</view>
-                  <view class="cheerItem">98#</view>
-                  <view class="cheerItem diesel">0#</view>
-                  <view class="cheerItem diesel">10#</view>
-                </view>
-              </view>
-            </view>
+            <view class="direction">距您{{common.math_distance(item.distanceUm)}}km ｜ {{item.roadName || '—'}}
+              K{{item.stake}}</view>
+
           </view>
         </view>
         <view class="item_foot">
-          <text class="perCapita">￥50</text>
-          <view class="recommendBox">
-            <text>【推荐】老乡鸡·肥西老母鸡汤优惠服务</text>
-            <view class="sales_status">
-              <text>日销 15</text>
-              <text>月售 300</text>
+          <text class="perCapita error" wx:if="{{!item.serviceAreaState}}">关闭</text>
+          <text wx:else class="perCapita">开启</text>
+          <view class="serviceAreaInfo_main">
+            <view class="serviceAreaInfo_main_item">
+              <image src="/img/cheer.png"></image>
+              <image src="/img/parking.png"></image>
+              <image src="/img/toilet.png"></image>
+              <image src="/img/foodgrey.png"></image>
+              <image wx:if="{{item.serviceAreaServiceInfo.hasMarketService}}" src="/img/market.png"></image>
+              <!-- 充电桩 -->
+              <!-- <image wx:if="{{item.serviceAreaServiceInfo.hasMarketService}}" src="/img/charging.png"></image> -->
+              <image wx:if="{{item.serviceAreaServiceInfo.has96777Service}}" src="/img/graph.png"></image>
+              <image wx:if="{{item.serviceAreaServiceInfo.hasNurseryService}}" src="/img/mom.png"></image>
             </view>
           </view>
         </view>
@@ -79,36 +64,41 @@
     <view class="hale-dialog_body">
       <view class="drop-down_main">
         <block wx:if="{{conditionSelect=='0'}}">
-          <view class="chooseBox">
-            <text class="chooseItem selected">不限</text>
-            <text class="chooseItem" data-no="30">30km</text>
-            <text class="chooseItem" data-no="60">60km</text>
-            <text class="chooseItem" data-no="100">100km</text>
+          <view class="chooseBox" data-type="distanse" bindtap="ItemClick">
+            <text class="chooseItem {{temporaryData.distanse?'':'selected'}}" data-no="all">不限</text>
+            <text class="chooseItem {{temporaryData.distanse=='30'?'selected':''}}" data-no="30">30km</text>
+            <text class="chooseItem {{temporaryData.distanse=='60'?'selected':''}}" data-no="60">60km</text>
+            <text class="chooseItem {{temporaryData.distanse=='100'?'selected':''}}" data-no="100">100km</text>
           </view>
         </block>
         <block wx:if="{{conditionSelect==1}}">
-          <view class="chooseBox">
-            <text class="chooseItem selected">不限</text>
+          <view class="chooseBox" data-type="roadId" bindtap="ItemClick">
+            <text class="chooseItem {{temporaryData.roadId?'':'selected'}}" data-no="all">不限</text>
             <view class="chooseTitle">G 国家高速</view>
             <view class="route">
-              <text wx:for="{{national_highway_list}}" wx:key="key"  class="chooseItem">{{item}}</text>
+              <text wx:for="{{national_highway_list.G}}" wx:key="key"
+                class="chooseItem {{temporaryData.roadId==item.roadId?'selected':''}}"
+                data-no="{{item.roadId}}">{{item.roadName}}</text>
             </view>
             <view class="chooseTitle">S 苏高速</view>
             <view class="route">
-              <text wx:for="{{national_highway_list}}" wx:key="key"  class="chooseItem">{{item}}</text>
+              <text wx:for="{{national_highway_list.S}}" wx:key="key"
+                class="chooseItem {{temporaryData.roadId==item.roadId?'selected':''}}"
+                data-no="{{item.roadId}}">{{item.roadName}}</text>
             </view>
           </view>
         </block>
         <block wx:if="{{conditionSelect==2}}">
-          <view class="chooseBox">
-            <text class="chooseItem selected">不限</text>
-            <text class="chooseItem" wx:for="{{cityList}}" wx:key="key" data-key="{{item.key}}">{{item.name}}</text>
+          <view class="chooseBox" data-type="cityId" bindtap="ItemClick">
+            <text class="chooseItem {{temporaryData.cityId?'':'selected'}}" data-no="all">不限</text>
+            <text class="chooseItem {{temporaryData.cityId==item.key?'selected':''}}" wx:for="{{cityList}}" wx:key="key"
+              data-no="{{item.key}}">{{item.name}}</text>
           </view>
         </block>
       </view>
       <view class="drop-down_foot">
-        <text>重置</text>
-        <text class="selected">确定</text>
+        <text bindtap="resetForm">重置</text>
+        <text class="selected" bindtap="onSubmit">确定</text>
       </view>
     </view>
   </view>

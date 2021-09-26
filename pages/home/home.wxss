@@ -1,15 +1,14 @@
 /* pages/home/home.wxss */
 .container .Home_nav {
-  height: 107px;
+  height: 294px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   font-size: 14px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.8);
   line-height: 20px;
-  align-items: center;
   position: relative;
+  justify-content: space-between;
 }
 
 .Home_nav_bg {
@@ -21,7 +20,35 @@
   z-index: 1;
 }
 
-.container .Home_nav text {
+.Home_nav .placeBox {
+  position: relative;
+  z-index: 2;
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.Home_nav .evaluate {
+  position: relative;
+  z-index: 2;
+  align-self: center;
+  margin-bottom: 28rpx;
+  background: #FFFFFF;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #1F7F69 !important;
+  line-height: 14px;
+  font-size: 10px;
+  padding: 4rpx 16rpx;
+}
+
+.placeBox .positionImg {
+  width: 16px;
+  height: 16px;
+  margin-right: 8rpx;
+}
+
+/* .container .Home_nav text {
   position: relative;
   z-index: 2;
 }
@@ -32,7 +59,7 @@
   color: #FFFFFF;
   line-height: 25px;
   margin: 20px 0 5px 0;
-}
+} */
 
 .head {
   align-items: center;
@@ -41,63 +68,108 @@
   font-weight: bold;
 }
 
-.positionImg {
-  width: 16px;
-  height: 16px;
-  margin-right: 8rpx;
-}
-
-.quickEntry {
+.entranceBox {
+  width: 100%;
   display: flex;
-  width: 100%;
-  justify-content: space-around;
-  padding: 0 10px;
+  flex-wrap: wrap;
+  background-color: #FFFFFF;
+  margin-top: 20rpx;
+}
+
+.entranceBox .entranceItem {
+  width: 50%;
+  padding: 66rpx 52rpx;
   box-sizing: border-box;
+  display: inline-flex;
+  justify-content: space-between;
+  border: 2rpx solid #f5f5f5;
 }
 
-.quickEntry>view.quickEntryItem {
-  width: calc(50% - 10px);
-  box-sizing: border-box;
-  height: 72px;
-  margin: 12px 0 20px 0;
-  border-radius: 8px;
+.entranceBox .entranceItem .entranceTitle {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: #999999;
+  line-height: 17px;
 }
 
-.quickEntry>view>image,
-.entranceBox>image {
+.entranceBox .entranceItem .entranceTitle text:first-child {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+  line-height: 22px;
+  margin-bottom: 8rpx;
+}
+
+.entranceBox .entranceItem image {
+  width: 88rpx;
+  height: 88rpx;
+}
+
+.tab_box {
+  display: flex;
+  background-color: #FFFFFF;
+  margin-top: 20rpx;
+  padding: 14px 21px;
+  flex-direction: column;
+}
+
+.tab_box .tabHead {
   width: 100%;
-  height: 100%;
 }
 
+.tab_box .tabHead .tab_item {
+  font-size: 14px;
+  float: left;
+  color: #333333;
+  margin-right: 40rpx;
+  line-height: 20px;
+}
+
+.tab_box .tabHead .tab_item.selected {
+  color: #07C160;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab_box .tabHead .tab_item.selected::after {
+  content: '';
+  width: 30px;
+  height: 3px;
+  background-color: #07C160;
+  margin-top: 8rpx;
+}
+
+.tab_box .tabHead .moreBut {
+  float: right;
+}
+.tab_box .tabMain{
+  margin-top: 20rpx;
+}
 .main {
   overflow-y: auto;
 }
 
-.entranceBox {
-  width: calc(100% - 40px);
-  height: 48px;
-  background-color: #FFFFFF;
-  margin: 0 20px;
-  display: flex;
-  align-items: center;
-  text-indent: 20px;
-}
 
 .swiper_box {
   width: 100%;
-  padding:20px 0 20px 20px;
+  padding: 20px 0 20px 20px;
   box-sizing: border-box;
 }
 
-.tollstation_box .tollstationItem,
-.service_area_box .serviceAreaItem {
-  width: calc(100% - 10px);
-  /* width: 100% ; */
+.tollstationItem,
+.serviceAreaItem {
+  width: 100%;
   min-height: 300rpx;
   background-color: #FFFFFF;
-  border-radius: 2px;
   padding: 20px 14px;
   box-sizing: border-box;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+
 }
 
 .tollstation_name {
@@ -143,13 +215,15 @@
   align-items: center;
   padding: 6px 0;
 }
-.tollstation_state .state_title{
+
+.tollstation_state .state_title {
   flex: 1;
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .stateInfo {
   display: flex;
   justify-content: space-between;
@@ -290,24 +364,28 @@
   height: auto !important;
   overflow: hidden;
 }
-.recommendBox{
+
+.recommendBox {
   flex: 1;
   overflow: hidden;
 }
-.recommendBox>text{
+
+.recommendBox>text {
   display: block;
   overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
 .sales_status {
   width: 100%;
   display: flex;
   font-size: 12px;
   color: #666666;
   line-height: 17px;
-  margin-top:8px;
+  margin-top: 8px;
 }
-.sales_status text{
+
+.sales_status text {
   margin: 0 30px 0 8px;
 }
