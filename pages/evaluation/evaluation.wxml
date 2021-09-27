@@ -1,0 +1,30 @@
+<!--pages/evaluation/evaluation.wxml-->
+<wxs module="common" src="/utils/common.wxs"></wxs>
+<view class="container">
+  <view class="evaluationBox">
+    <view class="haedTitle">
+      总体评价
+    </view>
+    <view class="evaluationBody">
+      <view class="starBox">
+        <image data-id="1" bindtap="starClick" src="/img/star.png"></image>
+        <image data-id="2" bindtap="starClick" src="{{2<=evaluation?'/img/star.png':'/img/star_no.png'}}"></image>
+        <image data-id="3" bindtap="starClick" src="{{3<=evaluation?'/img/star.png':'/img/star_no.png'}}"></image>
+        <image data-id="4" bindtap="starClick" src="{{4<=evaluation?'/img/star.png':'/img/star_no.png'}}"></image>
+        <image data-id="5" bindtap="starClick" src="{{5<=evaluation?'/img/star.png':'/img/star_no.png'}}"></image>
+      </view>
+      <view class="starState">{{evaluation==1?"非常差":evaluation==2?"差":evaluation==3?"一般":evaluation==4?"满意":'超赞'}}
+      </view>
+      <view class="evaluationTextBox">
+        <text wx:for="{{evaluationText}}" data-text="{{item}}" bindtap="evaluationTextClick"
+          class="{{common.arr_includes(item,evaluationTips)?'selected':''}}" wx:key="key">{{item}}</text>
+      </view>
+      <view class="textareaBox">
+        <textarea disabled="{{isevaluation}}" placeholder="您如果有其他意见和建议，请放心填写，我们会用心采纳～" placeholder-class="placeholderClass" maxlength="200"
+          value="{{evaluationRemark}}" bindinput="textareaInput" />
+        <text class="textarealimit">{{evaluationRemark.length}}/200</text>
+      </view>
+    </view>
+  </view>
+  <button wx:if="{{!isevaluation}}" class="submitBut" bindtap="submitBut" hover-class="submitButHover">提交评价</button>
+</view>

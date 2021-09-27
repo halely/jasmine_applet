@@ -17,11 +17,12 @@
       <image wx:if="{{conditionSelect==2}}" src="/img/drop-down-selected.png"></image>
       <image wx:else src="/img/drop-down_back.png"></image>
     </view>
-    <icon size='18' type='search'></icon>
+    <icon size='18' bindtap="searchClick" type='search'></icon>
   </view>
   <view class="main">
     <scroll-view scroll-y bindscrolltolower="scrolltolower">
-      <view class="serviceAreaItem" data-info="{{item}}" bindtap="serviceAreaItemClick" wx:for="{{listData}}" wx:key="key">
+      <view class="serviceAreaItem" data-info="{{item}}" bindtap="serviceAreaItemClick" wx:for="{{listData}}"
+        wx:key="key">
         <view class="item_head">
           <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
           <view class="serviceAreaInfo">
@@ -29,7 +30,6 @@
               <view class="serviceAreaName">{{item.serviceAreaName}}
                 <text>{{item.dir}}</text>
               </view>
-              <!-- <text>距您{{common.math_distance(item.distanceUm)}}km ｜ 南京机场高速 k10+15</text> -->
             </view>
             <view class="direction">距您{{common.math_distance(item.distanceUm)}}km ｜ {{item.roadName || '—'}}
               K{{item.stake}}</view>
@@ -54,6 +54,7 @@
           </view>
         </view>
       </view>
+      <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
     </scroll-view>
   </view>
   <!-- 自定义下拉弹窗 -->

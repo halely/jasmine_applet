@@ -1,16 +1,18 @@
 <!--pages/home/home.wxml-->
+<wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
   <view class="Home_nav">
     <view class="placeBox" style='margin-top: {{height}}rpx'>
       <image class="positionImg" src="/img/positioning.png"></image>
-      <text>{{city||'获取当前位置'}}</text>
+      <text>{{city}}</text>
+      <text wx:if="{{!city}}" bindtap="chooselocation">获取当前位置</text>
     </view>
-    <view class="evaluate">点击评价</view>
+    <view class="evaluate" bindtap="evaluationClick">点击评价</view>
     <image class="Home_nav_bg" src="/img/HomeBg.png"></image>
   </view>
   <view class="main">
     <view class="entranceBox">
-      <view class="entranceItem" data-path="restrictions" bindtap="entranceClick" >
+      <view class="entranceItem" data-path="restrictions" bindtap="entranceClick">
         <view class="entranceTitle">
           <text>车辆限行</text>
           <text>道路限行信息</text>
@@ -20,18 +22,22 @@
       <view class="entranceItem" data-path="cross_river_bridge" bindtap="entranceClick">
         <view class="entranceTitle">
           <text>过江大桥</text>
-          <text>道路限行信息</text>
+          <view class="carType">
+          <text data-type="hc" >货车</text>
+          <text data-type="kc">客车</text>
+          </view>
+          <!-- <text>道路限行信息</text> -->
         </view>
         <image src="/img/bridge.png"></image>
       </view>
-      <view class="entranceItem" data-path="serviceArea" bindtap="entranceClick">
+      <view class="entranceItem" data-path="toll_station" bindtap="entranceClick">
         <view class="entranceTitle">
           <text>收费站开关</text>
           <text>收费站开关信息</text>
         </view>
         <image src="/img/tollbooth_switch.png"></image>
       </view>
-      <view class="entranceItem" data-path="toll_station" bindtap="entranceClick">
+      <view class="entranceItem" data-path="serviceArea" bindtap="entranceClick">
         <view class="entranceTitle">
           <text>服务区</text>
           <text>商铺美食推荐</text>
@@ -41,85 +47,77 @@
     </view>
     <view class="tab_box">
       <view class="tabHead">
-        <view class="tab_item selected">附近收费站</view>
-        <view class="tab_item">附近服务区</view>
-        <view class="moreBut">
+        <view bindtap="currentChange" data-id="0" class="tab_item {{current==0?'selected':''}}">附近收费站</view>
+        <view bindtap="currentChange" data-id="1" class="tab_item {{current==1?'selected':''}}">附近服务区</view>
+        <view class="moreBut" bindtap="moreBut">
           <text>更多</text>
         </view>
       </view>
       <view class="tabMain">
-      <!-- <block>
-        <view class="tollstationItem">
+        <block wx:if="{{current==0}}">
+          <view class="tollstationItem" wx:if="{{DistanceData.picId}}">
             <view class="item_head">
-              <text class="tollstation_name">将军大道收费站</text>
-              <text class="distance">14.50km</text>
+              <image class="tollStationImg" src="{{DistanceData.picId}}"></image>
+              <view class="tollStationTitle">
+                <text class="tollstation_name">{{DistanceData.stationName}} </text>
+                <text class="distance">距您{{common.math_distance(DistanceData.distanceUm)}}km</text>
+              </view>
             </view>
             <view class="item_main">
-              <view class="tollstation_state">
-                <text class="state_title">由常熟往合肥方向</text>
-                <view class="stateInfo">
-                  <text class="close">入口关闭</text>
-                  <text class="close">出口关闭</text>
-                </view>
-              </view>
-              <view class="tollstation_state">
-                <text class="state_title">由合肥往常熟方向</text>
-                <view class="stateInfo">
-                  <text>入口开启</text>
-                  <text>入口开启</text>
+              <view class="tollstation_state" wx:for-item="item_son"
+                wx:for="{{common.macth_close(DistanceData.allList,DistanceData.stationStateInfoList)}}" wx:key="key">
+                <text class="state_title ellipsis">{{item_son.dirDes}}</text>
+                <view class="stateInfo ">
+                  <text class="{{!item_son.entrance?'close':''}}">{{!item_son.entrance?'入口关闭':'入口开启'}}</text>
+                  <text class="{{!item_son.exit?'close':''}}">{{!item_son.entrance?'出口关闭':'出口开启'}}</text>
                 </view>
               </view>
             </view>
           </view>
-      </block> -->
-      <block hidden="true">
-        <view class="serviceAreaItem" bindtap="serviceAreaInfo">
+        </block>
+        <block wx:else>
+          <view class="serviceAreaItem"  wx:if="{{ServiceAreaData.serviceAreaName}}" bindtap="serviceAreaView">
             <view class="item_head">
               <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
               <view class="serviceAreaInfo">
                 <view class="serviceAreaInfo_head">
-                  翠屏山服务区
-                  <text>8.70km</text>
-                </view>
-                <view class="serviceAreaInfo_main">
-                  <view class="serviceAreaInfo_main_item">
-                    <image src="/img/parking.png"></image>
-                    <view class="parkingInfo">
-                      <view class="parkingInfo_item">
-                        <label>剩余车位</label>
-                        <text>150</text>
-                      </view>
-                      <view class="parkingInfo_item">
-                        <label>空余厕位</label>
-                        <text>30</text>
-                      </view>
-                    </view>
+                  <view class="serviceAreaName">{{ServiceAreaData.serviceAreaName}}
+                    <text>{{ServiceAreaData.dir}}</text>
                   </view>
-                  <view class="serviceAreaInfo_main_item">
-                    <image src="/img/cheer.png"></image>
-                    <view class="cheerInfo">
-                      <view class="cheerItem">92#</view>
-                      <view class="cheerItem">95#</view>
-                      <view class="cheerItem">98#</view>
-                      <view class="cheerItem diesel">0#</view>
-                      <view class="cheerItem diesel">10#</view>
-                    </view>
-                  </view>
+
                 </view>
+                <view class="direction">距您{{common.math_distance(ServiceAreaData.distanceUm)}}km ｜
+                  {{ServiceAreaData.roadName || '—'}}
+                  K{{ServiceAreaData.stake}}</view>
+
               </view>
             </view>
             <view class="item_foot">
-              <text class="perCapita">￥50</text>
-              <view class="recommendBox">
-                <text>【推荐】老乡鸡·肥西老母鸡汤优惠服务</text>
-                <view class="sales_status">
-                  <text>日销 15</text>
-                  <text>月售 300</text>
+              <text class="perCapita error" wx:if="{{!ServiceAreaData.serviceAreaState}}">关闭</text>
+              <text wx:else class="perCapita">开启</text>
+              <view class="serviceAreaInfo_main">
+                <view class="serviceAreaInfo_main_item">
+                  <image src="/img/cheer.png"></image>
+                  <image src="/img/parking.png"></image>
+                  <image src="/img/toilet.png"></image>
+                  <image src="/img/foodgrey.png"></image>
+                  <image wx:if="{{ServiceAreaData.serviceAreaServiceInfo.hasMarketService}}" src="/img/market.png">
+                  </image>
+                  <!-- 充电桩 -->
+                  <!-- <image wx:if="{{item.serviceAreaServiceInfo.hasMarketService}}" src="/img/charging.png"></image> -->
+                  <image wx:if="{{ServiceAreaData.serviceAreaServiceInfo.has96777Service}}" src="/img/graph.png">
+                  </image>
+                  <image wx:if="{{ServiceAreaData.serviceAreaServiceInfo.hasNurseryService}}" src="/img/mom.png">
+                  </image>
                 </view>
               </view>
             </view>
           </view>
-      </block>
+        </block>
+        <view wx:if="{{!islocation}}" class="no_location">
+         <view>开启定位，获取更多路况信息~</view>
+         <text bindtap="chooselocation">去开启</text>
+        </view>
       </view>
     </view>
   </view>

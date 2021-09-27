@@ -1,11 +1,13 @@
 <!--pages/serviceAreaInfo/serviceAreaInfo.wxml-->
 <wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
-  <image class="serviceAreaIbj" src="http://p6.qhimg.com/bdm/960_593_0/t01cca0d7dea65a24e4.jpg"></image>
+  <image class="serviceAreaIbj" src="{{serviceAreaItemInfo.picId||'/img/defaultBg.png'}}"></image>
   <view class="serviceAreaInfoBox">
     <view class="serviceArea_title">
       <text>{{serviceAreaItemInfo.serviceAreaName}}({{serviceAreaItemInfo.dir}})</text>
-      <image wx:if="{{serviceAreaItemInfo.serviceAreaState}}" class="on-state" src="/img/on-state.png"></image>
+      <image class="on-state" src="{{serviceAreaItemInfo.serviceAreaState?'/img/on-state.png':'/img/on-close.png'}}">
+      </image>
+
       <view class="distanceInfo">
         {{common.math_distance(serviceAreaItemInfo.distanceUm)}}km｜K{{serviceAreaItemInfo.stake}}</view>
     </view>
@@ -43,7 +45,8 @@
     <!-- 车位厕所油类信息 -->
     <view class="basic_services_box">
       <view class="basic_services_foot">
-        <view class="basic_servicesItem">
+
+        <view class="basic_servicesItem" wx:if="{{serviceAreaItemInfo.serviceAreaOilInfoList.length}}">
           <image src="/img/cheer.png"></image>
           <view class="cheerInfo">
             <view wx:for="{{serviceAreaItemInfo.serviceAreaOilInfoList}}" class="cheerItem" wx:key="key">
@@ -62,9 +65,9 @@
   </view>
   <view class="main">
     <scroll-view scroll-y bindscrolltolower="scrolltolower">
-      <view data-id="{{item.shopId}}" bindtap="shopItemClick" class="serviceStoreItem" wx:for="{{listData}}" wx:key="key">
+      <view bindtap="shopItemClick" class="serviceStoreItem" data-item="{{item}}" wx:for="{{listData}}" wx:key="key">
         <view class="ItemBody">
-          <image src="{{item.picId || 'https://img0.baidu.com/it/u=1115144844,2258952259&fm=26&fmt=auto'}}">
+          <image src="{{item.picId || '/img/defaultImg.png'}}">
           </image>
           <view class="storeInfo">
             <text class="storeName ellipsis">{{item.shopParentName}}（{{item.shopName}}）</text>
@@ -75,11 +78,14 @@
               <text wx:if="{{item.shopTypeId==3}}">餐饮小吃</text>
               <text wx:if="{{item.shopTypeId==4}}" class="specialty">超市特产</text>
               <text wx:if="{{item.shopTypeId==5}}" class="features">特色商店</text>
-            </view> 
+            </view>
           </view>
         </view>
       </view>
-
+      <view class="stro_empty" wx:if="{{!listData.length}}">
+        <image src="/img/stor_empty.png" />
+        <text>店铺入驻中</text>
+      </view>
     </scroll-view>
   </view>
 </view>

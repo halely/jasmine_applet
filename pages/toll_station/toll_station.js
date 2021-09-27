@@ -11,7 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    current: 1,
+    current: 0,
     AllCityLine: {}, //城市描边信息
     cityList: [{
       name: '南京',
@@ -58,10 +58,10 @@ Page({
     }],
     selectCity: '南京',
     cityCode: '320100',
-    markers: [],//标记点数组
-    polygon: [],//地图描边
-    citylistData:[],//城市列表数据
-    selectCityData:{},
+    markers: [], //标记点数组
+    polygon: [], //地图描边
+    citylistData: [], //城市列表数据
+    selectCityData: {},
     listData: [], //列表数据
     pageNum: 1, //页码
     pageSize: 10, //页数
@@ -75,6 +75,25 @@ Page({
       this.setData({
         current: current
       })
+      if (current == 1) {
+        wx.showLoading({
+          title: '加载中',
+          mask: true
+        })
+        setTimeout(() => {
+          wx.hideLoading()
+        }, 1000);
+      } else {
+        this.setData({
+          searchText: '',
+          pageNum: 1,
+          listData: [],
+          total: 0
+        })
+        wx.nextTick(() => {
+          this.getData()
+        })
+      }
     }
   },
   //输入框确定
@@ -97,7 +116,7 @@ Page({
       this.setData({
         selectCity: name,
         cityCode: code,
-        selectCityData:{}
+        selectCityData: {}
       })
       this.setCityLine(name);
       this.getqueryAllByArea();
@@ -127,17 +146,17 @@ Page({
       this.setData({
         citylistData: data.data.records
       })
-      data.data.records.forEach((item,index) => {
-         let obj={
-          id:index+2,
+      data.data.records.forEach((item, index) => {
+        let obj = {
+          id: index + 2,
           latitude: item.gdLatitude,
           longitude: item.gdLongitude,
-          iconPath:item.stationStateInfoList.length? '../../img/map_restrictions.png':'../../img/map_release.png',
-          width:item.stationStateInfoList.length?22:15,
-          height:item.stationStateInfoList.length?22:15,
-          joinCluster:true
-         }
-         marker.push(obj)
+          iconPath: item.stationStateInfoList.length ? '../../img/map_restrictions.png' : '../../img/map_release.png',
+          width: item.stationStateInfoList.length ? 22 : 15,
+          height: item.stationStateInfoList.length ? 22 : 15,
+          joinCluster: true
+        }
+        marker.push(obj)
       });
       this.setData({
         markers: marker
@@ -179,6 +198,10 @@ Page({
     });
   },
   async getData() {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     let wxData = this.data;
     let param = {
       pageNum: wxData.pageNum,
@@ -190,6 +213,7 @@ Page({
     let {
       data
     } = await requst_get_queryAllByDistance(param)
+    wx.hideLoading()
     if (data.code == '1001') {
       let mapData = data.data.records;
       let newData = wxData.listData.concat(mapData);
@@ -218,6 +242,7 @@ Page({
       this.setData({
         AllCityLine: AllCityLine
       })
+      this.setCityLine(); //设置描边
       return false;
     }
     let {
@@ -228,36 +253,39 @@ Page({
       this.setData({
         AllCityLine: data.data
       })
+      this.setCityLine(); //设置描边
     } else {
       console.log('请求数据错误')
     }
   },
   //点击标记点
-  bindmarkertap(e){
-    let markerId= e.detail.markerId;
-    if(markerId!='1' && markerId){
+  bindmarkertap(e) {
+    let markerId = e.detail.markerId;
+    if (markerId != '1' && markerId) {
       this.setData({
-        selectCityData:this.data.citylistData[markerId-2]
+        selectCityData: this.data.citylistData[markerId - 2]
       })
     }
   },
   //获取所有的关闭信息
-  async getqueryAllClose(){
-    let {data}=await requst_get_queryAllClose()
-    let cityList=this.data.cityList;
-    cityList.forEach(item=>{
-      let cityName=item.name+'市';
-      item.num =data.data[cityName]
+  async getqueryAllClose() {
+    let {
+      data
+    } = await requst_get_queryAllClose()
+    let cityList = this.data.cityList;
+    cityList.forEach(item => {
+      let cityName = item.name + '市';
+      item.num = data.data[cityName]
     })
     this.setData({
-      cityList:cityList
+      cityList: cityList
     })
   },
   onLoad: function (options) {
-    this.getqueryAllClose();//获取所有的关闭信息
+    this.getqueryAllClose(); //获取所有的关闭信息
     this.getData(); //获取列表数据
     this.getqueryAllCityLine(); //获取描边数据
-    this.setCityLine(); //设置描边
+
     this.getqueryAllByArea(); //获取城市信息
   },
 

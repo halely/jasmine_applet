@@ -29,7 +29,10 @@ Page({
   },
   async getData() {
     let wxData=this.data;
-    console.log(wxData)
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
     let param={
       pageNum:wxData.pageNum,
       pageSize:wxData.pageSize,
@@ -38,6 +41,7 @@ Page({
     let {
       data
     } = await requst_post_queryAllRoad(param)
+    wx.hideLoading()
     if(data.code=='1001'){
       let mapData=data.data.records.map(item=>{
           let obj=item;

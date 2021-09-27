@@ -24,7 +24,7 @@ Page({
         left: '25px'
       },
     }, {
-      name: '八卦洲',
+      name: '栖霞山',
       itemPosition: {
         top: '30px',
         left: 0
@@ -35,7 +35,7 @@ Page({
         left: '25px'
       },
     }, {
-      name: '栖霞山',
+      name: '润扬',
       itemPosition: {
         top: '-11px',
         left: '30px'
@@ -46,7 +46,7 @@ Page({
         left: '-24px'
       },
     }, {
-      name: '润扬',
+      name: '五峰山',
       itemPosition: {
         top: '-11px',
         left: '80px'
@@ -142,16 +142,25 @@ Page({
     carData.forEach(item => {
       if (!obj[item.bridgeName]) obj[item.bridgeName] = {};
       obj[item.bridgeName].name = item.bridgeName;
+      if(!obj[item.bridgeName].eventDetail){
+        obj[item.bridgeName].eventDetail=[]
+      }
+      if(item.eventTypeId==4 && !item.eventTypeSubId){
+        //常态关闭不显示
+        obj[item.bridgeName].normal=true;
+        obj[item.bridgeName].eventDetail.push(item);
+        return false
+      }
       if (item.dir == "下行") {
         obj[item.bridgeName].left = true;
-        obj[item.bridgeName].left_eventDetail = item.eventDetail
-      } else {
+      } else if(item.dir == "上行") {
         obj[item.bridgeName].right = true;
-        obj[item.bridgeName].right_eventDetail = item.eventDetail
+      }else if(item.dir == "双向")  {
+        obj[item.bridgeName].left = true;
+        obj[item.bridgeName].right = true;
       }
+      obj[item.bridgeName].eventDetail.push(item)
     })
-    console.log(carData)
-    console.log(obj)
     this.setData({
       seletObj: obj
     })
@@ -183,6 +192,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.type=='kc'){
+      this.setData({
+        current:1
+      })
+    }
     this.getQueryAllBridge()
   },
 

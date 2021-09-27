@@ -15,16 +15,17 @@
       <view class="detailBody">
         <scroll-view scroll-y>
         <view wx:for="{{listData}}" class="detailItemBox" wx:key="key">
-          <image src="https://img0.baidu.com/it/u=1115144844,2258952259&fm=26&fmt=auto"></image>
+          <image src="{{defaultImg}}"></image>
           <view class="detailItemInfo">
             <view class="foodName ellipsis">{{item.commodityName}}</view>
-            <view class="evaluate">
+            <!-- <view class="evaluate">
               <text>月销量271份</text>
               <text>好评率98%</text>
-            </view>
+            </view> -->
             <text class="price">¥ {{item.sellPrice}}</text>
           </view>
         </view>
+        <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
         </scroll-view>
       </view>
     </view>

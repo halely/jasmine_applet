@@ -9,13 +9,16 @@ function math_distance(val) {
 //匹配数组
 function arr_includes(value, arr) {
   if (arr.length) {
-    return arr.indexOf(value) == -1 ? false : true
+    return arr.indexOf(value) == -1 ? false : true;
   } else {
-    return false
+    return false;
   }
 }
 //匹配关闭
 function macth_close(arr1, arr2) {
+ if(!arr1){
+   return []
+ }
   var newArr = arr1.map(function (item) {
     var itemObj = item;
     itemObj.entrance = true;//入口

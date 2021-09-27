@@ -69,6 +69,16 @@ Page({
       roadId: ''
     }
   },
+  bindconfirm(e) {
+    console.log(e.detail.value)
+    this.setData({
+      searchText: e.detail.value
+    })
+    wx.nextTick(() => {
+      this.onSubmit()
+    })
+
+  },
   //查询选项点击
   ItemClick(e) {
     let type = e.currentTarget.dataset.type; //当前类型
@@ -86,35 +96,7 @@ Page({
       temporaryData: temporaryData
     })
   },
-  //选择项
-  queryClick(e) {
-    let selectid = e.currentTarget.dataset.id;
-    if (selectid != undefined) {
-      //如果的开启，先赋值
-      let wxData = this.data;
-      if (!wxData.dialogVisible) {
-        let temporaryData = {
-          distanse: wxData.distanse,
-          cityId: wxData.cityId,
-          roadId: wxData.roadId
-        }
-        this.setData({
-          temporaryData: temporaryData
-        })
-      }
-      this.setData({
-        conditionSelect: selectid,
-        dialogVisible: true
-      })
-    }
-  },
-  //关闭弹窗
-  closeDialog() {
-    this.setData({
-      conditionSelect: '',
-      dialogVisible: false
-    })
-  },
+
   //查询
   onSubmit() {
     let temporaryData = this.data.temporaryData;
@@ -126,34 +108,7 @@ Page({
       cityId: temporaryData.cityId,
       roadId: temporaryData.roadId
     })
-    this.closeDialog()
     this.getData();
-  },
-  //重置
-  resetForm() {
-    let conditionSelect = this.data.conditionSelect;
-    let temporaryData = this.data.temporaryData;
-    if (conditionSelect == 0) {
-      temporaryData.distanse = ''
-    } else if (conditionSelect == 1) {
-      temporaryData.roadId = ''
-    } else {
-      temporaryData.cityId = ''
-    }
-    this.setData({
-      temporaryData: temporaryData
-    })
-  },
-  // 获取路线
-  async getRoad() {
-    let {
-      data
-    } = await requst_get_queryRoad();
-    if (data.code == '1001') {
-      this.setData({
-        national_highway_list: data.data
-      })
-    }
   },
   // 获取列表数
   async getData() {
@@ -171,7 +126,6 @@ Page({
       distanse: wxData.distanse, //距离
       cityId: wxData.cityId, //城市
       roadId: wxData.roadId, //路线
-      searchText: ''
     }
     let {
       data
@@ -212,11 +166,6 @@ Page({
       this.getData()
     }
   },
-  searchClick(){
-    wx.navigateTo({
-      url: '/pages/serviceAreasearch/serviceAreasearch',
-    })
-  },
   //列表点击
   serviceAreaItemClick(e) {
     //设置缓存
@@ -229,9 +178,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.getRoad();
-  },
+  onLoad: function (options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -243,9 +190,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    this.onSubmit()
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏

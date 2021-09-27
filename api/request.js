@@ -6,7 +6,7 @@ var serverUrl = "http://192.168.50.129:8080/jasmine-web"; //刘云鹏url地址
 
 
 // 例外不用token的地址
-var exceptionAddrArr = ['/login'];
+// var exceptionAddrArr = ['/login'];
 
 //请求头处理函数 customHeader为自定义header
 function CreateHeader(url, type, customHeader = {}) {
@@ -24,7 +24,7 @@ function CreateHeader(url, type, customHeader = {}) {
       'content-type': 'application/json'
     }
   }
-  // 当前不需要token
+  // 当前业务需求不需要token。后续需要可以解开
   // if (exceptionAddrArr.indexOf(url) == -1) { //排除请求的地址不需要token的地址
   //   let token = wx.getStorageSync(tokenKey);
   //   header['token'] = token;

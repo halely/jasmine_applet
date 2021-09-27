@@ -99,6 +99,6 @@
   font-weight: 500;
   color: #F52202;
   line-height: 20px;
-  padding-top: 17px;
+  padding-top: 37px;
   display: block;
 }

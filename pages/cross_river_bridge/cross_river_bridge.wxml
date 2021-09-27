@@ -3,16 +3,16 @@
   <view class="carTypeBox">
     <view bindtap="tabChange" class="carTypeItem {{current==0?'select':''}}" data-current="0">
       <text class="carTypeName">货车</text>
-      <text class="carTypeNum">{{hc.length}}</text>
+      <text class="carTypeNum" hidden="true">{{hc.length}}</text>
     </view>
     <view bindtap="tabChange" class="carTypeItem {{current==1?'select':''}}" data-current="1">
       <text class="carTypeName">客车</text>
-      <text class="carTypeNum">{{kc.length}}</text>
+      <text class="carTypeNum" hidden="true">{{kc.length}}</text>
     </view>
   </view>
   <view class="main">
     <view class="channelInfoBox">
-      <view class="refresBox">
+      <view class="refresBox" hidden="true">
         <image src="/img/refreshImg.png"></image>
         <text>刷新定位</text>
       </view>
@@ -23,35 +23,31 @@
             style="top: {{item.itemPosition.top}};left:{{item.itemPosition.left}};">
             <block wx:if="{{seletObj[item.name]}}">
               <view class="nodeBox" data-itemInfo="{{seletObj[item.name]}}" bindtap="bridgeClick" style="transform: {{item.rotate}};">
-                <image data-id="1"  class="nodeImg" src="{{seletObj[item.name].left?'/img/trafficControl.png':'/img/release.png'}}  "></image>
-                <image data-id="2"  class="nodeImg" src="{{seletObj[item.name].right?'/img/trafficControl.png':'/img/release.png'}}  "></image>
-     
+                <image data-id="1" class="nodeImg"
+                  src="{{seletObj[item.name].left?'/img/trafficControl.png':'/img/release.png'}}  "></image>
+                <image data-id="2" class="nodeImg"
+                  src="{{seletObj[item.name].right?'/img/trafficControl.png':'/img/release.png'}}  "></image>
+
               </view>
             </block>
             <block wx:else>
-              <view class="nodeBox" data-itemInfo="无" bindtap="bridgeClick" style=  "transform: {{item.rotate}};">
+              <view class="nodeBox" data-itemInfo="无" bindtap="bridgeClick" style="transform: {{item.rotate}};">
                 <image data-id="1" class="nodeImg" src="/img/release.png"></image>
                 <image data-id="2" class="nodeImg" src="/img/release.png"></image>
               </view>
             </block>
-            <text class="{{seletObj[item.name]?'error':''}}"
+            <text wx:if="{{seletObj[item.name].normal}}" style="top:{{item.textPosition.top}};left: {{item.textPosition.left}};">{{item.name}}</text>
+            <text wx:else class="{{seletObj[item.name]?'error':''}}"
               style="top:{{item.textPosition.top}};left: {{item.textPosition.left}};">{{item.name}}</text>
           </view>
         </view>
       </view>
-      <view class="limitInfo" wx:if="{{selectItembridge.left}}">
+      <view class="limitInfo" wx:for="{{selectItembridge.eventDetail}}" wx:key="key">
         <view class="boxTitle">
-          <text>{{selectItembridge.name}}</text>
-          <text>禁止通行原因</text>
+          <text>{{item.dirDes}}</text>
+          <text>{{item.bridgeName}}大桥</text>
         </view>
-        <text>{{selectItembridge.left_eventDetail}}</text>
-      </view>
-      <view class="limitInfo" wx:if="{{selectItembridge.right}}">
-        <view class="boxTitle">
-          <text>{{selectItembridge.name}}</text>
-          <text>禁止通行原因</text>
-        </view>
-        <text>{{selectItembridge.right_eventDetail}}</text>
+        <text user-select>{{item.eventDetail}}</text>
       </view>
     </view>
     <view class="onlineTitle">

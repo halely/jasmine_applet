@@ -128,10 +128,19 @@
 .marginT10 {
   margin-top: 20rpx !important;
 }
+
 /* 出来省略号 */
 .ellipsis {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.empty {
+  font-size: 14px;
+  color: #999999;
+  line-height: 20px;
+  text-align: center;
+  padding: 120rpx 0 0 0;
 }

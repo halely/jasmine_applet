@@ -59,6 +59,18 @@
           "pathName": "pages/toll_station/toll_station",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/evaluation/evaluation",
+          "pathName": "pages/evaluation/evaluation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/serviceAreasearch/serviceAreasearch",
+          "pathName": "pages/serviceAreasearch/serviceAreasearch",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -1,0 +1,216 @@
+/* pages/serviceArea/serviceArea.wxss */
+.searchBox{
+  margin-top: 10rpx;
+}
+
+/* item设置 */
+.main {
+  margin-top: 20rpx;
+}
+
+.serviceAreaItem {
+  width: 100%;
+  padding: 40rpx 32rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+}
+
+.serviceAreaItem .item_head {
+  display: flex;
+}
+
+.serviceAreaItem .item_head .serviceAreaImg {
+  width: 52px;
+  height: 52px;
+  margin-right: 14px;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo {
+  flex: 1;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.serviceAreaItem .direction {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 36rpx;
+  margin-top: 20rpx;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head text {
+  font-size: 13px;
+  color: #666666;
+  line-height: 18px;
+}
+
+
+ .serviceAreaInfo_main_item image {
+  width: 14px;
+  height: 14px;
+  margin-right: 10rpx;
+  flex-shrink: 0;
+} 
+
+.serviceAreaItem .parkingInfo {
+  flex: 1;
+}
+
+.serviceAreaItem .parkingInfo .parkingInfo_item {
+  padding: 2px 4px;
+  border-radius: 8px;
+  background-color: #F7F7F7;
+  margin: 3px 6px 3px 0;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #666666;
+  line-height: 17px;
+  align-items: center;
+  display: inline-flex;
+}
+
+.serviceAreaItem .parkingInfo_item>text {
+  font-size: 14px;
+  font-family: DINAlternate-Bold, DINAlternate;
+  font-weight: bold;
+  color: #333333;
+  line-height: 19px;
+  margin-left: 2px;
+}
+
+.serviceAreaItem .item_foot {
+  display: flex;
+  margin-top: 10px;
+}
+
+.serviceAreaItem .perCapita {
+  background: rgba(7, 193, 96, 0.08);
+  border-radius: 8rpx;
+  color: #07C160;
+  font-size: 22rpx;
+  line-height: 18px;
+  height: 18px;
+  width:52px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+.serviceAreaItem .perCapita.error{
+  color: #FF2020;
+  background: #fcf0f0;
+}
+
+.serviceAreaItem .recommendBox {
+  flex: 1;
+  overflow: hidden;
+}
+
+.serviceAreaItem .recommendBox>text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+
+
+.serviceAreaItem .sales_status {
+  width: 100%;
+  display: flex;
+  font-size: 12px;
+  color: #666666;
+  line-height: 17px;
+  margin-top: 8px;
+}
+
+.serviceAreaItem .sales_status text {
+  margin: 0 30px 0 8px;
+}
+
+.hale-dialog_box {
+  position: absolute;
+  z-index: 100;
+}
+
+.drop-down-dialog {
+  height: calc(100% - 56px);
+  top: 56px;
+}
+
+.hale-dialog_box .hale-dialog__wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #212121;
+  opacity: .5;
+}
+
+.hale-dialog_box .hale-dialog_body {
+  z-index: 1000;
+  position: relative;
+}
+
+.drop-down_main {
+  background-color: #ffffff;
+  font-size: 14px;
+  line-height: 20px;
+  max-height:calc(100vh - 120px);
+  overflow:auto;
+}
+.chooseBox{
+  padding: 50rpx 30rpx;
+}
+.chooseBox .route text.chooseItem {
+  width: 108px;
+}
+.chooseBox .chooseTitle{
+  margin-bottom: 8px;
+}
+.chooseBox text.chooseItem {
+  color: #999999;
+  background-color: #F5F5F5;
+  width: 80px;
+  height: 32px;
+  display: inline-block;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 16rpx 16rpx 0;
+}
+.chooseBox>text.chooseItem:nth-child(4n),.chooseBox .route text.chooseItem:nth-child(3n){
+  margin-right: 0;
+}
+.chooseBox text.selected{
+  color: #0089FC;
+  background-color: rgba(233, 244, 250, 1);
+}
+
+
+.drop-down_foot text {
+  width: 50%;
+  line-height: 44px;
+  font-size: 13px;
+  color: #0089FC;
+  text-align: center;
+  display: inline-block;
+  background-color: rgba(233, 244, 250, 1);
+}
+
+.drop-down_foot text.selected {
+  background-color: #0089FC;
+  color: #ffffff;
+}

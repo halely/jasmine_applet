@@ -20,7 +20,7 @@
           </view>
           <view class="basicInfo">
             <view>{{item.roadId+item.roadName}}</view>
-            <text class="LimitPath">x {{item.dirDes1}}</text>
+            <text class="LimitPath">x {{item.dirDes}}</text>
           </view>
         </view>
         <view class="item_body">
@@ -30,7 +30,7 @@
           </view>
           <view class="infoItem">
             <label>限行时间：</label>
-            <text>{{item.controlEndTime}} {{item.controlStartTime?'至  '+item.controlStartTime:'全天'}}</text>
+            <text>{{item.controlEndTime}} {{item.controlStartTime?'至 '+item.controlStartTime:'全天'}}</text>
           </view>
           <view class="infoItem">
             <label>限行原因：</label>
@@ -38,6 +38,7 @@
           </view>
         </view>
       </view>
+      <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
     </scroll-view>
   </view>
 </view>

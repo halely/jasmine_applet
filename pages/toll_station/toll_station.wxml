@@ -44,6 +44,7 @@
             <view class="close_reason" hidden="{{!item.open}}">因G42高速路面拥堵，由常熟往合肥方向的路段，发生严重交通事故，现临时关闭将军大道收费站。</view>
           </view> -->
         </view>
+        <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
       </scroll-view>
     </view>
   </block>

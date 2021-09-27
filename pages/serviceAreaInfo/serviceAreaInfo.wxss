@@ -64,7 +64,7 @@
 
 /* 车位厕所油类信息 */
 .basic_services_box {
-  margin-top:10rpx;
+  margin-top: 10rpx;
 }
 
 
@@ -170,7 +170,7 @@
   display: flex;
   padding: 20rpx;
   box-sizing: border-box;
-  
+
 }
 
 .serviceStoreItem .ItemBody>image {
@@ -201,17 +201,40 @@
   line-height: 17px;
   margin: 34rpx 0 0 0;
 }
-.sales_status text{
-   color:#FF2020 ;
-   padding: 4rpx 12rpx;
-   background-color:rgba(255, 32, 32, 0.1) ;
+
+.sales_status text {
+  color: #FF2020;
+  padding: 4rpx 12rpx;
+  background-color: rgba(255, 32, 32, 0.1);
 }
-.sales_status text.specialty{
-  color:#F59D00 ;
-  background-color:rgba(245, 157, 0, 0.1);
+
+.sales_status text.specialty {
+  color: #F59D00;
+  background-color: rgba(245, 157, 0, 0.1);
 }
-.sales_status text.features{
-  color:#F56F00 ;
-  background-color:rgba(245, 111, 0, 0.1);
+
+.sales_status text.features {
+  color: #F56F00;
+  background-color: rgba(245, 111, 0, 0.1);
 }
+
+.stro_empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #999999;
+  line-height: 20px;
+  letter-spacing: 1px;
+  padding:120rpx 0 0 0;
+}
+
+.stro_empty image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.stro_empty text {
+  margin-top: 10rpx;
+}
+
 /* rgba(245, 111, 0, 0.1) */

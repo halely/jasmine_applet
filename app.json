@@ -4,8 +4,10 @@
     "pages/toll_station/toll_station",
     "pages/restrictions/restrictions",
     "pages/serviceArea/serviceArea",
+    "pages/serviceAreasearch/serviceAreasearch",
     "pages/serviceAreaInfo/serviceAreaInfo",
     "pages/cross_river_bridge/cross_river_bridge",
+    "pages/evaluation/evaluation",
     "pages/store_info/store_info"
   ],
   "permission": {

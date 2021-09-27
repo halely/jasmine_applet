@@ -13,7 +13,8 @@ Page({
     shopDetail: {},
     shopKey: [],
     select: '',
-    listData: []
+    listData: [],
+    defaultImg:''
   },
   async getShopDetail(shopId) {
     let param = {
@@ -47,6 +48,14 @@ Page({
    */
   onLoad: function (options) {
     let shopId = options.shopId;
+    let name = options.name;
+    let shopTypeId=options.shopTypeId;
+    this.setData({
+      defaultImg:shopTypeId==3?'/img/catering.png':shopTypeId==4?'/img/specialty.png':'/img/features.png'
+    })
+    wx.setNavigationBarTitle({
+      title: name 
+    })
     this.getShopDetail(shopId)
   },
 

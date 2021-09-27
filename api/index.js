@@ -23,3 +23,5 @@ export const requst_get_queryAllByArea = data => getRequest(`/station/queryAllBy
 
 //查询所有关闭的收费站
 export const requst_get_queryAllClose = data => getRequest(`/station/queryAllClose`,data);
+
+export const requst_post_evaluation = data => postRequest(`/evaluation/add`,data);

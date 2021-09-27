@@ -61,8 +61,9 @@ Page({
   },
   //店铺信息查询点击
   shopItemClick(e){
+    let info=e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: '/pages/store_info/store_info?shopId='+e.currentTarget.dataset.id,
+      url: '/pages/store_info/store_info?shopId='+info.shopId+'&name='+info.shopParentName+'&shopTypeId='+info.shopTypeId,
     })
   },
   /**

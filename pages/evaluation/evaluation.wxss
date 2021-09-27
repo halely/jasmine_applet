@@ -1,0 +1,104 @@
+/* pages/evaluation/evaluation.wxss */
+.container {
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.evaluationBox {
+  background-color: #ffffff;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.evaluationBox .haedTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  line-height: 22px;
+}
+
+.starBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 56rpx;
+}
+
+.starBox image {
+  width: 32px;
+  height: 32px;
+  padding: 0 20rpx;
+
+}
+
+.starState {
+  text-align: center;
+  margin-top: 40rpx;
+  font-size: 14px;
+  color: #F59000;
+  line-height: 20px;
+}
+
+.evaluationTextBox {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 120rpx;
+}
+
+.evaluationTextBox text {
+  padding: 12rpx 28rpx;
+  display: inline-block;
+  border: 1px solid #E4E4E4;
+  font-size: 14px;
+  color: #AAAAAA;
+  line-height: 20px;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+.evaluationTextBox text.selected{
+  border: 1px solid #F59000;
+  color:#F59000 ;
+}
+
+.evaluationTextBox text:nth-child(3n) {
+  margin-right: 0;
+}
+
+.textareaBox {
+  position: relative;
+}
+
+.textareaBox textarea {
+  background-color: #F5F5F5;
+  padding: 20rpx 20rpx 50rpx 20rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.textarealimit {
+  font-size: 14px;
+  font-weight: 400;
+  color: #AAAAAA;
+  line-height: 20px;
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
+}
+
+.placeholderClass {
+  font-size: 14px;
+  font-weight: 400;
+  color: #AAAAAA;
+  line-height: 20px;
+}
+
+.submitBut {
+  background-color: #F59000;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 20px;
+}
+.submitButHover{
+  background-color: #f5ad49;
+}
