@@ -17,12 +17,17 @@ Page({
     defaultImg:''
   },
   async getShopDetail(shopId) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     let param = {
       shopId: shopId
     }
     let {
       data
     } = await requst_get_shopDetail(param)
+    wx.hideLoading()
     if (data.code == '1001') {
       let shopDetail = data.data;
       let shopKey = Object.keys(shopDetail);

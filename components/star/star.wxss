@@ -2,15 +2,15 @@
 
 .starView {
   display: flex;
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 600;
   color: #FDAD28;
-  line-height: 22px;
+  line-height: 44rpx;
 }
 
 .starBox .starItem {
-  width: 16px;
-  height: 16px;
+  width: 32rpx;
+  height:32rpx;
   margin-right: 20rpx;
 }
 .starView .grayText{

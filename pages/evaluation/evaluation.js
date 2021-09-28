@@ -18,6 +18,10 @@ Page({
   },
   //输入框输入
   textareaInput(e) {
+    let evaluationRemark=e.detail.value;
+    if(evaluationRemark.length>200){
+      evaluationRemark=evaluationRemark.splice(0,200)
+    }
     this.setData({
       evaluationRemark: e.detail.value
     })
@@ -49,7 +53,7 @@ Page({
   async submitBut() {
     let wxData = this.data;
     let param = {
-      evaluation: wxData.evaluation,
+      evaluationPoint: wxData.evaluation,
       evaluationTips: wxData.evaluationTips.join(','),
       evaluationRemark: wxData.evaluationRemark
     }

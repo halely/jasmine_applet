@@ -30,11 +30,16 @@
           </view>
           <view class="infoItem">
             <label>限行时间：</label>
-            <text>{{item.controlEndTime}} {{item.controlStartTime?'至 '+item.controlStartTime:'全天'}}</text>
+            <text>{{item.controlEndTime ||'--'}} {{item.controlStartTime?'至 '+item.controlStartTime:'全天'}}</text>
           </view>
           <view class="infoItem">
             <label>限行原因：</label>
-            <text>{{item.eventDetail||'——'}}</text>
+            <block wx:if="{{item.collapse}}">
+              <text class="restrictionText marginb30  {{!item.showCollapse?'line-clamp':''}}">{{item.eventDetail||'——'}}</text>
+              <view class="unfold" data-index="{{index}}" bindtap="unfoldclick">{{item.showCollapse?'收起':'展开'}}</view>
+            </block>
+            
+            <text wx:else class="restrictionText">{{item.eventDetail||'——'}}</text>
           </view>
         </view>
       </view>

@@ -21,11 +21,11 @@ Page({
     ServiceAreaData: {}, //服务区数据
     DistanceData: {}, //收费站数据
     current: 0,
-    islocation:false
+    islocation: false
   },
   //点击主体
   entranceClick(e) {
-    if(!this.data.islocation){
+    if (!this.data.islocation) {
       wx.showToast({
         title: '请授权获取当前位置',
         icon: 'none',
@@ -34,21 +34,12 @@ Page({
       return false;
     }
     let path = e.currentTarget.dataset.path;
-    if(path=='cross_river_bridge'){
-      let type=e.target.dataset.type;
-      if(type){
-        wx.navigateTo({
-          url: '/pages/' + path + '/' + path+'?type='+type,
-        })
-      }
-      return false
-    }
     wx.navigateTo({
       url: '/pages/' + path + '/' + path,
     })
   },
-  moreBut(){
-    if(!this.data.islocation){
+  moreBut() {
+    if (!this.data.islocation) {
       wx.showToast({
         title: '请授权获取当前位置',
         icon: 'none',
@@ -56,15 +47,15 @@ Page({
       })
       return false;
     }
-    if(this.data.current==0){
+    if (this.data.current == 0) {
       wx.navigateTo({
         url: '/pages/toll_station/toll_station',
       })
-    }else{
+    } else {
       wx.navigateTo({
         url: '/pages/serviceArea/serviceArea',
       })
-      
+
     }
   },
   //服务区点击
@@ -99,7 +90,7 @@ Page({
             content: '需要获取您的地理位置，请确认授权，否则地图功能将无法使用',
             success: function (res) {
               if (res.cancel) {
-                console.info("1授权失败返回数据");
+                console.info("授权失败返回数据");
               } else if (res.confirm) {
                 //that.open();
                 wx.openSetting({
@@ -130,7 +121,9 @@ Page({
         } else if (res.authSetting['scope.userLocation'] == true) {
           that.getLocation()
         }
-      }
+      },
+      fail(err){
+      },
     })
   },
   //获取当前位置
@@ -143,16 +136,35 @@ Page({
         var longitude = res.longitude
         var latitude = res.latitude;
         //设置地图
-        wx.setStorageSync('myLocation', res);
+       
         page.setData({
-          islocation:true
+          islocation: true
         })
         page.loadCity(longitude, latitude);
-        page.getDatalist()
-
+        
       },
       fail(err) {
-        console.log(err)
+        wx.getSetting({
+          success: function (res) {
+            if (res.authSetting['scope.userLocation']) {
+              //用户已授权，但是获取地理位置失败，提示用户去系统设置中打开定位
+              wx.showModal({
+                title: '',
+                content: '定位失败，请检查网络环境或手机定位权限',
+                mask:true,
+                confirmText: '重新定位',
+                confirmColor:'#07C160',
+                success: function (res) {
+                  if (res.confirm) {
+                    page.chooselocation()
+                  } else if (res.cancel) {
+                    console.log('用户点击取消')
+                  }             
+                }
+              })
+            }
+          }
+        })
       }
     })
   },
@@ -168,9 +180,17 @@ Page({
         let {
           regeocodeData
         } = data[0];
+        let myLocation={
+          latitude:latitude,
+          longitude:longitude,
+          city:regeocodeData.addressComponent.city
+        }
+        //设置地图缓存
+        wx.setStorageSync('myLocation', myLocation);
         that.setData({
           city: regeocodeData.addressComponent.city + regeocodeData.addressComponent.district //当前的城市
         })
+        that.getDatalist()
       },
       fail: function (info) {}
     });

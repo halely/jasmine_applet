@@ -43,7 +43,7 @@ Page({
       rotate: 'rotate(-45deg)',
       textPosition: {
         top: '-25px',
-        left: '-24px'
+        left: '-31px'
       },
     }, {
       name: '五峰山',
@@ -54,7 +54,7 @@ Page({
       rotate: 'rotate(0deg)',
       textPosition: {
         top: '40px',
-        left: '-17px'
+        left: '-25px'
       },
     }, {
       name: '泰州',
@@ -65,7 +65,7 @@ Page({
       rotate: 'rotate(0deg)',
       textPosition: {
         top: '-25px',
-        left: '-17px'
+        left: '-23px'
       },
     }, {
       name: '江阴',
@@ -76,7 +76,7 @@ Page({
       rotate: 'rotate(0deg)',
       textPosition: {
         top: '40px',
-        left: '-17px'
+        left: '-23px'
       },
     }, {
       name: '沪苏通',
@@ -87,7 +87,7 @@ Page({
       rotate: 'rotate(0deg)',
       textPosition: {
         top: '-25px',
-        left: '-17px'
+        left: '-23px'
       },
     }, {
       name: '苏通',
@@ -98,7 +98,7 @@ Page({
       rotate: 'rotate(0deg)',
       textPosition: {
         top: '40px',
-        left: '-17px'
+        left: '-23px'
       },
     }, {
       name: '崇启',
@@ -109,7 +109,7 @@ Page({
       rotate: 'rotate(0deg)',
       textPosition: {
         top: '-25px',
-        left: '-17px'
+        left: '-23px'
       },
     }],
     seletObj: {},
@@ -130,6 +130,7 @@ Page({
     }
 
   },
+  //处理当前类型数据
   macthbridge() {
     let wxData = this.data;
     let carData = [];
@@ -145,9 +146,9 @@ Page({
       if(!obj[item.bridgeName].eventDetail){
         obj[item.bridgeName].eventDetail=[]
       }
-      if(item.eventTypeId==4 && !item.eventTypeSubId){
+      if(item.eventTypeId== 4 && !item.eventTypeSubId){
         //常态关闭不显示
-        obj[item.bridgeName].normal=true;
+        obj[item.bridgeName].normal= true ;
         obj[item.bridgeName].eventDetail.push(item);
         return false
       }
@@ -168,8 +169,10 @@ Page({
   bridgeClick(e) {
     let iteminfo = e.currentTarget.dataset.iteminfo;
     let newObj = {};
-    if (iteminfo == '无') {
-      newObj = {}
+    if (typeof iteminfo == 'string') {
+      newObj = {
+        name:iteminfo
+      }
     } else {
       newObj = iteminfo;
     }
@@ -182,7 +185,8 @@ Page({
     if (current != undefined) {
       if (current != this.data.current) {
         this.setData({
-          current: current
+          current: current,
+          selectItembridge:{}
         })
         this.macthbridge()
       }

@@ -12,6 +12,10 @@
   </view>
   <view class="main">
     <view class="channelInfoBox">
+      <view class="clickTitleBox">
+        <image src="/img/click_on.png"></image>
+        <text>点击大桥图标可查看通行信息~</text>
+      </view>
       <view class="refresBox" hidden="true">
         <image src="/img/refreshImg.png"></image>
         <text>刷新定位</text>
@@ -19,27 +23,32 @@
       <view class="bridgeBox">
         <image class="bridgebg" src="/img/pathBg.png"></image>
         <view class="bridgebody">
-          <view data-id="index" wx:for="{{bridgeNodeList}}" wx:key="key" class="bridgeItem "
+          <view data-id="index" wx:for="{{bridgeNodeList}}" wx:key="key"
+            class="bridgeItem {{selectItembridge.name==item.name?'seleced':''}} "
             style="top: {{item.itemPosition.top}};left:{{item.itemPosition.left}};">
             <block wx:if="{{seletObj[item.name]}}">
-              <view class="nodeBox" data-itemInfo="{{seletObj[item.name]}}" bindtap="bridgeClick" style="transform: {{item.rotate}};">
+              <view class="nodeBox" data-itemInfo="{{seletObj[item.name]}}" bindtap="bridgeClick"
+                style="transform: {{item.rotate}};">
                 <image data-id="1" class="nodeImg"
                   src="{{seletObj[item.name].left?'/img/trafficControl.png':'/img/release.png'}}  "></image>
                 <image data-id="2" class="nodeImg"
                   src="{{seletObj[item.name].right?'/img/trafficControl.png':'/img/release.png'}}  "></image>
-
               </view>
             </block>
             <block wx:else>
-              <view class="nodeBox" data-itemInfo="无" bindtap="bridgeClick" style="transform: {{item.rotate}};">
+              <view class="nodeBox" data-itemInfo="{{item.name}}" bindtap="bridgeClick"
+                style="transform: {{item.rotate}};">
                 <image data-id="1" class="nodeImg" src="/img/release.png"></image>
                 <image data-id="2" class="nodeImg" src="/img/release.png"></image>
               </view>
             </block>
-            <text wx:if="{{seletObj[item.name].normal}}" style="top:{{item.textPosition.top}};left: {{item.textPosition.left}};">{{item.name}}</text>
-            <text wx:else class="{{seletObj[item.name]?'error':''}}"
+            <text class="{{seletObj[item.name].left||seletObj[item.name].right?'error':''}}"
               style="top:{{item.textPosition.top}};left: {{item.textPosition.left}};">{{item.name}}</text>
           </view>
+        </view>
+        <view class="bridgeTip">
+          <text>正常通行</text>
+          <text>禁止通行</text>
         </view>
       </view>
       <view class="limitInfo" wx:for="{{selectItembridge.eventDetail}}" wx:key="key">
@@ -49,6 +58,8 @@
         </view>
         <text user-select>{{item.eventDetail}}</text>
       </view>
+      <view wx:if="{{selectItembridge.name && !selectItembridge.eventDetail}}" class="normalcommunication">
+        {{selectItembridge.name}}大桥正常通行</view>
     </view>
     <view class="onlineTitle">
       <image src="/img/prompt.png"></image>

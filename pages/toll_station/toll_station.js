@@ -56,6 +56,7 @@ Page({
       name: '安徽天长',
       key: '341181'
     }],
+    minScale: 8,//缩放限制
     selectCity: '南京',
     cityCode: '320100',
     markers: [], //标记点数组
@@ -118,10 +119,13 @@ Page({
         cityCode: code,
         selectCityData: {}
       })
-      this.setCityLine(name);
+      this.getqueryAllCityLine();
+      //获取城市数据
       this.getqueryAllByArea();
+      // this.setCityLine();
     }
   },
+  //获取当前城市收费站数据
   async getqueryAllByArea() {
     let param = {
       pageNum: 1,
@@ -152,9 +156,9 @@ Page({
           latitude: item.gdLatitude,
           longitude: item.gdLongitude,
           iconPath: item.stationStateInfoList.length ? '../../img/map_restrictions.png' : '../../img/map_release.png',
-          width: item.stationStateInfoList.length ? 22 : 15,
-          height: item.stationStateInfoList.length ? 22 : 15,
-          joinCluster: true
+          width: item.stationStateInfoList.length ? 30 : 15,
+          height: item.stationStateInfoList.length ? 30 : 15,
+          // joinCluster: true
         }
         marker.push(obj)
       });
@@ -173,9 +177,9 @@ Page({
     })
   },
   //设置城市描边
-  setCityLine(cityName = '南京') {
+  setCityLine() {
     let AllCityLine = this.data.AllCityLine;
-    let objKey = cityName + '市';
+    let objKey = this.data.selectCity + '市';
     let polylineArr = AllCityLine[objKey].ployLine.split(';');
     let points = polylineArr.map(item => {
       let locationArr = item.split(',')
@@ -237,26 +241,39 @@ Page({
   //获取所有城市描边数据
   async getqueryAllCityLine() {
     let AllCityLine = wx.getStorageSync('AllCityLine')
+    let selectCity = this.data.selectCity + "市";
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     //如果已经有了就不再获取了
-    if (AllCityLine) {
+    if (AllCityLine[selectCity]) {
       this.setData({
         AllCityLine: AllCityLine
       })
       this.setCityLine(); //设置描边
+      wx.hideLoading()
       return false;
     }
+    let param = {
+      cityCode: this.data.cityCode
+    };
     let {
       data
-    } = await requst_get_queryAllCityLine()
+    } = await requst_get_queryAllCityLine(param)
     if (data.code == "1001") {
-      wx.setStorageSync('AllCityLine', data.data);
+      let AllCityLine = this.data.AllCityLine;
+      AllCityLine[selectCity] = data.data[selectCity];
+      wx.setStorageSync('AllCityLine', AllCityLine);
       this.setData({
-        AllCityLine: data.data
+        AllCityLine: AllCityLine
       })
-      this.setCityLine(); //设置描边
-    } else {
-      console.log('请求数据错误')
-    }
+      wx.nextTick(() => {
+        this.setCityLine(); //设置描边
+      })
+      // this.setCityLine(); //设置描边
+      wx.hideLoading()
+    } else {}
   },
   //点击标记点
   bindmarkertap(e) {
@@ -281,11 +298,28 @@ Page({
       cityList: cityList
     })
   },
+  //获取当前城市
+  getcity() {
+    let myLocation = wx.getStorageSync('myLocation');
+    let city = myLocation.city;
+    let selectCityInfo = this.data.cityList.find(item => {
+      if (item.name + '市' == city) {
+        return true;
+      }
+      return true;
+    })
+    if (selectCityInfo) {
+      this.setData({
+        selectCity: selectCityInfo.name,
+        cityCode: selectCityInfo.key
+      })
+    }
+  },
   onLoad: function (options) {
+    this.getcity();
     this.getqueryAllClose(); //获取所有的关闭信息
     this.getData(); //获取列表数据
     this.getqueryAllCityLine(); //获取描边数据
-
     this.getqueryAllByArea(); //获取城市信息
   },
 
@@ -321,7 +355,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
   },
 
   /**

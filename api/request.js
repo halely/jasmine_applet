@@ -1,8 +1,8 @@
 var tokenKey = "access-token"; //缓存token对应的值
-var serverUrl = "http://192.168.50.129:8080/jasmine-web"; //刘云鹏url地址
+// var serverUrl = "http://192.168.50.129:8080/jasmine-web"; //刘云鹏url地址
 
 // var serverUrl = "https://shoufei.jssgx.cn/zyqd-wechat"; //开发合法域名
-// var serverUrl = "https://kp.jsszyqd.com:9443/zyqd-wechat"; //生产合法域名
+var serverUrl = "https://96777.jssgx.cn/jasmine-web"; //生产合法域名
 
 
 // 例外不用token的地址

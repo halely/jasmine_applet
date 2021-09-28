@@ -29,7 +29,7 @@
     "lazyloadPlaceholderEnable": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": false,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -48,7 +48,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.19.4",
-  "appid": "wxacb69810faa8ca30",
+  "appid": "wx98afbbed07c0f43f",
   "projectname": "Jasmine",
   "debugOptions": {
     "hidedInDevtools": []

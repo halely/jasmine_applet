@@ -17,7 +17,7 @@ export const requst_get_queryAllBridge = data => getRequest(`/road/queryAllBridg
 export const requst_get_queryAllByDistance = data => getRequest(`/station/queryAllByDistance`,data);
 
 // 获取城市描边
-export const requst_get_queryAllCityLine = data => getRequest(`/station/queryAllCityLine`);
+export const requst_get_queryAllCityLine = data => getRequest(`/station/queryAllCityLine`,data);
 //根据城市查询收费站
 export const requst_get_queryAllByArea = data => getRequest(`/station/queryAllByArea`,data);
 

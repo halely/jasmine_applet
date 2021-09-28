@@ -25,50 +25,8 @@
           "scene": null
         },
         {
-          "name": "pages/serviceArea/serviceArea",
-          "pathName": "pages/serviceArea/serviceArea",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "pages/serviceAreaInfo/serviceAreaInfo",
           "pathName": "pages/serviceAreaInfo/serviceAreaInfo",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/cross_river_bridge/cross_river_bridge",
-          "pathName": "pages/cross_river_bridge/cross_river_bridge",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/store_info/store_info",
-          "pathName": "pages/store_info/store_info",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/restrictions/restrictions",
-          "pathName": "pages/restrictions/restrictions",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/toll_station/toll_station",
-          "pathName": "pages/toll_station/toll_station",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/evaluation/evaluation",
-          "pathName": "pages/evaluation/evaluation",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/serviceAreasearch/serviceAreasearch",
-          "pathName": "pages/serviceAreasearch/serviceAreasearch",
           "query": "",
           "scene": null
         }

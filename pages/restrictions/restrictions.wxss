@@ -42,7 +42,7 @@
 }
 
 .HighwayText text:first-child {
-  font-size:13px;
+  font-size: 13px;
   margin: 28rpx 0 2rpx 0;
 }
 
@@ -51,7 +51,7 @@
   font-size: 16px;
   font-weight: 500;
   color: #0f0f0f;
-  line-height:15px;
+  line-height: 15px;
   padding-bottom: 30rpx;
   border-bottom: 1px solid #eee;
 }
@@ -74,6 +74,7 @@
   color: #080808;
   font-weight: 500;
   margin-top: 16rpx;
+  position: relative;
 }
 
 .item_body .infoItem label {
@@ -81,11 +82,29 @@
   font-weight: 400;
   flex-shrink: 0;
 }
-.item_body .infoItem text{
-  display: -webkit-box;  /*设置为弹性盒子*/
-  -webkit-line-clamp: 2;  /*最多显示5行*/
-  overflow: hidden;  /*超出隐藏*/
-  text-overflow: ellipsis;  /*超出显示为省略号*/
+
+.item_body .infoItem text.line-clamp {
+  display: -webkit-box;
+  /*设置为弹性盒子*/
+  -webkit-line-clamp: 2;
+  /*最多显示5行*/
+  overflow: hidden;
+  /*超出隐藏*/
+  text-overflow: ellipsis;
+  /*超出显示为省略号*/
   -webkit-box-orient: vertical;
-  word-break: break-all;  /*强制英文单词自动换行*/
+  word-break: break-all;
+  /*强制英文单词自动换行*/
+  
+}
+.marginb30{
+  margin-bottom: 30rpx;
+}
+
+.unfold {
+  position: absolute;
+  right: 10rpx;
+  bottom: -4px;
+  font-size: 24rpx;
+  color: #06f;
 }

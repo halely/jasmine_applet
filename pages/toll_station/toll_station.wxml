@@ -17,12 +17,12 @@
     </view>
     <!-- 内容 -->
     <view class="main">
-      <scroll-view scroll-y>
+      <scroll-view scroll-y bindscrolltolower="scrolltolower">
         <view class="toll_station_item" wx:for="{{listData}}" wx:key="key">
           <view class="itemhead">
-            <image class="tollStationImg" src="{{item.picId}}"></image>
+            <image class="tollStationImg" src="{{item.picId || '/img/stationImg.png'}}"></image>
             <view class="tollStationTitle">
-              <text class="ellipsis">{{item.stationName}}</text>
+              <text class="ellipsis">{{item.stationName}}收费站</text>
               <text>距您{{common.math_distance(item.distanceUm)}}km</text>
             </view>
           </view>
@@ -59,14 +59,14 @@
               <text class="cityNum" hidden="{{!item.num}}">{{item.num}}</text>
             </view>
           </scroll-view>
-          <map class="map" id="map" polygons="{{polygon}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="9" min-scale="5" max-scale="20"
+          <map class="map" id="map" polygons="{{polygon}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="9" min-scale="{{minScale}}" 
             markers="{{markers}}" bindmarkertap="bindmarkertap"></map>
           <block wx:if="{{selectCityData.stationId}}">
             <view class="toll_station_item">
               <view class="itemhead">
-                <image class="tollStationImg" src="{{selectCityData.picId|| '/img/serviceAreaImg.png'}}  "></image>
+                <image class="tollStationImg" src="{{selectCityData.picId || '/img/stationImg.png'}}  "></image>
                 <view class="tollStationTitle">
-                  <text class="ellipsis">{{selectCityData.stationName}}</text>
+                  <text class="ellipsis">{{selectCityData.stationName}}收费站</text>
                   <text>距您{{common.math_distance(selectCityData.distanceUm)}}km</text>
                 </view>
               </view>

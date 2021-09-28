@@ -24,11 +24,11 @@
       <view class="serviceAreaItem" data-info="{{item}}" bindtap="serviceAreaItemClick" wx:for="{{listData}}"
         wx:key="key">
         <view class="item_head">
-          <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
+          <image class="serviceAreaImg" src="{{item.picId || '/img/serviceAreaImg.png'}}"></image>
           <view class="serviceAreaInfo">
             <view class="serviceAreaInfo_head">
               <view class="serviceAreaName">{{item.serviceAreaName}}
-                <text>{{item.dir}}</text>
+                <text>{{item.dir || ''}}</text>
               </view>
             </view>
             <view class="direction">距您{{common.math_distance(item.distanceUm)}}km ｜ {{item.roadName || '—'}}
@@ -77,15 +77,20 @@
             <text class="chooseItem {{temporaryData.roadId?'':'selected'}}" data-no="all">不限</text>
             <view class="chooseTitle">G 国家高速</view>
             <view class="route">
-              <text wx:for="{{national_highway_list.G}}" wx:key="key"
-                class="chooseItem {{temporaryData.roadId==item.roadId?'selected':''}}"
-                data-no="{{item.roadId}}">{{item.roadName}}</text>
+              <view wx:for="{{national_highway_list.G}}" wx:key="key"
+                class="chooseItem {{temporaryData.roadId==item.roadId?'selected':''}}" data-no="{{item.roadId}}">
+                <text data-no="{{item.roadId}}">{{item.roadId}}</text>
+                <text data-no="{{item.roadId}}">{{item.roadName}}</text>
+              </view>
             </view>
             <view class="chooseTitle">S 苏高速</view>
             <view class="route">
-              <text wx:for="{{national_highway_list.S}}" wx:key="key"
+              <view wx:for="{{national_highway_list.S}}" wx:key="key"
                 class="chooseItem {{temporaryData.roadId==item.roadId?'selected':''}}"
-                data-no="{{item.roadId}}">{{item.roadName}}</text>
+                data-no="{{item.roadId}}">
+                <text data-no="{{item.roadId}}">{{item.roadId}}</text>
+                <text data-no="{{item.roadId}}">{{item.roadName}}</text>
+              </view>
             </view>
           </view>
         </block>

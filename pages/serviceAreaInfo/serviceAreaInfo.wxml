@@ -4,7 +4,7 @@
   <image class="serviceAreaIbj" src="{{serviceAreaItemInfo.picId||'/img/defaultBg.png'}}"></image>
   <view class="serviceAreaInfoBox">
     <view class="serviceArea_title">
-      <text>{{serviceAreaItemInfo.serviceAreaName}}({{serviceAreaItemInfo.dir}})</text>
+      <text>{{serviceAreaItemInfo.serviceAreaName}} {{serviceAreaItemInfo.dir?'('+serviceAreaItemInfo.dir+')':''}}</text>
       <image class="on-state" src="{{serviceAreaItemInfo.serviceAreaState?'/img/on-state.png':'/img/on-close.png'}}">
       </image>
 
@@ -59,7 +59,7 @@
     <!-- 店铺标题 -->
     <view class="supermarket_title">
       <image src="/img/hot.png"></image>
-      <text class="check">美食店铺</text>
+      <text class="check">店铺</text>
       <!-- <text>商超百货</text> -->
     </view>
   </view>

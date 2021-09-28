@@ -4,7 +4,7 @@
   <view class="Home_nav">
     <view class="placeBox" style='margin-top: {{height}}rpx'>
       <image class="positionImg" src="/img/positioning.png"></image>
-      <text>{{city}}</text>
+      <text >{{city}}</text>
       <text wx:if="{{!city}}" bindtap="chooselocation">获取当前位置</text>
     </view>
     <view class="evaluate" bindtap="evaluationClick">点击评价</view>
@@ -22,10 +22,7 @@
       <view class="entranceItem" data-path="cross_river_bridge" bindtap="entranceClick">
         <view class="entranceTitle">
           <text>过江大桥</text>
-          <view class="carType">
-          <text data-type="hc" >货车</text>
-          <text data-type="kc">客车</text>
-          </view>
+          <text>大桥限行信息</text>
           <!-- <text>道路限行信息</text> -->
         </view>
         <image src="/img/bridge.png"></image>
@@ -55,11 +52,11 @@
       </view>
       <view class="tabMain">
         <block wx:if="{{current==0}}">
-          <view class="tollstationItem" wx:if="{{DistanceData.picId}}">
+          <view class="tollstationItem" wx:if="{{DistanceData.stationName}}">
             <view class="item_head">
-              <image class="tollStationImg" src="{{DistanceData.picId}}"></image>
+              <image class="tollStationImg" src="{{DistanceData.picId || '/img/stationImg.png'}}"></image>
               <view class="tollStationTitle">
-                <text class="tollstation_name">{{DistanceData.stationName}} </text>
+                <text class="tollstation_name">{{DistanceData.stationName}}收费站</text>
                 <text class="distance">距您{{common.math_distance(DistanceData.distanceUm)}}km</text>
               </view>
             </view>
@@ -78,7 +75,7 @@
         <block wx:else>
           <view class="serviceAreaItem"  wx:if="{{ServiceAreaData.serviceAreaName}}" bindtap="serviceAreaView">
             <view class="item_head">
-              <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
+              <image class="serviceAreaImg" src="{{ServiceAreaData.picId || '/img/serviceAreaImg.png'}}"></image>
               <view class="serviceAreaInfo">
                 <view class="serviceAreaInfo_head">
                   <view class="serviceAreaName">{{ServiceAreaData.serviceAreaName}}

@@ -102,3 +102,7 @@
 .submitButHover{
   background-color: #f5ad49;
 }
+.evaluationRemark{
+  display: block;
+  padding-top:20rpx;
+}

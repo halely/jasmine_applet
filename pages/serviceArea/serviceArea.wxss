@@ -43,6 +43,7 @@
   width: 52px;
   height: 52px;
   margin-right: 14px;
+  border-radius: 8rpx;
 }
 
 .serviceAreaItem .item_head .serviceAreaInfo {
@@ -203,27 +204,31 @@
 .chooseBox{
   padding: 50rpx 30rpx;
 }
-.chooseBox .route text.chooseItem {
+.chooseBox .route .chooseItem {
   width: 108px;
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 20px;
+  padding: 8rpx 0;
 }
 .chooseBox .chooseTitle{
   margin-bottom: 8px;
 }
-.chooseBox text.chooseItem {
+.chooseBox .chooseItem {
   color: #999999;
   background-color: #F5F5F5;
   width: 80px;
-  height: 32px;
+  min-height: 32px;
   display: inline-block;
   line-height: 32px;
   text-align: center;
   border-radius: 4px;
   margin: 0 16rpx 16rpx 0;
 }
-.chooseBox>text.chooseItem:nth-child(4n),.chooseBox .route text.chooseItem:nth-child(3n){
+.chooseBox>text.chooseItem:nth-child(4n),.chooseBox .route .chooseItem:nth-child(3n){
   margin-right: 0;
 }
-.chooseBox text.selected{
+.chooseBox text.selected,.chooseBox view.selected{
   color: #0089FC;
   background-color: rgba(233, 244, 250, 1);
 }

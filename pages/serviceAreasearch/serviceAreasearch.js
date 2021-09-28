@@ -70,7 +70,6 @@ Page({
     }
   },
   bindconfirm(e) {
-    console.log(e.detail.value)
     this.setData({
       searchText: e.detail.value
     })

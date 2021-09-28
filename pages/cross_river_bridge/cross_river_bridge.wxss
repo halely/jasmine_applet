@@ -3,49 +3,54 @@
   padding: 26rpx;
   box-sizing: border-box;
 }
-.main{
-  overflow:auto!important;
+
+.main {
+  overflow: auto !important;
 }
+
 .carTypeBox {
   display: flex;
-  border-radius: 8px 8px 0 0;
+  border-radius: 16rpx 16rpx 0 0;
   overflow: hidden;
+  padding: 16rpx 40rpx;
+  justify-content: space-around;
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
 }
 
 .carTypeBox .carTypeItem {
-  width: 50%;
-  height: 48px;
+  width: 40%;
+  height: 64rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #E6E6E6;
+  border-radius: 80rpx;
 }
 
 .carTypeBox .carTypeItem .carTypeName {
-  font-size: 16px;
+  font-size:32rpx;
   font-weight: 400;
   color: #666666;
-  line-height: 22px;
-  margin-right: 7px;
+  line-height: 44rpx;
+  margin-right: 14rpx;
 }
 
 .carTypeBox .carTypeItem .carTypeNum {
-  font-size: 14px;
+  font-size: 28rpx;
   font-weight: 600;
   color: #999999;
-  line-height: 20px;
-  padding: 0 11px;
+  line-height: 40rpx;
+  padding: 0 22rpx;
   background-color: #F4F4F4;
   border-radius: 8rpx;
 }
 
 .carTypeItem.select {
-  background-color: #ffffff;
-
+  background-color: #1677FE;
 }
 
 .carTypeItem.select .carTypeName {
-  color: #1677FE;
+  color: #ffffff;
 }
 
 .carTypeItem.select .carTypeNum {
@@ -59,24 +64,38 @@
   box-sizing: border-box;
 }
 
+.channelInfoBox .clickTitleBox {
+  display: flex;
+  background-color: rgba(22, 119, 254, 0.08);
+  padding: 8rpx 20rpx;
+  border-radius: 8rpx;
+  align-items: center;
+}
+
+.channelInfoBox .clickTitleBox image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 16rpx;
+}
+
 .refresBox {
   display: flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 24rpx;
   color: #666666;
-  line-height: 17px;
+  line-height: 24rpx;
 }
 
 .refresBox image {
-  width: 16px;
-  height: 16px;
-  margin-right: 6px;
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 12rpx;
 }
 
 .bridgeBox {
-  width: 308px;
+  width: 616rpx;
   margin: 0 auto;
-  margin-top: 60px;
+  margin-top:120rpx;
   position: relative;
 }
 
@@ -86,6 +105,30 @@
   width: 308px;
 }
 
+.bridgeTip {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+.bridgeTip text{
+  margin-top: 16rpx;
+  display: flex;
+  align-items: center;
+}
+.bridgeTip text::before{
+  width: 16rpx;
+  height: 16rpx;
+  content: '';
+  display: block;
+  background-color:#FF2020 ;
+  margin-right: 8rpx;
+  border-radius: 50%;
+}
+.bridgeTip text:first-child::before{
+  background-color:#07C160 ;
+}
 .bridgebody {
   position: absolute;
   top: 0;
@@ -115,6 +158,16 @@
   font-size: 26rpx;
   text-align: center;
   position: absolute;
+  padding: 2rpx 16rpx;
+  border-radius: 24rpx;
+}
+
+.bridgeItem.seleced>text {
+  background-color: rgba(7, 193, 96, 0.12);
+}
+
+.bridgeItem.seleced>text.error {
+  background-color: rgba(255, 32, 32, 0.15);
 }
 
 .bridgeItem>text.error {
@@ -153,5 +206,14 @@
 .onlineTitle image {
   width: 12px;
   height: 12px;
-  margin-right:8rpx;
+  margin-right: 8rpx;
+}
+
+.normalcommunication {
+  font-size: 20px;
+  font-weight: 500;
+  color: #07C160;
+  margin-top: 30px;
+  display: block;
+  text-align: center;
 }
