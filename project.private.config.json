@@ -25,8 +25,14 @@
           "scene": null
         },
         {
-          "name": "pages/serviceAreaInfo/serviceAreaInfo",
-          "pathName": "pages/serviceAreaInfo/serviceAreaInfo",
+          "name": "pages/toll_station/toll_station",
+          "pathName": "pages/toll_station/toll_station",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/serviceArea/serviceArea",
+          "pathName": "pages/serviceArea/serviceArea",
           "query": "",
           "scene": null
         }

@@ -91,7 +91,7 @@
 
 .cityItem .cityName {
   color: #999999;
-  border: 1px solid #999999;
+  border: 1px solid #e6e6e6;
   font-size: 16px;
   line-height: 22px;
   border-radius: 16px;

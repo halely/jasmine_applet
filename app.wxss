@@ -41,6 +41,7 @@
 .haedTab .menu {
   line-height:70rpx;
   color: #999999;
+  font-size: 32rpx;
 }
 
 .haedTab .menu.borders {

@@ -30,7 +30,7 @@
           </view>
           <view class="infoItem">
             <label>限行时间：</label>
-            <text>{{item.controlEndTime ||'--'}} {{item.controlStartTime?'至 '+item.controlStartTime:'全天'}}</text>
+            <text>{{item.controlStartTime ||'--'}} {{item. controlEndTime?'至 '+item. controlEndTime:'全天'}}</text>
           </view>
           <view class="infoItem">
             <label>限行原因：</label>

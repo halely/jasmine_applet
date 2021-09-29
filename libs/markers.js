@@ -1,5 +1,5 @@
 module.exports.markersData = {
   latitude: '', //纬度
   longitude: '', //经度
-  key: "e8a677ff87064bbbd40cdacbf2e6c792" //申请的高德地图key
+  key: "1965eb0860b6b54ea29e48cac4b11af7" //申请的高德地图key
 };

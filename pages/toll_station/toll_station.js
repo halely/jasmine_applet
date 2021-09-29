@@ -14,49 +14,51 @@ Page({
     current: 0,
     AllCityLine: {}, //城市描边信息
     cityList: [{
-      name: '南京',
-      key: '320100'
-    }, {
-      name: '无锡',
-      key: '320200'
-    }, {
-      name: '徐州',
-      key: '320300  '
-    }, {
-      name: '常州',
-      key: '320400'
-    }, {
-      name: '苏州',
-      key: '320500'
-    }, {
-      name: '南通',
-      key: '320600'
-    }, {
-      name: '连云港',
-      key: '320700'
-    }, {
-      name: '淮安',
-      key: '320800'
-    }, {
-      name: '盐城',
-      key: '320900'
-    }, {
-      name: '扬州',
-      key: '321000'
-    }, {
-      name: '镇江',
-      key: '321100'
-    }, {
-      name: '泰州',
-      key: '321200'
-    }, {
-      name: '宿迁',
-      key: '321300  '
-    }, {
-      name: '安徽天长',
-      key: '341181'
-    }],
-    minScale: 8,//缩放限制
+        name: '南京',
+        key: '320100'
+      }, {
+        name: '无锡',
+        key: '320200'
+      }, {
+        name: '徐州',
+        key: '320300  '
+      }, {
+        name: '常州',
+        key: '320400'
+      }, {
+        name: '苏州',
+        key: '320500'
+      }, {
+        name: '南通',
+        key: '320600'
+      }, {
+        name: '连云港',
+        key: '320700'
+      }, {
+        name: '淮安',
+        key: '320800'
+      }, {
+        name: '盐城',
+        key: '320900'
+      }, {
+        name: '扬州',
+        key: '321000'
+      }, {
+        name: '镇江',
+        key: '321100'
+      }, {
+        name: '泰州',
+        key: '321200'
+      }, {
+        name: '宿迁',
+        key: '321300  '
+      },
+      {
+        name: '天长',
+        key: '341181'
+      }
+    ],
+    minScale: 8, //缩放限制
     selectCity: '南京',
     cityCode: '320100',
     markers: [], //标记点数组
@@ -83,7 +85,7 @@ Page({
         })
         setTimeout(() => {
           wx.hideLoading()
-        }, 1000);
+        }, 2000);
       } else {
         this.setData({
           searchText: '',
@@ -119,10 +121,10 @@ Page({
         cityCode: code,
         selectCityData: {}
       })
-      this.getqueryAllCityLine();
+      this.getgaodeAllCityLine();//高德数据描边数据获取
+      // this.getqueryAllCityLine();//当前数据
       //获取城市数据
       this.getqueryAllByArea();
-      // this.setCityLine();
     }
   },
   //获取当前城市收费站数据
@@ -238,6 +240,58 @@ Page({
       this.getData()
     }
   },
+  //高德获取数据
+  getgaodeAllCityLine() {
+    let param = {
+      keywords: this.data.selectCity,
+      extensions: 'all',
+      subdistrict: '2',
+      key: '6fc51c4ba7f837898436aa723cb9cd49'
+    }
+    wx.request({
+      url: 'https://restapi.amap.com/v3/config/district',
+      data: param,
+      method: 'GET',
+      success: (res => {
+        if (res.statusCode === 200) {
+          // let polylines=res.data.districts[0].polyline.split('|');
+          // let polyline=polylines[0];
+          // if(polylines[1]){
+          //   polyline=polylines[1].length>polylines[0].length?polylines[1]:polylines[0];
+          // }
+          let polyline=res.data.districts[0].polyline;
+          
+
+          let center=res.data.districts[0].center;
+          let polylineArr =polyline.split(';');
+          console.log(polylineArr)
+          let points = polylineArr.map(item => {
+            let locationArr = item.split(',')
+            return {
+              longitude: locationArr[0],
+              latitude: locationArr[1].split('|')[0]
+            }
+          })
+          this.setData({
+            latitude: center.split(',')[1],
+            longitude: center.split(',')[0],
+            polygon: [{
+              points: points,
+              fillColor: "#4F94CD33",
+              strokeColor: "#4F94CD33",
+              strokeWidth: 0,
+              zIndex: 1
+            }]
+          });
+        } else {
+
+        }
+      }),
+      fail: (res => {
+
+      })
+    })
+  },
   //获取所有城市描边数据
   async getqueryAllCityLine() {
     let AllCityLine = wx.getStorageSync('AllCityLine')
@@ -251,8 +305,12 @@ Page({
       this.setData({
         AllCityLine: AllCityLine
       })
-      this.setCityLine(); //设置描边
-      wx.hideLoading()
+      setTimeout(() => {
+        wx.nextTick(() => {
+          this.setCityLine(); //设置描边
+          wx.hideLoading()
+        })
+      }, 1000);
       return false;
     }
     let param = {
@@ -268,11 +326,13 @@ Page({
       this.setData({
         AllCityLine: AllCityLine
       })
-      wx.nextTick(() => {
-        this.setCityLine(); //设置描边
-      })
-      // this.setCityLine(); //设置描边
-      wx.hideLoading()
+      setTimeout(() => {
+        wx.nextTick(() => {
+          this.setCityLine(); //设置描边
+          wx.hideLoading()
+        })
+      }, 1000);
+
     } else {}
   },
   //点击标记点
@@ -319,7 +379,8 @@ Page({
     this.getcity();
     this.getqueryAllClose(); //获取所有的关闭信息
     this.getData(); //获取列表数据
-    this.getqueryAllCityLine(); //获取描边数据
+    // this.getqueryAllCityLine(); //获取描边数据
+    this.getgaodeAllCityLine()
     this.getqueryAllByArea(); //获取城市信息
   },
 
@@ -354,8 +415,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数

@@ -12,6 +12,7 @@
   display: inline-flex;
   align-items: center;
   color: black;
+  font-size: 16px;
 }
 .queryBox .queryItem.selected{
   color: #1677FE;
@@ -128,9 +129,9 @@
   border-radius: 8rpx;
   color: #07C160;
   font-size: 22rpx;
-  line-height: 18px;
-  height: 18px;
+  line-height:20px;
   width:52px;
+  font-weight: bold;
   display: inline-block;
   text-align: center;
   margin-right: 14px;

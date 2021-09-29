@@ -17,7 +17,7 @@
       <image wx:if="{{conditionSelect==2}}" src="/img/drop-down-selected.png"></image>
       <image wx:else src="/img/drop-down_back.png"></image>
     </view>
-    <icon size='18' bindtap="searchClick" type='search'></icon>
+    <icon size='24' bindtap="searchClick" type='search'></icon>
   </view>
   <view class="main">
     <scroll-view scroll-y bindscrolltolower="scrolltolower">
