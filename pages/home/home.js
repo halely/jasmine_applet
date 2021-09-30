@@ -250,7 +250,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getLocation()
+    this.getLocation();
+    // APPSECRET:868090089dee22c5dfa574da1bf08980
+
+   let access_token='49_VPN3NeJJZuXa2VKLVF6qVznKsbTveEFEkPXZEfC8QuF8ifacjPPvdKETaazjOESRyFHCphLFKLFYC7wiubADG9qvp8puI-N9u0jJM5fmr6dRQrzqCLCT6K2F2N7Wrbzf5lxi6-y6SfqhZzl9HSYjABANYE';
+
+  //  wx.request({
+  //   // url: 'https://api.weixin.qq.com/cgi-bin/token',
+  //   url:'https://api.weixin.qq.com/wxa/generate_urllink?access_token='+access_token,
+  //   method: 'post',
+  //   data: {
+  //     // access_token:access_token
+  //     // grant_type:'client_credential',
+  //     // appid:'wx98afbbed07c0f43f',
+  //     // secret:'868090089dee22c5dfa574da1bf08980',
+  //   },
+  //   success: (res => {
+  //     if (res.statusCode === 200) {
+
+  //     } else {
+
+  //     }
+  //   }),
+  //   fail: (res => {
+
+  //   })
+  // })
+  
   },
 
   /**
