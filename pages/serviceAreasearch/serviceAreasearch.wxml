@@ -4,7 +4,7 @@
   <view class="searchBox">
     <view class="search_arr">
       <icon class="searchcion" size='20' type='search'></icon>
-      <input placeholder="搜索" bindconfirm="bindconfirm" confirm-type="search" />
+      <input placeholder="搜索" maxlength="32"  bindconfirm="bindconfirm" confirm-type="search" />
     </view>
   </view>
   <view class="main">

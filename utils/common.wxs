@@ -37,6 +37,15 @@ function macth_close(arr1, arr2) {
   return newArr;
 }
 
+function splitTiem(val){
+   if(val){
+     return val.split(' ')[0]
+   }else{
+     return ''
+   }
+}
+
 module.exports.math_distance = math_distance;
 module.exports.arr_includes = arr_includes;
 module.exports.macth_close = macth_close;
+module.exports.splitTiem = splitTiem;

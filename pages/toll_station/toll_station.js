@@ -54,7 +54,7 @@ Page({
         key: '321300  '
       },
       {
-        name: '天长',
+        name: '安徽天长',
         key: '341181'
       }
     ],
@@ -242,8 +242,9 @@ Page({
   },
   //高德获取数据
   getgaodeAllCityLine() {
+    let keywords=this.data.selectCity=='安徽天长'?'天长':this.data.selectCity
     let param = {
-      keywords: this.data.selectCity,
+      keywords: keywords,
       extensions: 'all',
       subdistrict: '2',
       key: '6fc51c4ba7f837898436aa723cb9cd49'
@@ -260,11 +261,9 @@ Page({
           //   polyline=polylines[1].length>polylines[0].length?polylines[1]:polylines[0];
           // }
           let polyline=res.data.districts[0].polyline;
-          
-
           let center=res.data.districts[0].center;
           let polylineArr =polyline.split(';');
-          console.log(polylineArr)
+          // console.log(polylineArr)
           let points = polylineArr.map(item => {
             let locationArr = item.split(',')
             return {

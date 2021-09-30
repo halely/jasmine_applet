@@ -28,7 +28,7 @@
 }
 
 .carTypeBox .carTypeItem .carTypeName {
-  font-size:32rpx;
+  font-size: 32rpx;
   font-weight: 400;
   color: #666666;
   line-height: 44rpx;
@@ -54,14 +54,23 @@
 }
 
 .carTypeItem.select .carTypeNum {
-  background-color: rgba(255, 32, 32, 0.15);
-  color: #FF2020;
+  background-color: rgba(255, 119, 0, 0.12);
+  color: #FF7700;
 }
 
 .channelInfoBox {
   background-color: #ffffff;
-  padding: 40rpx;
+  padding: 40rpx 0;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.limitInfoBox{
+  flex: 1;
+  overflow: auto;
+  padding: 10rpx 40rpx;
 }
 
 .channelInfoBox .clickTitleBox {
@@ -93,9 +102,9 @@
 }
 
 .bridgeBox {
-  width: 616rpx;
+  width:308px;
   margin: 0 auto;
-  margin-top:120rpx;
+  margin-top: 120rpx;
   position: relative;
 }
 
@@ -112,23 +121,27 @@
   display: flex;
   flex-direction: column;
 }
-.bridgeTip text{
+
+.bridgeTip text {
   margin-top: 16rpx;
   display: flex;
   align-items: center;
 }
-.bridgeTip text::before{
+
+.bridgeTip text::before {
   width: 16rpx;
   height: 16rpx;
   content: '';
   display: block;
-  background-color:#FF2020 ;
+  background-color: #FF7700;
   margin-right: 8rpx;
   border-radius: 50%;
 }
-.bridgeTip text:first-child::before{
-  background-color:#07C160 ;
+
+.bridgeTip text:first-child::before {
+  background-color: #07C160;
 }
+
 .bridgebody {
   position: absolute;
   top: 0;
@@ -167,11 +180,11 @@
 }
 
 .bridgeItem.seleced>text.error {
-  background-color: rgba(255, 32, 32, 0.15);
+  background-color:rgba(255, 119, 0, 0.12);
 }
 
 .bridgeItem>text.error {
-  color: #FF2020;
+  color: #FF7700;
 }
 
 .limitInfo {
@@ -188,7 +201,7 @@
 }
 
 .boxTitle>text:first-child {
-  color: #FF2020;
+  color: #FF7700;
   margin-right: 20rpx;
 }
 

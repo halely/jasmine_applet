@@ -69,9 +69,11 @@
 }
 
 .search_arr input {
-  height: 60rpx;
+  height:75rpx;
   border-radius: 10rpx;
   font-size: 28rpx;
+  flex: 1;
+  padding-right: 20rpx;
 }
 
 /* 内容样式 */

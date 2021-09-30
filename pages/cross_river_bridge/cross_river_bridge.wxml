@@ -42,26 +42,32 @@
                 <image data-id="2" class="nodeImg" src="/img/release.png"></image>
               </view>
             </block>
-            <text class="{{seletObj[item.name].left||seletObj[item.name].right?'error':''}}"
+            <text data-itemInfo="{{seletObj[item.name]}}" bindtap="bridgeClick"
+              wx:if="{{seletObj[item.name].left||seletObj[item.name].right}}" class="error"
+              style="top:{{item.textPosition.top}};left: {{item.textPosition.left}};">{{item.name}}</text>
+            <text wx:else data-itemInfo="{{item.name}}" bindtap="bridgeClick"
               style="top:{{item.textPosition.top}};left: {{item.textPosition.left}};">{{item.name}}</text>
           </view>
         </view>
         <view class="bridgeTip">
           <text>正常通行</text>
-          <text>禁止通行</text>
+          <text>限制通行</text>
         </view>
-      </view>
-      <view class="limitInfo" wx:for="{{selectItembridge.eventDetail}}" wx:key="key">
-        <view class="boxTitle">
-          <text>{{item.dirDes}}</text>
-          <text>{{item.bridgeName}}大桥</text>
-        </view>
-        <text user-select>{{item.eventDetail}}</text>
       </view>
       <view wx:if="{{selectItembridge.name && !selectItembridge.eventDetail}}" class="normalcommunication">
         {{selectItembridge.name}}大桥正常通行</view>
+      <view class="limitInfoBox">
+        <view class="limitInfo" wx:for="{{selectItembridge.eventDetail}}" wx:key="key">
+          <view class="boxTitle">
+            <text>{{item.dirDes}}</text>
+            <text>{{item.bridgeName}}大桥</text>
+          </view>
+          <text user-select>{{item.eventDetail}}</text>
+        </view>
+      </view>
+     
     </view>
-    <view class="onlineTitle">
+    <view class="onlineTitle" hidden="true">
       <image src="/img/prompt.png"></image>
       <text>导航功能即将上线</text>
     </view>

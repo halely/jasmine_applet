@@ -12,7 +12,7 @@
     <view class="searchBox">
       <view class="search_arr">
         <icon class="searchcion" size='20' type='search'></icon>
-        <input placeholder="搜索" bindconfirm="bindconfirm" confirm-type="search" />
+        <input placeholder="搜索" maxlength="32"  bindconfirm="bindconfirm" confirm-type="search" />
       </view>
     </view>
     <!-- 内容 -->
@@ -32,7 +32,7 @@
               <text class="state_title ellipsis">{{item_son.dirDes}}</text>
               <view class="stateInfo ">
                 <text class="{{!item_son.entrance?'close':''}}">{{!item_son.entrance?'入口关闭':'入口开启'}}</text>
-                <text class="{{!item_son.exit?'close':''}}">{{!item_son.entrance?'出口关闭':'出口开启'}}</text>
+                <text class="{{!item_son.exit?'close':''}}">{{!item_son.exit?'出口关闭':'出口开启'}}</text>
               </view>
             </view>
           </view>
@@ -76,7 +76,7 @@
                   <text class="state_title ellipsis">{{item_son.dirDes}}</text>
                   <view class="stateInfo ">
                     <text class="{{!item_son.entrance?'close':''}}">{{!item_son.entrance?'入口关闭':'入口开启'}}</text>
-                    <text class="{{!item_son.exit?'close':''}}">{{!item_son.entrance?'出口关闭':'出口开启'}}</text>
+                    <text class="{{!item_son.exit?'close':''}}">{{!item_son.exit?'出口关闭':'出口开启'}}</text>
                   </view>
                 </view>
               </view>

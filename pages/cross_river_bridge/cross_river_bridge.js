@@ -118,9 +118,14 @@ Page({
     current: 0
   },
   async getQueryAllBridge() {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     let {
       data
     } = await requst_get_queryAllBridge();
+    wx.hideLoading()
     if (data.code == '1001') {
       this.setData({
         hc: data.data.hc || [],
@@ -143,20 +148,20 @@ Page({
     carData.forEach(item => {
       if (!obj[item.bridgeName]) obj[item.bridgeName] = {};
       obj[item.bridgeName].name = item.bridgeName;
-      if(!obj[item.bridgeName].eventDetail){
-        obj[item.bridgeName].eventDetail=[]
+      if (!obj[item.bridgeName].eventDetail) {
+        obj[item.bridgeName].eventDetail = []
       }
-      if(item.eventTypeId== 4 && !item.eventTypeSubId){
-        //常态关闭不显示
-        obj[item.bridgeName].normal= true ;
-        obj[item.bridgeName].eventDetail.push(item);
-        return false
-      }
+      // if (item.eventTypeId == 4 && !item.eventTypeSubId) {
+      //   //常态关闭不显示
+      //   obj[item.bridgeName].normal = true;
+      //   obj[item.bridgeName].eventDetail.push(item);
+      //   return false
+      // }
       if (item.dir == "下行") {
         obj[item.bridgeName].left = true;
-      } else if(item.dir == "上行") {
+      } else if (item.dir == "上行") {
         obj[item.bridgeName].right = true;
-      }else if(item.dir == "双向")  {
+      } else if (item.dir == "双向") {
         obj[item.bridgeName].left = true;
         obj[item.bridgeName].right = true;
       }
@@ -171,7 +176,7 @@ Page({
     let newObj = {};
     if (typeof iteminfo == 'string') {
       newObj = {
-        name:iteminfo
+        name: iteminfo
       }
     } else {
       newObj = iteminfo;
@@ -186,7 +191,7 @@ Page({
       if (current != this.data.current) {
         this.setData({
           current: current,
-          selectItembridge:{}
+          selectItembridge: {}
         })
         this.macthbridge()
       }
@@ -196,9 +201,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.type=='kc'){
+    if (options.type == 'kc') {
       this.setData({
-        current:1
+        current: 1
       })
     }
     this.getQueryAllBridge()
