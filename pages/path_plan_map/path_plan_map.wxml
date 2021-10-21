@@ -1,0 +1,32 @@
+<!--pages/path_plan_map/path_plan_map.wxml-->
+<view class="container">
+  <!-- 路线查询模块 -->
+  <view class="path_search_box">
+    <view class="path_search_body ">
+      <view class="path_search_steps direction_column">
+        <view class="step_annulus"></view>
+        <view class="step_line"></view>
+        <view class="step_annulus orange"></view>
+      </view>
+      <view class="path_search_main ">
+        <view class="path_search_origin" bindtap='getFormAddress'>{{origin.name}}</view>
+        <view class="septalLine"></view>
+        <view class="path_search_destination" bindtap='getToAddress'>{{destination.name}}</view>
+      </view>
+      <image class="path_search_switch" bindtap="switchPath" src="/img/switch.png"></image>
+    </view>
+  </view>
+  <movable-area class="main">
+    <map id="map" longitude="{{markers[0]?markers[0].longitude:myLocation.longitude}}" show-location="{{true}}"
+      latitude="{{markers[0]?markers[0].latitude:myLocation.latitude}}" scale="12" markers="{{markers}}"
+      polyline="{{polyline}}"></map>
+    <movable-view y="{{y}}" hidden="{{true}}" bindchange="onPresent" direction="vertical" class="movable-panel" out-of-bounds="{{true}}">
+      <view class="panelHead">
+        <scroll-view scroll-y="{{true}}">
+          <view wx:for="{{12}}">该路线费用最优，途径2个收费站，3个服务区</view>
+        </scroll-view>
+
+      </view>
+    </movable-view>
+  </movable-area>
+</view>

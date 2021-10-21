@@ -1,0 +1,535 @@
+/* pages/high_speed_info/high_speed_info.wxss */
+
+.restrictionItem {
+  width: 100%;
+  padding: 40rpx 32rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+}
+
+.restrictionItem .item_head {
+  display: flex;
+}
+
+.restrictionItem .item_head .highwayBox {
+  width: 53px;
+  height: 53px;
+  position: relative;
+  margin: 0 40rpx 0 0;
+  flex-shrink: 0;
+}
+
+.restrictionItem .item_head .highwayBox image {
+  width: 100%;
+  height: 100%;
+}
+
+.HighwayText {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  font-size: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.HighwayText text:first-child {
+  font-size: 13px;
+  margin: 28rpx 0 2rpx 0;
+}
+
+.basicInfo {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0f0f0f;
+  line-height: 15px;
+  padding-bottom: 30rpx;
+  overflow: hidden;
+}
+
+.infoHead {
+  display: flex;
+  align-items: center;
+}
+
+.infoTitle {
+  flex: 1;
+  overflow: hidden;
+}
+
+.focus_on {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 40rpx;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 6rpx 14rpx;
+  background-color: #F1F1F1;
+  border-radius: 18rpx;
+}
+
+.focus_on.selected {
+  color: #FF7700;
+}
+
+.focus_on image {
+  display: inline-flex;
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+
+.basicInfo .eventText {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 40rpx;
+  margin-top: 12rpx;
+}
+
+.basicInfo .eventText>text {
+  font-size: 32rpx;
+  color: #FF2D2D;
+}
+
+.basicInfo .eventText>text.success {
+  color: #07C160;
+}
+
+.item_foot {
+  display: flex;
+  align-items: center;
+}
+
+.accident {
+  flex: 1;
+}
+
+.map_mode_but {
+  padding: 4rpx 18rpx;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #12A86D;
+  line-height: 17px;
+  background-color: rgba(18, 168, 109, 0.08);
+  border-radius: 24rpx;
+}
+
+.map_mode_but image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 4rpx;
+}
+
+.accidentItem {
+  font-size: 24rpx;
+  display: inline-block;
+  color: #666666;
+  line-height: 34rpx;
+  padding: 4rpx 16rpx;
+  background-color: #F5F5F5;
+  border-radius: 8rpx;
+  margin: 10rpx 24rpx 10rpx 0;
+}
+
+.accidentItem.error {
+  color: #FF2D2D;
+  background-color: rgba(212, 0, 1, 0.08);
+}
+
+.accidentItem.success {
+  color: #07C160;
+  background: rgba(7, 193, 96, 0.12);
+}
+
+.restriction_type_tab {
+  height: 100%;
+  background-color: #ffffff;
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+
+.restriction_type_tab_head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.restriction_type_tab_head .restriction_type_tab_title {
+  width: 33%;
+  padding: 24rpx 0;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #666666;
+  line-height: 22px;
+}
+
+.restriction_type_tab_head .restriction_type_tab_title.selected {
+  border-bottom: 6rpx solid #07C160;
+  color: #07C160;
+}
+
+.restriction_type_tab_main {
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.restriction_type_tab_pane,
+.trafficInfo {
+  height: 100%;
+  overflow: hidden;
+}
+
+.trafficInfo>view {
+  width: 100%;
+}
+
+.trafficInfo_head {
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.trafficInfo_head text {
+  color: #999999;
+  line-height: 20px;
+  padding: 6rpx 18rpx;
+  background-color: #F5F5F5;
+  border-radius: 18rpx;
+  margin: 0 24rpx 24rpx 0;
+  display: inline-block;
+}
+
+.trafficInfo_head text.selected {
+  background-color: rgba(7, 193, 96, 0.08);
+  color: #07C160;
+}
+
+.trafficInfo_body {
+  flex: 1;
+  padding: 16rpx 0 32rpx 0;
+  box-sizing: border-box;
+  overflow: auto;
+}
+/* .trafficInfo_body scroll-view{
+  padding:10rpx 0 0 0;
+  box-sizing: border-box;
+} */
+
+.trafficInfo_item {
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 30rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+  width:calc(100% - 64rpx);
+  margin:0 32rpx 20rpx 32rpx;
+}
+.trafficInfo_item:first-child{
+  margin-top: 10rpx;
+}
+
+.trafficInfo_item .trafficInfo_item_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #666666;
+  line-height: 20px;
+  margin-bottom: 30rpx;
+}
+
+.trafficInfo_item .trafficInfo_item_head .trafficInfo_type {
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 22px;
+  padding: 4rpx 18rpx;
+  background-color: #DA6600;
+}
+
+.trafficInfo_item .trafficInfo_item_head .trafficInfo_type.bule {
+  background-color: #0089FF;
+}
+
+.high_speed_direction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.direction_switch {
+  width: 40rpx;
+  height: 40rpx;
+  transform: rotate(90deg);
+  margin: 60rpx 40rpx;
+}
+
+.directionItem.selected {
+  background-color: #07C160;
+  color: #ffffff;
+  padding: 12rpx 30rpx;
+  border-radius: 30rpx;
+}
+
+.toll_station_box {
+  width: 100%;
+  flex: 1;
+  padding:15rpx 0rpx;
+  box-sizing: border-box;
+  overflow: auto;
+}
+.toll_station_Timeline{
+  position: relative;
+  top: 30rpx;
+}
+/* 圆环 */
+.Timeline_tail {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background-color: #12A86D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Timeline_tail::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.6);
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.Timeline_normal {
+  height: 100%;
+  border-left: 2rpx solid #F5F5F5;
+  position: relative;
+  left:14rpx;
+  width: 0;
+}
+
+.toll_station_item {
+  display: flex;
+  padding: 0 0 30rpx 0;
+  width: calc(100% - 32px);
+  margin: 0 32rpx;
+}
+.toll_station_item:first-child{
+  padding-top: 10rpx;
+}
+.toll_station_item:last-child .Timeline_normal{
+  display: none;
+}
+.toll_station_body {
+  flex: 1;
+  padding: 16rpx 28rpx 24rpx 28rpx;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  margin-left: 16rpx;
+  overflow: hidden;
+}
+
+
+.toll_station_item .itemhead .tollStationTitle text:first-child {
+  color: #333333;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.tollstation_state {
+  display: flex;
+  margin-top: 10px;
+}
+
+.tollstation_state .state_title {
+  padding: 4px 8px;
+  background-color: #F4F4F4;
+  flex: 1;
+  text-align: center;
+  margin-right:8px;
+}
+
+.stateInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.stateInfo text {
+  display: block;
+  padding: 4px 8px;
+  background-color: #F4F4F4;
+  font-size: 14px;
+  font-weight: 500;
+  color: #07C160;
+  line-height: 20px;
+}
+
+.stateInfo text.close {
+  color: #FF2020;
+}
+
+.toll_station_name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 25px;
+}
+
+.toll_station_num {
+  font-size: 12px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  line-height: 17px;
+  padding: 10rpx 0;
+}
+
+/* 服务区样式 */
+.serviceAreaItem {
+  /* width: 100%; */
+  flex: 1;
+  overflow: hidden;
+  padding: 40rpx 32rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  margin-left:16rpx;
+}
+
+.serviceAreaItem .item_head {
+  display: flex;
+}
+
+.serviceAreaItem .item_head .serviceAreaImg {
+  width: 52px;
+  height: 52px;
+  margin-right: 14px;
+  border-radius: 8rpx;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo {
+  flex: 1;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.serviceAreaItem .direction {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 36rpx;
+  margin-top: 20rpx;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head text {
+  font-size: 13px;
+  color: #666666;
+  line-height: 18px;
+}
+
+
+.serviceAreaItem .serviceAreaInfo_main_item image {
+  width: 14px;
+  height: 14px;
+  margin-right: 10rpx;
+  flex-shrink: 0;
+} 
+
+.serviceAreaItem .parkingInfo {
+  flex: 1;
+}
+
+.serviceAreaItem .parkingInfo .parkingInfo_item {
+  padding: 2px 4px;
+  border-radius: 8px;
+  background-color: #F7F7F7;
+  margin: 3px 6px 3px 0;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #666666;
+  line-height: 17px;
+  align-items: center;
+  display: inline-flex;
+}
+
+.serviceAreaItem .parkingInfo_item>text {
+  font-size: 14px;
+  font-family: DINAlternate-Bold, DINAlternate;
+  font-weight: bold;
+  color: #333333;
+  line-height: 19px;
+  margin-left: 2px;
+}
+
+.serviceAreaItem .item_foot {
+  display: flex;
+  margin-top: 10px;
+}
+
+.serviceAreaItem .perCapita {
+  background: rgba(7, 193, 96, 0.08);
+  border-radius: 8rpx;
+  color: #07C160;
+  font-size: 22rpx;
+  line-height:20px;
+  width:52px;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+.serviceAreaItem .perCapita.error{
+  color: #FF2020;
+  background: #fcf0f0;
+}
+
+.serviceAreaItem .recommendBox {
+  flex: 1;
+  overflow: hidden;
+}
+
+.serviceAreaItem .recommendBox>text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+
+
+.serviceAreaItem .sales_status {
+  width: 100%;
+  display: flex;
+  font-size: 12px;
+  color: #666666;
+  line-height: 17px;
+  margin-top: 8px;
+}
+
+.serviceAreaItem .sales_status text {
+  margin: 0 30px 0 8px;
+}

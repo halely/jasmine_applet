@@ -1,0 +1,74 @@
+<!--pages/traffic_info/traffic_info.wxml-->
+<view class="container">
+  <view class="trafficHeadBox">
+    <view class="trafficHeadItem direction_column">
+      <image src="/img/traffic_high_speed.png"></image>
+      <text>高速路况</text>
+    </view>
+    <view class="trafficHeadItem direction_column">
+      <image src="/img/traffic_control.png"></image>
+      <text>车辆限行</text>
+    </view>
+    <view class="trafficHeadItem direction_column">
+      <image src="/img/traffic_bridge.png"></image>
+      <text>过江大桥</text>
+    </view>
+    <view class="trafficHeadItem direction_column">
+      <image src="/img/traffic_toll_station.png"></image>
+      <text>收费站开关</text>
+    </view>
+  </view>
+  <view class="trafficCondition">
+    <view class="nearBox">
+      <image src="/svg/near.svg"></image>
+      <tetx>附近路况</tetx>
+    </view>
+    <view class="choose_high_speed">选择高速</view>
+  </view>
+  <view class="main">
+    <map class="accidentMap" show-location="{{true}}" longitude="{{center[0]}}" latitude="{{center[1]}}" markers="{{markers}}" scale="{{scale}}"
+      bindmarkertap="bindmarkertap"></map>
+    <view class="map_marker_box" wx:if="{{IsMarkerinfoShow}}">
+      <view class="marker_info_head">
+        <view class="marker_info_main">
+          <image src="/img/accident_text_icon.png"></image>
+          <view class="marker_info_title">
+            <view class="info_title">交通事件</view>
+            <view class="info_direction">G2京沪高速（双向）</view>
+          </view>
+        </view>
+        <image class="close" bindtap="close_map_marker_box" src="/svg/close.svg"></image>
+      </view>
+      <view class="marker_info_text">
+        接广靖交警大队通知，G2京沪高速江阴大桥段靖江南双向入口禁止装载风力发电及大型配件超长超宽货车，时间：2014年7月28日15时至2021年12月31日。</view>
+      <view class="marker_info_time">
+        <view class="info_time_item direction_column">
+          <text>01-30 20:49</text>
+          <text>开始时间</text>
+        </view>
+        <view class="info_time_item direction_column">
+          <text>12-31 23:59</text>
+          <text>结束时间</text>
+        </view>
+      </view>
+    </view>
+    <view class="marker_type_box direction_column" >
+      <view class="marker_type_item direction_column" bindtap="marker_type_seleced" data-code="1">
+        <image src="/img/road.png"></image>
+        <text>路况</text>
+      </view>
+      <view class="marker_type_item direction_column" bindtap="marker_type_seleced" data-code="2">
+        <image src="/img/corssbridge.png"></image>
+        <text>过江大桥</text>
+      </view>
+      <view class="marker_type_item direction_column cancel"  bindtap="marker_type_seleced" data-code="3">
+        <image src="/img/stationIcon.png"></image>
+        <text>收费站</text>
+      </view>
+      <view class="marker_type_item direction_column" bindtap="marker_type_seleced" data-code="4">
+        <image src="/img/serviceAreaIcon.png"></image>
+        <text>服务区</text>
+      </view>
+    </view>
+  </view>
+</view>

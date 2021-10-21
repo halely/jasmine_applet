@@ -25,14 +25,44 @@
           "scene": null
         },
         {
-          "name": "pages/toll_station/toll_station",
-          "pathName": "pages/toll_station/toll_station",
+          "name": "pages/high_speed_road/high_speed_road",
+          "pathName": "pages/high_speed_road/high_speed_road",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/serviceArea/serviceArea",
-          "pathName": "pages/serviceArea/serviceArea",
+          "name": "pages/path_plan/path_plan",
+          "pathName": "pages/path_plan/path_plan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/high_speed_info/high_speed_info",
+          "pathName": "pages/high_speed_info/high_speed_info",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/personal/personal",
+          "pathName": "pages/personal/personal",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/collection/collection",
+          "pathName": "pages/collection/collection",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/traffic_info/traffic_info",
+          "pathName": "pages/traffic_info/traffic_info",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/path_plan_map/path_plan_map",
+          "pathName": "pages/path_plan_map/path_plan_map",
           "query": "",
           "scene": null
         }

@@ -1,0 +1,112 @@
+/* pages/personal/personal.wxss */
+.main {
+  overflow: auto;
+}
+
+.myInfo {
+  padding: 32rpx 52rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.head_portrait {
+  width: 120rpx;
+  height: 120rpx;
+  background-color: rgba(33, 188, 147, 0.26);
+  border-radius: 50%;
+  margin: 0 36rpx 0 12rpx;
+  margin-right: 36rpx;
+}
+
+.loginBut {
+  font-size: 22px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: 30px;
+}
+
+.my_collection_box,
+.my_service_box {
+  padding: 28rpx 52rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  margin-top: 20rpx;
+}
+
+.title {
+  font-size: 18px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: 25px;
+}
+
+.collection_type {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.collection_type .item_title {
+  font-size: 14px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #333333;
+}
+
+.collection_item {
+  display: inline-flex;
+  padding: 16rpx 0rpx;
+  width: 23%;
+  box-sizing: border-box;
+}
+
+.collection_item .item_icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin: 10rpx 0;
+}
+
+.my_service_box .collection_item {
+  background-color: #F5F5F5;
+}
+
+.my_service_box .collection_item .item_icon {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.jump_box {
+  background-color: #ffffff;
+  margin-top: 20rpx;
+}
+
+.jump_item {
+  display: flex;
+  padding: 32rpx 52rpx;
+  width: 100% !important;
+  background-color: #ffffff;
+  align-items: center;
+  border-bottom: 1rpx solid #f5f5f5;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.jump_item image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.jump_item text {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 22px;
+  margin-left: 28rpx;
+}

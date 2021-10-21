@@ -5,7 +5,9 @@ import {
   requst_get_queryAllByArea,
   requst_get_queryAllClose
 } from '../../api/index.js'
-
+import {
+  markersData
+} from '../../libs/markers.js'
 Page({
   /**
    * 页面的初始数据
@@ -247,7 +249,7 @@ Page({
       keywords: keywords,
       extensions: 'all',
       subdistrict: '2',
-      key: '6fc51c4ba7f837898436aa723cb9cd49'
+      key: markersData.webkey
     }
     wx.request({
       url: 'https://restapi.amap.com/v3/config/district',

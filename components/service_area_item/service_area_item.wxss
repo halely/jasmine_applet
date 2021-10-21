@@ -1,0 +1,131 @@
+/* components/service_area_item/service_area_item.wxss */
+.serviceAreaItem {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 40rpx 32rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.serviceAreaItem .item_head {
+  display: flex;
+}
+
+.serviceAreaItem .item_head .serviceAreaImg {
+  width: 52px;
+  height: 52px;
+  margin-right: 14px;
+  border-radius: 8rpx;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo {
+  flex: 1;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.serviceAreaItem .direction {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 36rpx;
+  margin-top: 20rpx;
+}
+
+.serviceAreaItem .item_head .serviceAreaInfo .serviceAreaInfo_head text {
+  font-size: 13px;
+  color: #666666;
+  line-height: 18px;
+}
+
+
+.serviceAreaItem .serviceAreaInfo_main_item image {
+  width: 14px;
+  height: 14px;
+  margin-right: 10rpx;
+  flex-shrink: 0;
+} 
+
+.serviceAreaItem .parkingInfo {
+  flex: 1;
+}
+
+.serviceAreaItem .parkingInfo .parkingInfo_item {
+  padding: 2px 4px;
+  border-radius: 8px;
+  background-color: #F7F7F7;
+  margin: 3px 6px 3px 0;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #666666;
+  line-height: 17px;
+  align-items: center;
+  display: inline-flex;
+}
+
+.serviceAreaItem .parkingInfo_item>text {
+  font-size: 14px;
+  font-family: DINAlternate-Bold, DINAlternate;
+  font-weight: bold;
+  color: #333333;
+  line-height: 19px;
+  margin-left: 2px;
+}
+
+.serviceAreaItem .item_foot {
+  display: flex;
+  margin-top: 10px;
+}
+
+.serviceAreaItem .perCapita {
+  background: rgba(7, 193, 96, 0.08);
+  border-radius: 8rpx;
+  color: #07C160;
+  font-size: 22rpx;
+  line-height:20px;
+  width:52px;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+.serviceAreaItem .perCapita.error{
+  color: #FF2020;
+  background: #fcf0f0;
+}
+
+.serviceAreaItem .recommendBox {
+  flex: 1;
+  overflow: hidden;
+}
+
+.serviceAreaItem .recommendBox>text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+
+.serviceAreaItem .sales_status {
+  width: 100%;
+  display: flex;
+  font-size: 12px;
+  color: #666666;
+  line-height: 17px;
+  margin-top: 8px;
+}
+
+.serviceAreaItem .sales_status text {
+  margin: 0 30px 0 8px;
+}

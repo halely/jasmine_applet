@@ -1,0 +1,31 @@
+<!--components/service_area_item/service_area_item.wxml-->
+<view class="serviceAreaItem">
+  <view class="item_head">
+    <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
+    <view class="serviceAreaInfo">
+      <view class="serviceAreaInfo_head">
+        <view class="serviceAreaName">翠屏山服务区
+          <text>禄口机场往南京方向</text>
+        </view>
+      </view>
+      <view class="direction">距您24.50km ｜ 南京机场高速 k10+15</view>
+    </view>
+  </view>
+  <view class="item_foot">
+    <!-- <text class="perCapita error" wx:if="{{!item.serviceAreaState}}">关闭</text> -->
+    <text class="perCapita">开启</text>
+    <view class="serviceAreaInfo_main">
+      <view class="serviceAreaInfo_main_item">
+        <image src="/img/cheer.png"></image>
+        <image src="/img/parking.png"></image>
+        <image src="/img/toilet.png"></image>
+        <image src="/img/foodgrey.png"></image>
+        <image src="/img/market.png"></image>
+        <!-- 充电桩 -->
+        <!-- <image wx:if="{{item.serviceAreaServiceInfo.hasMarketService}}" src="/img/charging.png"></image> -->
+        <image src="/img/graph.png"></image>
+        <image src="/img/mom.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

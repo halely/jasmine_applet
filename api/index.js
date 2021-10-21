@@ -25,3 +25,11 @@ export const requst_get_queryAllByArea = data => getRequest(`/station/queryAllBy
 export const requst_get_queryAllClose = data => getRequest(`/station/queryAllClose`,data);
 
 export const requst_post_evaluation = data => postRequest(`/evaluation/add`,data);
+
+
+/* 路况信息接口模块 */
+
+//查询查询全部高速路况 
+export const requst_get_queryAllRoadInfo = data => getRequest(`/road/queryAllRoadInfo`,data);
+//查询全部高速路况详情
+export const requst_get_queryRoadInfoDetail = data => getRequest(`/road/queryRoadInfoDetail`,data);

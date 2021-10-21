@@ -1,0 +1,82 @@
+/* components/toll_station_item/toll_station_item.wxss */
+.toll_station_item {
+  display: flex;
+  padding: 0 0 30rpx 0;
+  background-color: #ffffff;
+}
+
+.toll_station_item:last-child .Timeline_normal {
+  display: none;
+}
+
+.toll_station_item .toll_station_body {
+  flex: 1;
+  padding: 24rpx 32rpx;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.toll_station_item .toll_station_body .toll_station_head {
+  display: flex;
+}
+
+.toll_station_item .toll_station_body .toll_station_head image {
+  width: 104rpx;
+  height: 104rpx;
+  margin-right: 28rpx;
+}
+.toll_station_item .itemhead .tollStationTitle text:first-child {
+  color: #333333;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.toll_station_item .tollstation_state {
+  display: flex;
+  margin-top: 10px;
+}
+
+.toll_station_item .tollstation_state .state_title {
+  padding: 8rpx 16rpx;
+  background-color: #F4F4F4;
+  flex: 1;
+  text-align: center;
+  margin-right: 24rpx;
+}
+
+.toll_station_item .stateInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
+}
+
+.toll_station_item .stateInfo text {
+  display: block;
+  padding: 4px 8px;
+  background-color: #F4F4F4;
+  font-size: 14px;
+  font-weight: 500;
+  color: #07C160;
+  line-height: 20px;
+}
+
+.toll_station_item .stateInfo text.close {
+  color: #FF2020;
+}
+
+.toll_station_item .toll_station_name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 25px;
+}
+
+.toll_station_item .toll_station_num {
+  font-size: 12px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  line-height: 17px;
+  padding: 10rpx 0;
+  margin-top: 16rpx;
+}

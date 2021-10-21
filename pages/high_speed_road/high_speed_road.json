@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText":"高速路况",
+  "usingComponents":{
+    "high_speed_item":"/components/high_speed_item/high_speed_item"
+  }
+
+}

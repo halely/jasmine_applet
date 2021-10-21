@@ -1,0 +1,156 @@
+<!--pages/high_speed_info/high_speed_info.wxml-->
+<wxs module="common" src="/utils/common.wxs"></wxs>
+<view class="container">
+  <view class="restrictionItem">
+    <view class="item_head">
+      <view class="highwayBox">
+        <image wx:if="{{GsRoadInfo.name_type=='G'}}" class="highwayImg" src="/img/nationalHighway.png"></image>
+        <image wx:else class="highwayImg" src="/img/SuzhouHighway.png"></image>
+        <view class="HighwayText">
+          <text>{{GsRoadInfo.roadId}}</text>
+          <text>{{GsRoadInfo.roadName}}</text>
+        </view>
+      </view>
+      <view class="basicInfo">
+        <view class="infoHead">
+          <view class="infoTitle ellipsis">{{GsRoadInfo.roadName}}</view>
+          <view class="focus_on {{focusonState?'selected':''}}" bindtap="focusonClick">
+            <image src="{{focusonState?'/img/star.png':'/img/star_no.png'}}" />
+            <text>{{focusonState?'已关注':'关注'}}</text>
+          </view>
+        </view>
+        <view class="eventText">共有<text class="{{GsRoadInfo.count?'':'success'}}">{{GsRoadInfo.count}}</text>个事件</view>
+      </view>
+    </view>
+    <view class="item_foot">
+      <view class="accident">
+        <text class="accidentItem" wx:key="key" wx:for="{{GsRoadInfo.roadEventTipsList}}">{{item.type}} {{item.count}}</text>
+        <text wx:if="{{GsRoadInfo.count==0}}" class="accidentItem success">正常通行</text>
+      </view>
+      <view class="map_mode_but" bindtap="toMap">
+        <image src="/img/mapicon.png" />
+        <text>地图模式</text>
+      </view>
+    </view>
+  </view>
+  <view class="main">
+    <view class="restriction_type_tab direction_column">
+      <view class="restriction_type_tab_head" bindtap="tabClick">
+        <view class="restriction_type_tab_title direction_column {{current==1?'selected':''}}" data-code="1">路况信息</view>
+        <view class="restriction_type_tab_title direction_column {{current==2?'selected':''}}" data-code="2">收费站</view>
+        <view class="restriction_type_tab_title direction_column {{current==3?'selected':''}}" data-code="3">服务区</view>
+      </view>
+      <view class="restriction_type_tab_main">
+        <!-- 路况信息 -->
+        <view wx:if="{{current==1}}" class="restriction_type_tab_pane">
+          <view class="trafficInfo direction_column">
+            <view class="trafficInfo_head" bindtap="roadTypeClick">
+              <text class="{{roadType=='all'?'selected':''}}" data-code="all">全部</text>
+              <text class="{{roadType==item.type?'selected':''}}" wx:key="key" wx:for="{{GsRoadInfo.roadEventTipsList}}"
+                data-code="{{item.type}}">{{item.type}}</text>
+            </view>
+            <view class="trafficInfo_body">
+              <scroll-view scroll-y bindscrolltolower="scrolltolower">
+                <view class="trafficInfo_item" wx:for="{{listData}}" wx:key="key">
+                  <view class="trafficInfo_item_head">
+                    <view class="trafficInfo_type">{{item.type}}</view>
+                    <view>{{item.controlStartTime}}</view>
+                  </view>
+                  <text>{{item.eventDetail}}</text>
+                </view>
+                <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
+              </scroll-view>
+            </view>
+          </view>
+        </view>
+        <!-- 收费站 -->
+        <view wx:if="{{current==2}}" class="restriction_type_tab_pane direction_column">
+          <view class="high_speed_direction" bindtap="RoadDirClick">
+            <view class="directionItem {{newRoadDirList[0].roadDirId==roadDirId?'selected':''}}"
+              data-code="{{newRoadDirList[0].roadDirId}}">{{newRoadDirList[0].dirDesName}}</view>
+            <image class="direction_switch" src="/img/switch.png"></image>
+            <view class="directionItem {{newRoadDirList[1].roadDirId==roadDirId?'selected':''}}"
+              data-code="{{newRoadDirList[1].roadDirId}}">{{newRoadDirList[1].dirDesName}}</view>
+          </view>
+          <view class="toll_station_box">
+            <scroll-view scroll-y bindscrolltolower="scrolltolower">
+              <view class="toll_station_item" wx:for="{{listData}}" wx:key="key">
+                <view class="toll_station_Timeline">
+                  <view class="Timeline_tail"></view>
+                  <view class="Timeline_normal"></view>
+                </view>
+                <view class="toll_station_body">
+                  <view class="toll_station_name">{{item.stationName}}</view>
+                  <view class="toll_station_num">距您{{common.math_distance(item.distanceUm)}}km</view>
+                  <view class="itembody">
+                    <view class="tollstation_state" wx:for-item="item_son"
+                      wx:for="{{common.macth_close(item.allList,item.stationStateInfoList)}}" wx:key="key">
+                      <text hidden="{{true}}" class="state_title ellipsis">{{item_son.dirDes}}</text>
+                      <view class="stateInfo ">
+                        <text class="{{!item_son.entrance?'close':''}}">{{!item_son.entrance?'入口关闭':'入口开启'}}</text>
+                        <text class="{{!item_son.exit?'close':''}}">{{!item_son.exit?'出口关闭':'出口开启'}}</text>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
+            </scroll-view>
+          </view>
+        </view>
+        <!-- 服务区 -->
+        <view wx:if="{{current==3}}" class="restriction_type_tab_pane direction_column">
+          <view class="high_speed_direction" bindtap="RoadDirClick" >
+            <view class="directionItem {{newRoadDirList[0].roadDirId==roadDirId?'selected':''}}"
+              data-code="{{newRoadDirList[0].roadDirId}}">{{newRoadDirList[0].dirDesName}}</view>
+            <image class="direction_switch" src="/img/switch.png"></image>
+            <view class="directionItem {{newRoadDirList[1].roadDirId==roadDirId?'selected':''}}"
+              data-code="{{newRoadDirList[1].roadDirId}}">{{newRoadDirList[1].dirDesName}}</view>
+          </view>
+          <view class="toll_station_box">
+            <scroll-view scroll-y bindscrolltolower="scrolltolower">
+              <view class="toll_station_item" wx:for="{{listData}}" wx:key="key">
+                <view class="toll_station_Timeline">
+                  <view class="Timeline_tail"></view>
+                  <view class="Timeline_normal"></view>
+                </view>
+                <view class="serviceAreaItem">
+                  <view class="item_head">
+                    <image class="serviceAreaImg" src="/img/serviceAreaImg.png"></image>
+                    <view class="serviceAreaInfo">
+                      <view class="serviceAreaInfo_head">
+                        <view class="serviceAreaName">{{item.serviceAreaName}}
+                          <text>{{item.dir || ''}}</text>
+                        </view>
+                      </view>
+                      <view class="direction">距您{{common.math_distance(item.distanceUm)}}km ｜ {{item.roadName || '—'}}
+                        K{{item.stake}}</view>
+                    </view>
+                  </view>
+                  <view class="item_foot">
+                    <text class="perCapita error" wx:if="{{!item.serviceAreaState}}">关闭</text>
+                    <text wx:else class="perCapita">开启</text>
+                    <view class="serviceAreaInfo_main">
+                      <view class="serviceAreaInfo_main_item">
+                        <image src="/img/cheer.png"></image>
+                        <image src="/img/parking.png"></image>
+                        <image src="/img/toilet.png"></image>
+                        <image src="/img/foodgrey.png"></image>
+                        <image wx:if="{{item.serviceAreaServiceInfo.hasMarketService}}" src="/img/market.png"></image>
+                        <!-- 充电桩 -->
+                        <!-- <image wx:if="{{item.serviceAreaServiceInfo.hasMarketService}}" src="/img/charging.png"></image> -->
+                        <image wx:if="{{item.serviceAreaServiceInfo.has96777Service}}" src="/img/graph.png"></image>
+                        <image wx:if="{{item.serviceAreaServiceInfo.hasNurseryService}}" src="/img/mom.png"></image>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
+            </scroll-view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

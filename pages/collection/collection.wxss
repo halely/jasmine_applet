@@ -1,0 +1,173 @@
+/* pages/collection/collection.wxss */
+
+.restriction_type_tab {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+.restriction_type_tab .restriction_type_tab_title {
+  width: 25%;
+  padding: 24rpx 0;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #666666;
+  line-height: 22px;
+}
+
+.restriction_type_tab .restriction_type_tab_title.selected {
+  border-bottom: 4rpx solid #07C160;
+  color: #07C160;
+}
+
+.path_tab_conditions {
+  width: calc(100% - 36px);
+  display: flex;
+  justify-content: space-between;
+  margin: 20rpx 36rpx;
+  padding: 18rpx 44rpx;
+  box-sizing: border-box;
+  background-color: #F6F6F6CC;
+  border-radius: 12rpx;
+}
+
+.conditions_time {
+  display: flex;
+  align-items: center;
+}
+.conditions_time::after {
+  display: block;
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 10rpx solid transparent;
+  border-right: 10rpx solid transparent;
+  border-top: 12rpx solid #2AC172;
+  margin: 0 0 0 12rpx;
+}
+.management {
+  font-weight: bold;
+}
+
+.management.green {
+  color: #12A86D;
+}
+
+/* 路线样式 */
+.path_item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  /* margin-bottom: 20rpx; */
+  padding: 0 50rpx;
+  box-sizing: border-box;
+}
+
+.path_item .path_item_icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 24rpx;
+}
+
+.path_item .path_item_text {
+  font-size: 32rpx;
+  font-weight: 400;
+  color: #333333;
+  line-height: 44rpx;
+  flex: 1;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+
+.removetext {
+  font-size: 14px;
+  font-weight: 400;
+  color: #999999;
+  display: inline-block;
+  line-height: 20px;
+  padding: 12rpx 80rpx;
+  border: 1rpx solid #E2E2E2;
+  border-radius: 18rpx;
+  margin: 80rpx 0;
+}
+
+.path_tab_conditions {
+  width: calc(100% - 36px);
+  display: flex;
+  justify-content: space-between;
+  margin: 20rpx 36rpx;
+  padding: 18rpx 44rpx;
+  box-sizing: border-box;
+  background-color: #F6F6F6CC;
+  border-radius:12rpx;
+}
+
+.conditions_time {
+  display: flex;
+  align-items: center;
+}
+
+.conditions_time::after {
+  display: block;
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 10rpx solid transparent;
+  border-right: 10rpx solid transparent;
+  border-top: 12rpx solid #2AC172;
+  margin: 0 0 0 12rpx;
+}
+
+.management {
+  font-weight: bold;
+}
+
+.management.green {
+  color: #12A86D;
+}
+
+.path_item_text .path_item_time {
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 17px;
+  margin-top: 12rpx;
+}
+
+/* 选择功能 */
+
+.checkbox_box {
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox_box>text {
+  margin-left: 16rpx;
+}
+
+.foot {
+  align-items: center;
+  justify-content: space-between;
+  padding: 48rpx 32rpx;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.07);
+}
+
+.deleteText {
+  font-size: 16px;
+  color: #999999;
+}
+/* 选择项 */
+.collectionList_item{
+  display: flex;
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+}
+.collectionList_item high_speed_item,.collectionList_item toll_station_item,.collectionList_item service_area_item{
+  flex: 1;
+ 
+}
+.collectionList_item .checkbox_box{
+  margin: 0 0 0 32rpx;
+}

@@ -8,12 +8,36 @@
     "pages/serviceAreaInfo/serviceAreaInfo",
     "pages/cross_river_bridge/cross_river_bridge",
     "pages/evaluation/evaluation",
-    "pages/store_info/store_info"
+    "pages/store_info/store_info",
+    "pages/path_plan/path_plan",
+    "pages/path_plan_map/path_plan_map",
+    "pages/traffic_info/traffic_info",
+    "pages/high_speed_road/high_speed_road",
+    "pages/high_speed_info/high_speed_info",
+    "pages/high_speed_map/high_speed_map",
+    "pages/personal/personal",
+    "pages/collection/collection"
   ],
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示" 
     }
+  },
+  "tabBar": {
+   "color": "#a9b7b7",  
+   "selectedColor": "#11cd6e",  
+   "borderStyle": "black" ,
+    "list": [{
+      "pagePath": "pages/home/home",
+      "selectedIconPath": "img/homePageIcon.png",  
+      "iconPath": "img/homePageIcon.png",  
+      "text": "首页"
+    }, {
+      "pagePath": "pages/personal/personal",
+      "selectedIconPath": "img/myselectedIcon.png",  
+      "iconPath": "img/myIcon.png",  
+      "text": "个人"
+    }]
   },
   "window":{  
     "backgroundTextStyle":"light",

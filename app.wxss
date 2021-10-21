@@ -147,3 +147,9 @@
   text-align: center;
   padding: 120rpx 0 0 0;
 }
+/* flex竖向排列 */
+.direction_column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

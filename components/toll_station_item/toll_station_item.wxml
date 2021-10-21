@@ -1,0 +1,32 @@
+<!--components/toll_station_item/toll_station_item.wxml-->
+<view class="toll_station_item">
+  <view class="toll_station_Timeline">
+    <view class="Timeline_tail"></view>
+    <view class="Timeline_normal"></view>
+  </view>
+  <view class="toll_station_body">
+    <view class="toll_station_head">
+      <image src="/img/stationImg.png"></image>
+      <view class="toll_station_title">
+        <view class="toll_station_name">清州北收费站</view>
+        <view class="toll_station_num">距您24.50km</view>
+      </view>
+    </view>
+    <view class="itembody">
+      <view class="tollstation_state">
+        <text class="state_title ellipsis">由深圳往长春方向</text>
+        <view class="stateInfo ">
+          <text class="close">入口关闭</text>
+          <text>出口开启</text>
+        </view>
+      </view>
+      <view class="tollstation_state">
+        <text class="state_title ellipsis">由深圳往长春方向</text>
+        <view class="stateInfo ">
+          <text class="close">入口关闭</text>
+          <text>出口开启</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+/* pages/high_speed_road/high_speed_road.wxss */
+.searchBox {
+  padding-top: 24rpx;
+}
+high_speed_item{
+  margin-bottom: 20rpx;
+  display: block;
+}

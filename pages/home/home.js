@@ -253,7 +253,7 @@ Page({
     this.getLocation();
     // APPSECRET:868090089dee22c5dfa574da1bf08980
 
-   let access_token='49_VPN3NeJJZuXa2VKLVF6qVznKsbTveEFEkPXZEfC8QuF8ifacjPPvdKETaazjOESRyFHCphLFKLFYC7wiubADG9qvp8puI-N9u0jJM5fmr6dRQrzqCLCT6K2F2N7Wrbzf5lxi6-y6SfqhZzl9HSYjABANYE';
+   let access_token='49_wtxqz7lwGvfeXJGsrqEAroZyCvdgIy5v-ZvtPQEdW_BOSw5Fe2IopnD1OLtHK6B2Ian7Fgo_vgxf7BbIm_tVOeuQAqMzO0e6BanBjyR2NjV5NhsIRP6I6afuXF8y5xwDYfxddVDpMzngZN18DDIcACAZZE';//这个会过期
 
   //  wx.request({
   //   // url: 'https://api.weixin.qq.com/cgi-bin/token',
@@ -267,6 +267,10 @@ Page({
   //   },
   //   success: (res => {
   //     if (res.statusCode === 200) {
+  //       console.log(res.data)
+  //       // let access_token=res.data.access_token;
+  //       // console.log(access_token)
+
 
   //     } else {
 

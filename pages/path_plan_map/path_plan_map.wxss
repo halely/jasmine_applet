@@ -1,0 +1,107 @@
+/* pages/path_plan_map/path_plan_map.wxss */
+.container {
+  font-family: PingFangSC-Medium, PingFan;
+}
+
+.path_search_box {
+  width: 100%;
+  background-color: #fff;
+  padding: 36rpx;
+  box-sizing: border-box;
+  /* box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1); */
+}
+
+.path_search_body {
+  width: 100%;
+  height: 180rpx;
+  background: #F6F6F6;
+  border-radius: 16rpx;
+  display: flex;
+  padding: 24rpx;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.path_search_steps {
+  padding: 14rpx 8rpx;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.step_annulus {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: #12A86D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.step_annulus::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.5);
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.step_annulus.orange {
+  background-color: #FF7700;
+}
+
+.step_line {
+  width: 0;
+  border-left: 4rpx dashed #BEBEBE;
+  flex: 1;
+  margin: 8rpx 0;
+}
+
+.path_search_main {
+  flex: 1;
+  padding: 0 20rpx;
+}
+
+.path_search_origin,
+.path_search_destination {
+  font-size: 32rpx;
+  font-weight: 500;
+  line-height: 44rpx;
+  min-height: 44rpx;
+}
+
+.septalLine {
+  width: 100%;
+  height: 2rpx;
+  background-color: #E2E2E2;
+  margin: 22rpx 0;
+}
+
+.path_search_switch {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.main {
+  position: relative;
+}
+
+.main #map {
+  width: 100%;
+  height: 100%;
+}
+
+.movable-panel {
+  width: 100%;
+  background-color: #ffffff;
+  height: 300px;
+}
+    
+.panelHead {
+  height:100px;
+  background: linear-gradient(130deg, rgba(6, 166, 111, 0.2) 0%, rgba(7, 193, 96, 0) 100%);
+  border-radius: 9px 9px 0px 0px;
+  overflow: auto;
+}

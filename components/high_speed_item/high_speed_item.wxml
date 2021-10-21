@@ -1,0 +1,28 @@
+<!--components/high_speed_item/high_speed_item.wxml-->
+<view class="restrictionItem" hover-class="viewHove" bindtap="restrictionClick">
+  <view class="item_head">
+    <view class="highwayBox">
+      <image wx:if="{{itemData.name_type=='G'}}" class="highwayImg" src="/img/nationalHighway.png"></image>
+      <image wx:else class="highwayImg" src="/img/SuzhouHighway.png"></image>
+      <view class="HighwayText">
+        <text>{{itemData.roadId}}</text>
+        <text>{{itemData.roadName}}</text>
+      </view>
+    </view>
+    <view class="basicInfo">
+      <view class="infoHead">
+        <view class="infoTitle ellipsis">{{itemData.roadName}}</view>
+        <view class="next_step_svg_inner">
+          <text>详情</text>
+          <image src="/svg/next_step.svg" />
+        </view>
+      </view>
+      <view class="eventText">共有<text class="{{itemData.count?'':'success'}}" >{{itemData.count}}</text>个事件</view>
+    </view>
+  </view>
+  <view class="item_foot">
+    <text class="accidentItem" wx:key="key" wx:for="{{itemData.roadEventTipsList}}">{{item.type}} {{item.count}}</text>
+    <!-- <text class="accidentItem error">施工 5</text>-->
+    <text wx:if="{{itemData.count==0}}" class="accidentItem success">正常通行</text> 
+  </view>
+</view>
