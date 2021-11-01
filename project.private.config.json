@@ -49,8 +49,8 @@
           "scene": null
         },
         {
-          "name": "pages/collection/collection",
-          "pathName": "pages/collection/collection",
+          "name": "pages/path_plan_map/path_plan_map",
+          "pathName": "pages/path_plan_map/path_plan_map",
           "query": "",
           "scene": null
         },
@@ -63,6 +63,30 @@
         {
           "name": "pages/path_plan_map/path_plan_map",
           "pathName": "pages/path_plan_map/path_plan_map",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/high_speed_map/high_speed_map",
+          "pathName": "pages/high_speed_map/high_speed_map",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/collection/collection",
+          "pathName": "pages/collection/collection",
+          "query": "code=1",
+          "scene": null
+        },
+        {
+          "name": "pages/path_plan/path_plan",
+          "pathName": "pages/path_plan/path_plan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/AboutUs/AboutUs",
+          "pathName": "pages/AboutUs/AboutUs",
           "query": "",
           "scene": null
         }

@@ -1,4 +1,5 @@
 <!--pages/collection/collection.wxml-->
+<wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
   <view class="restriction_type_tab" bindtap="tabClick">
     <view class="restriction_type_tab_title direction_column {{current==1?'selected':''}}" data-code="1">高速</view>
@@ -7,62 +8,69 @@
     <view class="restriction_type_tab_title direction_column {{current==4?'selected':''}}" data-code="4">路线</view>
   </view>
   <view class="path_tab_conditions">
-    <picker bindchange="bindPickerChange" value="{{arrayindex}}" range="{{array}}">
-      <view class="conditions_time">{{array[arrayindex]}}</view>
+    <picker bindchange="bindPickerChange" value="{{arrayindex}}" range-key="text" range="{{array}}">
+      <view class="conditions_time" bindtap="selectedrestore">{{array[arrayindex].text}}</view>
     </picker>
     <text bindtap="managementClick"
       class="management {{managementStats?'green':''}}">{{managementStats?'完成':'管理'}}</text>
   </view>
   <view class="main">
     <scroll-view scroll-y>
+      <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
       <block wx:if="{{current==1}}">
-        <view class="collectionList_item" wx:for="{{6}}">
+        <view class="collectionList_item" data-index="{{index}}" bindtap="itemClick" wx:for="{{listData}}" wx:key="key">
           <view class="checkbox_box" wx:if="{{managementStats}}">
-            <icon class="icon-small" type="circle" size="19"></icon>
-            <!-- <icon class="icon-small" type="success" color="#12A86D" size="19"></icon> -->
+
+            <icon wx:if="{{common.arr_includes(index,selecteArr)}}" class="icon-small" type="success" color="#12A86D"
+              size="19"></icon>
+            <icon wx:else class="icon-small" type="circle" size="19"></icon>
           </view>
-          <high_speed_item></high_speed_item>
+          <high_speed_item bindconfirm="confirmRoad" itemData="{{item}}"></high_speed_item>
         </view>
       </block>
       <block wx:if="{{current==2}}">
-        <view class="collectionList_item" wx:for="{{6}}">
+        <view class="collectionList_item" data-index="{{index}}" bindtap="itemClick" wx:for="{{listData}}" wx:key="key">
           <view class="checkbox_box" wx:if="{{managementStats}}">
-            <icon class="icon-small" type="circle" size="19"></icon>
-            <!-- <icon class="icon-small" type="success" color="#12A86D" size="19"></icon> -->
+
+            <icon wx:if="{{common.arr_includes(index,selecteArr)}}" class="icon-small" type="success" color="#12A86D"
+              size="19"></icon>
+            <icon wx:else class="icon-small" type="circle" size="19"></icon>
           </view>
-          <toll_station_item wx:key="key"></toll_station_item>
+          <toll_station_item itemData="{{item}}"></toll_station_item>
         </view>
       </block>
       <block wx:if="{{current==3}}">
-        <view class="collectionList_item" wx:for="{{6}}">
+        <view class="collectionList_item" data-index="{{index}}" bindtap="itemClick" wx:for="{{listData}}" wx:key="key">
           <view class="checkbox_box" wx:if="{{managementStats}}">
-            <icon class="icon-small" type="circle" size="19"></icon>
-            <!-- <icon class="icon-small" type="success" color="#12A86D" size="19"></icon> -->
+            <icon wx:if="{{common.arr_includes(index,selecteArr)}}" class="icon-small" type="success" color="#12A86D"
+              size="19"></icon>
+            <icon wx:else class="icon-small" type="circle" size="19"></icon>
           </view>
-          <service_area_item></service_area_item>
+          <service_area_item item="{{item}}"  data-info="{{item}}" bindtap="servicecollectItemView"></service_area_item>
         </view>
       </block>
       <block wx:if="{{current==4}}">
-        <view class="path_item" wx:for="{{collectList}}" data-code="{{index}}" wx:key="key" bindtap="collectionClick">
+        <view class="path_item" wx:for="{{listData}}" data-index="{{index}}" wx:key="key" bindtap="itemClick">
           <image wx:if="{{!managementStats}}" class="path_item_icon" src="/img/path.png"></image>
           <view wx:else class="checkbox_box">
-            <icon class="icon-small" type="circle" size="19"></icon>
-            <!-- <icon class="icon-small" type="success" color="#12A86D" size="19"></icon> -->
+            <icon wx:if="{{common.arr_includes(index,selecteArr)}}" class="icon-small" type="success" color="#12A86D"
+              size="19"></icon>
+            <icon wx:else class="icon-small" type="circle" size="19"></icon>
           </view>
-          <view class="path_item_text">
-            <text>{{item.name}}</text>
-            <view class="path_item_time">{{item.time}}</view>
+          <view class="path_item_text" data-index="{{index}}" bindtap="collectItemView">
+            <text>{{item.startPlaceName}}-{{item.endPlaceName}}</text>
+            <view class="path_item_time">{{item.createdTime}}</view>
           </view>
         </view>
       </block>
     </scroll-view>
   </view>
   <view class="foot" wx:if="{{managementStats}}">
-    <view class="checkbox_box">
-      <icon class="icon-small" type="circle" size="19"></icon>
-      <!-- <icon class="icon-small" type="success" color="#12A86D" size="19"></icon> -->
+    <view class="checkbox_box" bindtap="allClick">
+      <icon wx:if="{{allselecte}}" class="icon-small" type="success" color="#12A86D" size="19"></icon>
+      <icon wx:else class="icon-small" type="circle" size="19"></icon>
       <text>全选</text>
     </view>
-    <text class="deleteText">删除</text>
+    <text class="deleteText" bindtap="deleteAll">删除</text>
   </view>
 </view>

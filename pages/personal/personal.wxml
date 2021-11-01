@@ -2,26 +2,31 @@
 <view class="container">
   <view class="main">
     <view class="myInfo">
-      <view class="head_portrait"></view>
-      <view class="loginBut" hidden="{{true}}">立即登录</view>
-      <view class="loginBut">浮生</view>
+      <block wx:if="{{userInfo}}">
+        <image class="head_portrait" src="{{userInfo.avatarUrl}}" />
+        <view class="loginBut">{{userInfo.nickName}}</view>
+      </block>
+      <block wx:else>
+        <image class="head_portrait" src="/img/noImge.png" />
+        <view bindtap="getUserProfile" class="loginBut">立即登录</view>
+      </block>
     </view>
     <view class="my_collection_box">
       <view class="title">我的收藏</view>
       <view class="collection_type">
-        <view class="collection_item direction_column">
+        <view bindtap="collectionView" data-code="1" class="collection_item direction_column">
           <image class="item_icon" src="/img/collection_toll_station.png"></image>
           <view class="item_title">高速</view>
         </view>
-        <view class="collection_item direction_column">
+        <view bindtap="collectionView" data-code="2" class="collection_item direction_column">
           <image class="item_icon" src="/img/collection_service_area.png"></image>
           <view class="item_title">收费站</view>
         </view>
-        <view class="collection_item direction_column">
+        <view bindtap="collectionView" data-code="3" class="collection_item direction_column">
           <image class="item_icon" src="/img/collection_high_speed.png"></image>
           <view class="item_title">服务区</view>
         </view>
-        <view class="collection_item direction_column">
+        <view bindtap="collectionView" data-code="4" class="collection_item direction_column">
           <image class="item_icon" src="/img/collection_route.png"></image>
           <view class="item_title">路线</view>
         </view>
@@ -30,19 +35,19 @@
     <view class="my_service_box">
       <view class="title">精选服务</view>
       <view class="collection_type">
-        <view class="collection_item direction_column">
+        <view class="collection_item direction_column" data-path="toll_station" bindtap="entranceClick">
           <view class="item_title">收费站</view>
-          <image class="item_icon" src="/img/tollbooth_switch.png"></image>
+          <image class="item_icon" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/tollbooth_switch.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=Al%2BBHmsBW3WcDQIkVz05oFhBhDTynPFIPepiId47Q60%3D"></image>
         </view>
-        <view class="collection_item direction_column">
+        <view class="collection_item direction_column" data-path="serviceArea" bindtap="entranceClick">
           <view class="item_title">服务区</view>
-          <image class="item_icon" src="/img/service_area_entrance.png"></image>
+          <image class="item_icon" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/service_area_entrance.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511310&signature=9qAlPalix1o8SZCqhZH4hLv6CgxJXyiIzTzH%2FQHx0%2Fw%3D"></image>
         </view>
-        <view class="collection_item direction_column">
+        <view class="collection_item direction_column"  data-path="restrictions" bindtap="entranceClick">
           <view class="item_title">车辆限行</view>
-          <image class="item_icon" src="/img/restrictions.png"></image>
+          <image class="item_icon" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/restrictions.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511310&signature=i%2FlbEz4DTgYtBOW8jZyXiRt4KCdRcFGl4WmaBkuNtjw%3D"></image>
         </view>
-        <view class="collection_item direction_column">
+        <view class="collection_item direction_column" data-path="cross_river_bridge" bindtap="entranceClick">
           <view class="item_title">过江通道</view>
           <image class="item_icon" src="/img/bridge.png"></image>
         </view>
@@ -59,11 +64,12 @@
         <text>意见反馈</text>
         <image src="/svg/next_step.svg"></image>
       </button>
-      <view  class="jump_item" hover-class="viewHove">
+      <view class="jump_item" bindtap="aboutView" hover-class="viewHove">
         <image src="/svg/about.svg"></image>
         <text>关于我们</text>
         <image src="/svg/next_step.svg"></image>
       </view>
     </view>
+    <view class="loginout" bindtap="loginout" wx:if="{{userInfo}}" hover-class="viewHove">退出登录</view>
   </view>
 </view>

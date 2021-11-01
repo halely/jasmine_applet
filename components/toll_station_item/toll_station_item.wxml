@@ -1,4 +1,5 @@
 <!--components/toll_station_item/toll_station_item.wxml-->
+<wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="toll_station_item">
   <view class="toll_station_Timeline">
     <view class="Timeline_tail"></view>
@@ -6,25 +7,19 @@
   </view>
   <view class="toll_station_body">
     <view class="toll_station_head">
-      <image src="/img/stationImg.png"></image>
+      <image class="tollStationImg" src="{{itemData.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/stationImg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=tXiKcA1wIusL69jKEdIvQASvIs%2FCbAv3o9JHWSZ9Xy8%3D'}}"></image>
       <view class="toll_station_title">
-        <view class="toll_station_name">清州北收费站</view>
-        <view class="toll_station_num">距您24.50km</view>
+        <view class="toll_station_name">{{itemData.stationName}}收费站</view>
+        <view class="toll_station_num">距您{{common.math_distance(itemData.distanceUm)}}km</view>
       </view>
     </view>
     <view class="itembody">
-      <view class="tollstation_state">
-        <text class="state_title ellipsis">由深圳往长春方向</text>
+      <view class="tollstation_state" wx:for-item="item_son"
+        wx:for="{{common.macth_close(itemData.allList,itemData.stationStateInfoList)}}" wx:key="key">
+        <text class="state_title ellipsis">{{item_son.dirDes}}</text>
         <view class="stateInfo ">
-          <text class="close">入口关闭</text>
-          <text>出口开启</text>
-        </view>
-      </view>
-      <view class="tollstation_state">
-        <text class="state_title ellipsis">由深圳往长春方向</text>
-        <view class="stateInfo ">
-          <text class="close">入口关闭</text>
-          <text>出口开启</text>
+          <text class="{{!item_son.entrance?'close':''}}">{{!item_son.entrance?'入口关闭':'入口开启'}}</text>
+          <text class="{{!item_son.exit?'close':''}}">{{!item_son.exit?'出口关闭':'出口开启'}}</text>
         </view>
       </view>
     </view>

@@ -110,3 +110,11 @@
   line-height: 22px;
   margin-left: 28rpx;
 }
+.loginout{
+  display: flex;
+  justify-content: center;
+  color: #333333;
+  margin:30rpx 0 ;
+  padding: 30rpx;
+  background-color: #ffffff;
+}

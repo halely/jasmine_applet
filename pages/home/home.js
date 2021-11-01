@@ -183,7 +183,8 @@ Page({
         let myLocation={
           latitude:latitude,
           longitude:longitude,
-          city:regeocodeData.addressComponent.city
+          city:regeocodeData.addressComponent.city,
+          township:regeocodeData.addressComponent.township
         }
         //设置地图缓存
         wx.setStorageSync('myLocation', myLocation);
@@ -251,36 +252,6 @@ Page({
    */
   onLoad: function (options) {
     this.getLocation();
-    // APPSECRET:868090089dee22c5dfa574da1bf08980
-
-   let access_token='49_wtxqz7lwGvfeXJGsrqEAroZyCvdgIy5v-ZvtPQEdW_BOSw5Fe2IopnD1OLtHK6B2Ian7Fgo_vgxf7BbIm_tVOeuQAqMzO0e6BanBjyR2NjV5NhsIRP6I6afuXF8y5xwDYfxddVDpMzngZN18DDIcACAZZE';//这个会过期
-
-  //  wx.request({
-  //   // url: 'https://api.weixin.qq.com/cgi-bin/token',
-  //   url:'https://api.weixin.qq.com/wxa/generate_urllink?access_token='+access_token,
-  //   method: 'post',
-  //   data: {
-  //     // access_token:access_token
-  //     // grant_type:'client_credential',
-  //     // appid:'wx98afbbed07c0f43f',
-  //     // secret:'868090089dee22c5dfa574da1bf08980',
-  //   },
-  //   success: (res => {
-  //     if (res.statusCode === 200) {
-  //       console.log(res.data)
-  //       // let access_token=res.data.access_token;
-  //       // console.log(access_token)
-
-
-  //     } else {
-
-  //     }
-  //   }),
-  //   fail: (res => {
-
-  //   })
-  // })
-  
   },
 
   /**

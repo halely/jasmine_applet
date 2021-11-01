@@ -1,7 +1,8 @@
 <!--pages/path_plan/path_plan.wxml-->
+<wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
   <!-- 路线查询模块 -->
-  <view class="path_search_box">
+  <view class="path_search_box" wx:if="{{!pathInfoShow}}">
     <view class="path_search_body ">
       <view class="path_search_steps direction_column">
         <view class="step_annulus"></view>
@@ -9,11 +10,12 @@
         <view class="step_annulus orange"></view>
       </view>
       <view class="path_search_main ">
-        <view class="path_search_origin">江苏省高速公路联网营运管理中心</view>
+        <input class="path_search_origin" bindtap="getFormAddress" placeholder="起始点" disabled value="{{origin.name}}" />
         <view class="septalLine"></view>
-        <view class="path_search_destination">扬州</view>
+        <input class="path_search_destination" bindtap="getToAddress" placeholder="目的地" disabled
+          value="{{destination.name}}" />
       </view>
-      <image class="path_search_switch" src="/img/switch.png"></image>
+      <image class="path_search_switch" bindtap="switchPath" src="/img/switch.png"></image>
     </view>
   </view>
   <view class="main">
@@ -27,51 +29,49 @@
       <view class="path_tab_main direction_column">
         <!-- 历史记录 -->
         <view wx:if="{{current==1}}" class="path_tab_pane direction_column">
-          <view class="path_item">
-            <image class="path_item_icon" src="/img/path.png"></image>
-            <view class="path_item_text">南京南站 - 康缘智汇港 </view>
-          </view>
-          <view class="path_item">
-            <image class="path_item_icon" src="/img/path.png"></image>
-            <view class="path_item_text">康缘智汇港 - 奥体中心</view>
-          </view>
-          <view class="path_item" wx:for="{{6}}" wx:key="key">
-            <image class="path_item_icon" src="/img/path.png"></image>
-            <view class="path_item_text">江苏省高速公路联网营运管理中心-康缘智汇港</view>
-          </view>
-          <view class="removetext">清除历史记录</view>
+          <block>
+            <view class="path_item" data-code="{{index}}" bindtap="lineHistroyClick" wx:for="{{lineHistroy}}"
+              wx:key="key">
+              <image class="path_item_icon" src="/img/path.png"></image>
+              <view class="path_item_text">{{item.startPlaceName}} - {{item.endPlaceName}} </view>
+            </view>
+            <view class="removetext" bindtap="get_lineSearchHistroydelete" wx:if="{{lineHistroy.length}}">清除历史记录</view>
+          </block>
+          <view wx:if="{{!lineHistroy.length}}" class="empty">暂无数据</view>
         </view>
         <!-- 收藏条件 -->
         <view wx:if="{{current==2}}" class="path_tab_conditions">
-          <picker bindchange="bindPickerChange" value="{{arrayindex}}" range="{{array}}">
-            <view class="conditions_time">{{array[arrayindex]}}</view>
+          <picker bindchange="bindPickerChange" value="{{arrayindex}}" range="{{array}}" range-key="text">
+            <view class="conditions_time" bindtap="selectedrestore">{{array[arrayindex].text}}</view>
           </picker>
           <text bindtap="managementClick"
             class="management {{managementStats?'green':''}}">{{managementStats?'完成':'管理'}}</text>
         </view>
         <!-- 收藏 -->
         <view wx:if="{{current==2}}" class="path_tab_pane direction_column">
-          <view class="path_item" wx:for="{{collectList}}" data-code="{{index}}" wx:key="key" bindtap="collectionClick">
+          <view class="path_item" wx:for="{{collectList}}" data-index="{{index}}" wx:key="key" bindtap="collectionClick">
             <image wx:if="{{!managementStats}}" class="path_item_icon" src="/img/path.png"></image>
             <view wx:else class="checkbox_box">
-              <icon class="icon-small" type="circle" size="19"></icon>
-              <!-- <icon class="icon-small" type="success" color="#12A86D" size="19"></icon> -->
+              <icon wx:if="{{common.arr_includes(index,selecteArr)}}" class="icon-small" type="success" color="#12A86D"
+                size="19"></icon>
+              <icon wx:else class="icon-small" type="circle" size="19"></icon>
             </view>
-            <view class="path_item_text">
-              <text>{{item.name}}</text>
-              <view class="path_item_time">{{item.time}}</view>
+            <view class="path_item_text" data-index="{{index}}" bindtap="collectItemView">
+              <text>{{item.startPlaceName}}-{{item.endPlaceName}} </text>
+              <view class="path_item_time">{{item.createdTime}}</view>
             </view>
           </view>
+          <view wx:if="{{!collectList.length}}" class="empty">暂无数据</view>
         </view>
       </view>
     </view>
   </view>
   <view class="foot" wx:if="{{managementStats}}">
-    <view class="checkbox_box">
-      <icon class="icon-small" type="circle" size="19"></icon>
-      <!-- <icon class="icon-small" type="success" color="#12A86D" size="19"></icon> -->
+    <view class="checkbox_box" bindtap="allClick">
+      <icon wx:if="{{allselecte}}" class="icon-small" type="success" color="#12A86D" size="19"></icon>
+      <icon wx:else class="icon-small" type="circle" size="19"></icon>
       <text>全选</text>
     </view>
-    <text class="deleteText">删除</text>
+    <text class="deleteText" bindtap="deleteAll">删除</text>
   </view>
 </view>

@@ -1,8 +1,8 @@
 var tokenKey = "access-token"; //缓存token对应的值
-var serverUrl = "http://192.168.50.131:8080/jasmine-web"; //刘云鹏url地址
-// var serverUrl = "https://96777.jssgx.cn/jasmine-web"; //生产合法域名
+// var serverUrl = "http://192.168.50.131:8080/jasmine-web"; //刘云鹏url地址
+var serverUrl = "https://96777.jssgx.cn/jasmine-web"; //生产合法域名
 // 例外不用token的地址
-// var exceptionAddrArr = ['/login'];
+var exceptionAddrArr = ['/login', '/road/queryAllRoad', '/serviceArea/queryAllServiceArea', '/serviceArea/queryRoad', '/shop/queryAllShop', '/shop/shopDetail', '/road/queryAllBridge', '/station/queryAllByDistance', '/station/queryAllCityLine', '/station/queryAllByArea', '/station/queryAllClose', '/evaluation/add', '/road/queryAllRoadInfo', '/road/queryRoadInfoDetail'];
 
 //请求头处理函数 customHeader为自定义header
 function CreateHeader(url, type, customHeader = {}) {
@@ -21,10 +21,10 @@ function CreateHeader(url, type, customHeader = {}) {
     }
   }
   // 当前业务需求不需要token。后续需要可以解开
-  // if (exceptionAddrArr.indexOf(url) == -1) { //排除请求的地址不需要token的地址
-  //   let token = wx.getStorageSync(tokenKey);
-  //   header['token'] = token;
-  // }
+  if (exceptionAddrArr.indexOf(url) == -1) { //排除请求的地址不需要token的地址
+    let token = wx.getStorageSync(tokenKey);
+    header['token'] = token;
+  }
   header = Object.assign(header, customHeader)
   return header;
 }
@@ -34,19 +34,21 @@ function overdue() {
     title: '账号已过期',
     icon: 'none',
     duration: 1000,
-    mask:true,
+    mask: true,
     success() {
       setTimeout(() => {
-        wx.clearStorageSync();
-        wx.redirectTo({
-          url: '/pages/index/index',
+        let myLocation=wx.getStorageSync('myLocation')
+        wx.clearStorageSync();  
+        wx.setStorageSync('myLocation', myLocation)
+        wx.switchTab({
+          url: '/pages/personal/personal',
         })
       }, 1000);
     }
   })
 }
 //请求超时
-function failFnc(){
+function failFnc() {
   wx.hideLoading()
   wx.showToast({
     title: '请求超时',

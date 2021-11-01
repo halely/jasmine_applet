@@ -1,0 +1,18 @@
+/* pages/AboutUs/AboutUs.wxss */
+.main{
+  background-color: #ffffff;
+}
+.appletIcon {
+  width: 160rpx;
+  height: 160rpx;
+  margin-top: 200rpx;
+}
+
+text {
+  font-size: 14px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  line-height: 20px;
+  margin-top: 28rpx;
+}

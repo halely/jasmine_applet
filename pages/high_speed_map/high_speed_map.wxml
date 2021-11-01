@@ -3,21 +3,22 @@
   <view class="restrictionItem">
     <view class="item_head">
       <view class="highwayBox">
-        <image class="highwayImg" src="/img/nationalHighway.png"></image>
+        <image wx:if="{{GsRoadInfo.name_type=='G'}}" class="highwayImg" src="/img/nationalHighway.png"></image>
+        <image wx:else class="highwayImg" src="/img/SuzhouHighway.png"></image>
         <view class="HighwayText">
-          <text>G1516</text>
-          <text>盐洛高速</text>
+          <text>{{GsRoadInfo.roadId}}</text>
+          <text>{{GsRoadInfo.roadName}}</text>
         </view>
       </view>
       <view class="basicInfo">
         <view class="infoHead">
-          <view class="infoTitle ellipsis">盐洛高速</view>
-          <view class="focus_on {{focusonState?'selected':''}}" bindtap="focusonClick">
+          <view class="infoTitle ellipsis">{{GsRoadInfo.roadName}}</view>
+          <view class="focus_on {{focusonState?'selected':''}}" bindtap="focusonClick" wx:if="{{loginStatus}}">
             <image src="{{focusonState?'/img/star.png':'/img/star_no.png'}}" />
-            <text>{{focusonState?'已关注':'关注'}}</text>
+            <text>{{focusonState?'已收藏':'收藏'}}</text>
           </view>
         </view>
-        <view class="eventText">共有<text class="success">0</text>个事件</view>
+        <view class="eventText">共有<text class="{{GsRoadInfo.count?'':'success'}}">{{GsRoadInfo.count}}</text>个事件</view>
       </view>
     </view>
     <view class="item_foot">
@@ -27,48 +28,55 @@
     </view>
   </view>
   <view class="main">
-    <map class="accidentMap" longitude="{{center[0]}}" latitude="{{center[1]}}" markers="{{markers}}" scale="{{scale}}"
-      bindmarkertap="bindmarkertap"></map>
+    <map id="myMap" class="accidentMap" show-location="{{true}}" longitude="{{center[0]}}" latitude="{{center[1]}}"
+      markers="{{markers}}" scale="{{scale}}" bindmarkertap="bindmarkertap"></map>
     <view class="map_marker_box" wx:if="{{IsMarkerinfoShow}}">
-      <view class="marker_info_head">
-        <view class="marker_info_main">
-          <image src="/img/accident_text_icon.png"></image>
-          <view class="marker_info_title">
-            <view class="info_title">交通事件</view>
-            <view class="info_direction">G2京沪高速（双向）</view>
+      <block wx:if="{{itemData.dataType=='accident'}}">
+        <view class="accidentInfoBox">
+          <view class="marker_info_head">
+            <view class="marker_info_main">
+              <image wx:if="{{itemData.type=='施工养护'}}" src="/img/construction.png"></image>
+              <image wx:if="{{itemData.type=='恶劣天气'}}" src="/img/Bad_weather.png"></image>
+              <image wx:if="{{itemData.type=='特情信息'}}" src="/img/secret_info.png"></image>
+              <image wx:if="{{itemData.type=='交通事故'}}" src="/img/accident_icon.png"></image>
+              <view class="marker_info_title">
+                <view class="info_title">{{itemData.type}}</view>
+                <view class="info_direction">{{itemData.roadId+itemData.roadName+'('+itemData.dirDes+')'}}</view>
+              </view>
+            </view>
+            <image class="close" bindtap="close_map_marker_box" src="/svg/close.svg"></image>
+          </view>
+          <view class="marker_info_text">{{itemData.eventDetail}}</view>
+          <view class="marker_info_time">
+            <view class="info_time_item direction_column">
+              <text>{{itemData.controlStartTime}}</text>
+              <text>开始时间</text>
+            </view>
+            <view class="info_time_item direction_column">
+              <text>{{itemData.expectResumeTime}}</text>
+              <text>结束时间</text>
+            </view>
           </view>
         </view>
-        <image class="close" bindtap="close_map_marker_box" src="/svg/close.svg"></image>
-      </view>
-      <view class="marker_info_text">
-        接广靖交警大队通知，G2京沪高速江阴大桥段靖江南双向入口禁止装载风力发电及大型配件超长超宽货车，时间：2014年7月28日15时至2021年12月31日。</view>
-      <view class="marker_info_time">
-        <view class="info_time_item direction_column">
-          <text>01-30 20:49</text>
-          <text>开始时间</text>
+      </block>
+      <block wx:if="{{itemData.dataType=='tollstation'}}">
+        <view class="commoncloseBox">
+          <image class="commonclose" bindtap="close_map_marker_box" src="/svg/close.svg"></image>
         </view>
-        <view class="info_time_item direction_column">
-          <text>12-31 23:59</text>
-          <text>结束时间</text>
+        <toll_station_item itemData="{{itemData}}"></toll_station_item>
+      </block>
+      <block wx:if="{{itemData.dataType=='servicearea'}}">
+        <view class="commoncloseBox">
+          <image class="commonclose" bindtap="close_map_marker_box" src="/svg/close.svg"></image>
         </view>
-      </view>
+        <service_area_item item="{{itemData}}"></service_area_item>
+      </block>
     </view>
     <view class="marker_type_box direction_column" bindtap="marker_type_seleced">
-      <view class="marker_type_item direction_column">
-        <image src="/img/road.png"></image>
-        <text>路况</text>
-      </view>
-      <view class="marker_type_item direction_column">
-        <image src="/img/corssbridge.png"></image>
-        <text>过江大桥</text>
-      </view>
-      <view class="marker_type_item direction_column cancel">
-        <image src="/img/stationIcon.png"></image>
-        <text>收费站</text>
-      </view>
-      <view class="marker_type_item direction_column">
-        <image src="/img/serviceAreaIcon.png"></image>
-        <text>服务区</text>
+      <view wx:for="{{markerTypeList}}" class="marker_type_item direction_column {{!item.hide?'':'cancel'}}"
+        bindtap="marker_type_seleced" data-code="{{item.code}}" wx:key="key">
+        <image src="{{item.icon}}"></image>
+        <text>{{item.name}}</text>
       </view>
     </view>
   </view>

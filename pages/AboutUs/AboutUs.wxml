@@ -1,0 +1,7 @@
+<!--pages/AboutUs/AboutUs.wxml-->
+<view class="container">
+  <view class="main direction_column">
+    <image class="appletIcon" src="/img/appletIcon.png"></image>
+    <text> 当前版本 v 1.1.0</text>
+  </view>
+</view>

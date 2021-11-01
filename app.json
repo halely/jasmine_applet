@@ -16,7 +16,8 @@
     "pages/high_speed_info/high_speed_info",
     "pages/high_speed_map/high_speed_map",
     "pages/personal/personal",
-    "pages/collection/collection"
+    "pages/collection/collection",
+    "pages/AboutUs/AboutUs"   
   ],
   "permission": {
     "scope.userLocation": {

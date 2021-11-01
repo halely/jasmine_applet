@@ -56,7 +56,7 @@ Page({
     let name = options.name;
     let shopTypeId=options.shopTypeId;
     this.setData({
-      defaultImg:shopTypeId==3?'/img/catering.png':shopTypeId==4?'/img/specialty.png':'/img/features.png'
+      defaultImg:shopTypeId==3?'/img/catering.png':shopTypeId==4?'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/specialty.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=ANfjYocBvN2boxPfvbLE1dMWUmGPECiVhJ%2Fv6c1S0yg%3D':'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/features.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511309&signature=yZY0YMWO7sf9JyDdJDE8cCSZ0uwUlZL5AK%2B%2FTa9rAAI%3D'
     })
     wx.setNavigationBarTitle({
       title: name 

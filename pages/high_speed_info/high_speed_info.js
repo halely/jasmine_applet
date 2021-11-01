@@ -3,7 +3,10 @@
 import {
   requst_get_queryRoadInfoDetail,
   requst_get_queryAllByDistance,
-  requst_get_queryAllServiceAreaByDistanse
+  requst_get_queryAllServiceAreaByDistanse,
+  requst_get_roadifSave,
+  requst_post_myCollectionDelete,
+  requst_post_myCollectionRoadInsert
 } from '../../api/index.js'
 Page({
 
@@ -11,7 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    focusonState: false, //是否关注
+    focusonState: false, //是否收藏
     current: 1,
     listData: [], //列表数据,三个模块复用一个数组
     roadType: 'all',
@@ -21,7 +24,9 @@ Page({
     GsRoadInfo: {}, //高速信息，上一个页面带过来的
     myLocation: {},
     newRoadDirList: [],
-    roadDirId: ''
+    loginStatus:false,
+    roadDirId: '',
+    collectionId: '', //收藏的id
   },
 
   /**
@@ -31,6 +36,7 @@ Page({
     this.getGsRoadInfo();
     this.getqueryRoadInfoDetail()
   },
+  //获取缓存数据
   getGsRoadInfo() {
     let GsRoadInfo = wx.getStorageSync('GsRoadInfo');
     let myLocation = wx.getStorageSync('myLocation')
@@ -48,11 +54,49 @@ Page({
       })
     }
   },
-  //关注点击
+  //收藏点击
   focusonClick() {
-    this.setData({
-      focusonState: !this.data.focusonState
+    let token = wx.getStorageSync('access-token');
+    if (!token) return;
+    let {
+      focusonState
+    } = this.data;
+    if (focusonState) {
+      //取消收藏
+      this.get_myCollectionDelete()
+    }else{
+       this.get_myCollectionRoadInsert()
+    }
+    
+  },
+  //删除收藏
+  async get_myCollectionDelete(){
+    let list=[];
+    list.push(this.data.collectionId)
+    let {data}=await requst_post_myCollectionDelete({
+      list
     })
+    if(data.code!='1001'){
+      console.log('取消失败')
+    }else{
+      this.setData({
+        focusonState: !this.data.focusonState
+      })
+    }
+  },
+  //添加收藏
+  async get_myCollectionRoadInsert(){
+    let {data:res}=await requst_post_myCollectionRoadInsert({
+      roadId:this.data.GsRoadInfo.roadId
+    })
+    let {data,code}=res;
+    if(code=='1001' && data){
+      this.setData({
+        focusonState: !this.data.focusonState,
+        collectionId:data.collectionId
+      })
+    }
+    
   },
   // tab类型切换
   tabClick(e) {
@@ -215,10 +259,42 @@ Page({
     }
   },
   //地图模式
-  toMap(e){
-   wx.navigateTo({
-     url: '/pages/high_speed_map/high_speed_map',
-   })
+  toMap(e) {
+    wx.navigateTo({
+      url: '/pages/high_speed_map/high_speed_map',
+    })
+  },
+  //查询是否已经收藏
+  async getroadifSave() {
+    let token = wx.getStorageSync('access-token');
+    if (!token) return;
+    let GsRoadInfo = wx.getStorageSync('GsRoadInfo');
+    let {
+      data: res
+    } = await requst_get_roadifSave({
+      roadId: GsRoadInfo.roadId
+    })
+    if (res.code == 1001) {
+      if (res.data) {
+        this.setData({
+          collectionId: res.data.collectionId,
+          focusonState: true
+        })
+      }else{
+        this.setData({
+          collectionId:'',
+          focusonState: false
+        })
+      }
+    }
+    //如果没有收藏，返回的为null
+
+  },
+  islogin() {
+    let accessToken = wx.getStorageSync('access-token')
+    this.setData({
+      loginStatus: accessToken ? true : false
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -231,7 +307,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getroadifSave();
+    this.islogin()
   },
 
   /**

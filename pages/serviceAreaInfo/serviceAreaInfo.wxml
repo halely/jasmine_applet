@@ -1,7 +1,7 @@
 <!--pages/serviceAreaInfo/serviceAreaInfo.wxml-->
 <wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
-  <image class="serviceAreaIbj" src="{{serviceAreaItemInfo.picId||'/img/defaultBg.png'}}"></image>
+  <image class="serviceAreaIbj" src="{{serviceAreaItemInfo.picId||'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/defaultBg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511308&signature=mlEGahUDDeLCuflYOHMpCGD7JiuLY5%2BGiQAe89oeWTk%3D'}}"></image>
   <view class="serviceAreaInfoBox">
     <view class="serviceArea_title">
       <text>{{serviceAreaItemInfo.serviceAreaName}} {{serviceAreaItemInfo.dir?'('+serviceAreaItemInfo.dir+')':''}}</text>

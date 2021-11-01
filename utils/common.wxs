@@ -44,7 +44,17 @@ function splitTiem(val){
      return ''
    }
 }
-
+function getDuration(second) {
+  var days = Math.floor(second / 86400);
+  var hours = Math.floor((second % 86400) / 3600);
+  var minutes = Math.floor(((second % 86400) % 3600) / 60);
+  var seconds = Math.floor(((second % 86400) % 3600) % 60);
+  hours=hours+days*24;
+  // + seconds + "秒
+  var duration = hours + "小时" + minutes + "分";
+  return duration;
+}
+module.exports.getDuration = getDuration;
 module.exports.math_distance = math_distance;
 module.exports.arr_includes = arr_includes;
 module.exports.macth_close = macth_close;

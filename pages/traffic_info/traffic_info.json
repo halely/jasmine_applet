@@ -1,3 +1,8 @@
 {
-  "navigationBarTitleText": "路况信息"
+  "navigationBarTitleText": "路况信息",
+  "usingComponents":{
+    "high_speed_item":"/components/high_speed_item/high_speed_item",
+    "toll_station_item":"/components/toll_station_item/toll_station_item",
+    "service_area_item":"/components/service_area_item/service_area_item"   
+  }
 }

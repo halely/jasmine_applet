@@ -1,6 +1,9 @@
 // pages/high_speed_road/high_speed_road.js
 import {
-  requst_get_queryAllRoadInfo
+  requst_get_queryAllRoadInfo,
+  requst_get_queryRoadInfoDetail,
+  requst_get_queryAllByDistance,
+  requst_get_queryAllServiceAreaByDistanse
 } from '../../api/index.js'
 
 Page({

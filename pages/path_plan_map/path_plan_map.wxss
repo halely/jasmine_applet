@@ -6,7 +6,7 @@
 .path_search_box {
   width: 100%;
   background-color: #fff;
-  padding: 36rpx;
+  padding: 20rpx 36rpx 36rpx 36rpx;
   box-sizing: border-box;
   /* box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1); */
 }
@@ -93,15 +93,185 @@
   height: 100%;
 }
 
-.movable-panel {
+/* 底部信息弹窗 */
+.pathInfo-pane {
   width: 100%;
-  background-color: #ffffff;
-  height: 300px;
+  position: absolute;
+  bottom: 0;
+  transition: height 3s;
 }
-    
-.panelHead {
-  height:100px;
+
+.pathInfo-pane.show {
+  height: calc(80% - 80px);
+}
+
+.touchsBox {
+  background-color: #ffffff;
+  border-radius: 20rpx 20rpx 0 0;
+  width: 100%;
+}
+
+.pathInfo-pane .panel_head {
   background: linear-gradient(130deg, rgba(6, 166, 111, 0.2) 0%, rgba(7, 193, 96, 0) 100%);
-  border-radius: 9px 9px 0px 0px;
+  display: flex;
+  align-items: center;
+  padding: 24rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.pathInfo-pane .panel_head image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+}
+
+.wayBox {
+  display: flex;
+  padding: 20rpx 16rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.wayBox .wayItem {
+  width: 32%;
+  background: #F6F6F6;
+  border-radius: 8px;
+  color: #333333;
+  font-size: 24rpx;
+}
+
+.wayBox .wayItem.selected {
+  background: rgba(7, 193, 96, 0.05);
+  color: #12A86D;
+}
+
+.wayBox .wayItem text {
+  margin: 10rpx 0;
+}
+
+.wayBox .wayItem text.wayWhen {
+  font-size: 18px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  line-height: 25px;
+  margin: 0;
+}
+
+.wayInfoType {
+  padding: 20rpx 20rpx 40rpx 20rpx;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.wayInfoType .wayInfoTypeItem {
+  padding: 8rpx 24rpx;
+  background-color: #F5F5F5;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-right: 20rpx;
+}
+
+.wayInfoType .wayInfoTypeItem.selected {
+  background: #12A86D;
+  color: #FFFFFF;
+}
+
+.collection {
+  font-size: 20rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  display: inline-flex;
+  position: absolute;
+  right: 40rpx;
+  top: -100rpx;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.collection.selected {
+  color: #FF7700;
+}
+
+.collection image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-bottom: 8rpx;
+}
+
+.promptLine {
+  width: 32px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.26);
+  border-radius: 2px;
+  margin: 0 auto;
+  margin-bottom: 8rpx;
+}
+
+.wayInfoBox {
+  width: 100%;
+  flex: 1;
+  background-color: #fff;
   overflow: auto;
+}
+
+.serviceAreaItem {
+  width: calc(100% - 32px);
+  margin: 0 16px;
+  padding: 22rpx;
+  box-sizing: border-box;
+  background: #F6F6F6;
+  border-radius: 8px;
+  margin-bottom: 20rpx;
+}
+.serviceAreaItem .item_head{
+  display: flex;
+  justify-content: space-between;
+}
+.serviceAreaItem .itemBody {
+  display: flex;
+  align-items: center;
+  margin-top: 24rpx;
+  font-size: 14px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  line-height: 20px;
+}
+
+.serviceAreaInfo_main_item {
+  background: #12A86D;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  margin-right: 24rpx;
+  padding: 4rpx 0 4rpx 6rpx;
+}
+
+.serviceAreaInfo_main_item image {
+  width: 13px;
+  height: 13px;
+  margin-right: 6rpx;
+}
+.focus_on {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  line-height: 40rpx;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 6rpx 14rpx;
+  background-color: #F1F1F1;
+  border-radius: 18rpx;
+}
+.focus_on.selected {
+  color: #FF7700;
+}
+
+.focus_on image {
+  display: inline-flex;
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
 }

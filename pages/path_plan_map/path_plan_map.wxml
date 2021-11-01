@@ -1,7 +1,8 @@
 <!--pages/path_plan_map/path_plan_map.wxml-->
+<wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
   <!-- 路线查询模块 -->
-  <view class="path_search_box">
+  <view class="path_search_box" wx:if="{{!pathInfoShow}}">
     <view class="path_search_body ">
       <view class="path_search_steps direction_column">
         <view class="step_annulus"></view>
@@ -9,9 +10,10 @@
         <view class="step_annulus orange"></view>
       </view>
       <view class="path_search_main ">
-        <view class="path_search_origin" bindtap='getFormAddress'>{{origin.name}}</view>
+        <input class="path_search_origin" bindtap="getFormAddress" placeholder="起始点" disabled value="{{origin.name}}" />
         <view class="septalLine"></view>
-        <view class="path_search_destination" bindtap='getToAddress'>{{destination.name}}</view>
+        <input class="path_search_destination" bindtap="getToAddress" placeholder="目的地" disabled
+          value="{{destination.name}}" />
       </view>
       <image class="path_search_switch" bindtap="switchPath" src="/img/switch.png"></image>
     </view>
@@ -20,13 +22,86 @@
     <map id="map" longitude="{{markers[0]?markers[0].longitude:myLocation.longitude}}" show-location="{{true}}"
       latitude="{{markers[0]?markers[0].latitude:myLocation.latitude}}" scale="12" markers="{{markers}}"
       polyline="{{polyline}}"></map>
-    <movable-view y="{{y}}" hidden="{{true}}" bindchange="onPresent" direction="vertical" class="movable-panel" out-of-bounds="{{true}}">
-      <view class="panelHead">
-        <scroll-view scroll-y="{{true}}">
-          <view wx:for="{{12}}">该路线费用最优，途径2个收费站，3个服务区</view>
-        </scroll-view>
-
+    <view class="pathInfo-pane direction_column {{pathInfoShow?'show':''}}" wx:if="{{popupShow}}">
+      <view class="collection direction_column {{collectionId?'selected':''}}" bindtap="pathcollection" wx:if="{{loginStatus}}">
+        <image src="{{collectionId?'/img/star.png':'/img/star_no.png'}}"></image>
+        <text>{{collectionId?'已收藏':'收藏'}}</text>
       </view>
-    </movable-view>
+      <view class="promptLine"></view>
+      <view class="touchsBox" bindtouchstart="touchStart" bindtouchend="touchEnd">
+        <view class="panel_head">
+          <image src="/svg/prompt.svg"></image>
+          <text>该路线{{current==1?'高速优先':current==2?'速度最快':'避免拥堵'}}，途径江苏{{stationIdList.length}}个收费站，{{serviceAreaList.length}}个服务区</text>
+        </view>
+        <view class="wayBox">
+          <view data-code="1" bindtap="wayItemClick" class="wayItem direction_column {{current==1?'selected':''}}">
+            <text>高速优先</text>
+            <text class="wayWhen">{{common.getDuration(wayObj.gs.cost.duration)}}</text>
+            <text>{{wayObj.gs.distance/1000}}公里 ¥{{wayObj.gs.cost.tolls}}</text>
+          </view>
+          <view data-code="2" bindtap="wayItemClick" class="wayItem direction_column {{current==2?'selected':''}}">
+            <text>速度最快</text>
+            <text class="wayWhen">{{common.getDuration(wayObj.time.cost.duration)}}</text>
+            <text>{{wayObj.time.distance/1000}}公里 ¥{{wayObj.time.cost.tolls}}</text>
+          </view>
+          <view data-code="3" bindtap="wayItemClick" class="wayItem direction_column {{current==3?'selected':''}}">
+            <text>避免拥堵</text>
+            <text class="wayWhen">{{common.getDuration(wayObj.lj.cost.duration)}}</text>
+            <text>{{wayObj.lj.distance/1000}}公里 ¥{{wayObj.lj.cost.tolls}}</text>
+          </view>
+        </view>
+        <view class="wayInfoType" bindtap="TypeSelected">
+          <view class="wayInfoTypeItem {{Typecurrent==1?'selected':''}}" data-code="1">全部
+            {{serviceAreaList.length+stationIdList.length}}</view>
+          <view class="wayInfoTypeItem {{Typecurrent==2?'selected':''}}" data-code="2">收费站 {{stationIdList.length}}
+          </view>
+          <view class="wayInfoTypeItem {{Typecurrent==3?'selected':''}}" data-code="3">服务区 {{serviceAreaList.length}}
+          </view>
+        </view>
+      </view>
+      <view class="wayInfoBox" wx:if="{{pathInfoShow}}">
+        <block wx:if="{{serviceAreaShow}}">
+          <view class="serviceAreaItem" wx:for="{{serviceAreaList}}" wx:key="key">
+            <view class="item_head">
+              <text class="item_name">{{item.name}}</text>
+              <view wx:if="{{loginStatus}}" class="focus_on {{item.collectionId?'selected':''}}" bindtap="focusonClick" data-index="{{index}}" data-type="service">
+                <image src="{{item.collectionId?'/img/star.png':'/img/star_no.png'}}" />
+                <text>{{item.collectionId?'已收藏':'收藏'}}</text>
+              </view>
+            </view>
+            <view class="itemBody">
+              <view class="serviceAreaInfo_main_item">
+                <image src="/img/white_cheer.png"></image>
+                <image src="/img/white_parking.png"></image>
+                <image src="/img/white_toilet.png"></image>
+                <image src="/img/white_foodgrey.png"></image>
+                <image wx:if="{{item.serviceAreaServiceInfo.hasMarketService}}" src="/white_img/market.png"></image>
+                <!-- 充电桩 -->
+                <!-- <image wx:if="{{item.serviceAreaServiceInfo.hasMarketService}}" src="/img/white_charging.png"></image> -->
+                <image wx:if="{{item.serviceAreaServiceInfo.has96777Service}}" src="/img/white_graph.png"></image>
+                <image wx:if="{{item.serviceAreaServiceInfo.hasNurseryService}}" src="/img/white_mom.png"></image>
+              </view>
+              <tetx>{{common.math_distance(item.distanceUm)}}公里</tetx>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{stationIdListShow}}">
+          <view class="serviceAreaItem" wx:for="{{stationIdList}}" wx:key="key">
+            <view class="item_head">
+              <text class="item_name">{{item.name}}</text>
+              <view class="focus_on {{item.collectionId?'selected':''}}" bindtap="focusonClick" data-index="{{index}}" data-type="stationId" wx:if="{{loginStatus}}">
+                <image src="{{item.collectionId?'/img/star.png':'/img/star_no.png'}}" />
+                <text>{{item.collectionId?'已收藏':'收藏'}}</text>
+              </view>
+            </view>
+            <view class="itemBody">
+              <tetx>{{common.math_distance(item.distanceUm)}}公里</tetx>
+            </view>
+          </view>
+        </block>
+        <view wx:if="{{emptyShow}}" class="empty">暂无数据</view>
+      </view>
+    </view>
+   
   </movable-area>
 </view>

@@ -6,7 +6,7 @@
 .path_search_box {
   width: 100%;
   background-color: #fff;
-  padding: 36rpx;
+  padding:20rpx 36rpx 36rpx 36rpx;
   box-sizing: border-box;
   /* box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1); */
 }
