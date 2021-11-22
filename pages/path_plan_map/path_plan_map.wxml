@@ -2,7 +2,8 @@
 <wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
   <!-- 路线查询模块 -->
-  <view class="path_search_box" wx:if="{{!pathInfoShow}}">
+  <view class="main">
+    <view class="path_search_box {{pathInfoShow?'':'show'}}">
     <view class="path_search_body ">
       <view class="path_search_steps direction_column">
         <view class="step_annulus"></view>
@@ -18,12 +19,13 @@
       <image class="path_search_switch" bindtap="switchPath" src="/img/switch.png"></image>
     </view>
   </view>
-  <movable-area class="main">
-    <map id="map" longitude="{{markers[0]?markers[0].longitude:myLocation.longitude}}" show-location="{{true}}"
-      latitude="{{markers[0]?markers[0].latitude:myLocation.latitude}}" scale="12" markers="{{markers}}"
-      polyline="{{polyline}}"></map>
+    <map id="map"  show-location="{{true}}"
+      markers="{{markers}}"
+      polyline="{{polyline}}"
+      include-points="{{polyline[0].points || []}}"
+      ></map>
     <view class="pathInfo-pane direction_column {{pathInfoShow?'show':''}}" wx:if="{{popupShow}}">
-      <view class="collection direction_column {{collectionId?'selected':''}}" bindtap="pathcollection" wx:if="{{loginStatus}}">
+      <view class="collection direction_column {{collectionId?'selected':''}}" bindtap="pathcollection">
         <image src="{{collectionId?'/img/star.png':'/img/star_no.png'}}"></image>
         <text>{{collectionId?'已收藏':'收藏'}}</text>
       </view>
@@ -59,12 +61,15 @@
           </view>
         </view>
       </view>
-      <view class="wayInfoBox" wx:if="{{pathInfoShow}}">
+      <!-- wx:if="{{pathInfoShow}}" -->
+      <view class="wayInfoBox" >
         <block wx:if="{{serviceAreaShow}}">
-          <view class="serviceAreaItem" wx:for="{{serviceAreaList}}" wx:key="key">
+          <view class="serviceAreaItem" data-info="{{item}}" bindtap="serviceAreaItemClick" wx:for="{{serviceAreaList}}"
+            wx:key="key">
             <view class="item_head">
               <text class="item_name">{{item.name}}</text>
-              <view wx:if="{{loginStatus}}" class="focus_on {{item.collectionId?'selected':''}}" bindtap="focusonClick" data-index="{{index}}" data-type="service">
+              <view class="focus_on {{item.collectionId?'selected':''}}" catchtap="focusonClick" data-index="{{index}}"
+                data-type="service">
                 <image src="{{item.collectionId?'/img/star.png':'/img/star_no.png'}}" />
                 <text>{{item.collectionId?'已收藏':'收藏'}}</text>
               </view>
@@ -89,7 +94,8 @@
           <view class="serviceAreaItem" wx:for="{{stationIdList}}" wx:key="key">
             <view class="item_head">
               <text class="item_name">{{item.name}}</text>
-              <view class="focus_on {{item.collectionId?'selected':''}}" bindtap="focusonClick" data-index="{{index}}" data-type="stationId" wx:if="{{loginStatus}}">
+              <view class="focus_on {{item.collectionId?'selected':''}}" catchtap="focusonClick" data-index="{{index}}"
+                data-type="stationId">
                 <image src="{{item.collectionId?'/img/star.png':'/img/star_no.png'}}" />
                 <text>{{item.collectionId?'已收藏':'收藏'}}</text>
               </view>
@@ -102,6 +108,5 @@
         <view wx:if="{{emptyShow}}" class="empty">暂无数据</view>
       </view>
     </view>
-   
-  </movable-area>
+  </view>
 </view>

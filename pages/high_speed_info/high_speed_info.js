@@ -24,7 +24,6 @@ Page({
     GsRoadInfo: {}, //高速信息，上一个页面带过来的
     myLocation: {},
     newRoadDirList: [],
-    loginStatus:false,
     roadDirId: '',
     collectionId: '', //收藏的id
   },
@@ -43,7 +42,7 @@ Page({
     if (GsRoadInfo) {
       //获取方向数组
       let newRoadDirList = GsRoadInfo.roadDirList.map(item => {
-        item.dirDesName = item.dirDes.split('-')[0] + '方向';
+        item.dirDesName = item.dirDes.split('至')[0] + '方向';
         return item;
       })
       this.setData({
@@ -56,8 +55,13 @@ Page({
   },
   //收藏点击
   focusonClick() {
-    let token = wx.getStorageSync('access-token');
-    if (!token) return;
+    let accessToken = wx.getStorageSync('access-token');
+    if (!accessToken) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return false;
+    }
     let {
       focusonState
     } = this.data;
@@ -290,12 +294,6 @@ Page({
     //如果没有收藏，返回的为null
 
   },
-  islogin() {
-    let accessToken = wx.getStorageSync('access-token')
-    this.setData({
-      loginStatus: accessToken ? true : false
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -308,7 +306,6 @@ Page({
    */
   onShow: function () {
     this.getroadifSave();
-    this.islogin()
   },
 
   /**

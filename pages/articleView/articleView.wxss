@@ -1,0 +1,44 @@
+/* pages/articleView/articleView.wxss */
+.htmlBox {
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  padding: 40rpx 20rpx;
+  color: #000000;
+}
+
+.articleTitle {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.articleInfo {
+  display: flex;
+  font-size: 24rpx;
+  margin: 30rpx 0;
+  color: rgba(0, 0, 0, .4);
+}
+
+.articleInfo text {
+  margin-right: 20rpx;
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-label::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item::before {
+  content: "14px";
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="small"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="small"]::before {
+  content: "10px";
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="large"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="large"]::before {
+  content: "18px";
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="huge"]::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="huge"]::before {
+  content: "32px";
+}

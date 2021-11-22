@@ -27,6 +27,7 @@ Page({
       this.getData()
     })
   },
+  //列表查询
   async getData() {
     let wxData = this.data;
     wx.showLoading({

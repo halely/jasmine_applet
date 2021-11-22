@@ -1,0 +1,11 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="main direction_column">
+    <image src="/img/appletIcon.png"></image>
+    <text>江苏高速96777</text>
+    <button  bindtap="getUserProfile" class="loginBut" type="primary">
+      <image src="/svg/WeChat.svg"></image>
+      微信授权登录
+    </button>
+  </view>
+</view>

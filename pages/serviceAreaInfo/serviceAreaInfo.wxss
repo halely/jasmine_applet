@@ -5,6 +5,30 @@
   height: 184px;
   margin-bottom: -20px;
 }
+/* 收藏 */
+.collectBox {
+  width: 40px;
+  padding: 0 0 10rpx;
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.21);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: fixed;
+  font-weight: 400;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  line-height: 14px;
+  top: 24rpx;
+  right: 24rpx;
+}
+.collectBox.selected{
+  color: #FF7700;
+}
+.collectBox image{
+  width: 26rpx;
+  height: 26rpx;
+  margin:10rpx 0 8rpx;
+}
 
 .serviceAreaInfoBox {
   position: relative;
@@ -225,7 +249,7 @@
   color: #999999;
   line-height: 20px;
   letter-spacing: 1px;
-  padding:120rpx 0 0 0;
+  padding: 120rpx 0 0 0;
 }
 
 .stro_empty image {

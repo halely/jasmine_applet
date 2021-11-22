@@ -8,7 +8,15 @@
   background-color: #fff;
   padding: 20rpx 36rpx 36rpx 36rpx;
   box-sizing: border-box;
-  /* box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1); */
+  transform: translate(0,-100%);
+  transition: all .5s;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 9;
+}
+.path_search_box.show{
+  transform: translate(0,0);
 }
 
 .path_search_body {
@@ -98,7 +106,8 @@
   width: 100%;
   position: absolute;
   bottom: 0;
-  transition: height 3s;
+  transition: height .5s;
+  height: 195px;
 }
 
 .pathInfo-pane.show {

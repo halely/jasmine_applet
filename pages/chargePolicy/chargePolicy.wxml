@@ -1,0 +1,17 @@
+<!--pages/chargePolicy/chargePolicy.wxml-->
+<view class="container">
+  <view class="main">
+    <scroll-view scroll-y bindscrolltolower="scrolltolower">
+    <view class="policyItem" bindtap="itemClick" data-index="{{index}}" hover-class="viewHove" wx:for="{{listData}}" wx:key="key">
+      <view class="ItemBody">
+        <text class="itemTitle">{{item.policyTitle}}</text>
+        <view class="footInfo">
+          <text>阅读量 {{item.readCount}}</text>
+          <text>{{item.createTime}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
+    </scroll-view>
+  </view>
+</view>

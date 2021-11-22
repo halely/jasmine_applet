@@ -18,24 +18,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myLocation: {},
-    markers: [],
-    polyline: {},
-    y: 0,
+    myLocation: {},//当前位置
+    markers: [],//描点信息
+    polyline: {},//路径规划
     origin: {}, //起点
     destination: {}, //目的地
     pathInfoShow: false,
-    current: 1,
+    current: 1,//路线切换
     popupShow: false,
     collectionId: '', //当前路由收藏id
     wayObj: {}, //方案集合
-    serviceAreaList: [],
-    stationIdList: [],
+    serviceAreaList: [],//服务区数据
+    stationIdList: [],//收费站数据
     stationIdListShow: true,
     serviceAreaShow: true,
     Typecurrent: 1,
-    loginStatus: false, //当前有没有登录
-    emptyShow: false
+    emptyShow: true
   },
   //选择起点
   getFormAddress() {
@@ -153,6 +151,13 @@ Page({
   },
   //收藏点击
   focusonClick(e) {
+    let accessToken = wx.getStorageSync('access-token');
+    if (!accessToken) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return false;
+    }
     let {
       index,
       type
@@ -226,7 +231,7 @@ Page({
             } = res.data;
             var points = [];
             let markers = [];
-            let sfzarr = [];//收费站
+            let sfzarr = []; //收费站
             markers.push(that.data.origin)
             markers.push(that.data.destination);
             if (data.paths && data.paths[0] && data.paths[0].steps) {
@@ -255,7 +260,7 @@ Page({
               points: points,
               distance: data.paths[0].distance,
               cost: data.paths[0].cost,
-              sfzarr:sfzarr
+              sfzarr: sfzarr
             }
             //高速优先
             switch (type) {
@@ -301,7 +306,7 @@ Page({
 
       }
       this.setData({
-        current:code
+        current: code
       })
       wx.nextTick(() => {
         wx.hideLoading()
@@ -356,6 +361,13 @@ Page({
   },
   //收藏点击
   pathcollection() {
+    let accessToken = wx.getStorageSync('access-token');
+    if (!accessToken) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return false;
+    }
     let {
       collectionId,
       origin,
@@ -556,6 +568,7 @@ Page({
         return item;
       })
       newmarkers = [...newmarkers, ...serviceAreaList, ...stationIdList];
+      let totalarr = [...serviceAreaList, ...stationIdList]
       this.setData({
         markers: newmarkers,
         serviceAreaList,
@@ -566,7 +579,8 @@ Page({
           color: "#07C160",
           width: 8
         }],
-        popupShow: true
+        popupShow: true,
+        emptyShow: !totalarr.length
       });
       wx.nextTick(() => {
         wx.hideLoading()
@@ -581,13 +595,14 @@ Page({
       serviceAreaList,
       stationIdList
     } = this.data;
+    let totalarr = [...serviceAreaList, ...stationIdList]
     if (code && code != Typecurrent) {
       if (code == 1) {
         this.setData({
           stationIdListShow: true,
           serviceAreaShow: true,
           Typecurrent: code,
-          emptyShow:!serviceAreaList.length && !stationIdList.length
+          emptyShow: !totalarr.length
         })
       } else if (code == 2) {
         this.setData({
@@ -607,6 +622,15 @@ Page({
 
     }
   },
+  //服务区列表点击
+  serviceAreaItemClick(e) {
+    //设置缓存
+    wx.setStorageSync('serviceAreaItemInfo', e.currentTarget.dataset.info);
+    wx.navigateTo({
+      url: '/pages/serviceAreaInfo/serviceAreaInfo',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -620,26 +644,17 @@ Page({
       origin: pathObj.origin,
       destination: pathObj.destination
     })
-    this.getSure()
-  },
-  islogin() {
-    let accessToken = wx.getStorageSync('access-token')
-    this.setData({
-      loginStatus: accessToken ? true : false
-    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
-
+  onReady: function () {},
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.islogin()
+    this.getSure()
   },
 
   /**

@@ -36,7 +36,7 @@ function macth_close(arr1, arr2) {
   })
   return newArr;
 }
-
+//截取数据
 function splitTiem(val){
    if(val){
      return val.split(' ')[0]
@@ -44,6 +44,7 @@ function splitTiem(val){
      return ''
    }
 }
+//解析事件
 function getDuration(second) {
   var days = Math.floor(second / 86400);
   var hours = Math.floor((second % 86400) / 3600);

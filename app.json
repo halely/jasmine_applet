@@ -1,6 +1,8 @@
 {
   "pages":[
+    "pages/home1/home1",
     "pages/home/home",
+    "pages/login/login",
     "pages/toll_station/toll_station",
     "pages/restrictions/restrictions",
     "pages/serviceArea/serviceArea",
@@ -17,7 +19,15 @@
     "pages/high_speed_map/high_speed_map",
     "pages/personal/personal",
     "pages/collection/collection",
-    "pages/AboutUs/AboutUs"   
+    "pages/chargePolicy/chargePolicy",
+    "pages/noticeInfo/noticeInfo",
+    "pages/trafficPolice/trafficPolice",
+    "pages/accidentManage/accidentManage",
+    "pages/convenience/convenience",
+    "pages/emergencyRescue/emergencyRescue",
+    "pages/warmPrompt/warmPrompt",
+    "pages/AboutUs/AboutUs",
+    "pages/articleView/articleView"
   ],
   "permission": {
     "scope.userLocation": {
@@ -27,9 +37,8 @@
   "tabBar": {
    "color": "#a9b7b7",  
    "selectedColor": "#11cd6e",  
-   "borderStyle": "black" ,
     "list": [{
-      "pagePath": "pages/home/home",
+      "pagePath": "pages/home1/home1",
       "selectedIconPath": "img/homePageIcon.png",  
       "iconPath": "img/homePageIcon.png",  
       "text": "首页"
@@ -47,7 +56,7 @@
     "navigationBarTextStyle":"black"
   },
   "networkTimeout":{
-    "request":10000
+    "request":20000
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

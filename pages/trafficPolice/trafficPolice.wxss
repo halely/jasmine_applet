@@ -1,0 +1,212 @@
+/* pages/trafficPolice/trafficPolice.wxss */
+.main {
+  position: relative;
+}
+
+.main map {
+  height: 100%;
+  width: 100%;
+}
+
+/* 搜索框 */
+.trafficSearchbox {
+  background-color: #ffffff;
+  padding: 12rpx 36rpx;
+  box-sizing: border-box;
+  margin: 20rpx 24rpx;
+  position: absolute;
+  top: 0;
+  width: calc(100% - 48rpx);
+  border-radius: 4px;
+  align-items: center;
+  display: flex;
+}
+
+.trafficSearchbox input {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.movePanl {
+  position: absolute;
+  width: 100%;
+  transition: top .5s;
+  top: 100%;
+}
+
+.tarfficList {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 100%);
+  overflow: hidden;
+  height: 100%;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 8px 8px 0 0;
+  padding-top: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+.tarfficList::before{
+   content:'';
+   position: absolute;
+   width:80rpx;
+   height: 8rpx;
+   background-color: #767676;
+   top: 15rpx;
+   left: 50%;
+   transform: translateX(-50%);
+   border-radius: 4rpx;
+}
+
+.tarfficItem {
+  padding: 30rpx 48rpx 0;
+  box-sizing: border-box;
+}
+
+.itemMain {
+  display: flex;
+  padding-bottom: 26rpx;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.itemLeft {
+  flex: 1;
+  overflow: hidden;
+}
+
+.itemHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itemTitle {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333333;
+  line-height: 50rpx;
+}
+
+.itemBody {
+  font-size: 14px;
+  color: #333333;
+  line-height: 20px;
+  margin: 8rpx 0 24rpx 0;
+}
+
+.distance {
+  min-width: 160rpx;
+}
+
+.distance .iconfont,
+.itemfoot .iconfont {
+  font-size: 12px;
+  color: #999999
+}
+
+.itemfoot .phoneNum {
+  font-weight: 400;
+  color: #999999;
+  line-height: 40rpx;
+  margin-left: 10rpx;
+}
+
+.itemRight {
+  color: #12A86D;
+  font-size: 12px;
+  justify-content: center;
+  /* padding: 0 0 0 40rpx; */
+}
+
+.itemRight image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+/* 附近 */
+.near {
+  position: absolute;
+  right: 24rpx;
+  top: -150px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #666666;
+  line-height: 14px;
+  padding: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 8rpx;
+}
+
+.near image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+/* 缩放改变 */
+.scaleBox {
+  position: absolute;
+  right: 24rpx;
+  top: -100px;
+  width: 40px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 8rpx;
+}
+
+.scaleBox view {
+  padding: 8rpx 0;
+  width: 100%;
+  font-size: 25px;
+  text-align: center;
+}
+
+/* mark自定义callout样式 */
+.customCallout {
+  width: 200px;
+  padding: 24rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.contentHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contentDistance {
+  font-size: 10px;
+  font-weight: 400;
+  min-width: 70rpx;
+  text-align: right;
+  color: #999999;
+}
+
+.contentBody {
+  font-size: 12px;
+  margin: 20rpx 0;
+}
+
+.contentFoot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contentFoot .icon-call-tonghua {
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 34rpx;
+  display: flex;
+}
+
+.contentFoot .icon-call-tonghua::before {
+  margin-right: 6rpx;
+  font-size: 20rpx;
+}
+
+.trafficTo {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #12A86D;
+  line-height: 36rpx;
+}

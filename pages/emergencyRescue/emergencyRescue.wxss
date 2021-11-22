@@ -1,0 +1,86 @@
+/* pages/emergencyRescue/emergencyRescue.wxss */
+.container {
+  background-color: #ffffff;
+}
+
+.main {
+  position: relative;
+}
+
+#mymap {
+  width: 100%;
+  height: 100%;
+}
+
+.addreeInfo {
+  padding: 72rpx 36rpx 0 36rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: 0px -1px 2px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 30rpx 30rpx 0 0;
+  transform: translate(0, -20px);
+  position: relative;
+}
+
+/* .addreeInfo::after{
+  width: 100rpx;
+  height: 6rpx;
+  content: '';
+  position: absolute;
+  background-color: #999999;
+  border-radius: 8rpx;
+  top:20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+} */
+
+.InfoHead {
+  font-size: 32rpx;
+  color: #12A86D;
+  margin-bottom: 24rpx;
+}
+
+.infoBody {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoItem {
+  width: 32%;
+  padding: 20rpx 0 10rpx;
+  background: #F5F5F5;
+  text-align: center;
+}
+
+.infoItem text:first-child {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #666666;
+  line-height: 34rpx;
+  margin-bottom: 10rpx;
+}
+
+button:not([size=mini]).nextStep {
+  width: 80%;
+  border-radius: 20px;
+  margin: 80rpx 0 40rpx;
+  margin-left: 10%;
+}
+
+/* 缩放改变 */
+.scaleBox {
+  position: absolute;
+  right: 24rpx;
+  bottom: 80rpx;
+  width: 40px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 8rpx;
+}
+
+.scaleBox view {
+  padding: 8rpx 0;
+  width: 100%;
+  font-size: 25px;
+  text-align: center;
+}

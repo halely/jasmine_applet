@@ -1,7 +1,10 @@
 // pages/serviceAreaInfo/serviceAreaInfo.js
 
 import {
-  requst_get_queryAllShop
+  requst_get_queryAllShop,
+  requst_get_serviceAreaxist,
+  requst_post_myCollectionDelete,
+  requst_post_myCollectionserviceAreaInsert
 } from '../../api/index.js'
 
 Page({
@@ -11,6 +14,7 @@ Page({
    */
   data: {
     serviceAreaItemInfo: {},
+    collectionId: '',
     listData: [], //列表数据
     pageNum: 1, //页码
     pageSize: 10, //页数
@@ -23,7 +27,7 @@ Page({
       this.setData({
         serviceAreaItemInfo: serviceAreaItemInfo
       })
-      wx.nextTick(()=>{
+      wx.nextTick(() => {
         this.getqueryAllShop()
       })
     }
@@ -60,17 +64,102 @@ Page({
     }
   },
   //店铺信息查询点击
-  shopItemClick(e){
-    let info=e.currentTarget.dataset.item;
+  shopItemClick(e) {
+    let info = e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: '/pages/store_info/store_info?shopId='+info.shopId+'&name='+info.shopParentName+'&shopTypeId='+info.shopTypeId,
+      url: '/pages/store_info/store_info?shopId=' + info.shopId + '&name=' + info.shopParentName + '&shopTypeId=' + info.shopTypeId,
     })
   },
+  //判断服务区是否收藏
+  async getServiceAreaxist() {
+    let accessToken = wx.getStorageSync('access-token')
+    let serviceAreaItemInfo = wx.getStorageSync('serviceAreaItemInfo');
+    if (accessToken) {
+      let serviceAreaId = serviceAreaItemInfo.serviceAreaId;
+      let {
+        data
+      } = await requst_get_serviceAreaxist({
+        serviceAreaId
+      })
+      if (data.code == '1001') {
+        let collectionId = ""
+        if (data.data) {
+          collectionId = data.data.collectionId || '';
+        }
+        this.setData({
+          collectionId
+        })
+      }
+    }
+  },
+  //点击收藏
+  focusonClick() {
+    let accessToken = wx.getStorageSync('access-token');
+    if (!accessToken) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return false;
+    }
+    let {
+      collectionId
+    } = this.data;
+    if (collectionId) {
+      this.get_myCollectionDelete([collectionId]).then(res => {
+        if (res.code == '1001') {
+          this.setData({
+            collectionId: ''
+          })
+        } else {
+          wx.showToast({
+            title: '取消收藏失败',
+            icon: "none"
+          })
+        }
+      })
+    } else {
+      this.AddCollection()
+    }
+  },
+  //添加收藏
+  async AddCollection() {
+    let serviceAreaItemInfo = wx.getStorageSync('serviceAreaItemInfo');
+    let {
+      data
+    } = await requst_post_myCollectionserviceAreaInsert({
+      serviceAreaId: serviceAreaItemInfo.serviceAreaId
+    });
+    if (data.code == '1001' && data.data.collectionId) {
+      this.setData({
+        collectionId: data.data.collectionId
+      })
+    }
+  },
+  //删除收藏
+  get_myCollectionDelete(list) {
+    return new Promise(async (resolve, reject) => {
+      let {
+        data
+      } = await requst_post_myCollectionDelete({
+        list
+      })
+      if (data.code == '1001') {
+        resolve(data);
+      } else {
+        reject(data)
+        wx.showToast({
+          title: '收藏失败',
+          icon: 'none'
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getserviceAreaItemInfo()
+    this.getserviceAreaItemInfo();
   },
 
   /**
@@ -84,7 +173,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getServiceAreaxist()
   },
 
   /**

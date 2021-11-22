@@ -1,0 +1,93 @@
+<!--home/home.wxml-->
+<view class="container">
+  <view class="home_head">
+    <view class="home_nav">
+      <view class="placeBox" style='margin-top: {{height}}rpx'>
+        <image src="/svg/address.svg"></image>
+        <text wx:if="{{city}}">{{city}}</text>
+        <text wx:else bindtap="chooselocation">获取当前位置</text>
+      </view>
+    </view>
+    <view class="entranceBox">
+      <view class="head_entrance">
+        <view class="entranceItem" data-path="path_plan" bindtap="entranceClick">
+          <image class="itmeIcon" src="/svg/pathHome.svg"></image>
+          <text>路径与费用</text>
+        </view>
+        <view class="entranceItem" data-path="traffic_info" bindtap="entranceClick">
+          <image class="itmeIcon" src="/svg/roadInfoHome.svg"></image>
+          <text>路况信息</text>
+        </view>
+        <view class="entranceItem" data-path="serviceArea" bindtap="entranceClick">
+          <image class="itmeIcon" src="/svg/ServiceAreaHome.svg"></image>
+          <text>服务区</text>
+        </view>
+      </view>
+      <view class="body_entrance">
+        <view class="way_path">
+          <view class="entranceItem" data-path="toll_station" bindtap="entranceClick">
+            <image class="itemsvg" src="/svg/totain.svg"></image>
+            <text>收费站</text>
+          </view>
+          <view class="entranceItem" data-path="cross_river_bridge" bindtap="entranceClick">
+            <image class="itemsvg" src="/svg/crossTheRiverHome.svg"></image>
+            <text>过江通道</text>
+          </view>
+          <view class="entranceItem" data-path="restrictions" bindtap="entranceClick">
+            <image class="itemsvg" src="/svg/restrictionHome.svg"></image>
+            <text>道路限行</text>
+          </view>
+          <view class="entranceItem"   data-path="convenience" bindtap="entranceClick">
+            <image class="itemsvg" src="/svg/convenientHome.svg"></image>
+            <text>便民服务</text>
+          </view>
+        </view>
+      </view>
+      <!-- 动态模块 -->
+      <view class="dynamicBox">
+        <image class="dynamicIcon" src="/img/dynamicIcon.png"></image>
+        <view class="switchBox">
+          <swiper autoplay="{{true}}"  circular="{{true}}" bindchange="bindchange">
+            <swiper-item >
+              <text class="dynamicText">关于京沪高速公路新沂至江都段改扩建工程施工期间部分路段时段限制车辆通行的通告</text>
+            </swiper-item>
+            <swiper-item>
+              <text class="dynamicText">长深高速公路花果山机场收费站正式开通</text>
+            </swiper-item>
+          </swiper>
+        </view>
+        <text class="iconfont icon-tiaozhuan jumpIcon"></text>
+      </view>
+    </view>
+  </view>
+  <view class="main">
+    <map scale="{{scale}}" min-scale="{{minScale}}" max-scale="{{maxScale}}" id="mymap" enable-traffic show-location></map>
+    <view class="path_search_box {{!packupShow?'open':''}}">
+      <view class="path_search_body ">
+        <image class="pack_up {{packupShow?'show':''}}" bindtap="packupFc" src="/svg/pack_up.svg"></image>
+        <view class="path_search_steps direction_column">
+          <view class="step_annulus"></view>
+          <view class="step_line"></view>
+          <view class="step_annulus orange"></view>
+        </view>
+        <view hidden="{{packupShow}}" class="path_search_main ">
+          <input class="path_search_origin" value="{{origin.name}}" bindtap="getFormAddress" placeholder="输入起始点" disabled />
+          <view class="septalLine"></view>
+          <input class="path_search_destination" value="{{destination.name}}" bindtap="getToAddress" placeholder="输入目的地" disabled />
+        </view>
+        <image hidden="{{packupShow}}" class="path_search_switch" bindtap="switchPath" src="/img/switch.png"></image>
+        <view hidden="{{!packupShow}}" class="pack_up_text">
+          <text>起</text>
+          <text>终</text>
+        </view>
+      </view>
+    </view>
+    <view class="near direction_column" bindtap="nearView" hover-class="viewHove">
+      <image src="/svg/near.svg"></image>
+    </view>
+    <view class="scaleBox" bindtap="scaleChange">
+      <view data-code="add" hover-class="viewHove">+</view>
+      <view data-code="reduce" hover-class="viewHove">-</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,49 @@
+/* pages/convenience/convenience.wxss */
+.container {
+  background-color: #ffffff;
+}
+
+.concenienceBg {
+  height: 422rpx;
+  position: relative;
+}
+
+.concenienceBg image {
+  width: 100%;
+  height: 100%;
+}
+
+.concenienceBg .icon-tiaozhuan {
+  position: absolute;
+  z-index: 99;
+  left: 20rpx;
+  transform: rotate(180deg);
+  color: #ffffff;
+}
+
+.main {
+  background-color: #ffffff;
+  border-radius: 16px 16px 0px 0px;
+  transform: translate(0, -40rpx);
+  padding: 80rpx 20rpx 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.concenienceItem {
+  margin-bottom: 64rpx;
+  width: 33.333%;
+  /* height: 70px; */
+}
+
+.concenienceItem image {
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.concenienceItem text {
+  color: #333333;
+  line-height: 20px;
+  margin-top: 4rpx;
+}

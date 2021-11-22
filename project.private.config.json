@@ -13,81 +13,33 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/toll_station/toll_station",
-          "pathName": "pages/toll_station/toll_station",
+          "name": "pages/home1/home1",
+          "pathName": "pages/home1/home1",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/home/home",
-          "pathName": "pages/home/home",
+          "name": "pages/trafficPolice/trafficPolice",
+          "pathName": "pages/trafficPolice/trafficPolice",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/high_speed_road/high_speed_road",
-          "pathName": "pages/high_speed_road/high_speed_road",
+          "name": "pages/accidentManage/accidentManage",
+          "pathName": "pages/accidentManage/accidentManage",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/path_plan/path_plan",
-          "pathName": "pages/path_plan/path_plan",
+          "name": "pages/chargePolicy/chargePolicy",
+          "pathName": "pages/chargePolicy/chargePolicy",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/high_speed_info/high_speed_info",
-          "pathName": "pages/high_speed_info/high_speed_info",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/personal/personal",
-          "pathName": "pages/personal/personal",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/path_plan_map/path_plan_map",
-          "pathName": "pages/path_plan_map/path_plan_map",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/traffic_info/traffic_info",
-          "pathName": "pages/traffic_info/traffic_info",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/path_plan_map/path_plan_map",
-          "pathName": "pages/path_plan_map/path_plan_map",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/high_speed_map/high_speed_map",
-          "pathName": "pages/high_speed_map/high_speed_map",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/collection/collection",
-          "pathName": "pages/collection/collection",
-          "query": "code=1",
-          "scene": null
-        },
-        {
-          "name": "pages/path_plan/path_plan",
-          "pathName": "pages/path_plan/path_plan",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/AboutUs/AboutUs",
-          "pathName": "pages/AboutUs/AboutUs",
-          "query": "",
+          "name": "pages/articleView/articleView",
+          "pathName": "pages/articleView/articleView",
+          "query": "type=policy",
           "scene": null
         }
       ]

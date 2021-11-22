@@ -1,0 +1,29 @@
+<!--pages/convenience/convenience.wxml-->
+<view class="container">
+  <view class="concenienceBg">
+    <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/convenpgIcon.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003837&signature=EhRQW8QWAB%2FKXBbYXgHSyVXrlCkDQVwHV7hJZ%2FqMVwA%3D"></image>
+    <text bindtap="goBack" class="iconfont icon-tiaozhuan" style="top:{{height}}rpx"></text>
+  </view>
+  <view class="main">
+    <view class="concenienceItem direction_column"  data-path="emergencyRescue" bindtap="entranceClick" >
+      <image src="/img/concenience1.png"></image>
+      <text>紧急救援</text>
+    </view>
+    <view class="concenienceItem direction_column" data-path="trafficPolice" bindtap="entranceClick">
+      <image src="/img/concenience2.png"></image>
+      <text>高速交警大队</text>
+    </view>
+    <view class="concenienceItem direction_column" data-path="accidentManage" bindtap="entranceClick">
+      <image src="/img/concenience3.png"></image>
+      <text>事故快处点</text>
+    </view>
+    <view class="concenienceItem direction_column" data-path="chargePolicy" bindtap="entranceClick">
+      <image src="/img/concenience4.png"></image>
+      <text>收费政策</text>
+    </view>
+    <view class="concenienceItem direction_column" data-path="noticeInfo" bindtap="entranceClick">
+      <image src="/img/concenience5.png"></image>
+      <text>公告信息</text>
+    </view>
+  </view>
+</view>

@@ -24,12 +24,7 @@ Page({
       icon: '/img/road.png',
       name: '路况',
       hide: false,
-    }, {
-      code: 2,
-      icon: '/img/corssbridge.png',
-      name: '过江大桥',
-      hide: false,
-    }, {
+    },{
       code: 3,
       icon: '/img/stationIcon.png',
       name: '收费站',
@@ -46,8 +41,7 @@ Page({
     IsMarkerinfoShow: false, //底部弹窗是否显示
     GsRoadInfo: {},
     myLocation: [],
-    collectionId: '',
-    loginStatus:false
+    collectionId: ''
   },
 
   /**
@@ -56,8 +50,6 @@ Page({
   onLoad: function (options) {
     this.getStorage();
     this.getMarker();
-    this.getroadifSave()
-
   },
   //获取缓存信息
   getStorage() {
@@ -76,8 +68,13 @@ Page({
   },
   //收藏点击
   focusonClick() {
-    let token = wx.getStorageSync('access-token');
-    if (!token) return;
+    let accessToken = wx.getStorageSync('access-token');
+    if (!accessToken) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return false;
+    }
     let {
       focusonState
     } = this.data;
@@ -402,12 +399,6 @@ Page({
     let num2 = parseInt(Math.random() * 1000000 + 1, 10);
     return num1 + num2;
   },
-  islogin() {
-    let accessToken = wx.getStorageSync('access-token')
-    this.setData({
-      loginStatus: accessToken ? true : false
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -419,7 +410,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.islogin()
+    this.getroadifSave()
   },
 
   /**

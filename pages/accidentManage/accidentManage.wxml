@@ -1,0 +1,64 @@
+<!--pages/accidentManage/accidentManage.wxml-->
+<wxs module="common" src="/utils/common.wxs"></wxs>
+<view class="container">
+  <view class="main">
+    <map id="tarfficMap" longitude="{{center[0]}}" latitude="{{center[1]}}" scale="{{scale}}" min-scale="{{minScale}}"
+      max-scale="{{maxScale}}" markers="{{listData}}" show-location bindcallouttap="bindcallouttap">
+      <cover-view slot="callout">
+        <cover-view class="customCallout" wx:key="key" wx:for="{{listData}}"  marker-id="{{item.id}}">
+          <cover-view class="content">
+            <cover-view class="contentHead">{{item.address}}
+            </cover-view>
+            <cover-view class="contentFoot">
+              <cover-view class="accidentText">
+                <cover-view class="accidentddress">{{item.cityName}}｜{{common.math_distance(item.distanceUm)}}公里</cover-view>
+                <cover-view class="statetag">{{item.rapidType}}</cover-view>
+              </cover-view>
+              <cover-view class="trafficTo">去这里</cover-view>
+            </cover-view>
+          </cover-view>
+        </cover-view>
+      </cover-view>
+    </map>
+    <view class="trafficSearchbox">
+      <icon size='20' type='search'></icon>
+      <input placeholder="搜索" maxlength="32" bindconfirm="bindconfirm" confirm-type="search" />
+    </view>
+    <view class="movePanl" style="height:{{windowHeight - 220}}px;top:{{top}}px">
+      <view class="near direction_column" bindtap="nearView" hover-class="viewHove">
+        <image src="/svg/near.svg"></image>
+      </view>
+      <view class="scaleBox" bindtap="scaleChange">
+        <view data-code="add" hover-class="viewHove">+</view>
+        <view data-code="reduce" hover-class="viewHove">-</view>
+      </view>
+      <view class="tarfficList" bindtouchstart="touchstart" bindtouchmove="touchmove">
+        <scroll-view scroll-y>
+          <view class="tarfficItem" data-latitude="{{item.latitude}}" data-longitude="{{item.longitude}}"
+            catchtap="ListClick" wx:for="{{listData}}" wx:key="key">
+            <view class="itemMain">
+              <view class="itemLeft">
+                <view class="itemHead">
+                  <text class="itemTitle">{{item.roadId + item.roadName}}</text>
+                  <view class="distance">
+                    <text class="iconfont icon-dingweixiao">{{common.math_distance(item.distanceUm)}}公里</text>
+                  </view>
+                </view>
+                <view class="itemBody">{{item.address}}</view>
+                <view class="itemfoot">
+                  <view class="statetag">{{item.cityName}}</view>
+                  <view class="statetag warning">{{item.rapidType}}</view>
+                </view>
+              </view>
+              <view class="itemRight direction_column" data-code="{{item.id}}" catchtap="tarfficClick">
+                <image src="/img/navigationIcon.png"></image>
+                <text>去这里</text>
+              </view>
+            </view>
+          </view>
+          <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -25,7 +25,7 @@
           <text>大桥限行信息</text>
           <!-- <text>道路限行信息</text> -->
         </view>
-        <image src="/img/bridge.png"></image>
+        <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/bridge.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003836&signature=E510iInl0utV6aBc3eRWUT5vLOCqcAb6JXCpDGaH1GQ%3D"></image>
       </view>
       <view class="entranceItem" data-path="path_plan" bindtap="entranceClick">
         <view class="entranceTitle">

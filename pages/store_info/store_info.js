@@ -56,7 +56,7 @@ Page({
     let name = options.name;
     let shopTypeId=options.shopTypeId;
     this.setData({
-      defaultImg:shopTypeId==3?'/img/catering.png':shopTypeId==4?'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/specialty.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=ANfjYocBvN2boxPfvbLE1dMWUmGPECiVhJ%2Fv6c1S0yg%3D':'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/features.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511309&signature=yZY0YMWO7sf9JyDdJDE8cCSZ0uwUlZL5AK%2B%2FTa9rAAI%3D'
+      defaultImg:shopTypeId==3?'https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/catering.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003836&signature=B8V87XJJ6D9CV1jAXeXEBIEQsgWtDflzckF4q4yW1Uc%3D':shopTypeId==4?'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/specialty.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=ANfjYocBvN2boxPfvbLE1dMWUmGPECiVhJ%2Fv6c1S0yg%3D':'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/features.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511309&signature=yZY0YMWO7sf9JyDdJDE8cCSZ0uwUlZL5AK%2B%2FTa9rAAI%3D'
     })
     wx.setNavigationBarTitle({
       title: name 

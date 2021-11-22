@@ -1,0 +1,34 @@
+/* pages/chargePolicy/chargePolicy.wxss */
+.main {
+  background-color: #ffffff;
+  padding-top: 10px;
+}
+
+.policyItem {
+  padding:32rpx 38rpx 0;
+  box-sizing: border-box;
+}
+.ItemBody{
+  padding: 0 0 18rpx 0;
+  border-bottom:2rpx solid #F2F2F2; 
+}
+.policyItem:last-of-type .ItemBody{
+  border-bottom:0;
+}
+.itemTitle {
+  display: block;
+  font-weight: 500;
+  font-size: 32rpx;
+  color: #000000;
+  line-height: 44rpx;
+}
+
+.footInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666666;
+  line-height: 20px;
+  margin: 24rpx 0;
+  
+}

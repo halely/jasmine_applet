@@ -228,7 +228,8 @@
 /* 右侧菜单 */
 .marker_type_box {
   width: 120rpx;
-  height: 548rpx;
+  /* height: 548rpx; */
+  height: 460rpx;
   background-color: #ffffff;
   top: 40rpx;
   right: 0;

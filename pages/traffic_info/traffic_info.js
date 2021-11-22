@@ -10,6 +10,12 @@ Page({
   /**
    * 页面的初始数据
    */
+  // {
+  //   code: 2,
+  //   icon: '/img/corssbridge.png',
+  //   name: '过江大桥',
+  //   hide: false,
+  // },
   data: {
     center: [],
     scale: 10,
@@ -22,12 +28,7 @@ Page({
       icon: '/img/road.png',
       name: '路况',
       hide: false,
-    }, {
-      code: 2,
-      icon: '/img/corssbridge.png',
-      name: '过江大桥',
-      hide: false,
-    }, {
+    },  {
       code: 3,
       icon: '/img/stationIcon.png',
       name: '收费站',
@@ -143,7 +144,8 @@ Page({
     })
     let paramCommon = {
       pageNum: 1,
-      pageSize: 9999
+      pageSize: 9999,
+      distanse:100,
     }
     let param1 = {
       type: ''
@@ -286,10 +288,6 @@ Page({
   },
   // 获取所有高速
   async getgsData() {
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    })
     let param = {
       pageNum: 1,
       pageSize: 9999,
@@ -298,7 +296,6 @@ Page({
     let {
       data
     } = await requst_get_queryAllRoadInfo(param)
-    wx.hideLoading()
     if (data.code == '1001') {
       let mapData = data.data.records.map(item => {
         let obj = item;

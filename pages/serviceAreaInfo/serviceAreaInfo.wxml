@@ -7,7 +7,6 @@
       <text>{{serviceAreaItemInfo.serviceAreaName}} {{serviceAreaItemInfo.dir?'('+serviceAreaItemInfo.dir+')':''}}</text>
       <image class="on-state" src="{{serviceAreaItemInfo.serviceAreaState?'/img/on-state.png':'/img/on-close.png'}}">
       </image>
-
       <view class="distanceInfo">
         {{common.math_distance(serviceAreaItemInfo.distanceUm)}}km｜K{{serviceAreaItemInfo.stake}}</view>
     </view>
@@ -67,13 +66,10 @@
     <scroll-view scroll-y bindscrolltolower="scrolltolower">
       <view bindtap="shopItemClick" class="serviceStoreItem" data-item="{{item}}" wx:for="{{listData}}" wx:key="key">
         <view class="ItemBody">
-          <image src="{{item.picId || '/img/defaultImg.png'}}">
+          <image src="{{item.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/defaultImg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003837&signature=AmZTaz%2B9QfzVfeJDWJVti0fKs7qcv%2FQwnu3DxkjEnyo%3D'}}">
           </image>
           <view class="storeInfo">
             <text class="storeName ellipsis">{{item.shopParentName}}（{{item.shopName}}）</text>
-            <!-- <view class="starBox">
-              <star />
-            </view>-->
             <view class="sales_status">
               <text wx:if="{{item.shopTypeId==3}}">餐饮小吃</text>
               <text wx:if="{{item.shopTypeId==4}}" class="specialty">超市特产</text>
@@ -88,4 +84,8 @@
       </view>
     </scroll-view>
   </view>
+</view>
+<view class="collectBox direction_column {{collectionId?'selected':''}}" bindtap="focusonClick">
+  <image src="{{collectionId?'/img/star.png':'/svg/starNo.svg'}}"/>
+  <text>{{collectionId?'已收藏':'收藏'}}</text>
 </view>

@@ -1,0 +1,33 @@
+<!--pages/warmPrompt/warmPrompt.wxml-->
+<view class="container">
+  <view class="main">
+    <view class="promptBox">
+      <view class="promptTitle">
+        <view class="numBox">1</view>
+        <view class="ItemTitle">开启<text class="bold">危险报警灯</text>（宽灯、尾灯）</view>
+      </view>
+      <image mode="widthFix"
+        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/%E7%BC%96%E7%BB%84%204%402x.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003837&signature=%2BNR%2FDEo7iih9E5HvUlW3V7nsYoTAIY74msgVcQMGEOo%3D">
+      </image>
+    </view>
+    <view class="promptBox">
+      <view class="promptTitle">
+        <view class="numBox">2</view>
+        <view class="ItemTitle">在车后<text class="bold">150米</text>以外设置<text class="bold">警告标志</text></view>
+      </view>
+      <image mode="widthFix"
+        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/%E7%BC%96%E7%BB%84%205%402x.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003838&signature=SJYioWDrjFiqPg6MpFe6LNF3LWV5Yl0zpECKsJ6fy%2Bo%3D">
+      </image>
+    </view>
+    <view class="promptBox">
+      <view class="promptTitle">
+        <view class="numBox">3</view>
+        <view class="ItemTitle">在车上人员转移到<text class="bold">右侧路肩或护栏</text>以外安全区域</view>
+      </view>
+      <image  mode="widthFix"
+        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/%E7%BC%96%E7%BB%84%206%402x.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003838&signature=pq2mBzERhtuvsHvmWbBezTEr2REQL3pZ1LM%2Fy4mXuxQ%3D">
+      </image>
+    </view>
+    <button type="primary" class="nextStep" bindtap="PhoneCall">如需救援请拨打96777</button>
+  </view>
+</view>

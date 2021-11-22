@@ -14,7 +14,7 @@
       <view class="basicInfo">
         <view class="infoHead">
           <view class="infoTitle ellipsis">{{GsRoadInfo.roadName}}</view>
-          <view class="focus_on {{focusonState?'selected':''}}" bindtap="focusonClick" wx:if="{{loginStatus}}">
+          <view class="focus_on {{focusonState?'selected':''}}" bindtap="focusonClick" >
             <image src="{{focusonState?'/img/star.png':'/img/star_no.png'}}" />
             <text>{{focusonState?'已收藏':'收藏'}}</text>
           </view>
@@ -80,7 +80,7 @@
                   <view class="Timeline_normal"></view>
                 </view>
                 <view class="toll_station_body">
-                  <view class="toll_station_name">{{item.stationName}}</view>
+                  <view class="toll_station_name">{{item.stationName}}收费站</view>
                   <view class="toll_station_num">距您{{common.math_distance(item.distanceUm)}}km</view>
                   <view class="itembody">
                     <view class="tollstation_state" wx:for-item="item_son"

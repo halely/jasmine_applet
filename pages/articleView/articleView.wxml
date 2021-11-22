@@ -1,0 +1,10 @@
+<!--pages/articleView/articleView.wxml-->
+<view class="htmlBox">
+  <view class="articleTitle">{{articleData.policyTitle}}</view>
+  <view class="articleInfo">
+    <text>{{articleData.publishTime}}</text>
+    <text>{{articleData.publishBy}}</text>
+    <text>阅读数：{{articleData.readCount}}</text>
+  </view>
+  <mp-html content="{{html}}" container-style="white-space:pre-wrap" />
+</view>

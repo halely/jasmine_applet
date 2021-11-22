@@ -8,26 +8,26 @@
       </block>
       <block wx:else>
         <image class="head_portrait" src="/img/noImge.png" />
-        <view bindtap="getUserProfile" class="loginBut">立即登录</view>
+        <view bindtap="loginView" class="loginBut">立即登录</view>
       </block>
     </view>
     <view class="my_collection_box">
       <view class="title">我的收藏</view>
       <view class="collection_type">
         <view bindtap="collectionView" data-code="1" class="collection_item direction_column">
-          <image class="item_icon" src="/img/collection_toll_station.png"></image>
+          <image class="item_icon" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/collection_toll_station.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003837&signature=5cxwpf0hz4sEAeS6WzRq%2FRisqODxl2rSBHRYOzQaN%2Fs%3D"></image>
           <view class="item_title">高速</view>
         </view>
         <view bindtap="collectionView" data-code="2" class="collection_item direction_column">
-          <image class="item_icon" src="/img/collection_service_area.png"></image>
+          <image class="item_icon" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/collection_service_area.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003836&signature=khLnpCFZpbEsGNoXNRmOW1pmaAAHU0565iLSSBcKGTE%3D"></image>
           <view class="item_title">收费站</view>
         </view>
         <view bindtap="collectionView" data-code="3" class="collection_item direction_column">
-          <image class="item_icon" src="/img/collection_high_speed.png"></image>
+          <image class="item_icon" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/collection_high_speed.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003836&signature=d2zZSS76cmvakHjU2CrIOd7qq4IbZVdMna%2BiI%2FPFbm8%3D"></image>
           <view class="item_title">服务区</view>
         </view>
         <view bindtap="collectionView" data-code="4" class="collection_item direction_column">
-          <image class="item_icon" src="/img/collection_route.png"></image>
+          <image class="item_icon" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/collection_route.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003836&signature=R8ys402hBhIZSFZbciUJJJRDuQo1Rdym%2Bw6N3brvCpg%3D"></image>
           <view class="item_title">路线</view>
         </view>
       </view>
@@ -49,7 +49,7 @@
         </view>
         <view class="collection_item direction_column" data-path="cross_river_bridge" bindtap="entranceClick">
           <view class="item_title">过江通道</view>
-          <image class="item_icon" src="/img/bridge.png"></image>
+          <image class="item_icon" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/bridge.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003836&signature=E510iInl0utV6aBc3eRWUT5vLOCqcAb6JXCpDGaH1GQ%3D"></image>
         </view>
       </view>
     </view>
