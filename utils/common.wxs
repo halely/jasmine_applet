@@ -39,11 +39,12 @@ function macth_close(arr1, arr2) {
 //截取数据
 function splitTiem(val){
    if(val){
-     return val.split(' ')[0]
+     return val.split(' ')
    }else{
-     return ''
+     return ['']
    }
 }
+
 //解析事件
 function getDuration(second) {
   var days = Math.floor(second / 86400);

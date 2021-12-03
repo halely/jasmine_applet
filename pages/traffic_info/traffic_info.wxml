@@ -1,4 +1,5 @@
 <!--pages/traffic_info/traffic_info.wxml-->
+
 <view class="container">
   <view class="trafficHeadBox">
     <view class="trafficHeadItem direction_column" data-path="high_speed_road" bindtap="entranceClick">
@@ -43,10 +44,10 @@
         <view class="accidentInfoBox">
           <view class="marker_info_head">
             <view class="marker_info_main">
-              <image wx:if="{{itemData.type=='施工养护'}}" src="/img/construction.png"></image>
-              <image wx:if="{{itemData.type=='恶劣天气'}}" src="/img/Bad_weather.png"></image>
-              <image wx:if="{{itemData.type=='特情信息'}}" src="/img/secret_info.png"></image>
-              <image wx:if="{{itemData.type=='交通事故'}}" src="/img/accident_icon.png"></image>
+              <image mode="widthFix" wx:if="{{itemData.type=='施工养护'}}" src="/img/construction.png"></image>
+              <image mode="widthFix" wx:if="{{itemData.type=='恶劣天气'}}" src="/img/Bad_weather.png"></image>
+              <image mode="widthFix" wx:if="{{itemData.type=='特情信息'}}" src="/img/secret_info.png"></image>
+              <image mode="widthFix" wx:if="{{itemData.type=='交通事故'}}" src="/img/accident_icon.png"></image>
               <view class="marker_info_title">
                 <view class="info_title">{{itemData.type}}</view>
                 <view class="info_direction">{{itemData.roadId+itemData.roadName+'('+itemData.dirDes+')'}}</view>

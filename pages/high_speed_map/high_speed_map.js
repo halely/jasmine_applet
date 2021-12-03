@@ -269,7 +269,6 @@ Page({
     }))
     Promise.all(promisList).then(res => {
       _this.disposeMarker(res)
-      // console.log(res)
     }).catch(res => {
       wx.hideLoading()
       wx.showToast({

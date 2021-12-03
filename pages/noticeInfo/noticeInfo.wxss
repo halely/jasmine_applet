@@ -18,6 +18,7 @@
 }
 
 .ItemBody {
+  flex: 1;
   padding: 0 0 18rpx 0;
   border-bottom: 2rpx solid #F2F2F2;
 }

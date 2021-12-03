@@ -257,15 +257,9 @@ Page({
       method: 'GET',
       success: (res => {
         if (res.statusCode === 200) {
-          // let polylines=res.data.districts[0].polyline.split('|');
-          // let polyline=polylines[0];
-          // if(polylines[1]){
-          //   polyline=polylines[1].length>polylines[0].length?polylines[1]:polylines[0];
-          // }
           let polyline=res.data.districts[0].polyline;
           let center=res.data.districts[0].center;
           let polylineArr =polyline.split(';');
-          // console.log(polylineArr)
           let points = polylineArr.map(item => {
             let locationArr = item.split(',')
             return {

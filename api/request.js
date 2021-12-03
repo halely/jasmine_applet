@@ -1,6 +1,7 @@
 var tokenKey = "access-token"; //缓存token对应的值
-var serverUrl = "http://192.168.50.131:8080/jasmine-web"; //刘云鹏url地址
-// var serverUrl = "https://96777.jssgx.cn/jasmine-web"; //生产合法域名
+// var serverUrl = "http://192.168.50.131:8080/jasmine-web"; //刘云鹏url地址
+var serverUrl = "https://96777.jssgx.cn/jasmine-web"; //生产合法域名
+var tollStationUrl = "https://m.roadmall.cn/jasmine"; //服务区域名独立
 // 例外不用token的地址
 var exceptionAddrArr = ['/login', '/road/queryAllRoad', '/serviceArea/queryAllServiceArea', '/serviceArea/queryRoad', '/shop/queryAllShop', '/shop/shopDetail', '/road/queryAllBridge', '/station/queryAllByDistance', '/station/queryAllCityLine', '/station/queryAllByArea', '/station/queryAllClose', '/evaluation/add', '/road/queryAllRoadInfo', '/road/queryRoadInfoDetail'];
 
@@ -13,7 +14,7 @@ function CreateHeader(url, type, customHeader = {}) {
     }
   } else if (type == 'fileUpload') {
     header = {
-      'content-type': '  multipart/form-data'
+      'content-type': 'multipart/form-data'
     }
   } else {
     header = {
@@ -236,9 +237,40 @@ function upImgs(imgurl, data, customHeader = {}) {
   })
 }
 
+//get 请求 ----服务区独立信息
+function getRequest2(url, data, customHeader = {}) {
+  let header = CreateHeader(url, 'GET', customHeader);
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: tollStationUrl + url,
+      data: data,
+      header: header,
+      method: 'GET',
+      success: (res => {
+        if (res.statusCode === 200) {
+          //200: 服务端业务处理正常结束
+          //token过期
+          if (res.data.code == 999) {
+            overdue()
+          } else {
+            resolve(res);
+          }
+        } else {
+          reject(res)
+        }
+      }),
+      fail: (res => {
+        failFnc();
+        reject(res)
+      })
+    })
+  })
+}
+
 module.exports.getRequest = getRequest;
 module.exports.postRequest = postRequest;
 module.exports.postParamsRequest = postParamsRequest;
 module.exports.putRequest = putRequest;
 module.exports.deleteRequest = deleteRequest;
 module.exports.upImgs = upImgs;
+module.exports.getRequest2 = getRequest2;

@@ -1,26 +1,22 @@
 <!--pages/emergencyRescue/emergencyRescue.wxml-->
 <view class="container">
   <view class="main">
-    <map id="mymap" scale="{{scale}}" min-scale="{{minScale}}" max-scale="{{maxScale}}" show-location></map>
+    <map id="mymap" scale="{{scale}}" min-scale="{{minScale}}" max-scale="{{maxScale}}" longitude="{{center[0]}}" latitude="{{center[1]}}" show-location></map>
     <view class="scaleBox" bindtap="scaleChange">
       <view data-code="add" hover-class="viewHove">+</view>
       <view data-code="reduce" hover-class="viewHove">-</view>
     </view>
   </view>
-  <view class="addreeInfo" bindtouchstart="touchStart" bindtouchend="touchEnd">
-    <view class="InfoHead">您所在高速上的位置</view>
+  <view class="addreeInfo" >
+    <view class="InfoHead">您当前所在的位置</view>
     <view class="infoBody">
       <view class="infoItem direction_column">
-        <text>所在高速</text>
-        <text>G42沪蓉高速</text>
-      </view>
-      <view class="infoItem direction_column">
         <text>所在位置</text>
-        <text>南京市玄武区柳营105号</text>
+        <text>{{addressName||'-'}}</text>
       </view>
       <view class="infoItem direction_column">
         <text>距离最近桩号</text>
-        <text>K15 + 500</text>
+        <text>-</text>
       </view>
     </view>
     <button type="primary" class="nextStep" bindtap="nextStep">下一步</button>

@@ -22,18 +22,6 @@
   position: relative;
 }
 
-/* .addreeInfo::after{
-  width: 100rpx;
-  height: 6rpx;
-  content: '';
-  position: absolute;
-  background-color: #999999;
-  border-radius: 8rpx;
-  top:20rpx;
-  left: 50%;
-  transform: translateX(-50%);
-} */
-
 .InfoHead {
   font-size: 32rpx;
   color: #12A86D;
@@ -46,7 +34,7 @@
 }
 
 .infoItem {
-  width: 32%;
+  width:48%;
   padding: 20rpx 0 10rpx;
   background: #F5F5F5;
   text-align: center;

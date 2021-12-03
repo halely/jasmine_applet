@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText":"公告信息"
+  "navigationBarTitleText":"公告信息",
+  "enablePullDownRefresh":true 
 }

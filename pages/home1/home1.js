@@ -4,6 +4,10 @@ var amapFile = require('../../libs/amap-wx.130.js');
 import {
   markersData
 } from '../../libs/markers.js'
+
+import {
+  requst_get_queryHandyNotice
+} from '../../api/index'
 Page({
 
   /**
@@ -11,22 +15,25 @@ Page({
    */
   data: {
     islocation: false, //当前是否获取位置
-    city: '',//当前城市
-    height: app.globalData.height * 2 + 10,//手机高度
-    current: 0,//动态index
-    packupShow: false,//输入地址
+    city: '', //当前城市
+    height: app.globalData.height * 2 + 10, //手机高度
+    current: 0, //动态index
+    packupShow: false, //输入地址
     origin: {}, //起点
+    center: [118.737087,31.989091],
     destination: {}, //目的地
     scale: 16, //缩放级别
     minScale: 3, //最小缩放级别
-    maxScale: 20 //最大缩放级别
+    maxScale: 20, //最大缩放级别
+    listDate: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getLocation()
+    this.getLocation();
+    this.getqueryHandyNotice()
   },
   //选择起点
   getFormAddress: function () {
@@ -77,7 +84,6 @@ Page({
           longitude,
           name
         } = res;
-        console.log(res)
         if (!address) return false;
         let destination = {
           name: name,
@@ -139,7 +145,6 @@ Page({
   //跳转下一页
   jumpView() {
     let current = this.data.current;
-    console.log(current)
   },
   // 开启地址输入
   packupFc() {
@@ -156,6 +161,14 @@ Page({
       current: e.detail.current
     })
   },
+  noticeView(){
+    let current=this.data.current;
+    if(!this.data.listDate.length) return false;
+    wx.setStorageSync('articleData', this.data.listDate[current])
+    wx.navigateTo({
+      url: '/pages/articleView/articleView?type=notice',
+    })
+  },
   //地图缩放更改
   scaleChange(e) {
     let type = e.target.dataset.code;
@@ -164,21 +177,28 @@ Page({
       minScale,
       maxScale
     } = this.data;
-    //获取当前缩放程度
-    this.MapContext.getScale({
+    this.MapContext.getCenterLocation({
       success(res) {
-        let scale = Math.round(res.scale);
-        if (type == 'add') {
-          if (scale < maxScale) {
-            scale = scale + 1;
-          }
-        } else if (type == 'reduce') {
-          if (scale > minScale) {
-            scale = scale - 1;
-          }
-        }
+        let center = [res.longitude, res.latitude];
         _this.setData({
-          scale
+          center
+        })
+        _this.MapContext.getScale({
+          success(res) {
+            let scale = Math.round(res.scale);
+            if (type == 'add') {
+              if (scale < maxScale) {
+                scale = scale + 1;
+              }
+            } else if (type == 'reduce') {
+              if (scale > minScale) {
+                scale = scale - 1;
+              }
+            }
+            _this.setData({
+              scale
+            })
+          }
         })
       }
     })
@@ -209,7 +229,6 @@ Page({
       let _locationChangeFn = (res) => {
         console.log('location change', res)
         wx.hideLoading();
-        console.log(res)
         if (res.latitude) {
           let {
             latitude,
@@ -221,7 +240,6 @@ Page({
       }
       wx.startLocationUpdate({
         success: (res) => {
-          console.log(res);
           wx.onLocationChange(_locationChangeFn)
           resolve()
         },
@@ -245,7 +263,8 @@ Page({
         } = res;
         //设置地图
         _this.setData({
-          islocation: true
+          islocation: true,
+          center:[longitude,latitude]
         })
         _this.loadCity(longitude, latitude);
       },
@@ -292,7 +311,7 @@ Page({
           city: regeocodeData.addressComponent.city,
           township: regeocodeData.addressComponent.township
         }
-        if(that.MapContext){
+        if (that.MapContext) {
           that.MapContext.moveToLocation();
         }
         //设置地图缓存
@@ -357,7 +376,7 @@ Page({
   },
   //点击主体跳转
   entranceClick(e) {
-    let myLocation=wx.getStorageSync('myLocation')
+    let myLocation = wx.getStorageSync('myLocation')
     if (!myLocation) {
       wx.showToast({
         title: '请授权获取当前位置',
@@ -370,6 +389,21 @@ Page({
     wx.navigateTo({
       url: '/pages/' + path + '/' + path,
     })
+  },
+  //获取公告信息
+  async getqueryHandyNotice() {
+    let param = {
+      pageNum: 1,
+      pageSize: 3
+    }
+    let {
+      data
+    } = await requst_get_queryHandyNotice(param);
+    if (data.code == '1001') {
+      this.setData({
+        listDate: data.data.records
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

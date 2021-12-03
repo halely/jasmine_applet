@@ -129,7 +129,6 @@
 
 .marker_info_main image {
   width: 80rpx;
-  height: 80rpx;
   margin-right: 28rpx;
 }
 
@@ -148,7 +147,6 @@
 }
 
 .info_time_item text:first-child {
-  font-size: 16px;
   font-weight: bold;
   color: #333333;
   line-height: 22px;

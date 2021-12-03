@@ -21,7 +21,7 @@
           </view>
           <view class="basicInfo">
             <view>{{item.roadId+item.roadName}}</view>
-            <text class="LimitPath">x {{item.dirDes}}</text>
+            <text class="LimitPath">{{item.dirDes}}</text>
           </view>
         </view>
         <view class="item_body">
@@ -31,7 +31,7 @@
           </view>
           <view class="infoItem">
             <label>限行时间：</label>
-            <text>{{item.controlStartTime ||'--'}} {{item. controlEndTime?'至 '+item. controlEndTime:item.expectResumeTime?'至 '+ common.splitTiem(item.expectResumeTime):'--'}}</text>
+            <text>{{item.controlStartTime ||'--'}} {{item. controlEndTime?'至 '+item. controlEndTime:item.expectResumeTime?'至 '+ common.splitTiem(item.expectResumeTime)[0]:'--'}}</text>
           </view>
           <view class="infoItem">
             <label>限行原因：</label>

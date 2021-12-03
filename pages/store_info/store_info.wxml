@@ -2,30 +2,28 @@
 <view class="container">
   <view class="main">
     <view class="store_menu">
-      <!-- <view class="menuItem">
-        <image src="/img/hot.png"></image>
-      热销
-      </view> -->
-      <view wx:for="{{shopKey}}" wx:key="key" data-name="{{item}}" class="menuItem {{item==select?'selected':''}}" bindtap="menuItemClick">{{item}}</view>
+      <view wx:for="{{shopKey}}" wx:key="key" data-item="{{item}}"
+        class="menuItem {{item.commodityTypeId==select.commodityTypeId?'selected':''}}" bindtap="menuItemClick">
+        {{item.commodityTypeName}}</view>
     </view>
     <view class="menu_details">
       <view class="detail_title">
-        {{select}}
+        {{select.commodityTypeName}}
       </view>
       <view class="detailBody">
-        <scroll-view scroll-y>
-        <view wx:for="{{listData}}" class="detailItemBox" wx:key="key">
-          <image src="{{defaultImg}}"></image>
-          <view class="detailItemInfo">
-            <view class="foodName ellipsis">{{item.commodityName}}</view>
-            <!-- <view class="evaluate">
+        <scroll-view scroll-y bindscrolltolower="scrolltolower">
+          <view wx:for="{{listData}}" class="detailItemBox" wx:key="key">
+            <image src="{{defaultImg}}"></image>
+            <view class="detailItemInfo">
+              <view class="foodName ellipsis">{{item.commodityName}}</view>
+              <!-- <view class="evaluate">
               <text>月销量271份</text>
               <text>好评率98%</text>
             </view> -->
-            <text class="price">¥ {{item.sellPrice}}</text>
+              <text class="price">¥ {{item.sellPrice}}</text>
+            </view>
           </view>
-        </view>
-        <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
+          <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
         </scroll-view>
       </view>
     </view>

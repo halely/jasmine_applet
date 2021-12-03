@@ -17,7 +17,6 @@ Page({
     wx.getUserProfile({
       desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        wx.setStorageSync('userInfo', res.userInfo);
         this.userInfo = res.userInfo
         wx.nextTick(() => {
           _this.navigateHome()
@@ -32,11 +31,16 @@ Page({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         let code = res.code;
+        wx.showLoading({
+          title: '登录中...',
+          mask: true
+        })
         requst_get_login({
           js_code: code
         }).then(({
           data
         }) => {
+          wx.hideLoading()
           //获取token
           if (data.code != 200) return false;
           wx.showToast({
@@ -45,16 +49,17 @@ Page({
             duration: 1000,
             mask: true
           })
+          wx.setStorageSync('userInfo', this.userInfo);
           wx.setStorageSync('access-token', data.token);
           //返回上一个页面
-          wx.navigateBack({ 
+          wx.navigateBack({
             delta: 1
           })
         }).catch(err => {
           wx.showToast({
             title: '登录失败',
             icon: 'none',
-            duration: 1500,
+            duration: 1000,
             mask: true
           })
         })

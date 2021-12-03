@@ -199,7 +199,6 @@
 
 .marker_info_main image {
   width: 80rpx;
-  height: 80rpx;
   margin-right: 28rpx;
 }
 

@@ -6,7 +6,6 @@ import {
   requst_post_myCollectionDelete,
   requst_post_myCollectionserviceAreaInsert
 } from '../../api/index.js'
-
 Page({
 
   /**
@@ -15,10 +14,29 @@ Page({
   data: {
     serviceAreaItemInfo: {},
     collectionId: '',
+    current: 'all',
     listData: [], //列表数据
     pageNum: 1, //页码
     pageSize: 10, //页数
     total: 0 //列表总数
+  },
+  //店铺类型点击
+  supermarketClick(e) {
+    let wxData = this.data;
+    let current = e.target.dataset.current;
+    if (current) {
+      if (wxData.current != current) {
+        this.setData({
+          current,
+          listData: [],
+          pageNum: 1, //页码
+          pageSize: 10, //页数
+        })
+        wx.nextTick(() => {
+          this.getqueryAllShop()
+        })
+      }
+    }
   },
   //获取当前服务区信息
   getserviceAreaItemInfo() {
@@ -35,20 +53,30 @@ Page({
   //获取店铺
   async getqueryAllShop() {
     let wxData = this.data;
+    if (!wxData.serviceAreaItemInfo.fwqSystemServiceAreaId && !wxData.serviceAreaItemInfo.fwqSystemDistributionId) {
+      return false;
+    }
     let param = {
-      serviceAreaId: wxData.serviceAreaItemInfo.serviceAreaId,
+      restAreaId: wxData.serviceAreaItemInfo.fwqSystemServiceAreaId,
+      distributionId: wxData.serviceAreaItemInfo.fwqSystemDistributionId,
+      shopTypeId: wxData.current == 'all' ? '' : wxData.current,
       pageNum: wxData.pageNum, //页码
       pageSize: wxData.pageSize, //页数
     };
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     let {
       data
     } = await requst_get_queryAllShop(param)
+    wx.hideLoading()
     if (data.code == '1001') {
-      let mapData = data.data.records;
+      let mapData = data.data.jasmineShopListList;
       let newData = wxData.listData.concat(mapData);
       this.setData({
         listData: newData,
-        total: data.data.total,
+        total: data.data.jasmineShopListNum,
       })
     }
   },
@@ -67,7 +95,7 @@ Page({
   shopItemClick(e) {
     let info = e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: '/pages/store_info/store_info?shopId=' + info.shopId + '&name=' + info.shopParentName + '&shopTypeId=' + info.shopTypeId,
+      url: '/pages/store_info/store_info?shopId=' + info.jasmineShopList[0].shopId + '&name=' + info.jasmineShopList[0].shopParentName + '&shopTypeId=' + info.shopTypeId,
     })
   },
   //判断服务区是否收藏

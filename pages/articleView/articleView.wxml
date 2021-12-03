@@ -1,6 +1,6 @@
 <!--pages/articleView/articleView.wxml-->
 <view class="htmlBox">
-  <view class="articleTitle">{{articleData.policyTitle}}</view>
+  <view class="articleTitle">{{title}}</view>
   <view class="articleInfo">
     <text>{{articleData.publishTime}}</text>
     <text>{{articleData.publishBy}}</text>

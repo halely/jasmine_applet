@@ -4,7 +4,8 @@ import {
   postParamsRequest,
   putRequest,
   deleteRequest,
-  upImgs
+  upImgs,
+  getRequest2
 } from 'request.js';
 
 //车辆限行
@@ -13,10 +14,7 @@ export const requst_post_queryAllRoad = data => getRequest(`/road/queryAllRoad`,
 export const requst_get_queryAllServiceAreaByDistanse = data => getRequest(`/serviceArea/queryAllServiceArea`, data);
 //查询所有道路-服务区
 export const requst_get_queryRoad = data => getRequest(`/serviceArea/queryRoad`, data);
-//查询服务区下所有店铺
-export const requst_get_queryAllShop = data => getRequest(`/shop/queryAllShop`, data);
-//查询该店铺所有种类
-export const requst_get_shopDetail = data => getRequest(`/shop/shopDetail`, data);
+
 // 大桥数据
 export const requst_get_queryAllBridge = data => getRequest(`/road/queryAllBridge`, data);
 //根据距离查询收费站
@@ -99,4 +97,14 @@ export const requst_get_addHandyChargePolicy = data => getRequest(`/handy/addHan
 
 // 公告信息阅读量
 export const requst_get_addHandyNotice = data => getRequest(`/handy/addHandyNotice`, data);
+
+
+//服务区信息接口（独立调用）
+
+//查询服务区下店铺
+export const requst_get_queryAllShop = data => getRequest2(`/shop/queryAllShop`, data);
+//查询该店铺所有种类
+export const requst_get_getAllCommodityType = data => getRequest2(`/getAllCommodityType`, data);
+//根据店铺编号与商品类型获取该店铺下所有商品信息
+export const requst_get_shopDetail = data => getRequest2(`/shop/shopDetail`, data);
 

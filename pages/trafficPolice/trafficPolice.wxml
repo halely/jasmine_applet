@@ -2,7 +2,7 @@
 <wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
   <view class="main">
-    <map id="tarfficMap" longitude="{{center[0]}}" latitude="{{center[1]}}" scale="{{scale}}" min-scale="{{minScale}}" max-scale="{{maxScale}}" markers="{{listData}}"
+    <map id="tarfficMap" bindupdated="bindupdated" longitude="{{center[0]}}" latitude="{{center[1]}}" scale="{{scale}}" min-scale="{{minScale}}" max-scale="{{maxScale}}" markers="{{listData}}"
       show-location bindcallouttap="bindcallouttap">
       <cover-view slot="callout">
         <cover-view wx:for="{{listData}}" wx:key="key" class="customCallout" marker-id="{{item.id}}">
@@ -38,15 +38,15 @@
             <view class="itemMain">
               <view class="itemLeft">
                 <view class="itemHead">
-                  <text class="itemTitle ellipsis">{{item.brigadeName}}</text>
+                  <text class="itemTitle ellipsis">{{item.brigadeName||'暂无'}}</text>
                   <view class="distance">
                     <text class="iconfont icon-dingweixiao">{{common.math_distance(item.distanceUm)}}公里</text>
                   </view>
                 </view>
-                <view class="itemBody">{{item.address}}</view>
+                <view class="itemBody">{{item.address||'暂无'}}</view>
                 <view class="itemfoot">
                   <text class="iconfont icon-call-tonghua"></text>
-                  <text class="phoneNum">{{item.brigadeTeleCode}}</text>
+                  <text class="phoneNum">{{item.brigadeTeleCode||'暂无'}}</text>
                 </view>
               </view>
               <view class="itemRight direction_column"  data-code="{{item.id}}"  catchtap="tarfficClick">

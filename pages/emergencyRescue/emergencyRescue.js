@@ -1,4 +1,8 @@
 // pages/emergencyRescue/emergencyRescue.js
+var amapFile = require('../../libs/amap-wx.130.js');
+import {
+  markersData
+} from '../../libs/markers.js'
 Page({
 
   /**
@@ -6,7 +10,9 @@ Page({
    */
   data: {
     addreeInfoHide: false,
-    flag: false, //是否点击下一步
+    center: [],
+    addressName: '',
+    myLocation: {},
     scale: 16, //缩放级别
     minScale: 3, //最小缩放级别
     maxScale: 20 //最大缩放级别
@@ -16,29 +22,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.location()
-  },
-  //触摸开始事件
-  touchStart(e) {
-    let touchDotY = e.touches[0].pageY;
-    this.touchStartY = touchDotY;
-  },
-  //触摸结束事件
-  touchEnd(e) {
-    let touchDotY = e.changedTouches[0].pageY;
-    let num = Math.abs(parseInt(touchDotY) - parseInt(this.touchStartY))
-    if (num < 50) return false;
-    if (touchDotY > this.touchStartY) {
-      // 下拉
+    let myLocation = wx.getStorageSync('myLocation');
+    if (myLocation) {
+      //设置中心点
+      let center = [myLocation.longitude, myLocation.latitude];
       this.setData({
-        addreeInfoHide: true
-      })
-    } else {
-      // 上拉
-      this.setData({
-        addreeInfoHide: false
+        center,
+        myLocation
       })
     }
+    
   },
   //地图缩放更改
   scaleChange(e) {
@@ -48,21 +41,28 @@ Page({
       minScale,
       maxScale
     } = this.data;
-    //获取当前缩放程度
-    this.MapContext.getScale({
+    this.MapContext.getCenterLocation({
       success(res) {
-        let scale = Math.round(res.scale);
-        if (type == 'add') {
-          if (scale < maxScale) {
-            scale = scale + 1;
-          }
-        } else if (type == 'reduce') {
-          if (scale > minScale) {
-            scale = scale - 1;
-          }
-        }
+        let center = [res.longitude, res.latitude];
         _this.setData({
-          scale
+          center
+        })
+        _this.MapContext.getScale({
+          success(res) {
+            let scale = Math.round(res.scale);
+            if (type == 'add') {
+              if (scale < maxScale) {
+                scale = scale + 1;
+              }
+            } else if (type == 'reduce') {
+              if (scale > minScale) {
+                scale = scale - 1;
+              }
+            }
+            _this.setData({
+              scale
+            })
+          }
         })
       }
     })
@@ -75,6 +75,7 @@ Page({
       await that.getWxLocation()
       this.MapContext.moveToLocation();
     } catch (error) {
+      console.log(error)
       wx.showModal({
         title: '是否授权当前位置',
         content: '需要获取您的地理位置，请确认授权，否则地图功能将无法使用',
@@ -84,22 +85,18 @@ Page({
           }
         }
       })
-      return
+      return false;
     }
   },
-
   // 获取位置信息
   getWxLocation() {
     let _this = this;
     return new Promise((resolve, reject) => {
       const _locationChangeFn = (res) => {
-        console.log('location change', res)
-        if (_this.data.flag) {
-          console.log(res)
+        // console.log('location change', res);
+        if (res.latitude && res.longitude) {
+          _this.loadCity(res.longitude, res.latitude)
         }
-        _this.setData({
-          flag: false
-        })
         wx.offLocationChange(_locationChangeFn); //取消监听实时地理位置变化事件
       }
       wx.startLocationUpdate({
@@ -113,7 +110,24 @@ Page({
       })
     })
   },
+  //获取当前城市
+  loadCity(longitude, latitude) {
+    var that = this;
+    var myAmapFun = new amapFile.AMapWX({
+      key: markersData.key
+    });
+    myAmapFun.getRegeo({
+      location: '' + longitude + ',' + latitude + '', //location的格式为'经度,纬度'
+      success: function (data) {
 
+        let res = data[0];
+        that.setData({
+          addressName: res.name
+        })
+      },
+      fail: function (info) {}
+    });
+  },
   // 调起客户端小程序设置界面
   toSetting() {
     let _this = this;
@@ -132,18 +146,14 @@ Page({
             icon: 'success',
             duration: 2000
           })
-          _this.setData({
-            flag: false
-          })
         }
       }
     })
   },
   nextStep() {
-    this.setData({
-      flag: true
+    wx.navigateTo({
+      url: '/pages/warmPrompt/warmPrompt',
     })
-    this.location()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -151,6 +161,7 @@ Page({
   onReady: function () {
     //设置map
     this.MapContext = wx.createMapContext('mymap');
+    this.location()
   },
 
   /**

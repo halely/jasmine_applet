@@ -112,6 +112,19 @@
   padding: 0 24rpx;
   box-sizing: border-box;
 }
+.dynamicitemBox{
+  display: flex;
+  align-items: center;
+}
+.dynamicText{
+  white-space: nowrap;
+}
+.dynamicSvg{
+  width:32rpx;
+  display: block;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
 
 .jumpIcon {
   width: 12px;
@@ -275,8 +288,9 @@ swiper {
   width: 48rpx;
   height: 48rpx;
 }
+
 /* 缩放改变 */
-.scaleBox{
+.scaleBox {
   position: absolute;
   right: 22px;
   top: 80px;
@@ -285,7 +299,8 @@ swiper {
   background-color: #fff;
   border-radius: 8rpx;
 }
-.scaleBox view{
+
+.scaleBox view {
   padding: 8rpx 0;
   width: 100%;
   font-size: 25px;

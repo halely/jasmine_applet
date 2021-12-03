@@ -95,7 +95,7 @@ Page({
                 //that.open();
                 wx.openSetting({
                   success: function (data) {
-                    console.log(data);
+
                     if (data.authSetting["scope.userLocation"] == true) {
                       wx.showToast({
                         title: '授权成功',

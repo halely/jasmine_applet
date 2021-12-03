@@ -44,22 +44,22 @@
     <!-- 车位厕所油类信息 -->
     <view class="basic_services_box">
       <view class="basic_services_foot">
-
         <view class="basic_servicesItem" wx:if="{{serviceAreaItemInfo.serviceAreaOilInfoList.length}}">
           <image src="/img/cheer.png"></image>
           <view class="cheerInfo">
             <view wx:for="{{serviceAreaItemInfo.serviceAreaOilInfoList}}" class="cheerItem" wx:key="key">
               {{item.oilName}}</view>
-            <!-- <view class="cheerItem diesel">0#</view> -->
           </view>
         </view>
       </view>
     </view>
     <!-- 店铺标题 -->
-    <view class="supermarket_title">
-      <image src="/img/hot.png"></image>
-      <text class="check">店铺</text>
-      <!-- <text>商超百货</text> -->
+    <view class="supermarket_title" bindtap="supermarketClick">
+      <!-- <image src="/img/hot.png"></image> -->
+      <text data-current="all" class="{{current=='all'?'check':''}}">推荐</text>
+      <text data-current="3"   class="{{current=='3'?'check':''}}">餐饮小吃</text>
+      <text data-current="4"   class="{{current=='4'?'check':''}}">超市特产</text>
+      <text data-current="5"   class="{{current=='5'?'check':''}}">特色商店</text>
     </view>
   </view>
   <view class="main">
@@ -69,7 +69,7 @@
           <image src="{{item.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/defaultImg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003837&signature=AmZTaz%2B9QfzVfeJDWJVti0fKs7qcv%2FQwnu3DxkjEnyo%3D'}}">
           </image>
           <view class="storeInfo">
-            <text class="storeName ellipsis">{{item.shopParentName}}（{{item.shopName}}）</text>
+            <text class="storeName ellipsis">{{item.jasmineShopList[0].shopParentName}}（{{item.jasmineShopList[0].shopName}}）</text>
             <view class="sales_status">
               <text wx:if="{{item.shopTypeId==3}}">餐饮小吃</text>
               <text wx:if="{{item.shopTypeId==4}}" class="specialty">超市特产</text>

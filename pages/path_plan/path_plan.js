@@ -87,7 +87,6 @@ Page({
           longitude,
           name
         } = res;
-        console.log(res)
         if (!address) return false;
         let destination = {
           name: name,

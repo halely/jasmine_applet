@@ -5,6 +5,7 @@
   height: 184px;
   margin-bottom: -20px;
 }
+
 /* 收藏 */
 .collectBox {
   width: 40px;
@@ -21,13 +22,15 @@
   top: 24rpx;
   right: 24rpx;
 }
-.collectBox.selected{
+
+.collectBox.selected {
   color: #FF7700;
 }
-.collectBox image{
+
+.collectBox image {
   width: 26rpx;
   height: 26rpx;
-  margin:10rpx 0 8rpx;
+  margin: 10rpx 0 8rpx;
 }
 
 .serviceAreaInfoBox {
@@ -149,8 +152,10 @@
 /* 店铺标题 */
 .supermarket_title {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 28rpx;
+  border-bottom: 2rpx solid #E2E2E2;
 }
 
 .supermarket_title image {
@@ -159,19 +164,20 @@
 }
 
 .supermarket_title text {
-  font-size: 26rpx;
-  color: #666666;
-  line-height: 18px;
-  margin-right: 24rpx;
+  font-size: 16px;
+  font-weight: 400;
+  color: #999999;
+  line-height: 22px;
+  margin: 0 10rpx;
 }
 
 .supermarket_title text.check {
-  height: 22px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #333333;
-  line-height: 22px;
-  margin-left: 8rpx;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  line-height: 25px;
+  padding-bottom: 10rpx;
+  border-bottom: 8rpx solid #2AC172;
 }
 
 .main {
@@ -194,7 +200,6 @@
   display: flex;
   padding: 20rpx;
   box-sizing: border-box;
-
 }
 
 .serviceStoreItem .ItemBody>image {

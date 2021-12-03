@@ -234,10 +234,11 @@ Page({
   onReady: function () {
     //设置map
     this.MapContext = wx.createMapContext('tarfficMap');
-    let myLocation = wx.getStorageSync('myLocation')
-    if (myLocation) {
-      this.MapContext.moveToLocation();
-    }
+    wx.nextTick(() => {
+      setTimeout(() => {
+        this.MapContext.moveToLocation();
+      }, 1000);
+    })
   },
 
   /**

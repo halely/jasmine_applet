@@ -59,7 +59,6 @@ Page({
   //描点点击
   bindmarkertap(e) {
     let markerId = e.markerId;
-    console.log(markerId)
     if(!markerId) return false;
     let markers = this.data.markers;
     let itemData = {}
@@ -170,7 +169,6 @@ Page({
     Promise.all(promisList).then(res => {
       _this.disposeMarker(res)
     }).catch(res => {
-      console.log(res)
       wx.hideLoading()
       wx.showToast({
         title: '接口报错',
@@ -346,21 +344,7 @@ Page({
     //创建 map 上下文 MapContext 对象。
     this.MapContext = wx.createMapContext('myMap');
     this.MapContext.on('markerClusterCreate', res => {
-      console.log(res)
-      // this.MapContext.addMarkers({
-      //   clear: false,
-      //   markers:[{
-      //       clusterId:res.clusters[0].clusterId,
-      //       joinCluster:true,
-      //       latitude:26.77586891447454,
-      //       longitude:113.6762934903577,
-      //       title:'不是象',
-      //       iconPath:'../image/004.jpg',
-      //       width:50,
-      //       height:50,
-      //     },
-      //   ],
-      // })
+
     })
   },
 

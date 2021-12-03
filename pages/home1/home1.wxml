@@ -37,7 +37,7 @@
             <image class="itemsvg" src="/svg/restrictionHome.svg"></image>
             <text>道路限行</text>
           </view>
-          <view class="entranceItem"   data-path="convenience" bindtap="entranceClick">
+          <view class="entranceItem" data-path="convenience" bindtap="entranceClick">
             <image class="itemsvg" src="/svg/convenientHome.svg"></image>
             <text>便民服务</text>
           </view>
@@ -47,21 +47,21 @@
       <view class="dynamicBox">
         <image class="dynamicIcon" src="/img/dynamicIcon.png"></image>
         <view class="switchBox">
-          <swiper autoplay="{{true}}"  circular="{{true}}" bindchange="bindchange">
-            <swiper-item >
-              <text class="dynamicText">关于京沪高速公路新沂至江都段改扩建工程施工期间部分路段时段限制车辆通行的通告</text>
-            </swiper-item>
-            <swiper-item>
-              <text class="dynamicText">长深高速公路花果山机场收费站正式开通</text>
+          <swiper autoplay="{{true}}" circular="{{true}}" bindchange="bindchange">
+            <swiper-item wx:for="{{listDate}}" wx:key="key">
+              <view class="dynamicitemBox">
+                <image class="dynamicSvg" src="/svg/news.svg"></image>
+                <text class="dynamicText">{{item.noticeTitle}}</text>
+              </view>
             </swiper-item>
           </swiper>
         </view>
-        <text class="iconfont icon-tiaozhuan jumpIcon"></text>
+        <text bindtap="noticeView" class="iconfont icon-tiaozhuan jumpIcon"></text>
       </view>
     </view>
   </view>
   <view class="main">
-    <map scale="{{scale}}" min-scale="{{minScale}}" max-scale="{{maxScale}}" id="mymap" enable-traffic show-location></map>
+    <map scale="{{scale}}" longitude="{{center[0]}}" latitude="{{center[1]}}" min-scale="{{minScale}}" max-scale="{{maxScale}}" id="mymap" enable-traffic show-location></map>
     <view class="path_search_box {{!packupShow?'open':''}}">
       <view class="path_search_body ">
         <image class="pack_up {{packupShow?'show':''}}" bindtap="packupFc" src="/svg/pack_up.svg"></image>

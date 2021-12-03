@@ -2,6 +2,11 @@
 import {
   Base64
 } from '../../utils/util'
+
+import {
+  requst_get_addHandyChargePolicy,
+  requst_get_addHandyNotice
+} from '../../api/index'
 Page({
 
   /**
@@ -10,6 +15,7 @@ Page({
   data: {
     type: '',
     html: '',
+    title:'',
     articleData:null
   },
 
@@ -21,17 +27,46 @@ Page({
     this.setData({
       type
     })
-    this.setHtml()
-
+    this.setHtml();
+    this.addreading()
   },
   setHtml() {
     let articleData = wx.getStorageSync('articleData');
-    var base = new Base64();//保证引入路径真确
-    var htmlTpl = base.decode(articleData.policyContent);  
+    let base = new Base64();//保证引入路径真确
+    let htmlTpl='';
+    let title="";
+    if(this.data.type=='policy'){
+      htmlTpl = base.decode(articleData.policyContent);
+      title=articleData.policyTitle;
+    }else{
+      htmlTpl = base.decode(articleData.noticeContent);
+      title=articleData.noticeTitle;
+    }
+    wx.setNavigationBarTitle({
+      title: title 
+    })
     this.setData({
       html:htmlTpl,
-      articleData:articleData
+      articleData:articleData,
+      title
     })
+  },
+  //进入添加阅读量
+  async addreading(){
+    let temporaryMethod=null;
+    let param={};
+    if(this.data.type=='policy'){
+      temporaryMethod=requst_get_addHandyChargePolicy;
+      param={
+        policyId:this.data.articleData.policyId
+      }
+    }else{
+      temporaryMethod=requst_get_addHandyNotice;
+      param={
+        noticeId:this.data.articleData.noticeId
+      }
+    }
+    let data=await temporaryMethod(param)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

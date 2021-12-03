@@ -2,7 +2,9 @@
 import {
   throttle
 } from '../../utils/util'
-import {requst_get_queryHandyTrafficPoliceBrigade} from '../../api/index'
+import {
+  requst_get_queryHandyTrafficPoliceBrigade
+} from '../../api/index'
 Page({
 
   /**
@@ -16,10 +18,10 @@ Page({
     maxtop: 0,
     listData: [],
     center: [],
-    myLocation:{},
+    myLocation: {},
     pageNum: 1, //页码
-    pageSize:10, //页数
-    searchText:"",//模糊查询
+    pageSize: 10, //页数
+    searchText: "", //模糊查询
     total: 0, //列表总数
     scale: 16, //缩放级别
     minScale: 3, //最小缩放级别
@@ -47,15 +49,14 @@ Page({
       pageNum: wxData.pageNum,
       pageSize: wxData.pageSize,
       searchText: wxData.searchText,
-      jd:wxData.myLocation.longitude,
-      wd:wxData.myLocation.latitude
+      jd: wxData.myLocation.longitude,
+      wd: wxData.myLocation.latitude
     }
     let {
       data
     } = await requst_get_queryHandyTrafficPoliceBrigade(param)
     wx.hideLoading()
     if (data.code == '1001') {
-      console.log(data)
       let mapData = data.data.records.map(item => {
         let obj = {
           id: parseInt(item.brigadeId),
@@ -77,7 +78,7 @@ Page({
       })
       let newData = wxData.listData.concat(mapData)
       this.setData({
-        listData:newData,
+        listData: newData,
         total: data.data.total
       })
 
@@ -97,7 +98,7 @@ Page({
   },
   //列表项点击效果
   ListClick(e) {
-    let res=e.currentTarget.dataset;
+    let res = e.currentTarget.dataset;
     let center = [res.longitude, res.latitude];
     this.setData({
       center
@@ -238,7 +239,11 @@ Page({
   onReady: function () {
     //设置map
     this.MapContext = wx.createMapContext('tarfficMap');
-    this.MapContext.moveToLocation();
+    wx.nextTick(() => {
+      setTimeout(() => {
+        this.MapContext.moveToLocation();
+      }, 1000);
+    })
   },
 
   /**
