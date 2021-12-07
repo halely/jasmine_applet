@@ -1,0 +1,27 @@
+<!--pages/mineApply/mineApply.wxml-->
+<view class="container">
+  <view class="applyTypeBox">
+    <view class="boxHead">我的应用
+      <view class="editor {{iseditor?'save':''}}" catch:tap="editor">{{iseditor?'保存':'编辑'}}</view>
+    </view>
+    <view class="boxBody {{iseditor?'editor':''}}">
+      <view class="applyItem direction_column" wx:key="index" wx:for="{{selectView}}" wx:if="{{item.selected==true && item.undeveloped==false}}" >
+        <text wx:if="{{iseditor}}" class="operationBox  iconfont icon-jianqu" data-code="{{item.indexKey}}" catch:tap="removeApply"></text>
+        <image src="{{item.iconPath}}"></image>
+        <text class="applyName">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="main">
+    <view class="applyTypeBox" wx:for="{{typeObj}}" wx:key="typeID">
+      <view class="boxHead">{{item.typeText}}</view>
+      <view class="boxBody {{iseditor?'editor':''}}">
+        <view class="applyItem direction_column" wx:key="index" wx:for="{{item.arr}}" wx:for-item="itemC">
+          <text wx:if="{{iseditor && !itemC.selected && !itemC.undeveloped}}" class="operationBox iconfont icon-jia-yuankuang" catch:tap="addApply" data-code="{{itemC.indexKey}}"></text>
+          <image src="{{itemC.iconPath}}"></image>
+          <text class="applyName">{{itemC.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

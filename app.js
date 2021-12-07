@@ -48,6 +48,144 @@ App({
   globalData: {
     userInfo: null,
     height: 0,
-    tollStationUrl: "http://139.198.190.189:30077"
+    applyList: [{
+        iconPath: '/svg/applySvg/tollStation.svg',
+        name: '收费站',
+        type: '高速路况',
+        selected: false,
+        path:'toll_station',//跳转路径
+        undeveloped: false, //是否未开发
+        typeID: '1'
+      },
+      {
+        iconPath: '/svg/applySvg/roadRestrictions.svg',
+        name: '道路限行',
+        type: '高速路况',
+        selected: false,
+        path:'restrictions',//跳转路径
+        undeveloped: false, //是否未开发
+        typeID: '1'
+      }, {
+        iconPath: '/svg/applySvg/crossRiverChannel.svg',
+        name: '过江通道',
+        type: '高速路况',
+        selected: false,
+        path:'cross_river_bridge',//跳转路径
+        undeveloped: false, //是否未开发
+        typeID: '1'
+      }, {
+        iconPath: '/svg/applySvg/liveTraffic.svg',
+        name: '路况直播',
+        type: '高速路况',
+        path:'',//跳转路径
+        selected: false,
+        undeveloped: true, //是否未开发
+        typeID: '1'
+      }, {
+        iconPath: '/svg/applySvg/foodProducts.svg',
+        name: '美食特产',
+        type: '服务区专栏',
+        path:'',//跳转路径
+        selected: false,
+        undeveloped: true, //是否未开发
+        typeID: '2'
+      }, {
+        iconPath: '/svg/applySvg/preferentialRefueling.svg',
+        name: '优惠加油',
+        type: '服务区专栏',
+        path:'',//跳转路径
+        selected: false,
+        undeveloped: true, //是否未开发
+        typeID: '2'
+      }, {
+        iconPath: '/svg/applySvg/chargePolicy.svg',
+        name: '收费政策',
+        type: '便民服务',
+        path:'chargePolicy',//跳转路径
+        selected: false,
+        undeveloped: false, //是否未开发
+        typeID: '3'
+      }, {
+        iconPath: '/svg/applySvg/emergencyRescue.svg',
+        name: '紧急救援',
+        type: '便民服务',
+        path:'emergencyRescue',//跳转路径
+        selected: false,
+        undeveloped: false, //是否未开发
+        typeID: '3'
+      }, {
+        iconPath: '/svg/applySvg/motorwayCops.svg',
+        name: '高速交警',
+        type: '便民服务',
+        path:'trafficPolice',//跳转路径
+        selected: false,
+        undeveloped: false, //是否未开发
+        typeID: '3'
+      }, {
+        iconPath: '/svg/applySvg/makeAccidentQuick.svg',
+        name: '事故快处点',
+        type: '便民服务',
+        path:'accidentManage',//跳转路径
+        selected: false,
+        undeveloped: false, //是否未开发
+        typeID: '3'
+      }, {
+        iconPath: '/svg/applySvg/complaintsPraise.svg',
+        name: '投诉表扬',
+        type: '便民服务',
+        selected: false,
+        path:'',//跳转路径
+        undeveloped: true, //是否未开发
+        typeID: '3'
+      }, {
+        iconPath: '/svg/applySvg/lostFound.svg',
+        name: '失物招领',
+        type: '便民服务',
+        selected: false,
+        path:'',//跳转路径
+        undeveloped: true, //是否未开发
+        typeID: '3'
+      }, {
+        iconPath: '/svg/applySvg/ETC_Add.svg',
+        name: 'ETC新办',
+        type: '高速营业厅',
+        selected: false,
+        path:'',//跳转路径
+        undeveloped: false, //是否未开发
+        typeID: '4'
+      }, {
+        iconPath: '/svg/applySvg/ETC_Activation.svg',
+        name: 'ETC激活',
+        type: '高速营业厅',
+        selected: false,
+        path:'',//跳转路径
+        undeveloped: false, //是否未开发
+        typeID: '4'
+      }, {
+        iconPath: '/svg/applySvg/transitTrade.svg',
+        name: '通行交易',
+        type: '高速营业厅',
+        selected: false,
+        path:'',//跳转路径
+        undeveloped: false, //是否未开发
+        typeID: '4'
+      }, {
+        iconPath: '/svg/applySvg/ETC_Invoice.svg',
+        name: 'ETC发票',
+        type: '高速营业厅',
+        selected: false,
+        path:'',//跳转路径
+        undeveloped: false, //是否未开发
+        typeID: '4'
+      }, {
+        iconPath: '/svg/applySvg/Green_Booking.svg',
+        name: '绿通车预约',
+        type: '高速营业厅',
+        selected: false,
+        path:'',//跳转路径
+        undeveloped: false, //是否未开发
+        typeID: '4'
+      }
+    ]//我的应用
   }
 })

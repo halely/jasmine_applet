@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 30</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="所有应用" transform="translate(-246.000000, -609.000000)">
+            <g id="编组-30" transform="translate(246.000000, 609.000000)">
+                <g id="编组-4" transform="translate(6.107444, 4.084049)" stroke-linecap="round" stroke-width="2.6">
+                    <line x1="4.55043539" y1="6.09843082" x2="14.2246459" y2="6.09843082" id="路径-58" stroke="#12A86D"></line>
+                    <line x1="4.51129811" y1="13.3028635" x2="6.52605416" y2="13.5209952" id="路径-58备份" stroke="#333333" transform="translate(5.518676, 13.411929) rotate(-6.000000) translate(-5.518676, -13.411929) "></line>
+                    <polyline id="路径-59" stroke="#333333" stroke-linejoin="round" points="18.3977895 6.99820508 18.3977895 0 0 0 0 21.0539764 18.3977895 21.0539764"></polyline>
+                    <polyline id="路径-60" stroke="#12A86D" stroke-linejoin="round" points="10.4061161 14.2148272 13.7943685 17.7007195 19.416365 12.1131867"></polyline>
+                </g>
+                <rect id="矩形备份-15" fill="#D8D8D8" opacity="0" x="0" y="0" width="32" height="32"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

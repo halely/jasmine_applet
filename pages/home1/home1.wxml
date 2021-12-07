@@ -25,22 +25,14 @@
       </view>
       <view class="body_entrance">
         <view class="way_path">
-          <view class="entranceItem" data-path="toll_station" bindtap="entranceClick">
-            <image class="itemsvg" src="/svg/totain.svg"></image>
-            <text>收费站</text>
+          <view wx:for="{{selectView}}" wx:key="index" class="entranceItem" data-path="{{item.path}}" bindtap="entranceClick">
+            <image class="itemsvg" src="{{item.iconPath}}"></image>
+            <text>{{item.name}}</text>
           </view>
-          <view class="entranceItem" data-path="cross_river_bridge" bindtap="entranceClick">
-            <image class="itemsvg" src="/svg/crossTheRiverHome.svg"></image>
-            <text>过江通道</text>
-          </view>
-          <view class="entranceItem" data-path="restrictions" bindtap="entranceClick">
-            <image class="itemsvg" src="/svg/restrictionHome.svg"></image>
-            <text>道路限行</text>
-          </view>
-          <view class="entranceItem" data-path="convenience" bindtap="entranceClick">
-            <image class="itemsvg" src="/svg/convenientHome.svg"></image>
-            <text>便民服务</text>
-          </view>
+          <view class="entranceItem" data-path="mineApply" bindtap="entranceClick">
+          <image class="itemsvg" src="/svg/applySvg/More.svg"></image>
+          <text>更多</text>
+        </view>
         </view>
       </view>
       <!-- 动态模块 -->

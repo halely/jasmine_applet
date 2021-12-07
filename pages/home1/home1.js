@@ -17,6 +17,9 @@ Page({
     islocation: false, //当前是否获取位置
     city: '', //当前城市
     height: app.globalData.height * 2 + 10, //手机高度
+    applyList: app.globalData.applyList,//应用数据存在全局变量中，因为其他页面也需要
+    defaultselectList: ['收费站', '过江通道', 'ETC发票', '紧急救援'], //默认项
+    selectView: [],
     current: 0, //动态index
     packupShow: false, //输入地址
     origin: {}, //起点
@@ -33,7 +36,37 @@ Page({
    */
   onLoad: function (options) {
     this.getLocation();
-    this.getqueryHandyNotice()
+    this.getqueryHandyNotice();
+  },
+  //设置展示项applyList数据
+  setapplyList() {
+    let wxData = this.data;
+    //先获取缓存应用项
+    let defaultselectList = wx.getStorageSync('defaultselectList');
+    //如果没有就调用默认值
+    if (!defaultselectList || !defaultselectList.length) defaultselectList = wxData.defaultselectList;
+    this.setData({
+      defaultselectList
+    })
+    let applyList = wxData.applyList; //所有应用项
+    //根据defaultselectList设置applyList
+    let selectView = [];
+    //顺序生成应用数组
+    defaultselectList.forEach(item => {
+      applyList.find((elm,index) => {
+        if(elm.name == item){
+          elm.selected = true;
+          elm.indexKey=index;
+          selectView.push(elm);
+          return true;
+        }
+        return false;
+      })
+    })
+    this.setData({
+      applyList,
+      selectView
+    })
   },
   //选择起点
   getFormAddress: function () {
@@ -386,6 +419,15 @@ Page({
       return false;
     }
     let path = e.currentTarget.dataset.path;
+    if(!path) {
+      wx.navigateToMiniProgram({
+        shortLink: '#小程序://美团团购丨优选外卖单车美食酒店/美团/r2hWwM1HTe2fHFb',
+        success(res) {
+          // 打开成功
+        }
+      })
+      return false;
+    }
     wx.navigateTo({
       url: '/pages/' + path + '/' + path,
     })
@@ -417,7 +459,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setapplyList();
   },
 
   /**

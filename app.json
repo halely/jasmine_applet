@@ -27,6 +27,7 @@
     "pages/emergencyRescue/emergencyRescue",
     "pages/warmPrompt/warmPrompt",
     "pages/AboutUs/AboutUs",
+    "pages/mineApply/mineApply",
     "pages/articleView/articleView"
   ],
   "permission": {

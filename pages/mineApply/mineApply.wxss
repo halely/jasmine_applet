@@ -1,0 +1,72 @@
+/* pages/mineApply/mineApply.wxss */
+.main{
+  overflow: auto;
+}
+.applyTypeBox {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 32rpx 40rpx;
+  box-sizing: border-box;
+  margin-top: 10px; 
+}
+
+.applyTypeBox .boxHead {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 22px;
+  margin-bottom: 40rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.applyTypeBox .boxHead .editor{
+   color: #12A86D;
+   font-size: 24rpx;
+}
+.applyTypeBox .boxHead .editor.save{
+  color: #ffffff;
+  padding:0 20rpx;
+  border-radius: 6rpx;
+  background-color: #12A86D;
+}
+
+.boxBody {
+  display: flex;
+  flex-wrap: wrap;
+}
+.boxBody.editor .applyItem{
+  background: #F8F9FA;
+}
+.applyItem {
+  width:18.4%;
+  margin-bottom: 30rpx;
+  position: relative;
+  padding: 16rpx 0;
+  box-sizing: border-box;
+  margin-right:2%;
+  border-radius: 4rpx;
+}
+.applyItem:nth-child(5n){
+  margin-right: 0%;
+}
+
+.applyItem image {
+  width: 70rpx;
+  height: 70rpx;
+}
+.applyItem .applyName{
+  font-size: 24rpx; 
+  margin-top: 8rpx;
+}
+.applyItem .operationBox{
+  position:absolute;
+  right: 0;
+  top: 0;
+}
+.applyItem .operationBox.icon-jia-yuankuang{
+  color:#12A86D;
+}
+.applyItem .operationBox.icon-jianqu{
+  color:#999999;
+}

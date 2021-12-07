@@ -45,13 +45,10 @@
   border-radius: 8px;
   position: absolute;
   transform: translateY(-50%);
-}
-
-.head_entrance,
-.way_path {
   display: flex;
   justify-content: space-between;
 }
+
 
 .entranceItem {
   display: flex;
@@ -76,6 +73,7 @@
 
 .way_path {
   padding-bottom: 40rpx;
+  display: flex;
   border-bottom: 1px solid #EBEBEB;
 }
 
@@ -85,12 +83,13 @@
   margin-bottom: 8rpx;
 }
 
-.body_entrance .entranceItem text {
-  font-size: 12px;
-  font-family: PingFangSC-Regular, PingFang SC;
+.body_entrance .entranceItem  {
+  font-size:24rpx;
   font-weight: 400;
+  min-width: 100rpx;
   color: #333333;
   line-height: 17px;
+  width: 25%;
 }
 
 .dynamicBox {
