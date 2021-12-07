@@ -58,6 +58,8 @@
 .applyItem .applyName{
   font-size: 24rpx; 
   margin-top: 8rpx;
+  width: 100%;
+  display: block;
 }
 .applyItem .operationBox{
   position:absolute;

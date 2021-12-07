@@ -1,6 +1,6 @@
 var tokenKey = "access-token"; //缓存token对应的值
-var serverUrl = "http://192.168.50.128:8080/jasmine-web"; //刘云鹏url地址
-// var serverUrl = "https://96777.jssgx.cn/jasmine-web"; //生产合法域名
+// var serverUrl = "http://192.168.50.128:8080/jasmine-web"; //刘云鹏url地址
+var serverUrl = "https://96777.jssgx.cn/jasmine-web"; //生产合法域名
 var tollStationUrl = "https://m.roadmall.cn/jasmine"; //服务区域名独立
 // 例外不用token的地址
 var exceptionAddrArr = ['/login', '/road/queryAllRoad', '/serviceArea/queryAllServiceArea', '/serviceArea/queryRoad', '/shop/queryAllShop', '/shop/shopDetail', '/road/queryAllBridge', '/station/queryAllByDistance', '/station/queryAllCityLine', '/station/queryAllByArea', '/station/queryAllClose', '/evaluation/add', '/road/queryAllRoadInfo', '/road/queryRoadInfoDetail'];

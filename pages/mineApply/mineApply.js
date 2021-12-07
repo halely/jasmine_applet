@@ -135,6 +135,34 @@ Page({
     })
     this.setTypeObj()
   },
+  //点击跳转页面或者小程序
+  entranceClick(e) {
+    let iseditor=this.data.iseditor;
+    if(iseditor) return false;//当在编辑状态不会跳转
+    let myLocation = wx.getStorageSync('myLocation')
+    if (!myLocation) {
+      wx.showToast({
+        title: '请授权获取当前位置',
+        icon: 'none',
+        duration: 2000
+      })
+      return false;
+    }
+    let path = e.currentTarget.dataset.path;
+    console.log(path)
+    if(!path) {
+      // wx.navigateToMiniProgram({
+      //   shortLink: '#小程序://美团团购丨优选外卖单车美食酒店/美团/r2hWwM1HTe2fHFb',
+      //   success(res) {
+      //     // 打开成功
+      //   }
+      // })
+      return false;
+    }
+    wx.navigateTo({
+      url: '/pages/' + path + '/' + path,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

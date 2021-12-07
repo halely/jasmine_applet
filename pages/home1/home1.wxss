@@ -57,7 +57,10 @@
   min-width: 180rpx;
   box-sizing: border-box;
 }
-
+.entranceItem .applyName{
+  width: 100%;
+  display: block;
+}
 .entranceItem .itmeIcon {
   width: 44px;
   height: 44px;

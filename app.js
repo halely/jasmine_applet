@@ -185,6 +185,24 @@ App({
         path:'',//跳转路径
         undeveloped: false, //是否未开发
         typeID: '4'
+      },
+      {
+        iconPath: '/svg/applySvg/container_Car.svg',
+        name: '集装箱车辆预约',
+        type: '高速营业厅',
+        selected: false,
+        path:'',//跳转路径
+        undeveloped: false, //是否未开发
+        typeID: '4'
+      },
+      {
+        iconPath: '/svg/applySvg/harvester.svg',
+        name: '收割机运输车辆预约',
+        type: '高速营业厅',
+        selected: false,
+        path:'',//跳转路径
+        undeveloped: false, //是否未开发
+        typeID: '4'
       }
     ]//我的应用
   }

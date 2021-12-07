@@ -5,10 +5,10 @@
       <view class="editor {{iseditor?'save':''}}" catch:tap="editor">{{iseditor?'保存':'编辑'}}</view>
     </view>
     <view class="boxBody {{iseditor?'editor':''}}">
-      <view class="applyItem direction_column" wx:key="index" wx:for="{{selectView}}" wx:if="{{item.selected==true && item.undeveloped==false}}" >
+      <view class="applyItem direction_column" wx:key="index" wx:for="{{selectView}}" wx:if="{{item.selected==true && item.undeveloped==false}}" data-path="{{item.path}}" bind:tap="entranceClick">
         <text wx:if="{{iseditor}}" class="operationBox  iconfont icon-jianqu" data-code="{{item.indexKey}}" catch:tap="removeApply"></text>
         <image src="{{item.iconPath}}"></image>
-        <text class="applyName">{{item.name}}</text>
+        <text class="applyName ellipsis">{{item.name}}</text>
       </view>
     </view>
   </view>
@@ -16,10 +16,10 @@
     <view class="applyTypeBox" wx:for="{{typeObj}}" wx:key="typeID">
       <view class="boxHead">{{item.typeText}}</view>
       <view class="boxBody {{iseditor?'editor':''}}">
-        <view class="applyItem direction_column" wx:key="index" wx:for="{{item.arr}}" wx:for-item="itemC">
+        <view class="applyItem direction_column " wx:key="index" wx:for="{{item.arr}}" wx:for-item="itemC" data-path="{{itemC.path}}" bind:tap="entranceClick">
           <text wx:if="{{iseditor && !itemC.selected && !itemC.undeveloped}}" class="operationBox iconfont icon-jia-yuankuang" catch:tap="addApply" data-code="{{itemC.indexKey}}"></text>
           <image src="{{itemC.iconPath}}"></image>
-          <text class="applyName">{{itemC.name}}</text>
+          <text class="applyName ellipsis">{{itemC.name}}</text>
         </view>
       </view>
     </view>

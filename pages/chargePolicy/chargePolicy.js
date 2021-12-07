@@ -57,7 +57,6 @@ Page({
     wx.navigateTo({
       url: '/pages/articleView/articleView?type=policy',
     })
-   
   },
   //监听滚动
   scrolltolower() {

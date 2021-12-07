@@ -27,7 +27,7 @@
         <view class="way_path">
           <view wx:for="{{selectView}}" wx:key="index" class="entranceItem" data-path="{{item.path}}" bindtap="entranceClick">
             <image class="itemsvg" src="{{item.iconPath}}"></image>
-            <text>{{item.name}}</text>
+            <text class="applyName ellipsis">{{item.name}}</text>
           </view>
           <view class="entranceItem" data-path="mineApply" bindtap="entranceClick">
           <image class="itemsvg" src="/svg/applySvg/More.svg"></image>
