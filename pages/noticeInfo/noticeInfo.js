@@ -49,10 +49,15 @@ Page({
   },
   itemClick(e) {
     let index = e.currentTarget.dataset.index;
+    let readCount=this.data.listData[index].readCount+1;
+    this.setData({
+      ['listData['+ index + '].readCount']:readCount
+    })
     wx.setStorageSync('articleData', this.data.listData[index])
     wx.navigateTo({
       url: '/pages/articleView/articleView?type=notice',
     })
+    
   },
   //刷新
   onRefresh() {
