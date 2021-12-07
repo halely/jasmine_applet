@@ -7,7 +7,7 @@
         <text class="itemTitle">{{item.policyTitle}}</text>
         <view class="footInfo">
           <text>阅读量 {{item.readCount}}</text>
-          <text>{{item.createTime}}</text>
+          <text>{{item.publishTime}}</text>
         </view>
       </view>
     </view>
