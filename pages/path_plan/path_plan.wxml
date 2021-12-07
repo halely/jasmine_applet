@@ -18,8 +18,8 @@
       <image class="path_search_switch" bindtap="switchPath" src="/img/switch.png"></image>
     </view>
   </view>
-  <view class="main">
-    <view class="path_tab_box direction_column">
+  <view class="main" >
+    <view wx:if="{{IsLogin}}" class="path_tab_box direction_column">
       <view class="path_tab_head">
         <view class="path_tab_title_box" bindtap="tabSelected">
           <view data-id='1' class="path_tab_title {{current==1?'selected':''}}  direction_column">历史记录</view>

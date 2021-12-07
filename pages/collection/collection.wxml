@@ -15,7 +15,7 @@
       class="management {{managementStats?'green':''}}">{{managementStats?'完成':'管理'}}</text>
   </view>
   <view class="main">
-    <scroll-view scroll-y>
+    <scroll-view scroll-y bindscrolltolower="scrolltolower">
       <view wx:if="{{!listData.length}}" class="empty">暂无数据</view>
       <block wx:if="{{current==1}}">
         <view class="collectionList_item" data-index="{{index}}" bindtap="itemClick" wx:for="{{listData}}" wx:key="key">

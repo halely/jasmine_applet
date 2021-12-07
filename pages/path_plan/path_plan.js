@@ -37,6 +37,7 @@ Page({
     searchType: '',
     selecteArr: [], //选中的索引值数组
     allselecte: false, //全选
+    IsLogin:false
   },
   //选择起点
   getFormAddress: function () {
@@ -428,7 +429,10 @@ Page({
     let userInfo = wx.getStorageSync('userInfo');
     if (userInfo) {
       this.get_lineSearchHistroyqueryMine();
-      this.get_myCollectionLine()
+      this.get_myCollectionLine();
+      this.setData({
+        IsLogin:true
+      })
     }
 
   },

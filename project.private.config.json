@@ -17,12 +17,6 @@
           "pathName": "pages/home1/home1",
           "query": "",
           "scene": null
-        },
-        {
-          "name": "pages/mineApply/mineApply",
-          "pathName": "pages/mineApply/mineApply",
-          "query": "",
-          "scene": null
         }
       ]
     }
