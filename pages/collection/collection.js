@@ -50,6 +50,30 @@ Page({
     })
 
   },
+  //监听滚动
+  scrolltolower() {
+    let wxData = this.data;
+    if (wxData.listData.length < wxData.total) {
+      let pageNum = wxData.pageNum += 1;
+      this.setData({
+        pageNum: pageNum
+      })
+      let code = this.data.current;
+      switch (code) {
+        case '1':
+          this.get_myCollectionRoad(); //高速
+          break;
+        case '2':
+          this.get_myCollectionStation(); //收费站
+          break;
+        case '3':
+          this.get_myCollectionServiceArea(); //服务区
+          break;
+        default:
+          this.get_myCollectionLine(); //路线
+      }
+    }
+  },
   //列表调用
   setcurrent(code) {
     this.setData({

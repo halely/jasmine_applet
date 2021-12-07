@@ -37,27 +37,15 @@
           "scene": null
         },
         {
-          "name": "pages/articleView/articleView",
-          "pathName": "pages/articleView/articleView",
-          "query": "type=policy",
-          "scene": null
-        },
-        {
-          "name": "pages/noticeInfo/noticeInfo",
-          "pathName": "pages/noticeInfo/noticeInfo",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/emergencyRescue/emergencyRescue",
-          "pathName": "pages/emergencyRescue/emergencyRescue",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "pages/serviceAreaInfo/serviceAreaInfo",
           "pathName": "pages/serviceAreaInfo/serviceAreaInfo",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/collection/collection",
+          "pathName": "pages/collection/collection",
+          "query": "code=2",
           "scene": null
         }
       ]
