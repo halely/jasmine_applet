@@ -24,7 +24,7 @@
       <icon size='20' type='search'></icon>
       <input placeholder="搜索" maxlength="32" bindconfirm="bindconfirm" confirm-type="search" />
     </view>
-    <view class="movePanl" style="height:{{windowHeight - 220}}px;top:{{top}}px">
+    <view class="movePanl" style="height:{{windowHeight - 200}}px;top:{{top}}px">
       <view class="near direction_column" bindtap="nearView" hover-class="viewHove">
         <image src="/svg/near.svg"></image>
       </view>

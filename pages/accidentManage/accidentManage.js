@@ -183,17 +183,19 @@ Page({
     this.setData({
       windowHeight: sysInfo.windowHeight,
       top: sysInfo.windowHeight - 250,
-      maxtop: sysInfo.windowHeight - 130,
+      maxtop: sysInfo.windowHeight - 250,
       mintop: 220
     })
     this.getData()
   },
-  touchstart(e) {
-    let touchstartY = e.touches[0].pageY;
-    this.pageY = touchstartY;
-  },
- // 手指滑动
- touchmove: throttle((that, e) => {
+//触摸开始
+touchstart(e) {
+  let touchstartY = e.touches[0].pageY;
+  this.pageY = touchstartY;
+  this.touch=true;
+},
+// 手指滑动
+touchmove: throttle((that, e) => {
   let touchmoveY = e.touches[0].pageY;
   let {
     top,
@@ -203,28 +205,31 @@ Page({
   //相差绝对值
   let num = Math.abs(parseInt(touchmoveY) - parseInt(that.pageY));
 
-  if (num < 10) return false;
+  if (num < 30) return false;
+  if(!that.touch) return false;
+  that.touch=false;
   // 下拉
   if (touchmoveY > that.pageY) {
-    let newtop = top + num;
-    if (num > 40) {
-      newtop = top + 80;
-    }
-    newtop = newtop > maxtop ? maxtop : newtop;
-    that.pageY = touchmoveY;
+    // let newtop = top + num;
+    // if (num > 40) {
+    //   newtop = top + 80;
+    // }
+    // newtop = newtop > maxtop ? maxtop : newtop;
+    // that.pageY = touchmoveY;
+
     that.setData({
-      top: newtop
+      top: maxtop
     })
   } else {
     //上划
-    let newtop = top - num;
-    if (num > 40) {
-      newtop = top - 80;
-    }
-    newtop = newtop < mintop ? mintop : newtop;
-    that.pageY = touchmoveY;
+    // let newtop = top - num;
+    // if (num > 40) {
+    //   newtop = top - 80;
+    // }
+    // newtop = newtop < mintop ? mintop : newtop;
+    // that.pageY = touchmoveY;
     that.setData({
-      top: newtop
+      top: mintop
     })
   }
 }, 0),

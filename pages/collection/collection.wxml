@@ -69,7 +69,7 @@
     <view class="checkbox_box" bindtap="allClick">
       <icon wx:if="{{allselecte}}" class="icon-small" type="success" color="#12A86D" size="19"></icon>
       <icon wx:else class="icon-small" type="circle" size="19"></icon>
-      <text>全选</text>
+      <text>全选当前页</text>
     </view>
     <text class="deleteText" bindtap="deleteAll">删除</text>
   </view>
