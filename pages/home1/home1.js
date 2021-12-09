@@ -23,7 +23,7 @@ Page({
     current: 0, //动态index
     packupShow: false, //输入地址
     origin: {}, //起点
-    center: [118.737087,31.989091],
+    center: [118.737087, 31.989091],
     destination: {}, //目的地
     scale: 16, //缩放级别
     minScale: 3, //最小缩放级别
@@ -95,9 +95,15 @@ Page({
         that.getSure()
       },
       fail: function () {
-        wx.showToast({
-          title: '定位失败',
-          icon: "none"
+        wx.getSetting({
+          success: function (res) {
+            if (!res.authSetting['scope.userLocation']) {
+              wx.showToast({
+                title: '定位失败，请检查网络环境或手机定位权限',
+                icon: "none"
+              })
+            }
+          }
         })
       },
       complete: function () {
@@ -132,10 +138,16 @@ Page({
         })
         that.getSure()
       },
-      fail: function () {
-        wx.showToast({
-          title: '定位失败',
-          icon: "none"
+      fail: function (err) {
+        wx.getSetting({
+          success: function (res) {
+            if (!res.authSetting['scope.userLocation']) {
+              wx.showToast({
+                title: '定位失败，请检查网络环境或手机定位权限',
+                icon: "none"
+              })
+            }
+          }
         })
       },
       complete: function () {
@@ -194,9 +206,9 @@ Page({
       current: e.detail.current
     })
   },
-  noticeView(){
-    let current=this.data.current;
-    if(!this.data.listDate.length) return false;
+  noticeView() {
+    let current = this.data.current;
+    if (!this.data.listDate.length) return false;
     wx.setStorageSync('articleData', this.data.listDate[current])
     wx.navigateTo({
       url: '/pages/articleView/articleView?type=notice',
@@ -297,7 +309,7 @@ Page({
         //设置地图
         _this.setData({
           islocation: true,
-          center:[longitude,latitude]
+          center: [longitude, latitude]
         })
         _this.loadCity(longitude, latitude);
       },

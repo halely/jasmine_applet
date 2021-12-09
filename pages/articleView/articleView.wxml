@@ -6,5 +6,5 @@
     <text>{{articleData.publishBy}}</text>
     <text>阅读数：{{articleData.readCount}}</text>
   </view>
-  <mp-html content="{{html}}" container-style="white-space:pre-wrap" />
+  <mp-html content="{{html}}" container-style="white-space:pre-wrap" copy-link />
 </view>
