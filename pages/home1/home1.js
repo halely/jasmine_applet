@@ -430,14 +430,19 @@ Page({
       })
       return false;
     }
-    let path = e.currentTarget.dataset.path;
-    if(!path) {
-      // wx.navigateToMiniProgram({
-      //   shortLink: '#小程序://美团团购丨优选外卖单车美食酒店/美团/r2hWwM1HTe2fHFb',
-      //   success(res) {
-      //     // 打开成功
-      //   }
-      // })
+    let {
+      path,
+      shortlink
+    } = e.currentTarget.dataset;
+    if (!path) {
+      if (shortlink) {
+        wx.navigateToMiniProgram({
+          shortLink: shortlink,
+          success(res) {
+            // 打开成功
+          }
+        })
+      }
       return false;
     }
     wx.navigateTo({

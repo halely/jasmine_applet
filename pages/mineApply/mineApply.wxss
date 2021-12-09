@@ -59,6 +59,7 @@
   font-size: 24rpx; 
   margin-top: 8rpx;
   width: 100%;
+  text-align: center;
   display: block;
 }
 .applyItem .operationBox{

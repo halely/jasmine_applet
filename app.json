@@ -28,7 +28,8 @@
     "pages/warmPrompt/warmPrompt",
     "pages/AboutUs/AboutUs",
     "pages/mineApply/mineApply",
-    "pages/articleView/articleView"
+    "pages/articleView/articleView",
+    "pages/webView/webView"
   ],
   "permission": {
     "scope.userLocation": {

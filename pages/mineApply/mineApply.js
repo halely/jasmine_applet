@@ -1,12 +1,12 @@
 // pages/mineApply/mineApply.js
-const app= getApp();
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    applyList: app.globalData.applyList,//应用数据存在全局变量中，因为其他页面也需要
+    applyList: app.globalData.applyList, //应用数据存在全局变量中，因为其他页面也需要
     iseditor: false, //是否开启编辑
     defaultselectList: ['收费站', '过江通道', 'ETC发票', '紧急救援'], //默认项
     selectView: [],
@@ -35,10 +35,10 @@ Page({
     let selectView = [];
     //顺序生成应用数组
     defaultselectList.forEach(item => {
-      applyList.find((elm,index) => {
-        if(elm.name == item){
+      applyList.find((elm, index) => {
+        if (elm.name == item) {
           elm.selected = true;
-          elm.indexKey=index;
+          elm.indexKey = index;
           selectView.push(elm);
           return true;
         }
@@ -76,19 +76,26 @@ Page({
   },
   //编辑点击
   editor() {
-    let {iseditor,defaultselectList}=this.data
+    let {
+      iseditor,
+      defaultselectList
+    } = this.data
     wx.vibrateShort();
     this.setData({
       iseditor: !iseditor
     })
-    if(iseditor){
+    if (iseditor) {
       wx.setStorageSync('defaultselectList', defaultselectList)
     }
   },
   //新增
   addApply(e) {
     let code = e.currentTarget.dataset.code;
-    let {defaultselectList,selectView,applyList}=this.data;
+    let {
+      defaultselectList,
+      selectView,
+      applyList
+    } = this.data;
     if (defaultselectList.length >= 4) {
       wx.showToast({
         title: '该区域最多添加4个应用超出部分请先移除后再添加',
@@ -113,7 +120,11 @@ Page({
   removeApply(e) {
     let code = e.currentTarget.dataset.code;
     //获取选中项
-    let {defaultselectList,selectView,applyList}=this.data;
+    let {
+      defaultselectList,
+      selectView,
+      applyList
+    } = this.data;
     if (defaultselectList.length == 1) {
       wx.showToast({
         title: '至少保留一个应用项',
@@ -137,8 +148,8 @@ Page({
   },
   //点击跳转页面或者小程序
   entranceClick(e) {
-    let iseditor=this.data.iseditor;
-    if(iseditor) return false;//当在编辑状态不会跳转
+    let iseditor = this.data.iseditor;
+    if (iseditor) return false; //当在编辑状态不会跳转
     let myLocation = wx.getStorageSync('myLocation')
     if (!myLocation) {
       wx.showToast({
@@ -148,15 +159,20 @@ Page({
       })
       return false;
     }
-    let path = e.currentTarget.dataset.path;
-    console.log(path)
-    if(!path) {
-      // wx.navigateToMiniProgram({
-      //   shortLink: '#小程序://美团团购丨优选外卖单车美食酒店/美团/r2hWwM1HTe2fHFb',
-      //   success(res) {
-      //     // 打开成功
-      //   }
-      // })
+    let {
+      path,
+      shortlink
+    } = e.currentTarget.dataset;
+    if (!path) {
+      if (shortlink) {
+        wx.navigateToMiniProgram({
+          shortLink: shortlink,
+          success(res) {
+            // 打开成功
+          }
+        })
+      }
+
       return false;
     }
     wx.navigateTo({

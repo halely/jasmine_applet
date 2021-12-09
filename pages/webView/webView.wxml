@@ -1,0 +1,3 @@
+<!--pages/webView/webView.wxml-->
+<!-- 需要配置业务域名 -->
+<web-view src="https://www.gov.cn/zhuanti/2021yqfkgdzc/mobile.htm"></web-view>
