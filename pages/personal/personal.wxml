@@ -4,11 +4,14 @@
     <view class="myInfo">
       <block wx:if="{{userInfo}}">
         <image class="head_portrait" src="{{userInfo.avatarUrl}}" />
-        <view class="loginBut">{{userInfo.nickName}}</view>
+        <view class="loginBut">
+         <text>{{userInfo.nickName}}</text>
+         <text class="phoneBox">绑定手机号</text>
+        </view>
       </block>
       <block wx:else>
         <image class="head_portrait" src="/img/noImge.png" />
-        <view bindtap="loginView" class="loginBut">立即登录</view>
+        <view bindtap="loginView" class="loginBut">请点击登录</view>
       </block>
     </view>
     <view class="my_collection_box">

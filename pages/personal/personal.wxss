@@ -27,6 +27,12 @@
   color: #333333;
   line-height: 30px;
 }
+.loginBut text{
+  display: block;
+}
+.loginBut text.phoneBox{
+  font-size: 24rpx;
+}
 
 .my_collection_box,
 .my_service_box {
