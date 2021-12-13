@@ -30,29 +30,29 @@
         <text>{{collectionId?'已收藏':'收藏'}}</text>
       </view>
       <view class="promptLine"></view>
-      <view class="touchsBox" bindtouchstart="touchStart" bindtouchend="touchEnd">
+      <view class="touchsBox" catch:touchstart="touchStart" catchlongtap="longtap"  catchtouchend="touchEnd">
         <view class="panel_head">
           <image src="/svg/prompt.svg"></image>
           <text>该路线{{current==1?'高速优先':current==2?'速度最快':'避免拥堵'}}，途径江苏{{stationIdList.length}}个收费站，{{serviceAreaList.length}}个服务区</text>
         </view>
         <view class="wayBox">
-          <view data-code="1" bindtap="wayItemClick" class="wayItem direction_column {{current==1?'selected':''}}">
+          <view data-code="1" bind:touchstart="wayItemClick" class="wayItem direction_column {{current==1?'selected':''}}">
             <text>高速优先</text>
             <text class="wayWhen">{{common.getDuration(wayObj.gs.cost.duration)}}</text>
             <text>{{wayObj.gs.distance/1000}}公里 ¥{{wayObj.gs.cost.tolls}}</text>
           </view>
-          <view data-code="2" bindtap="wayItemClick" class="wayItem direction_column {{current==2?'selected':''}}">
+          <view data-code="2" bind:touchstart="wayItemClick" class="wayItem direction_column {{current==2?'selected':''}}">
             <text>速度最快</text>
             <text class="wayWhen">{{common.getDuration(wayObj.time.cost.duration)}}</text>
             <text>{{wayObj.time.distance/1000}}公里 ¥{{wayObj.time.cost.tolls}}</text>
           </view>
-          <view data-code="3" bindtap="wayItemClick" class="wayItem direction_column {{current==3?'selected':''}}">
+          <view data-code="3" bind:touchstart="wayItemClick" class="wayItem direction_column {{current==3?'selected':''}}">
             <text>避免拥堵</text>
             <text class="wayWhen">{{common.getDuration(wayObj.lj.cost.duration)}}</text>
             <text>{{wayObj.lj.distance/1000}}公里 ¥{{wayObj.lj.cost.tolls}}</text>
           </view>
         </view>
-        <view class="wayInfoType" bindtap="TypeSelected">
+        <view class="wayInfoType" bind:touchstart="TypeSelected">
           <view class="wayInfoTypeItem {{Typecurrent==1?'selected':''}}" data-code="1">全部
             {{serviceAreaList.length+stationIdList.length}}</view>
           <view class="wayInfoTypeItem {{Typecurrent==2?'selected':''}}" data-code="2">收费站 {{stationIdList.length}}
