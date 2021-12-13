@@ -75,6 +75,9 @@ Page({
       }
     })
   },
+  longtap(){
+    return false;
+  },
   //选择目的地
   getToAddress: function () {
     var that = this;
