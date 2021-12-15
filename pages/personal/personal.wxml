@@ -6,7 +6,7 @@
         <image class="head_portrait" src="{{userInfo.avatarUrl}}" />
         <view class="loginBut">
          <text>{{userInfo.nickName}}</text>
-         <text class="phoneBox">绑定手机号</text>
+         <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="phoneBox" bindtap="">绑定手机号</button>
         </view>
       </block>
       <block wx:else>

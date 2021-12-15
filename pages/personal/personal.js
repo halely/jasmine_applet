@@ -64,7 +64,13 @@ Page({
       url: '/pages/collection/collection?code=' + code,
     })
   },
-
+  getPhoneNumber: function (e) {
+    var that = this;
+    console.log(e.detail.errMsg == "getPhoneNumber:ok");
+    if (e.detail.errMsg == "getPhoneNumber:ok") {
+     console.log(e)
+    }
+  },
   // 联系客服
   PhoneCall() {
     wx.showModal({

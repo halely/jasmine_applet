@@ -30,8 +30,11 @@
 .loginBut text{
   display: block;
 }
-.loginBut text.phoneBox{
+.loginBut .phoneBox{
   font-size: 24rpx;
+  display: inline;
+  padding: 0;
+  line-height: 30px;
 }
 
 .my_collection_box,
