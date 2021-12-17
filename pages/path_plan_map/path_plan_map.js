@@ -75,7 +75,7 @@ Page({
       }
     })
   },
-  longtap(){
+  boxTouchmove(){
     return false;
   },
   //选择目的地

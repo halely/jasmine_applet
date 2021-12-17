@@ -24,7 +24,7 @@
       polyline="{{polyline}}"
       include-points="{{polyline[0].points || []}}"
       ></map>
-    <view class="pathInfo-pane direction_column {{pathInfoShow?'show':''}}" wx:if="{{popupShow}}">
+    <view  class="pathInfo-pane direction_column {{pathInfoShow?'show':''}}" wx:if="{{popupShow}}">
       <view class="collection direction_column {{collectionId?'selected':''}}" bindtap="pathcollection">
         <image src="{{collectionId?'/img/star.png':'/img/star_no.png'}}"></image>
         <text>{{collectionId?'已收藏':'收藏'}}</text>
@@ -105,7 +105,7 @@
             </view>
           </view>
         </block>
-        <view wx:if="{{emptyShow}}" class="empty">暂无数据</view>
+        <view catch:touchmove="boxTouchmove" wx:if="{{emptyShow}}" class="empty">暂无数据</view>
       </view>
     </view>
   </view>
