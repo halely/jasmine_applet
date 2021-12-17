@@ -40,7 +40,7 @@
         <image class="dynamicIcon" src="/img/dynamicIcon.png"></image>
         <view class="switchBox">
           <swiper autoplay="{{true}}" circular="{{true}}" bindchange="bindchange">
-            <swiper-item wx:for="{{listDate}}" wx:key="key">
+            <swiper-item wx:for="{{listData}}" wx:key="key">
               <view class="dynamicitemBox">
                 <image class="dynamicSvg" src="/svg/news.svg"></image>
                 <text class="dynamicText">{{item.noticeTitle}}</text>

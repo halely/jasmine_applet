@@ -28,7 +28,7 @@ Page({
     scale: 16, //缩放级别
     minScale: 3, //最小缩放级别
     maxScale: 20, //最大缩放级别
-    listDate: []
+    listData: []
   },
 
   /**
@@ -36,7 +36,6 @@ Page({
    */
   onLoad: function (options) {
     this.getLocation();
-    this.getqueryHandyNotice();
   },
   //设置展示项applyList数据
   setapplyList() {
@@ -67,6 +66,7 @@ Page({
       applyList,
       selectView
     })
+
   },
   //选择起点
   getFormAddress: function () {
@@ -208,8 +208,12 @@ Page({
   },
   noticeView() {
     let current = this.data.current;
-    if (!this.data.listDate.length) return false;
-    wx.setStorageSync('articleData', this.data.listDate[current])
+    if (!this.data.listData.length) return false;
+    let readCount=this.data.listData[current].readCount+1;
+    this.setData({
+      ['listData['+ current + '].readCount']:readCount
+    })
+    wx.setStorageSync('articleData', this.data.listData[current])
     wx.navigateTo({
       url: '/pages/articleView/articleView?type=notice',
     })
@@ -460,7 +464,7 @@ Page({
     } = await requst_get_queryHandyNotice(param);
     if (data.code == '1001') {
       this.setData({
-        listDate: data.data.records
+        listData: data.data.records
       })
     }
   },
@@ -477,6 +481,7 @@ Page({
    */
   onShow: function () {
     this.setapplyList();
+    this.getqueryHandyNotice()
   },
 
   /**
