@@ -2,7 +2,8 @@
 
 
 import {
-  requst_post_evaluation
+  requst_post_evaluation,
+  requst_get_evaluationIfDone
 } from '../../api/index.js'
 Page({
 
@@ -16,11 +17,33 @@ Page({
     evaluationText: ['使用方便', '功能实用', '路况信息准确', '界面美观', '信息不准确', '功能不好用', '界面不美观'],
     isevaluation: false //是否已经评价过
   },
+  //获取是否评价信息
+  async evaluationIfDone() {
+    let {
+      data
+    } = await requst_get_evaluationIfDone()
+    if (data.code == '1001') {
+      console.log(data)
+      if (data.data) {
+        let evaluationData = data.data;
+        this.setData({
+          evaluation: evaluationData.evaluation,
+          evaluationTips: evaluationData.evaluationTips.split(','),
+          evaluationRemark: evaluationData.evaluationRemark,
+          isevaluation: true
+        })
+      } else {
+        this.setData({
+          isevaluation: false
+        })
+      }
+    }
+  },
   //输入框输入
   textareaInput(e) {
-    let evaluationRemark=e.detail.value;
-    if(evaluationRemark.length>200){
-      evaluationRemark=evaluationRemark.splice(0,200)
+    let evaluationRemark = e.detail.value;
+    if (evaluationRemark.length > 200) {
+      evaluationRemark = evaluationRemark.splice(0, 200)
     }
     this.setData({
       evaluationRemark: e.detail.value
@@ -81,15 +104,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let evaluationData = wx.getStorageSync('evaluationData');
-    if (evaluationData) {
-      this.setData({
-        evaluation: evaluationData.evaluation,
-        evaluationTips: evaluationData.evaluationTips,
-        evaluationRemark: evaluationData.evaluationRemark,
-        isevaluation: true
-      })
-    }
+    // let evaluationData = wx.getStorageSync('evaluationData');
+    // if (evaluationData) {
+    //   this.setData({
+    //     evaluation: evaluationData.evaluation,
+    //     evaluationTips: evaluationData.evaluationTips,
+    //     evaluationRemark: evaluationData.evaluationRemark,
+    //     isevaluation: true
+    //   })
+    // }
+    this.evaluationIfDone()
   },
 
   /**

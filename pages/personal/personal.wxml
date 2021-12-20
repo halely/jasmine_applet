@@ -5,8 +5,9 @@
       <block wx:if="{{userInfo}}">
         <image class="head_portrait" src="{{userInfo.avatarUrl}}" />
         <view class="loginBut">
-         <text>{{userInfo.nickName}}</text>
-         <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="phoneBox" bindtap="">绑定手机号</button>
+          <text>{{userInfo.nickName}}</text>
+          <tetx class="phoneBox" wx:if="{{uploadUserInfo && uploadUserInfo.phonenumber}}">{{uploadUserInfo.phonenumber}}</tetx>
+          <button wx:else open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="phoneBox" bindtap="">绑定手机号</button>
         </view>
       </block>
       <block wx:else>
@@ -46,7 +47,7 @@
           <view class="item_title">服务区</view>
           <image class="item_icon" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/service_area_entrance.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511310&signature=9qAlPalix1o8SZCqhZH4hLv6CgxJXyiIzTzH%2FQHx0%2Fw%3D"></image>
         </view>
-        <view class="collection_item direction_column"  data-path="restrictions" bindtap="entranceClick">
+        <view class="collection_item direction_column" data-path="restrictions" bindtap="entranceClick">
           <view class="item_title">车辆限行</view>
           <image class="item_icon" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/restrictions.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511310&signature=i%2FlbEz4DTgYtBOW8jZyXiRt4KCdRcFGl4WmaBkuNtjw%3D"></image>
         </view>
@@ -62,9 +63,9 @@
         <text>联系客服</text>
         <image src="/svg/next_step.svg"></image>
       </view>
-      <button open-type="feedback" class="jump_item" hover-class="viewHove">
+      <button class="jump_item" hover-class="viewHove" bindtap="evaluation">
         <image src="/svg/opinion.svg"></image>
-        <text>意见反馈</text>
+        <text>评价</text>
         <image src="/svg/next_step.svg"></image>
       </button>
       <view class="jump_item" bindtap="aboutView" hover-class="viewHove">

@@ -4,12 +4,11 @@ var amapFile = require('../../libs/amap-wx.130.js');
 import {
   markersData
 } from '../../libs/markers.js'
-
 import {
-  requst_get_queryHandyNotice
+  requst_get_queryHandyNotice,
 } from '../../api/index'
+import {getevaluationVisit} from '../../utils/util'
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -480,8 +479,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //获取服务
     this.setapplyList();
-    this.getqueryHandyNotice()
+    //获取公告
+    this.getqueryHandyNotice();
+    //设置pv或者uv
+    getevaluationVisit('首页')
   },
 
   /**

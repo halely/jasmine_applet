@@ -104,5 +104,9 @@
 }
 .evaluationRemark{
   display: block;
-  padding-top:20rpx;
+  padding: 20rpx 20rpx 50rpx 20rpx;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 150px;
+  background-color: #F5F5F5;
 }

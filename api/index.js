@@ -108,3 +108,17 @@ export const requst_get_getAllCommodityType = data => getRequest2(`/getAllCommod
 //根据店铺编号与商品类型获取该店铺下所有商品信息
 export const requst_get_shopDetail = data => getRequest2(`/shop/shopDetail`, data);
 
+
+// 12月接口
+// 获取手机
+export const requst_get_userPhone = data => getRequest(`/user/phone`, data);
+//获取登录信息
+export const requst_get_UserInfo = data => getRequest(`/user/getUserInfo`, data);
+//上传登录信息
+export const requst_get_uploadUserInfo = data => getRequest(`/user/uploadUserInfo`, data);
+//pv+uv插入接口
+export const requst_get_evaluationVisit = data => getRequest(`/evaluation/visit`, data);
+//是否评价
+export const requst_get_evaluationIfDone = data => getRequest(`/evaluation/ifDone`, data);
+
+

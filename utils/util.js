@@ -1,3 +1,5 @@
+import {requst_get_evaluationVisit} from '../api/index'
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -137,8 +139,18 @@ function Base64() {
   }
 
 }
+
+function getevaluationVisit(name){
+   requst_get_evaluationVisit({
+     name:name
+   }).then(res=>{
+     console.log(res)
+   })
+}
+
 module.exports = {
   formatTime,
   throttle,
-  Base64
+  Base64,
+  getevaluationVisit
 }
