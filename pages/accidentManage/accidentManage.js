@@ -3,6 +3,7 @@ import {
   throttle
 } from '../../utils/util'
 import {requst_get_queryHandyRapidHandlingCenter} from '../../api/index'
+import {getevaluationVisit} from '../../utils/util'
 Page({
 
   /**
@@ -250,7 +251,7 @@ touchmove: throttle((that, e) => {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    getevaluationVisit('事故快处点')
   },
 
   /**

@@ -7,6 +7,7 @@ import {
   requst_get_myCollectionLine,
   requst_post_myCollectionDelete
 } from '../../api/index.js'
+import {getevaluationVisit} from '../../utils/util'
 Page({
   /**
    * 页面的初始数据
@@ -447,6 +448,7 @@ Page({
    */
   onShow: function () {
     this.setcurrent(this.data.current);
+    getevaluationVisit('我的收藏')
   },
 
   /**

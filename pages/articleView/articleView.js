@@ -7,6 +7,8 @@ import {
   requst_get_addHandyChargePolicy,
   requst_get_addHandyNotice
 } from '../../api/index'
+import {getevaluationVisit} from '../../utils/util'
+
 Page({
 
   /**
@@ -79,7 +81,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(this.data.type=='policy'){
+      getevaluationVisit('收费政策')
+    }else{
+      getevaluationVisit('公告信息')
+    }
   },
 
   /**

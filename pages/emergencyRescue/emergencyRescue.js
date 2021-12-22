@@ -3,6 +3,8 @@ var amapFile = require('../../libs/amap-wx.130.js');
 import {
   markersData
 } from '../../libs/markers.js'
+import {getevaluationVisit} from '../../utils/util'
+
 Page({
 
   /**
@@ -168,7 +170,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    getevaluationVisit('紧急救援')
   },
 
   /**

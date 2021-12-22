@@ -5,6 +5,8 @@ import {
   requst_get_getAllCommodityType
 } from '../../api/index.js'
 const app = getApp()
+import {getevaluationVisit} from '../../utils/util'
+
 Page({
 
   /**
@@ -116,7 +118,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    getevaluationVisit('店铺详情')
   },
 
   /**

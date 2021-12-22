@@ -5,6 +5,7 @@ import {
   requst_get_queryAllByDistance,
   requst_get_queryAllServiceAreaByDistanse
 } from '../../api/index.js'
+import {getevaluationVisit} from '../../utils/util'
 
 Page({
 
@@ -100,7 +101,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    getevaluationVisit('高速路况')
   },
 
   /**

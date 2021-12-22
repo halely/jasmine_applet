@@ -5,6 +5,7 @@ import {
   requst_post_evaluation,
   requst_get_evaluationIfDone
 } from '../../api/index.js'
+import {getevaluationVisit} from '../../utils/util'
 Page({
 
   /**
@@ -127,7 +128,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    getevaluationVisit('评价')
   },
 
   /**

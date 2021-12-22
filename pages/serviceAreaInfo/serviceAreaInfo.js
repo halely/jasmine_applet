@@ -6,6 +6,8 @@ import {
   requst_post_myCollectionDelete,
   requst_post_myCollectionserviceAreaInsert
 } from '../../api/index.js'
+import {getevaluationVisit} from '../../utils/util'
+
 Page({
 
   /**
@@ -202,6 +204,7 @@ Page({
    */
   onShow: function () {
     this.getServiceAreaxist()
+    getevaluationVisit('服务区')
   },
 
   /**

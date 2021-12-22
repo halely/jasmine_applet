@@ -8,6 +8,8 @@ import {
 import {
   markersData
 } from '../../libs/markers.js'
+import {getevaluationVisit} from '../../utils/util'
+
 Page({
   /**
    * 页面的初始数据
@@ -383,7 +385,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    getevaluationVisit('收费站')
   },
 
   /**

@@ -1,6 +1,7 @@
 // pages/path_plan_map/path_plan_map.js
 var amapFile = require('../..//libs/amap-wx.130.js');
 var config = require('../../libs/markers.js');
+import {getevaluationVisit} from '../../utils/util'
 import {
   requst_post_lineSearchLineServiceArea,
   requst_post_lineSearchLineStation,
@@ -657,7 +658,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getSure()
+    this.getSure();
+    getevaluationVisit('路径规划')
   },
 
   /**

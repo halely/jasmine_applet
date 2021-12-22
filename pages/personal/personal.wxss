@@ -27,14 +27,17 @@
   color: #333333;
   line-height: 30px;
 }
-.loginBut text{
+
+.loginBut text {
   display: block;
 }
-.loginBut .phoneBox{
+
+.loginBut .phoneBox {
   font-size: 28rpx;
   display: inline;
   padding: 0;
   line-height: 30px;
+  background-color: transparent
 }
 
 .my_collection_box,
@@ -119,11 +122,12 @@
   line-height: 22px;
   margin-left: 28rpx;
 }
-.loginout{
+
+.loginout {
   display: flex;
   justify-content: center;
   color: #333333;
-  margin:30rpx 0 ;
+  margin: 30rpx 0;
   padding: 30rpx;
   background-color: #ffffff;
 }

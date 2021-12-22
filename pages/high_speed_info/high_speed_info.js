@@ -8,8 +8,9 @@ import {
   requst_post_myCollectionDelete,
   requst_post_myCollectionRoadInsert
 } from '../../api/index.js'
-Page({
+import {getevaluationVisit} from '../../utils/util'
 
+Page({
   /**
    * 页面的初始数据
    */
@@ -306,6 +307,7 @@ Page({
    */
   onShow: function () {
     this.getroadifSave();
+    getevaluationVisit('高速详情')
   },
 
   /**
