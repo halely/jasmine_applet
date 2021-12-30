@@ -137,6 +137,11 @@ Page({
               phonenumber: data.data,
             }
           })
+          let userInfo = wx.getStorageSync('userInfo');
+          userInfo.phonenumber=data.data;
+          wx.setStorageSync('userInfo', userInfo)
+          //把手机号存入缓存
+          //获取手机号，上传手机号
           wx.nextTick(() => {
             this.get_uploadUserInfo()
           })
@@ -150,6 +155,20 @@ Page({
       data
     } = await requst_get_UserInfo()
     if (data.code == '1001') {
+      //如果没有返回用户名称，故先上传名称
+      if(!data.data.nickName){
+        this.setData({
+          uploadUserInfo: {
+            nickName: this.data.userInfo.nickName,
+            phonenumber: data.data.phonenumber
+          }
+        })
+        wx.nextTick(()=>{
+          this.get_uploadUserInfo();
+        })
+        return false;
+      }
+      //如果有，正常获取
       this.setData({
         uploadUserInfo: {
           nickName: data.data.nickName,
@@ -184,7 +203,11 @@ Page({
     let userInfo = wx.getStorageSync('userInfo');
     //判断是否在userInfo
     if (userInfo) {
+      this.setData({
+        'uploadUserInfo.phonenumber':userInfo.phonenumber
+      })
       this.getUserInfo();
+
     }
     this.setData({
       userInfo: userInfo ? userInfo : null

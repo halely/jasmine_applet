@@ -143,9 +143,7 @@ function Base64() {
 function getevaluationVisit(name){
    requst_get_evaluationVisit({
      name:name
-   }).then(res=>{
-     console.log(res)
-   })
+   }).then(res=>{})
 }
 
 module.exports = {
