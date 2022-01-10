@@ -2,7 +2,9 @@
 import {
   requst_get_queryAllRoadInfo
 } from '../../api/index.js'
-import {getevaluationVisit} from '../../utils/util'
+import {
+  getevaluationVisit
+} from '../../utils/util'
 
 Page({
 
@@ -21,7 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
   //查询条件
   bindconfirm(e) {
@@ -120,7 +122,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh()
+    this.setData({
+      pageNum: 1,
+      listData: [],
+      total: 0
+    })
+    wx.nextTick(() => {
+      this.getData()
+    })
   },
 
   /**

@@ -3,7 +3,9 @@
 import {
   requst_post_queryAllRoad
 } from '../../api/index.js'
-import {getevaluationVisit} from '../../utils/util'
+import {
+  getevaluationVisit
+} from '../../utils/util'
 
 Page({
 
@@ -69,22 +71,22 @@ Page({
     var that = this;
     query.selectAll('.restrictionText').boundingClientRect(function (rect) {
       rect.forEach((v, i) => {
-        if(v.height > 40){
-          var set1 = "listData[" + i + "].collapse";//存在超过
-          var set2 = "listData[" + i + "].showCollapse";//是否显示全文
+        if (v.height > 40) {
+          var set1 = "listData[" + i + "].collapse"; //存在超过
+          var set2 = "listData[" + i + "].showCollapse"; //是否显示全文
           that.setData({
             [set1]: true,
-            [set2]: that.data[set2]?true:false,
+            [set2]: that.data[set2] ? true : false,
           })
         }
       })
     }).exec();
   },
-  unfoldclick(e){
-    let index=e.currentTarget.dataset.index;
-    var set= "listData[" + index + "].showCollapse";//是否显
+  unfoldclick(e) {
+    let index = e.currentTarget.dataset.index;
+    var set = "listData[" + index + "].showCollapse"; //是否显
     this.setData({
-     [set]:!this.data.listData[index].showCollapse
+      [set]: !this.data.listData[index].showCollapse
     })
   },
   //监听滚动
@@ -137,7 +139,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh()
+    this.setData({
+      pageNum: 1,
+      listData: [],
+      total: 0
+    })
+    wx.nextTick(() => {
+      this.getData()
+    })
   },
 
   /**

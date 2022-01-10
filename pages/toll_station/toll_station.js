@@ -15,7 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    current: 0,
+    current:1,
     AllCityLine: {}, //城市描边信息
     cityList: [{
         name: '南京',
@@ -372,13 +372,21 @@ Page({
       })
     }
   },
-  onLoad: function (options) {
+  //初始化
+  initialize(){
+    this.setData({
+      pageNum: 1,
+      listData: [],
+      total: 0
+    })
     this.getcity();
     this.getqueryAllClose(); //获取所有的关闭信息
     this.getData(); //获取列表数据
-    // this.getqueryAllCityLine(); //获取描边数据
     this.getgaodeAllCityLine()
     this.getqueryAllByArea(); //获取城市信息
+  },
+  onLoad: function (options) {
+    this.initialize()
   },
 
   /**
@@ -412,7 +420,10 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {},
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh()
+    this.initialize()
+  },
 
   /**
    * 页面上拉触底事件的处理函数

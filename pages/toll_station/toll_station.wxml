@@ -4,15 +4,15 @@
   <!-- 头部 -->
   <view class="head">
     <view class="haedTab" bindtap="tabChange">
-      <text class="menu {{current==0? 'borders' :''}} " data-current="0">按距离</text>
       <text class="menu {{current==1? 'borders' :''}} " data-current="1">按地市</text>
+      <text class="menu {{current==0? 'borders' :''}} " data-current="0">按距离</text>
     </view>
   </view>
   <block wx:if="{{current==0}}">
     <view class="searchBox">
       <view class="search_arr">
         <icon class="searchcion" size='20' type='search'></icon>
-        <input placeholder="搜索" maxlength="32"  bindconfirm="bindconfirm" confirm-type="search" />
+        <input placeholder="搜索" maxlength="32" bindconfirm="bindconfirm" confirm-type="search" />
       </view>
     </view>
     <!-- 内容 -->
@@ -27,8 +27,7 @@
             </view>
           </view>
           <view class="itembody">
-            <view class="tollstation_state" wx:for-item="item_son"
-              wx:for="{{common.macth_close(item.allList,item.stationStateInfoList)}}" wx:key="key">
+            <view class="tollstation_state" wx:for-item="item_son" wx:for="{{common.macth_close(item.allList,item.stationStateInfoList)}}" wx:key="key">
               <text class="state_title ellipsis">{{item_son.dirDes}}</text>
               <view class="stateInfo ">
                 <text class="{{!item_son.entrance?'close':''}}">{{!item_son.entrance?'入口关闭':'入口开启'}}</text>
@@ -53,14 +52,14 @@
       <scroll-view scroll-y>
         <view class="citiesBox">
           <scroll-view class="cityBox" scroll-x="true">
-            <view class="cityItem {{ selectCity==item.name?'select':''}}" wx:for="{{cityList}}" wx:key="key"
-              data-name="{{item.name}}" data-code="{{item.key}}" bindtap="cityItemClick">
+            <view class="cityItem {{ selectCity==item.name?'select':''}}" wx:for="{{cityList}}" wx:key="key" data-name="{{item.name}}" data-code="{{item.key}}" bindtap="cityItemClick">
               <text class="cityName">{{item.name}}</text>
               <text class="cityNum" hidden="{{!item.num}}">{{item.num}}</text>
             </view>
           </scroll-view>
-          <map class="map" id="map" polygons="{{polygon}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="9" min-scale="{{minScale}}" 
-            markers="{{markers}}" bindmarkertap="bindmarkertap"></map>
+          <scroll-view class="mapscroll">
+            <map class="map" id="map" polygons="{{polygon}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="9" min-scale="{{minScale}}" markers="{{markers}}" bindmarkertap="bindmarkertap"></map>
+          </scroll-view>
           <block wx:if="{{selectCityData.stationId}}">
             <view class="toll_station_item">
               <view class="itemhead">
@@ -71,8 +70,7 @@
                 </view>
               </view>
               <view class="itembody">
-                <view class="tollstation_state" wx:for-item="item_son"
-                  wx:for="{{common.macth_close(selectCityData.allList,selectCityData.stationStateInfoList)}}" wx:key="key">
+                <view class="tollstation_state" wx:for-item="item_son" wx:for="{{common.macth_close(selectCityData.allList,selectCityData.stationStateInfoList)}}" wx:key="key">
                   <text class="state_title ellipsis">{{item_son.dirDes}}</text>
                   <view class="stateInfo ">
                     <text class="{{!item_son.entrance?'close':''}}">{{!item_son.entrance?'入口关闭':'入口开启'}}</text>

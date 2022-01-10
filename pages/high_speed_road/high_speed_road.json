@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText":"高速路况",
+  "enablePullDownRefresh":true,
   "usingComponents":{
     "high_speed_item":"/components/high_speed_item/high_speed_item"
   }

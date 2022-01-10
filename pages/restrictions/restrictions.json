@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "车辆限行"
+  "navigationBarTitleText": "车辆限行",
+  "enablePullDownRefresh":true
 }

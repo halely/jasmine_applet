@@ -52,10 +52,10 @@
     }]
   },
   "window":{  
-    "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "江苏高速96777",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "backgroundTextStyle": "dark"
   },
   "networkTimeout":{
     "request":20000
