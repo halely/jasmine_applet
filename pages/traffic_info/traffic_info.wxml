@@ -62,7 +62,7 @@
               <text>开始时间</text>
             </view>
             <view class="info_time_item direction_column">
-              <text>{{itemData.expectResumeTime}}</text>
+              <text>{{itemData.controlEndTime||itemData.expectResumeTime || '--'}}</text>
               <text>结束时间</text>
             </view>
           </view>

@@ -24,7 +24,6 @@ Page({
       data
     } = await requst_get_evaluationIfDone()
     if (data.code == '1001') {
-      console.log(data)
       if (data.data) {
         let evaluationData = data.data;
         this.setData({

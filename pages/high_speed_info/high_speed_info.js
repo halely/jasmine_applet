@@ -4,11 +4,14 @@ import {
   requst_get_queryRoadInfoDetail,
   requst_get_queryAllByDistance,
   requst_get_queryAllServiceAreaByDistanse,
+  requst_get_queryRoadInfoDetailExt,
   requst_get_roadifSave,
   requst_post_myCollectionDelete,
   requst_post_myCollectionRoadInsert
 } from '../../api/index.js'
-import {getevaluationVisit} from '../../utils/util'
+import {
+  getevaluationVisit
+} from '../../utils/util'
 
 Page({
   /**
@@ -69,39 +72,46 @@ Page({
     if (focusonState) {
       //取消收藏
       this.get_myCollectionDelete()
-    }else{
-       this.get_myCollectionRoadInsert()
+    } else {
+      this.get_myCollectionRoadInsert()
     }
-    
+
   },
   //删除收藏
-  async get_myCollectionDelete(){
-    let list=[];
+  async get_myCollectionDelete() {
+    let list = [];
     list.push(this.data.collectionId)
-    let {data}=await requst_post_myCollectionDelete({
+    let {
+      data
+    } = await requst_post_myCollectionDelete({
       list
     })
-    if(data.code!='1001'){
+    if (data.code != '1001') {
       console.log('取消失败')
-    }else{
+    } else {
       this.setData({
         focusonState: !this.data.focusonState
       })
     }
   },
   //添加收藏
-  async get_myCollectionRoadInsert(){
-    let {data:res}=await requst_post_myCollectionRoadInsert({
-      roadId:this.data.GsRoadInfo.roadId
+  async get_myCollectionRoadInsert() {
+    let {
+      data: res
+    } = await requst_post_myCollectionRoadInsert({
+      roadId: this.data.GsRoadInfo.roadId
     })
-    let {data,code}=res;
-    if(code=='1001' && data){
+    let {
+      data,
+      code
+    } = res;
+    if (code == '1001' && data) {
       this.setData({
         focusonState: !this.data.focusonState,
-        collectionId:data.collectionId
+        collectionId: data.collectionId
       })
     }
-    
+
   },
   // tab类型切换
   tabClick(e) {
@@ -161,9 +171,31 @@ Page({
       }
     }
   },
+
+  // 获取高速信息
+  async getqueryRoadInfoDetailExt() {
+    let wxData = this.data;
+    let param = {
+      roadId: wxData.GsRoadInfo.roadId,
+    }
+    let {
+      data
+    } = await requst_get_queryRoadInfoDetailExt(param)
+    if (data.code == '1001') {
+      //获取事件详情
+      let GsRoadInfo = wxData.GsRoadInfo;
+      let roadEventTips = data.data;
+      GsRoadInfo.count= roadEventTips.reduce((sum, item) => sum + item.count, 0)
+      GsRoadInfo.roadEventTipsList = roadEventTips;
+      this.setData({
+        GsRoadInfo
+      })
+    }
+  },
   // 获取路况信息
   async getqueryRoadInfoDetail() {
     let wxData = this.data;
+    this.getqueryRoadInfoDetailExt()
     wx.showLoading({
       title: '加载中',
       mask: true
@@ -285,9 +317,9 @@ Page({
           collectionId: res.data.collectionId,
           focusonState: true
         })
-      }else{
+      } else {
         this.setData({
-          collectionId:'',
+          collectionId: '',
           focusonState: false
         })
       }

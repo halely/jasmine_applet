@@ -3,6 +3,7 @@ import {
   requst_get_queryRoadInfoDetail,
   requst_get_queryAllByDistance,
   requst_get_queryAllServiceAreaByDistanse,
+  requst_get_queryRoadInfoDetailExt,
   requst_post_myCollectionDelete,
   requst_post_myCollectionRoadInsert,
   requst_get_roadifSave
@@ -24,7 +25,7 @@ Page({
       icon: '/img/road.png',
       name: '路况',
       hide: false,
-    },{
+    }, {
       code: 3,
       icon: '/img/stationIcon.png',
       name: '收费站',
@@ -49,6 +50,7 @@ Page({
    */
   onLoad: function (options) {
     this.getStorage();
+    this.getqueryRoadInfoDetailExt();
     this.getMarker();
   },
   //获取缓存信息
@@ -63,6 +65,26 @@ Page({
         GsRoadInfo,
         center,
         myLocation
+      })
+    }
+  },
+  // 获取高速信息
+  async getqueryRoadInfoDetailExt() {
+    let wxData = this.data;
+    let param = {
+      roadId: wxData.GsRoadInfo.roadId,
+    }
+    let {
+      data
+    } = await requst_get_queryRoadInfoDetailExt(param)
+    if (data.code == '1001') {
+      //获取事件详情
+      let GsRoadInfo = wxData.GsRoadInfo;
+      let roadEventTips = data.data;
+      GsRoadInfo.count = roadEventTips.reduce((sum, item) => sum + item.count, 0)
+      GsRoadInfo.roadEventTipsList = roadEventTips;
+      this.setData({
+        GsRoadInfo
       })
     }
   },
@@ -388,7 +410,7 @@ Page({
       markers,
       center
     })
-    wx.nextTick(()=>{
+    wx.nextTick(() => {
       wx.hideLoading()
     })
   },

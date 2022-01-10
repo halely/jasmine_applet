@@ -138,15 +138,6 @@ App({
         undeveloped: false, //是否未开发
         typeID: '3'
       }, {
-        iconPath: '/svg/applySvg/antiepidemic.svg',
-        name: '防疫政策',
-        type: '便民服务', //类型名称
-        selected: false,
-        path: '', //跳转路径
-        externallinks: 'http://www.gov.cn/zhuanti/2021yqfkgdzc/mobile.htm', //外部链接
-        undeveloped: false, //是否未开发
-        typeID: '3' //类型id
-      }, {
         iconPath: '/svg/applySvg/complaintsPraise.svg',
         name: '投诉表扬',
         type: '便民服务', //类型名称

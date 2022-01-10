@@ -110,6 +110,15 @@ Page({
   },
   //评价
   evaluation() {
+    let userInfo = wx.getStorageSync('userInfo');
+    if (!userInfo) {
+      wx.showToast({
+        title: '该功能需要用户登录',
+        icon: 'none',
+        mask: true
+      })
+      return false;
+    }
     wx.navigateTo({
       url: '/pages/evaluation/evaluation',
     })
@@ -138,7 +147,7 @@ Page({
             }
           })
           let userInfo = wx.getStorageSync('userInfo');
-          userInfo.phonenumber=data.data;
+          userInfo.phonenumber = data.data;
           wx.setStorageSync('userInfo', userInfo)
           //把手机号存入缓存
           //获取手机号，上传手机号
@@ -151,31 +160,38 @@ Page({
   },
   //获取用户信息
   async getUserInfo() {
-    let {
+    requst_get_UserInfo().then(({
       data
-    } = await requst_get_UserInfo()
-    if (data.code == '1001') {
-      //如果没有返回用户名称，故先上传名称
-      if(!data.data.nickName){
+    }) => {
+      if (data.code == '1001') {
+        //如果没有返回用户名称，故先上传名称  
+        // if (!data.data.nickName) {
         this.setData({
           uploadUserInfo: {
             nickName: this.data.userInfo.nickName,
             phonenumber: data.data.phonenumber
           }
         })
-        wx.nextTick(()=>{
+        wx.nextTick(() => {
           this.get_uploadUserInfo();
         })
-        return false;
+        //   return false;
+        // }
+        // //如果有，正常获取
+        // this.setData({
+        //   uploadUserInfo: {
+        //     nickName: data.data.nickName,
+        //     phonenumber: data.data.phonenumber
+        //   }
+        // })
       }
-      //如果有，正常获取
-      this.setData({
-        uploadUserInfo: {
-          nickName: data.data.nickName,
-          phonenumber: data.data.phonenumber
-        }
-      })
-    }
+    }).catch(err => {
+      if (err.data.code == 999) {
+        this.setData({
+          userInfo: null
+        })
+      }
+    })
   },
   //添加用户信息
   async get_uploadUserInfo() {
@@ -185,7 +201,7 @@ Page({
         data
       } = await requst_get_uploadUserInfo({
         nickName: WxData.uploadUserInfo.nickName,
-        phonenumber: WxData.uploadUserInfo.phonenumber
+        phonenumber: WxData.uploadUserInfo.phonenumber || ''
       })
     }
   },
@@ -204,10 +220,9 @@ Page({
     //判断是否在userInfo
     if (userInfo) {
       this.setData({
-        'uploadUserInfo.phonenumber':userInfo.phonenumber
+        'uploadUserInfo.phonenumber': userInfo.phonenumber
       })
       this.getUserInfo();
-
     }
     this.setData({
       userInfo: userInfo ? userInfo : null

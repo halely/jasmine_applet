@@ -1,9 +1,6 @@
 // pages/high_speed_road/high_speed_road.js
 import {
-  requst_get_queryAllRoadInfo,
-  requst_get_queryRoadInfoDetail,
-  requst_get_queryAllByDistance,
-  requst_get_queryAllServiceAreaByDistanse
+  requst_get_queryAllRoadInfo
 } from '../../api/index.js'
 import {getevaluationVisit} from '../../utils/util'
 
@@ -24,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData()
+    
   },
   //查询条件
   bindconfirm(e) {
@@ -101,6 +98,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.getData()
     getevaluationVisit('高速路况')
   },
 

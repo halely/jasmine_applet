@@ -1,5 +1,5 @@
 var tokenKey = "access-token"; //缓存token对应的值
-// var serverUrl = "http://192.168.50.131:8080/jasmine-web"; //刘云鹏url地址
+// var serverUrl = "http://192.168.50.129:8080/jasmine-web"; //刘云鹏url地址
 var serverUrl = "https://96777.jssgx.cn/jasmine-web"; //生产合法域名
 var tollStationUrl = "https://m.roadmall.cn/jasmine"; //服务区域名独立
 // 例外不用token的地址
@@ -34,7 +34,7 @@ function overdue() {
   wx.showToast({
     title: '账号已过期',
     icon: 'none',
-    duration: 1000,
+    duration: 1500,
     mask: true,
     success() {
       setTimeout(() => {
@@ -132,6 +132,7 @@ function getRequest(url, data, customHeader = {}) {
           //token过期
           if (res.data.code == 999) {
             overdue()
+            reject(res)
           } else {
             resolve(res);
           }

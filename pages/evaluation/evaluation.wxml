@@ -24,7 +24,7 @@
           value="{{evaluationRemark}}" bindinput="textareaInput" />
         <text class="textarealimit">{{evaluationRemark.length}}/200</text>
       </view>
-       <text wx:else class="evaluationRemark">{{evaluationRemark}}</text>
+       <text wx:else class="evaluationRemark">{{evaluationRemark||''}}</text>
     </view>
   </view>
   <button wx:if="{{!isevaluation}}" class="submitBut" bindtap="submitBut" hover-class="submitButHover">提交评价</button>

@@ -36,6 +36,8 @@ export const requst_post_evaluation = data => postRequest(`/evaluation/add`, dat
 export const requst_get_queryAllRoadInfo = data => getRequest(`/road/queryAllRoadInfo`, data);
 //查询全部高速路况详情
 export const requst_get_queryRoadInfoDetail = data => getRequest(`/road/queryRoadInfoDetail`, data);
+//获取当前高速的事件数量
+export const requst_get_queryRoadInfoDetailExt = data => getRequest(`/road/queryRoadInfoDetailExt`, data);
 
 //登录
 export const requst_get_login = data => getRequest(`/login`, data);

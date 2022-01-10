@@ -108,5 +108,5 @@
   box-sizing: border-box;
   width: 100%;
   min-height: 150px;
-  background-color: #F5F5F5;
+  /* background-color: #F5F5F5; */
 }
