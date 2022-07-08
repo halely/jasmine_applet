@@ -8,7 +8,7 @@
       <text wx:if="{{!city}}" bindtap="chooselocation">获取当前位置</text>
     </view>
     <view class="evaluate" bindtap="evaluationClick" hidden="true">点击评价</view>
-    <image class="Home_nav_bg" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/HomeBg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511309&signature=4KyFr%2FEeqzrNPjl6y%2B350diV6KED%2F%2BVlJoIdeTqnWfo%3D"></image>
+    <image class="Home_nav_bg" src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/HomeBg.png"></image>
   </view>
   <view class="main">
     <view class="entranceBox">
@@ -17,7 +17,7 @@
           <text>车辆限行</text>
           <text>道路限行信息</text>
         </view>
-        <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/restrictions.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511310&signature=i%2FlbEz4DTgYtBOW8jZyXiRt4KCdRcFGl4WmaBkuNtjw%3D"></image>
+        <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/restrictions.png"></image>
       </view>
       <view class="entranceItem" data-path="cross_river_bridge" bindtap="entranceClick">
         <view class="entranceTitle">
@@ -25,21 +25,21 @@
           <text>大桥限行信息</text>
           <!-- <text>道路限行信息</text> -->
         </view>
-        <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/bridge.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003836&signature=E510iInl0utV6aBc3eRWUT5vLOCqcAb6JXCpDGaH1GQ%3D"></image>
+        <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/bridge.png"></image>
       </view>
       <view class="entranceItem" data-path="path_plan" bindtap="entranceClick">
         <view class="entranceTitle">
           <text>路线规划</text>
           <text>合适的路线规划</text>
         </view>
-        <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/tollbooth_switch.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=Al%2BBHmsBW3WcDQIkVz05oFhBhDTynPFIPepiId47Q60%3D"></image>
+        <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/tollbooth_switch.png"></image>
       </view>
       <view class="entranceItem" data-path="traffic_info" bindtap="entranceClick">
         <view class="entranceTitle">
           <text>路况信息</text>
           <text>最新路况信息</text>
         </view>
-        <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/service_area_entrance.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511310&signature=9qAlPalix1o8SZCqhZH4hLv6CgxJXyiIzTzH%2FQHx0%2Fw%3D"></image>
+        <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/service_area_entrance.png"></image>
       </view>
     </view>
     <view class="tab_box">
@@ -54,7 +54,7 @@
         <block wx:if="{{current==0}}">
           <view class="tollstationItem" wx:if="{{DistanceData.stationName}}">
             <view class="item_head">
-              <image class="tollStationImg" src="{{DistanceData.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/stationImg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=tXiKcA1wIusL69jKEdIvQASvIs%2FCbAv3o9JHWSZ9Xy8%3D'}}"></image>
+              <image class="tollStationImg" src="{{DistanceData.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/stationImg.png'}}"></image>
               <view class="tollStationTitle">
                 <text class="tollstation_name">{{DistanceData.stationName}}收费站</text>
                 <text class="distance">距您{{common.math_distance(DistanceData.distanceUm)}}km</text>
@@ -75,7 +75,7 @@
         <block wx:else>
           <view class="serviceAreaItem"  wx:if="{{ServiceAreaData.serviceAreaName}}" bindtap="serviceAreaView">
             <view class="item_head">
-              <image class="serviceAreaImg" src="{{ServiceAreaData.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/serviceAreaImg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511310&signature=d%2BNpaHLlkWkQsy5m5XNrHOxjdKBVyi8TUxpBw8eqaIY%3D'}}"></image>
+              <image class="serviceAreaImg" src="{{ServiceAreaData.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/serviceAreaImg.png'}}"></image>
               <view class="serviceAreaInfo">
                 <view class="serviceAreaInfo_head">
                   <view class="serviceAreaName">{{ServiceAreaData.serviceAreaName}}

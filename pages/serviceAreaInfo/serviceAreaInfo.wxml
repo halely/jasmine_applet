@@ -1,7 +1,7 @@
 <!--pages/serviceAreaInfo/serviceAreaInfo.wxml-->
 <wxs module="common" src="/utils/common.wxs"></wxs>
 <view class="container">
-  <image class="serviceAreaIbj" src="{{serviceAreaItemInfo.picId||'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/defaultBg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511308&signature=mlEGahUDDeLCuflYOHMpCGD7JiuLY5%2BGiQAe89oeWTk%3D'}}"></image>
+  <image class="serviceAreaIbj" src="{{serviceAreaItemInfo.picId||'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/defaultBg.png'}}"></image>
   <view class="serviceAreaInfoBox">
     <view class="serviceArea_title">
       <text>{{serviceAreaItemInfo.serviceAreaName}} {{serviceAreaItemInfo.dir?'('+serviceAreaItemInfo.dir+')':''}}</text>
@@ -66,7 +66,7 @@
     <scroll-view scroll-y bindscrolltolower="scrolltolower">
       <view bindtap="shopItemClick" class="serviceStoreItem" data-item="{{item}}" wx:for="{{listData}}" wx:key="key">
         <view class="ItemBody">
-          <image src="{{item.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/defaultImg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003837&signature=AmZTaz%2B9QfzVfeJDWJVti0fKs7qcv%2FQwnu3DxkjEnyo%3D'}}">
+          <image src="{{item.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/defaultImg.png'}}">
           </image>
           <view class="storeInfo">
             <text class="storeName ellipsis">{{item.jasmineShopList[0].shopParentName}}（{{item.jasmineShopList[0].shopName}}）</text>

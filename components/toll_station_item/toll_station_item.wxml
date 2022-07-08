@@ -7,7 +7,7 @@
   </view>
   <view class="toll_station_body">
     <view class="toll_station_head">
-      <image class="tollStationImg" src="{{itemData.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/stationImg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=tXiKcA1wIusL69jKEdIvQASvIs%2FCbAv3o9JHWSZ9Xy8%3D'}}"></image>
+      <image class="tollStationImg" src="{{itemData.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/stationImg.png'}}"></image>
       <view class="toll_station_title">
         <view class="toll_station_name">{{itemData.stationName}}收费站</view>
         <view class="toll_station_num">距您{{common.math_distance(itemData.distanceUm)}}km</view>

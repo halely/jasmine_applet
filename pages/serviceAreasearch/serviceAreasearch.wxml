@@ -11,7 +11,7 @@
     <scroll-view scroll-y bindscrolltolower="scrolltolower">
       <view class="serviceAreaItem" data-info="{{item}}" bindtap="serviceAreaItemClick" wx:for="{{listData}}" wx:key="key">
         <view class="item_head">
-          <image class="serviceAreaImg"  src="{{item.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/serviceAreaImg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511310&signature=d%2BNpaHLlkWkQsy5m5XNrHOxjdKBVyi8TUxpBw8eqaIY%3D'}}"></image>
+          <image class="serviceAreaImg"  src="{{item.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/serviceAreaImg.png'}}"></image>
           <view class="serviceAreaInfo">
             <view class="serviceAreaInfo_head">
               <view class="serviceAreaName">{{item.serviceAreaName}}

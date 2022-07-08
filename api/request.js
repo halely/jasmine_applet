@@ -34,7 +34,7 @@ function overdue() {
   wx.showToast({
     title: '账号已过期',
     icon: 'none',
-    duration: 1500,
+    duration: 2500,
     mask: true,
     success() {
       setTimeout(() => {
@@ -44,7 +44,7 @@ function overdue() {
         wx.switchTab({
           url: '/pages/personal/personal',
         })
-      }, 1000);
+      }, 2500);
     }
   })
 }

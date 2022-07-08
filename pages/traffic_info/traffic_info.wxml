@@ -4,25 +4,25 @@
   <view class="trafficHeadBox">
     <view class="trafficHeadItem direction_column" data-path="high_speed_road" bindtap="entranceClick">
       <image
-        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/traffic_high_speed.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511312&signature=93gpgP4oLwAJDI1Ki8jzfqd4qHCAr3BclF42dQUSeEU%3D">
+        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/traffic_high_speed.png">
       </image>
       <text>高速路况</text>
     </view>
     <view class="trafficHeadItem direction_column" data-path="restrictions" bindtap="entranceClick">
       <image
-        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/traffic_control.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511312&signature=%2Bpb%2Bmai19fVZoYYSfQG4MC0G5RycQo6T0E5ewc%2F6cZc%3D">
+        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/traffic_control.png">
       </image>
       <text>车辆限行</text>
     </view>
     <view class="trafficHeadItem direction_column" data-path="cross_river_bridge" bindtap="entranceClick">
       <image
-        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/traffic_bridge.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=iM8Sf%2BJ3CLj1pAqV7kfZ1qguIXoCUminGtM31jSHmnM%3D">
+        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/traffic_bridge.png">
       </image>
       <text>过江大桥</text>
     </view>
     <view class="trafficHeadItem direction_column" data-path="toll_station" bindtap="entranceClick">
       <image
-        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/traffic_toll_station.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511312&signature=yy1rTDRN8UxxswiC%2BtTXbfJA01OV8RBErimve2p2PV8%3D">
+        src="https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/traffic_toll_station.png">
       </image>
       <text>收费站开关</text>
     </view>

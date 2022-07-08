@@ -1,7 +1,7 @@
 <!--pages/convenience/convenience.wxml-->
 <view class="container">
   <view class="concenienceBg">
-    <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/convenpgIcon.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1645003837&signature=EhRQW8QWAB%2FKXBbYXgHSyVXrlCkDQVwHV7hJZ%2FqMVwA%3D"></image>
+    <image src="https://sh1a.qingstor.com/sgx-96777-pro/2021-11-08/convenpgIcon.png"></image>
     <text bindtap="goBack" class="iconfont icon-tiaozhuan" style="top:{{height}}rpx"></text>
   </view>
   <view class="main">

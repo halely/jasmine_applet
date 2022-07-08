@@ -20,7 +20,7 @@
       <scroll-view scroll-y bindscrolltolower="scrolltolower">
         <view class="toll_station_item" wx:for="{{listData}}" wx:key="key">
           <view class="itemhead">
-            <image class="tollStationImg" src="{{item.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/stationImg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=tXiKcA1wIusL69jKEdIvQASvIs%2FCbAv3o9JHWSZ9Xy8%3D'}}"></image>
+            <image class="tollStationImg" src="{{item.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/stationImg.png'}}"></image>
             <view class="tollStationTitle">
               <text class="ellipsis">{{item.stationName}}收费站</text>
               <text>距您{{common.math_distance(item.distanceUm)}}km</text>
@@ -63,7 +63,7 @@
           <block wx:if="{{selectCityData.stationId}}">
             <view class="toll_station_item">
               <view class="itemhead">
-                <image class="tollStationImg" src="{{selectCityData.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/stationImg.png?access_key_id=DIHFNGPFGVICICBJSFKX&expires=1643511311&signature=tXiKcA1wIusL69jKEdIvQASvIs%2FCbAv3o9JHWSZ9Xy8%3D'}}  "></image>
+                <image class="tollStationImg" src="{{selectCityData.picId || 'https://sh1a.qingstor.com/sgx-96777-pro/2021-10-21/stationImg.png'}}  "></image>
                 <view class="tollStationTitle">
                   <text class="ellipsis">{{selectCityData.stationName}}收费站</text>
                   <text>距您{{common.math_distance(selectCityData.distanceUm)}}km</text>
